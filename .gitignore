@@ -9,8 +9,8 @@ dist/
 dist-ssr/
 *.local
 
-# Raw Heavy Media & GeoTIFFs (Gigabyte source files)
-Media/
+# Raw Heavy Media & GeoTIFFs (Gigabyte source files in root)
+/Media/
 *.tif
 *.tiff
 *.obj
