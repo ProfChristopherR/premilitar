@@ -247,7 +247,7 @@ function renderSubAreas(subAreas) {
       <span class="subarea-level-badge">${sub.level}</span>
       <div class="subarea-header"><h3>${sub.title}</h3></div>
       <p style="color:var(--text-on-light-2);margin-bottom:1.5rem;line-height:1.75;">${sub.description}</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+      <div class="subarea-grid">
         <div>
           <p style="font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-gold);margin-bottom:0.75rem;">Equipamiento y Software</p>
           <ul class="equipment-list">
