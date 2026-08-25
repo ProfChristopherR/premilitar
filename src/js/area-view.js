@@ -5,8 +5,8 @@ import { setupModelViewerControls } from './model-viewer-init.js';
 const TECH_AREA_ID = 'tecnologia-geomatica';
 
 // Glob all media from public folder statically
-const imageGlobs = import.meta.glob('/src/assets/media/**/*.{jpg,jpeg,png}', { eager: true, query: '?url', import: 'default' });
-const videoGlobs = import.meta.glob('/src/assets/media/**/*.mp4', { eager: true, query: '?url', import: 'default' });
+const imageGlobs = import.meta.glob('/src/assets/media/**/*.{jpg,jpeg,png,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' });
+const videoGlobs = import.meta.glob('/src/assets/media/**/*.{mp4,MP4}', { eager: true, query: '?url', import: 'default' });
 const linksGlobs = import.meta.glob('/src/assets/media/**/enlaces.json', { eager: true });
 
 function getDynamicMedia(areaId) {
@@ -16,12 +16,16 @@ function getDynamicMedia(areaId) {
 
   // Collect images
   for (const [path, url] of Object.entries(imageGlobs)) {
-    if (path.includes(`/${areaId}/`)) images.push({ url, caption: 'Registro fotográfico' });
+    if (path.includes(`/${areaId}/`)) {
+      images.push({ url, path, caption: 'Registro fotográfico' });
+    }
   }
   
   // Collect local videos
   for (const [path, url] of Object.entries(videoGlobs)) {
-    if (path.includes(`/${areaId}/`)) videos.push({ title: 'Video Local', url });
+    if (path.includes(`/${areaId}/`)) {
+      videos.push({ title: 'Video Demostrativo', url });
+    }
   }
 
   // Collect external links
@@ -33,7 +37,7 @@ function getDynamicMedia(areaId) {
 
   // Combine external links with videos & maps
   if (links.videos_youtube) {
-    links.videos_youtube.forEach(url => videos.push({ title: 'Video', url }));
+    links.videos_youtube.forEach(url => videos.push({ title: 'Video Oficial', url }));
   }
   if (links.mapas_arcgis) {
     links.mapas_arcgis.forEach(item => {
@@ -131,11 +135,12 @@ function renderAreaContent(area) {
   setById('area-tagline', area.tagline);
   setById('area-description', area.description);
   
-  const heroImgUrl = dynMedia.images.length > 0 
-    ? dynMedia.images[0].url 
-    : (area.heroImage && area.heroImage.startsWith('http') 
-      ? area.heroImage 
-      : 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80');
+  let heroImgUrl = './assets/images/peloton-premilitar/IMG_0151.jpg';
+  if (area.heroImage) {
+    heroImgUrl = area.heroImage.startsWith('/assets/') ? '.' + area.heroImage : area.heroImage;
+  } else if (dynMedia.images.length > 0) {
+    heroImgUrl = dynMedia.images[0].url;
+  }
   
   const heroBg = document.querySelector('.hero-bg');
   if (heroBg) heroBg.style.backgroundImage = `url('${heroImgUrl}')`;
@@ -182,11 +187,8 @@ function renderObjectives(objectives, dynamicImages) {
   if (!el || !objectives) return;
   
   // Buscar si hay una imagen que se llame "objetivo"
-  let imgUrl = dynamicImages.find(img => img.url.toLowerCase().includes('objetivo'))?.url;
-  // Si no hay, usar la primera disponible, o una por defecto
-  if (!imgUrl) {
-    imgUrl = dynamicImages.length > 0 ? dynamicImages[0].url : 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80';
-  }
+  let imgObj = dynamicImages.find(img => (img.path && img.path.toLowerCase().includes('objetivo')) || (img.url && img.url.toLowerCase().includes('objetivo')));
+  let imgUrl = imgObj ? imgObj.url : (dynamicImages.length > 0 ? dynamicImages[0].url : './assets/images/peloton-premilitar/IMG_0151.jpg');
 
   const listHtml = objectives.map(o => `
     <li class="objective-item">
@@ -218,11 +220,8 @@ function renderEquipment(equipment, practicalExample, dynamicImages) {
     `).join('');
     
     // Buscar si hay una imagen que se llame "equipo" o "equipamiento"
-    let imgUrl = dynamicImages.find(img => img.url.toLowerCase().includes('equipo'))?.url;
-    // Si no hay, usar la segunda imagen disponible, o por defecto
-    if (!imgUrl) {
-      imgUrl = dynamicImages.length > 1 ? dynamicImages[1].url : (dynamicImages.length > 0 ? dynamicImages[0].url : 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80');
-    }
+    let imgObj = dynamicImages.find(img => (img.path && (img.path.toLowerCase().includes('equipo') || img.path.toLowerCase().includes('equipamiento'))) || (img.url && (img.url.toLowerCase().includes('equipo') || img.url.toLowerCase().includes('equipamiento'))));
+    let imgUrl = imgObj ? imgObj.url : (dynamicImages.length > 1 ? dynamicImages[1].url : (dynamicImages.length > 0 ? dynamicImages[0].url : './assets/images/peloton-premilitar/IMG_0060.jpg'));
 
     el.innerHTML = `
       <div class="text-image-split reverse">

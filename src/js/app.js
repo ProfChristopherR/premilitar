@@ -1,16 +1,19 @@
 // Controlador principal del Landing Page
 import { fetchGeneralData, fetchAreasData, fetchNewsData } from './data-loader.js';
 
-const imageGlobs = import.meta.glob('/src/assets/media/**/*.{jpg,jpeg,png}', { eager: true, query: '?url', import: 'default' });
+const imageGlobs = import.meta.glob('/src/assets/media/**/*.{jpg,jpeg,png,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' });
 
 function getAreaCardImage(area) {
-  // Buscar si hay imagen específica en la carpeta del área
+  // 1. Si en areas.json hay una imagen definida, respetarla
+  if (area.heroImage) {
+    if (area.heroImage.startsWith('./') || area.heroImage.startsWith('http')) return area.heroImage;
+    if (area.heroImage.startsWith('/assets/')) return '.' + area.heroImage;
+  }
+  // 2. Buscar si hay imagen específica en la carpeta del área
   for (const [path, url] of Object.entries(imageGlobs)) {
     if (path.includes(`/${area.id}/`)) return url;
   }
-  // Si en areas.json hay una URL web (http...)
-  if (area.heroImage && area.heroImage.startsWith('http')) return area.heroImage;
-  return 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80';
+  return './assets/images/peloton-premilitar/IMG_0151.jpg';
 }
 
 async function initApp() {
