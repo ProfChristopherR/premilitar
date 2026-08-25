@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Área | Sendero Pre-Militar — Liceo Bicentenario San Nicolás</title>
+  <meta name="description" content="Explora el área de formación del Sendero Educativo Pre-Militar del Liceo Bicentenario de Excelencia Polivalente San Nicolás." />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="stylesheet" href="/src/css/variables.css" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/3d-viewer.css" />
+  <link rel="stylesheet" href="/src/css/animations.css" />
+  <!-- ArcGIS Web Component SDK -->
+  <script type="module" src="https://js.arcgis.com/5.1/embeddable-components/"></script>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVBAR DE ÁREA (doble franja)
+  ══════════════════════════════════════════ -->
+  <header class="navbar-area">
+    <!-- Franja 1: Logo + volver -->
+    <div class="container navbar-area__top">
+      <a href="index.html" class="nav-brand">
+        <img src="/assets/logo.png" alt="Logo Liceo Bicentenario San Nicolás" />
+        <div class="brand-text">
+          <span class="brand-title">Liceo Bicentenario de Excelencia Polivalente San Nicolás</span>
+          <span class="brand-subtitle">Sendero Educativo Pre-Militar</span>
+        </div>
+      </a>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <a href="#objetivos" class="nav-link" style="color:rgba(255,255,255,0.6);font-family:var(--font-display);font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;">Objetivos</a>
+        <a href="#proyectos" class="nav-link" style="color:rgba(255,255,255,0.6);font-family:var(--font-display);font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;">Proyectos</a>
+        <a href="#multimedia" class="nav-link" style="color:rgba(255,255,255,0.6);font-family:var(--font-display);font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;">Multimedia</a>
+        <a href="index.html" class="btn-back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Portada
+        </a>
+      </div>
+    </div>
+
+    <!-- Franja 2: Tabs de las 5 áreas -->
+    <div class="navbar-area__tabs" id="area-tabs-nav">
+      <!-- Generado dinámicamente -->
+    </div>
+  </header>
+
+  <!-- Espacio para el navbar doble -->
+  <div class="area-nav-offset"></div>
+
+  <!-- ══════════════════════════════════════════
+       HERO DEL ÁREA
+  ══════════════════════════════════════════ -->
+  <section id="area-hero" class="area-hero">
+    <div class="container">
+      <p class="section-tag section-tag--light" id="area-tagline">Área Especializada</p>
+      <h1 class="section-title section-title--light" style="font-size:clamp(2.2rem,5vw,3.8rem);margin-top:0.75rem;margin-bottom:1.25rem;" id="area-title">
+        Cargando…
+      </h1>
+      <p id="area-description" style="color:rgba(255,255,255,0.75);max-width:720px;font-size:1rem;line-height:1.75;margin-bottom:2rem;">…</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       OBJETIVOS + EQUIPAMIENTO
+  ══════════════════════════════════════════ -->
+  <section id="objetivos" class="section">
+    <div class="container">
+      <div class="objectives-equipment-wrapper" style="display:flex; flex-direction:column; gap:4rem;">
+        <!-- Objetivos -->
+        <div class="reveal">
+          <div class="section-tag">Metas Formativas</div>
+          <h2 class="section-title" style="font-size:1.9rem;margin-bottom:1.5rem;">Objetivos del Área</h2>
+          <ul class="objectives-list" id="area-objectives">
+            <!-- Generado dinámicamente -->
+          </ul>
+        </div>
+
+        <!-- Equipamiento -->
+        <div class="reveal">
+          <div class="section-tag">Material y Herramientas</div>
+          <h2 class="section-title" style="font-size:1.9rem;margin-bottom:1.5rem;">Equipamiento</h2>
+          <ul class="equipment-list" id="area-equipment">
+            <!-- Generado dinámicamente -->
+          </ul>
+          <div id="area-practical" class="practical-block" style="margin-top:2rem;display:none;">
+            <div class="practical-block__label">📋 Ejemplo Práctico en Terreno</div>
+            <p id="area-practical-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-áreas (solo Tecnología) -->
+      <div id="area-subareas" style="margin-top:4rem;"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PROYECTOS (separados por sub-área si aplica)
+  ══════════════════════════════════════════ -->
+  <section id="proyectos" class="section section--alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Iniciativas Activas</div>
+        <h2 class="section-title" id="projects-title">Proyectos del Área</h2>
+        <div class="gold-divider"></div>
+        <p class="section-subtitle">Trabajos, talleres e investigaciones que desarrollan los estudiantes.</p>
+      </div>
+      <div id="area-projects">
+        <!-- Para área normal: un solo grid -->
+        <!-- Para Tecnología/Geomática: dos secciones separadas -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       VISOR 3D (solo aparece en Tecnología/Geomática)
+  ══════════════════════════════════════════ -->
+  <section id="modelo-3d" class="section section--dark" style="display:none;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag section-tag--light">Exploración Interactiva</div>
+        <h2 class="section-title section-title--light">Gemelo Digital — <em style="font-style:normal;color:var(--color-gold-light);">Modelo 3D</em></h2>
+        <p class="section-subtitle section-subtitle--light" id="model3d-desc">Arrastra para rotar, pellizca para hacer zoom.</p>
+      </div>
+      <div class="reveal" style="max-width:880px;margin:0 auto;">
+        <p style="color:rgba(255,255,255,0.6);font-family:var(--font-display);font-size:0.9rem;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem;" id="model3d-title"></p>
+        <div class="model-viewer-wrapper">
+          <model-viewer
+            id="area-model-viewer"
+            src=""
+            camera-controls
+            auto-rotate
+            shadow-intensity="1"
+            exposure="1"
+            loading="lazy"
+            alt="Modelo 3D del Área"
+          ></model-viewer>
+          <div class="viewer-controls" id="area-viewer-controls">
+            <button class="viewer-btn" data-action="toggle-rotate" title="Pausar/Activar Rotación">⏸</button>
+            <button class="viewer-btn" data-action="reset-camera" title="Reiniciar Cámara">🎯</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       MULTIMEDIA
+  ══════════════════════════════════════════ -->
+  <section id="multimedia" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Registro Visual</div>
+        <h2 class="section-title">Videos y Galería</h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="media-grid" id="area-media">
+        <!-- Generado dinámicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer mínimo del área -->
+  <footer class="footer" style="padding:2rem 0;">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+      <a href="index.html" class="btn-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Volver a la Portada
+      </a>
+      <p style="font-size:0.78rem;">&copy; 2026 - Dpto de Historia y Geografía - Liceo Bicentenario de Excelencia Polivalente San Nicolás</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" id="lightbox-close-btn" aria-label="Cerrar">&times;</button>
+    <div class="lightbox-body">
+      <img id="lightbox-img" class="lightbox-content" style="display:none;" />
+      <div id="lightbox-map-wrap" class="lightbox-map-wrap" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/area-view.js"></script>
+</body>
+</html>

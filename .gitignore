@@ -1,0 +1,34 @@
+# Logs & Runtime
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build Output
+dist/
+dist-ssr/
+*.local
+
+# Raw Heavy Media & GeoTIFFs (Gigabyte source files)
+Media/
+*.tif
+*.tiff
+*.obj
+*.HEIC
+*.heic
+
+# Editor & OS
+.obsidian/
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
+
+# System Generated
+.system_generated/
+.gemini/

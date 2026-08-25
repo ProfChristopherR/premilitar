@@ -1,0 +1,351 @@
+[
+  {
+    "id": "disciplina-formacion",
+    "name": "Disciplina y Formación Militar",
+    "shortName": "Disciplina Militar",
+    "tagline": "Base del carácter, liderazgo y trabajo en equipo",
+    "icon": "shield",
+    "accentColor": "#c59b27",
+    "description": "Esta área constituye la columna vertebral del carácter y la convivencia dentro del sendero. Los estudiantes aprenden que la marcialidad no es mera rigidez, sino una herramienta de autocontrol, coordinación colectiva y respeto mutuo. Mediante el entrenamiento continuo en delegaciones de 45 alumnos, desarrollan cohesión grupal y liderazgo bajo presión.",
+    "objectives": [
+      "Desarrollar el autocontrol, la concentración y la disciplina consciente en cada estudiante.",
+      "Perfeccionar técnicas de escuela: marchas, giros, posiciones, saludos y cantos institucionales.",
+      "Fortalecer la cohesión grupal y el liderazgo responsable bajo presión."
+    ],
+    "heroImage": "/src/assets/media/disciplina-formacion/IMG_9208_objetivo.jpg",
+    "model3D": {
+      "title": "Estandarte e Insignias de Delegación",
+      "description": "Inspecciona el estandarte oficial y los elementos de distinción de las delegaciones del Sendero Premilitar en 360°.",
+      "src": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+      "poster": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
+      "alt": "Modelo 3D representativo del área de instrucción"
+    },
+    "equipment": [
+      "Uniformes de instrucción táctica",
+      "Estandartes e insignias de delegación",
+      "Silbatos de mando",
+      "Megafonía móvil para conducción de bloques"
+    ],
+    "practicalExample": "Durante la ejecución de ejercicios de escuela, la delegación realiza desplazamientos coordinados, giros, marchas a pie firme, saludos protocolares y cantos institucionales utilizando el sistema de mandos a viva voz y señales de silbato, donde un solo fallo individual afecta el bloque completo, enseñando la importancia de la responsabilidad compartida.",
+    "projects": [],
+    "media": {
+      "videos": [],
+      "gallery": []
+    }
+  },
+  {
+    "id": "acondicionamiento-defensa",
+    "name": "Acondicionamiento Físico y Defensa Personal",
+    "shortName": "Acondicionamiento y Defensa",
+    "tagline": "Resistencia, agilidad y capacidad de reacción táctica",
+    "icon": "dumbbell",
+    "accentColor": "#0284c7",
+    "description": "La preparación corporal garantiza la resistencia física y mental necesaria para afrontar exigencias de alto rendimiento. Esta disciplina busca superar límites individuales y fomentar la capacidad de reacción táctica ante situaciones de riesgo o emergencia.",
+    "objectives": [
+      "Desarrollar resistencia cardiovascular y potencia muscular funcional.",
+      "Aplicar técnicas básicas de autoprotección con enfoque preventivo y ético.",
+      "Superar límites personales mediante circuitos de alta exigencia supervisados."
+    ],
+    "heroImage": "/src/assets/media/acondicionamiento-defensa/IMG_0063_objetivo.jpg",
+    "model3D": {
+      "title": "Equipamiento Táctico de Defensa Personal",
+      "description": "Explora los instrumentos de entrenamiento físico y defensa personal utilizados en el sendero.",
+      "src": "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
+      "poster": "/src/assets/media/acondicionamiento-defensa/IMG_0063_objetivo.jpg",
+      "alt": "Modelo 3D de equipamiento de acondicionamiento"
+    },
+    "equipment": [
+      "Tatamis de goma EVA de alta densidad",
+      "Sacos de boxeo y escudos de impacto (pao)",
+      "Cuerdas de salto",
+      "Cronómetros y pulsómetros"
+    ],
+    "practicalExample": "Los estudiantes completan circuitos de alta exigencia utilizando pulsómetros para controlar su zona de frecuencia cardíaca durante rutinas en escalones e intervalos de trote, para luego pasar a los tatamis donde aplican con escudos de impacto llaves de zafada, bloqueos y esquivas de manera controlada.",
+    "projects": [],
+    "media": {
+      "videos": [],
+      "gallery": []
+    }
+  },
+  {
+    "id": "musica-identidad",
+    "name": "Música e Identidad",
+    "shortName": "Música e Identidad",
+    "tagline": "El espíritu de cuerpo y la tradición institucional hecha sonido",
+    "icon": "music",
+    "accentColor": "#7c3aed",
+    "description": "El área musical canaliza el espíritu de cuerpo y la tradición histórica del liceo, aportando el marco ceremonial a la formación militar. Fomenta la memoria auditiva, el ritmo y el sentido de pertenencia institucional a través de la Banda Instrumental y la Banda de Guerra.",
+    "objectives": [
+      "Desarrollar la memoria auditiva, el ritmo y la sincronización musical en contextos marciales.",
+      "Coordinar el desplazamiento físico con la ejecución musical impecable en desfiles.",
+      "Fortalecer el sentido de pertenencia y la mística institucional del Liceo San Nicolás."
+    ],
+    "heroImage": "/src/assets/media/musica-identidad/IMG_2038.jpg",
+    "model3D": {
+      "title": "Instrumentos de Viento y Percusión Marcial",
+      "description": "Explora los instrumentos de la Banda de Guerra y la Banda Instrumental del Liceo San Nicolás en 3D.",
+      "src": "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
+      "poster": "/src/assets/media/musica-identidad/IMG_2038.jpg",
+      "alt": "Instrumentos musicales del área de Música e Identidad"
+    },
+    "equipment": [
+      "Instrumentos de viento-metal: trompetas, cornetas, cornetines",
+      "Instrumentos de percusión: cajas claras, bombos, platillos",
+      "Accesorios de mantención y afinadores electrónicos digitales"
+    ],
+    "practicalExample": "La Banda Instrumental y la Banda de Guerra afinan sus instrumentos mediante procesadores digitales de tono y ensayan la sincronización de las marchas institucionales, ejecutando toques de caja y corneta mientras mantienen la alineación y el paso marcial durante los desfiles de la delegación.",
+    "projects": [],
+    "media": {
+      "videos": [
+        {
+          "title": "Banda de Guerra y Pelotón Premilitar",
+          "url": "/assets/videos/VID_20260814_112420.mp4",
+          "description": "Demostración de destrezas y formaciones en el patio de honor."
+        }
+      ],
+      "gallery": []
+    }
+  },
+  {
+    "id": "ciencia-criminalistica",
+    "name": "Ciencia Aplicada y Criminalística",
+    "shortName": "Ciencia y Criminalística",
+    "tagline": "Mente lógica, observadora y analítica al servicio de la verdad",
+    "icon": "microscope",
+    "accentColor": "#059669",
+    "description": "Esta área convierte la curiosidad científica en una herramienta de investigación rigurosa. Los estudiantes aplican el método científico y las ciencias naturales para analizar hechos complejos, desarrollando una mente lógica, observadora y analítica capaz de reconstruir escenas e identificar evidencia con rigor forense.",
+    "objectives": [
+      "Aplicar el método científico y las ciencias naturales a la investigación forense.",
+      "Procesar y preservar evidencias físicas manteniendo la cadena de custodia.",
+      "Integrar biología, química y física en el análisis de hechos complejos."
+    ],
+    "heroImage": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+    "model3D": {
+      "title": "Maletín Forense y Kit de Levantamiento de Evidencia",
+      "description": "Explora en 3D el equipamiento forense utilizado en los talleres de criminalística del sendero.",
+      "src": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+      "poster": "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=600&q=80",
+      "alt": "Maletín forense 3D para criminalística"
+    },
+    "equipment": [
+      "Maletines forenses: polvos dactiloscópicos reactivos, pinceles de fibra de vidrio, luz UV",
+      "Reactivos de luminol y cinta de cadena de custodia",
+      "Microscopios ópticos binoculares",
+      "Software de simulación de balística y reconstrucción de escenas (Blender / CAD forense)"
+    ],
+    "practicalExample": "En un escenario de simulación, los alumnos delimitan la escena con cinta perimetral, reactivan huellas latentes con polvo magnético del kit forense, examinan fibras al microscopio y procesan las mediciones en software CAD para generar un informe dactiloscópico y reconstructivo con validez científica.",
+    "projects": [],
+    "media": {
+      "videos": [],
+      "gallery": [
+        {
+          "url": "/assets/images/criminalistica/Gemini_Generated_Image_ag3foaag3foaag3f.jpg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/criminalistica/IMG_9123.jpg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/criminalistica/IMG_9151.jpg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.45.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.55.jpeg",
+          "caption": "Registro fotográfico"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tecnologia-geomatica",
+    "name": "Tecnología, Geomática y Topografía",
+    "shortName": "Tecnología y Geomática",
+    "tagline": "Ingeniería, drones y cartografía para los líderes del mañana",
+    "icon": "drone",
+    "accentColor": "#b91c1c",
+    "description": "Fusiona la ingeniería temprana con el estudio integral del territorio. El proyecto GeoGo (1° y 2° medio) introduce electrónica, programación y IA, mientras que Geomática y Topografía (3° y 4° medio) prepara operadores Full Stack con drones, GPS diferencial y fotogrametría para capturar, procesar e interpretar datos geográficos del territorio.",
+    "objectives": [
+      "Aprender lógica de programación, electrónica y diseño industrial 3D con Arduino e impresoras 3D.",
+      "Dominar el pilotaje de drones RPAS, planificación de vuelo autónomo y mantenimiento aeronáutico.",
+      "Generar modelos digitales del terreno y cartografía temática usando QGIS, Pix4D y Metashape."
+    ],
+    "heroImage": "/src/assets/media/tecnologia-geomatica/dron.jpeg",
+    "subAreas": [
+      {
+        "title": "Tecnología e Innovación — Proyecto GeoGo",
+        "level": "1° y 2° Medio",
+        "description": "Implementado en 1° y 2° medio, el proyecto GeoGo fusiona la ingeniería temprana con el estudio integral de la geografía. Los estudiantes analizan las relaciones entre el ser humano y su entorno, comprenden los paisajes que habitamos y anticipen los cambios socioambientales. También desarrollan competencias en cartografía y Sistemas de Información Geográfica (SIG).",
+        "equipment": [
+          "Placas programables Arduino Uno/Nano y módulos de sensores",
+          "Motores DC, kits de electrónica y soldadura",
+          "Impresoras 3D",
+          "Arduino IDE, Scratch / Python, QGIS, Google Earth Pro"
+        ],
+        "example": "Los estudiantes ensamblan y programan en Arduino IDE un robot autónomo con sensores de presencia y lógica predictiva. En geografía, usan QGIS para cruzar datos demográficos y de uso de suelo, creando mapas que analizan el crecimiento urbano local y simulan el impacto ambiental de nuevos proyectos."
+      },
+      {
+        "title": "Geomática y Topografía",
+        "level": "3° y 4° Medio",
+        "description": "Representa la vanguardia técnica del sendero. Prepara a los alumnos como operadores Full Stack capaces de capturar, procesar e interpretar datos geográficos del territorio, vinculando la tecnología aérea con el análisis de precisión del suelo.",
+        "equipment": [
+          "RPAS / Drones DJI Phantom / Mavic con cámaras de alta resolución",
+          "GPS/GNSS diferencial de precisión, estaciones totales y niveles ópticos",
+          "Software de planificación de vuelo: DJI Pilot / Pix4Dcapture",
+          "Software fotogramétrico: Pix4Dmapper / Agisoft Metashape"
+        ],
+        "example": "Los estudiantes planifican una misión de vuelo en Pix4Dcapture, operan el drone para captura de ortofotos y realizan nivelación con la estación total. Procesan las imágenes en Metashape para renderizar una nube de puntos 3D y un Modelo Digital de Elevación (MDE), redactando un informe técnico topográfico completo."
+      }
+    ],
+    "model3D": [
+      {
+        "title": "Proyecto GeoGo: Autoinver",
+        "description": "Prototipo de vehículo autónomo con electrónica integrada.",
+        "src": "/assets/models/autoinver.glb",
+        "alt": "Modelo 3D Autoinver"
+      },
+      {
+        "title": "Proyecto GeoGo: DAV Mobile Station",
+        "description": "Estación móvil de monitoreo y geoposicionamiento.",
+        "src": "/assets/models/dav-mobile-station.glb",
+        "alt": "Modelo 3D DAV Mobile Station"
+      },
+      {
+        "title": "Proyecto GeoGo: Detector de Intrusos",
+        "description": "Sistema de seguridad perimetral robótico.",
+        "src": "/assets/models/detector-intrusos.glb",
+        "alt": "Modelo 3D Detector de Intrusos"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Invernadero Inteligente: Autoinver",
+        "status": "Activo",
+        "description": "Prototipo de invernadero inteligente para monitoreo y control ambiental autónomo.",
+        "image": "/assets/images/geogo/proyectos/IMG_20260601_110649.jpg",
+        "subArea": "geogo"
+      },
+      {
+        "title": "DAV Mobile Station",
+        "status": "Activo",
+        "description": "Estación móvil de monitoreo geográfico equipada con sensores ambientales.",
+        "image": "/assets/images/geogo/proyectos/WhatsApp Image 2026-08-25 at 12.08.56.jpeg",
+        "subArea": "geogo"
+      },
+      {
+        "title": "Tanque Bombero Automático",
+        "status": "Completado",
+        "description": "Vehículo robótico diseñado para asistencia en incendios con bomba de agua integrada.",
+        "image": "/assets/images/geogo/proyectos/Gemini_Generated_Image_6r9kuc6r9kuc6r9k.jpg",
+        "subArea": "geogo"
+      },
+      {
+        "title": "Fotogrametría: Fundo Dadinco",
+        "status": "Activo",
+        "description": "Modelo digital, ortomosaico y levantamiento topográfico interactivo en Fundo Dadinco.",
+        "image": "/assets/images/geomatica/fotogrametrias/Fundo Dadinco.jpg",
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "46a5f756e73a4a02aae134b55abe349b",
+          "center": "-72.1854366630625,-36.54274241200271",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com",
+          "basemapGallery": true
+        }
+      },
+      {
+        "title": "Fotogrametría: Liceo San Nicolás",
+        "status": "Completado",
+        "description": "Levantamiento topográfico aéreo y gemelo digital del recinto educacional.",
+        "image": "/assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg",
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "722858825fe748d7a60197014d358d36",
+          "center": "-72.21867892042727,-36.50454254353803",
+          "scale": "2256.994353",
+          "portalUrl": "https://lpsn.maps.arcgis.com",
+          "basemapGallery": true
+        }
+      },
+      {
+        "title": "Fotogrametría: Terreno Cercano al Liceo",
+        "status": "Activo",
+        "description": "Estudio fotogramétrico y curvas de nivel en terreno agrícola y forestal aledaño.",
+        "image": "/assets/images/geomatica/fotogrametrias/Terreno cercano al Liceo.jpg",
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "d19388a9fb8b4454abf7d62d7678e87a",
+          "center": "-72.22001629265958,-36.508389313611325",
+          "scale": "4513.988705",
+          "portalUrl": "https://lpsn.maps.arcgis.com",
+          "basemapGallery": true
+        }
+      },
+      {
+        "title": "Fotogrametría: Lago Coipín",
+        "status": "Activo",
+        "description": "Modelo digital de elevación y ortomosaico del área de Lago Coipín.",
+        "image": "/assets/images/geomatica/fotogrametrias/Lago Coipin.jpg",
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "05d5aa94a7ca41dfb42a8b684ea82f00",
+          "center": "-72.29109780548886,-36.388510952963834",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com",
+          "basemapGallery": true
+        }
+      }
+    ],
+    "media": {
+      "videos": [
+        {
+          "title": "Vuelo de Drone FPV (Simulación Geográfica)",
+          "url": "/assets/videos/VID_20260722_165456.mp4",
+          "description": "Captura aérea de reconocimiento topográfico."
+        }
+      ],
+      "gallery": [
+        {
+          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.03.35%20%281%29.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.03.37.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.08.59%20%281%29.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.08.59.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.05.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.10%20%281%29.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.13.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.26.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.30.jpeg",
+          "caption": "Registro fotográfico"
+        }
+      ]
+    }
+  }
+]

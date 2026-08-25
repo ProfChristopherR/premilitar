@@ -1,0 +1,277 @@
+[
+  {
+    "id": "instruccion-disciplina",
+    "name": "Instrucción, Orden Cerrado y Disciplina",
+    "shortName": "Instrucción y Disciplina",
+    "tagline": "Temple, coordinación y respeto por la tradición",
+    "icon": "shield",
+    "accentColor": "#c59b27",
+    "description": "El área de Instrucción y Orden Cerrado desarrolla en los estudiantes la disciplina consciente, la sincronización en equipo, la marcialidad y el porte cívico. A través de formaciones, desfiles y movimientos de escuadra, se fortalecen la concentración, la autogestión y el respeto mutuo.",
+    "objectives": [
+      "Fomentar la disciplina personal y la cohesión grupal.",
+      "Perfeccionar técnicas de marcha, alineación y mando de escuadras.",
+      "Inculcar valores patrios y protocolo cívico institucional."
+    ],
+    "heroImage": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+    "model3D": {
+      "title": "Emblema y Estandarte Institucional 3D",
+      "description": "Inspecciona el modelo tridimensional del emblema de honor del Liceo San Nicolás en 360 grados.",
+      "src": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+      "poster": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
+      "alt": "Modelo 3D del área de instrucción"
+    },
+    "projects": [
+      {
+        "title": "Banda de Guerra y Escuadrón de Honor",
+        "status": "En Desarrollo",
+        "description": "Formación técnica de alumnos en instrumentos de percusión y viento, con coreografías de marcha de alta precisión para ceremonias comunales.",
+        "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "title": "Manual Digital de Movimientos y Voces de Mando",
+        "status": "Completado",
+        "description": "Creación de un compendio audiovisual interactivo para la instrucción de nuevos reclutas y aspirantes.",
+        "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80"
+      }
+    ],
+    "media": {
+      "videos": [
+        {
+          "title": "Presentación Oficial del Escuadrón de Honor",
+          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "description": "Demostración de destrezas en la explanada principal."
+        }
+      ],
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
+          "caption": "Formación matutina en el patio de honor"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+          "caption": "Prácticas de alineación y sincronía"
+        }
+      ]
+    }
+  },
+  {
+    "id": "supervivencia-orientacion",
+    "name": "Supervivencia, Cartografía y Orientación Terrestre",
+    "shortName": "Supervivencia y Orientación",
+    "tagline": "Rumbo seguro en cualquier terreno y condición",
+    "icon": "compass",
+    "accentColor": "#2d6a4f",
+    "description": "Capacita a los estudiantes en navegación terrestre mediante brújula, lectura de cartas topográficas, uso de GPS y técnicas de supervivencia en ambientes naturales adversos como refugios de emergencia, potabilización y fuego seguro.",
+    "objectives": [
+      "Dominar la orientación con instrumentos analógicos y satelitales.",
+      "Construir refugios temporales de bajo impacto ambiental.",
+      "Aprender métodos de recolección y purificación de agua en terreno."
+    ],
+    "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "model3D": {
+      "title": "Brújula Prismática Táctica 3D",
+      "description": "Inspecciona los componentes de navegación terrestre en el visor 3D.",
+      "src": "https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/MaterialsVariantsShoe/glTF-Binary/MaterialsVariantsShoe.glb",
+      "poster": "https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&w=600&q=80",
+      "alt": "Instrumento de orientación 3D"
+    },
+    "projects": [
+      {
+        "title": "Georreferenciación del Sendero con Balizas QR",
+        "status": "Activo",
+        "description": "Mapeo topográfico del sendero con puntos de control geodésicos para carreras de orientación deportiva.",
+        "image": "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "title": "Módulo de Potabilización Solar Móvil",
+        "status": "Investigación",
+        "description": "Prototipo de purificador portátil de agua para marchas de campaña prolongadas.",
+        "image": "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=80"
+      }
+    ],
+    "media": {
+      "videos": [
+        {
+          "title": "Taller Práctico de Lectura Cartográfica",
+          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "description": "Ejercicios de triangulación en el cerro testigo."
+        }
+      ],
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+          "caption": "Punto de observación panorámica"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
+          "caption": "Armado de campamento y vivac"
+        }
+      ]
+    }
+  },
+  {
+    "id": "primeros-auxilios-rescate",
+    "name": "Primeros Auxilios, Sanidad y Rescate",
+    "shortName": "Primeros Auxilios y Rescate",
+    "tagline": "Salvar vidas con decisión, serenidad y técnica",
+    "icon": "heart-pulse",
+    "accentColor": "#b91c1c",
+    "description": "Entrega competencias vitales en soporte básico de vida, RCP, inmovilización de fracturas, vendajes tácticos, triaje y transporte seguro de heridos en zonas agrestes o situaciones de emergencia comunitaria.",
+    "objectives": [
+      "Certificar a los alumnos en técnicas de RCP y desobstrucción de vía aérea.",
+      "Manejar protocolos de evacuación en camillas improvisadas y de rescate.",
+      "Establecer puestos de socorro rápido durante expediciones del liceo."
+    ],
+    "heroImage": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
+    "model3D": {
+      "title": "Botiquín Táctico Modular 3D",
+      "description": "Explora el equipamiento estándar de trauma y primeros auxilios en 3D.",
+      "src": "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
+      "poster": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=600&q=80",
+      "alt": "Modelo 3D de sanidad"
+    },
+    "projects": [
+      {
+        "title": "Brigada Escolar de Respuesta Rápida",
+        "status": "Activo",
+        "description": "Red de estudiantes capacitados que brindan soporte en actividades deportivas y eventos masivos del establecimiento.",
+        "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "title": "Simulador de Extracción en Zonas Escarpadas",
+        "status": "Completado",
+        "description": "Construcción de circuito de tirolesa y tirolesa de carga para ejercicios de rescate técnico.",
+        "image": "https://images.unsplash.com/photo-1516841273335-e02872256c5e?auto=format&fit=crop&w=800&q=80"
+      }
+    ],
+    "media": {
+      "videos": [
+        {
+          "title": "Simulacro Anual de Evacuación y Triaje",
+          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "description": "Coordinación con personal de salud local."
+        }
+      ],
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
+          "caption": "Práctica de vendaje compresivo y férulas"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+          "caption": "Maniobras de reanimación cardiopulmonar"
+        }
+      ]
+    }
+  },
+  {
+    "id": "medio-ambiente-sendero",
+    "name": "Cuidado del Sendero, Biodiversidad y Medio Ambiente",
+    "shortName": "Medio Ambiente y Sendero",
+    "tagline": "Custodios del patrimonio natural y la sustentabilidad",
+    "icon": "leaf",
+    "accentColor": "#15803d",
+    "description": "Fomenta la conciencia ecológica activa mediante la reforestación nativa, el mantenimiento de los senderos libres de huella de carbono, la observación de flora y fauna y la conservación de cuencas hídricas locales.",
+    "objectives": [
+      "Monitorear la biodiversidad de flora y fauna nativa del sector.",
+      "Implementar senderismo de mínimo impacto (Leave No Trace).",
+      "Realizar jornadas de reforestación comunitaria con Quillay, Boldo y Peumo."
+    ],
+    "heroImage": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
+    "model3D": {
+      "title": "Estación de Monitoreo Ambiental 3D",
+      "description": "Dispositivo solar de medición climática instalado en el sendero.",
+      "src": "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
+      "poster": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=600&q=80",
+      "alt": "Modelo 3D ambiental"
+    },
+    "projects": [
+      {
+        "title": "Arboreto Nativo San Nicolás",
+        "status": "Activo",
+        "description": "Plantación de más de 400 árboles endémicos con señalética botánica inteligente.",
+        "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "title": "Compostaje y Tratamiento de Residuos de Campaña",
+        "status": "Completado",
+        "description": "Puntos limpios ecológicos construidos con maderas recicladas en cada estación.",
+        "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80"
+      }
+    ],
+    "media": {
+      "videos": [
+        {
+          "title": "Documental: Flora y Fauna del Sendero Premilitar",
+          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "description": "Grabación de especies autóctonas en alta definición."
+        }
+      ],
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=800&q=80",
+          "caption": "Bosque nativo y quebrada del sendero"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+          "caption": "Amanecer en el mirador ecológico"
+        }
+      ]
+    }
+  },
+  {
+    "id": "acondicionamiento-liderazgo",
+    "name": "Acondicionamiento Físico, Valores y Liderazgo",
+    "shortName": "Acondicionamiento y Liderazgo",
+    "tagline": "Fuerza física, claridad mental y vocación de servicio",
+    "icon": "trophy",
+    "accentColor": "#0284c7",
+    "description": "Entrenamiento físico integral, superación de pistas de obstáculos, calistenia, toma de decisiones bajo presión y desarrollo de habilidades blandas de liderazgo ético para guiar equipos en momentos de alta exigencia.",
+    "objectives": [
+      "Desarrollar la resistencia aeróbica y fuerza muscular funcional.",
+      "Superar pistas de cuerdas, muros de escalada y pruebas de agilidad.",
+      "Capacitar líderes de patrulla con criterio ético y empatía."
+    ],
+    "heroImage": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
+    "model3D": {
+      "title": "Torre de Entrenamiento y Pista Táctica 3D",
+      "description": "Estructura modular de ejercicios y escalada en 3D interactivo.",
+      "src": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+      "poster": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80",
+      "alt": "Modelo 3D de liderazgo"
+    },
+    "projects": [
+      {
+        "title": "Pista de Obstáculos 'Desafío San Nicolás'",
+        "status": "Activo",
+        "description": "Circuito de 10 estaciones de alta intensidad diseñado para fortalecer la determinación y el apoyo entre compañeros.",
+        "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "title": "Academia de Formación de Mandos Medios",
+        "status": "En Desarrollo",
+        "description": "Módulos de oratoria, resolución de conflictos y liderazgo situacional para brigadieres.",
+        "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+      }
+    ],
+    "media": {
+      "videos": [
+        {
+          "title": "Competencia Inter-Patrullas de Alta Exigencia",
+          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "description": "Pruebas de pista y trabajo en equipo."
+        }
+      ],
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
+          "caption": "Circuito de resistencia y barras"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=800&q=80",
+          "caption": "Ceremonia de graduación y entrega de distintivos"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "institution": {
+    "name": "Liceo Bicentenario de Excelencia Polivalente San Nicolás",
+    "shortName": "Liceo Bicentenario San Nicolás",
+    "project": "Sendero Educativo Pre-Militar",
+    "motto": "Excelencia, Disciplina, Compromiso y Honor",
+    "badge": "Educación Polivalente de Excelencia",
+    "location": "San Nicolás, Región de Ñuble, Chile",
+    "contactEmail": "contacto@liceosannicolas.cl",
+    "logo": "/assets/logo.png"
+  },
+  "hero": {
+    "title": "Sendero Educativo Pre-Militar",
+    "subtitle": "Liceo Bicentenario San Nicolás",
+    "tagline": "Disciplina, Ciencia y Tecnología al Servicio del Liderazgo",
+    "description": "Te invitamos a explorar el Sendero Educativo Pre-Militar, un pilar de formación integral donde la disciplina, el rigor y la tecnología de vanguardia convergen. Nuestros estudiantes de 1° a 4° medio, organizados en delegaciones de 45 alumnos, potencian sus habilidades de liderazgo, vocación de servicio y pensamiento crítico."
+  },
+  "history": {
+    "title": "Historia y Origen del Sendero Educativo Pre-Militar",
+    "subtitle": "Un proyecto pionero que combina marcialidad, ciencia y tecnología de vanguardia para formar líderes integrales.",
+    "paragraphs": [
+      "El Sendero Educativo Pre-Militar del Liceo Bicentenario de Excelencia Polivalente San Nicolás nace como una iniciativa pionera orientada a complementar la formación académica con valores cívicos, disciplina, respeto y capacidad de superación personal.",
+      "A través de esta plataforma digital podrás conocer cómo combinamos la marcialidad y la preparación física con áreas de vanguardia como la Criminalística, la Geomática, la Robótica (GeoGo) y la Topografía. Descubre el trabajo de nuestros jóvenes que hoy se forman como los líderes del mañana.",
+      "Este sendero refleja nuestro compromiso con una educación polivalente de excelencia, donde la vocación de servicio, la ciencia y la tecnología se unen para formar a los líderes que Chile necesita."
+    ],
+    "milestones": [
+      {
+        "year": "Fundación",
+        "title": "Inicio del Proyecto Premilitar",
+        "description": "Se establece el Sendero como eje de formación integral, integrando instrucción militar con ciencias y tecnología."
+      },
+      {
+        "year": "GeoGo",
+        "title": "Proyecto GeoGo: Tecnología e Innovación",
+        "description": "Implementación del proyecto GeoGo en 1° y 2° medio, con Arduino, impresión 3D y sistemas SIG para la geografía del territorio."
+      },
+      {
+        "year": "Geomática",
+        "title": "Formación en Drones y Fotogrametría",
+        "description": "Incorporación de RPAS (drones), GPS diferencial y software Pix4D para capacitar operadores Full Stack en 3° y 4° medio."
+      },
+      {
+        "year": "Hoy",
+        "title": "Reconocimiento Nacional",
+        "description": "La Banda de Guerra representa a la Región de Ñuble en el Concurso Nacional de Bandas de Guerra de Carabineros de Chile."
+      }
+    ],
+    "stats": [
+      { "value": "45", "label": "Alumnos por Delegación" },
+      { "value": "5", "label": "Áreas Especializadas" },
+      { "value": "4", "label": "Niveles de Enseñanza" },
+      { "value": "100%", "label": "Formación Integral" }
+    ]
+  }
+}

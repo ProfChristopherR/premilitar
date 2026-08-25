@@ -1,0 +1,48 @@
+{
+  "institution": {
+    "name": "Liceo Bicentenario de Excelencia Polivalente San Nicolás",
+    "shortName": "Liceo Bicentenario San Nicolás",
+    "project": "Sendero Premilitar",
+    "motto": "Excelencia, Disciplina, Compromiso y Honor",
+    "badge": "Formación Integral y Liderazgo",
+    "location": "San Nicolás, Región de Ñuble, Chile",
+    "contactEmail": "contacto@liceosannicolas.cl"
+  },
+  "history": {
+    "title": "Historia y Origen del Sendero Premilitar",
+    "subtitle": "Un espacio pedagógico y formativo al aire libre dedicado a la forja del carácter, la resiliencia y el trabajo en equipo.",
+    "paragraphs": [
+      "El Sendero Premilitar del Liceo Bicentenario de Excelencia Polivalente San Nicolás nace como una iniciativa pionera orientada a complementar la formación académica con valores cívicos, disciplina, respeto por la naturaleza y capacidad de superación personal.",
+      "Diseñado en los entornos naturales de nuestra comuna, el sendero constituye un circuito integral donde las y los estudiantes ponen en práctica conocimientos teóricos de orientación, primeros auxilios, supervivencia responsable y cuidado del patrimonio ecológico.",
+      "A lo largo de los años, este espacio se ha consolidado como un referente de innovación educativa, fomentando el liderazgo y la camaradería en cada una de sus estaciones y áreas de especialidad."
+    ],
+    "milestones": [
+      {
+        "year": "2018",
+        "title": "Fundación del Proyecto",
+        "description": "Se establece el trazado inicial del circuito de entrenamiento y se inauguran las primeras estaciones de orientación y primeros auxilios."
+      },
+      {
+        "year": "2020",
+        "title": "Integración Tecnológica y Ecológica",
+        "description": "Se implementa señalética QR interactiva y planes de reforestación con especies nativas a lo largo de todo el sendero."
+      },
+      {
+        "year": "2023",
+        "title": "Reconocimiento a la Excelencia Formativa",
+        "description": "El Sendero se consolida como modelo de formación integral en liderazgo estudiantil para la Región de Ñuble."
+      },
+      {
+        "year": "2026",
+        "title": "Plataforma Digital y Modelado 3D",
+        "description": "Lanzamiento del portal interactivo con acceso a proyectos, gemelos digitales en 3D y registro histórico."
+      }
+    ],
+    "stats": [
+      { "value": "+500", "label": "Estudiantes Formados" },
+      { "value": "5", "label": "Áreas Especializadas" },
+      { "value": "12", "label": "Estaciones de Circuito" },
+      { "value": "100%", "label": "Compromiso Comunitario" }
+    ]
+  }
+}

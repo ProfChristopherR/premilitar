@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Barlow:wght@400;500;600&display=swap');
+
+:root {
+  /* ── Paleta Institucional Sobria ── */
+  --color-navy:       #0d1b2a;
+  --color-navy-mid:   #1a2e45;
+  --color-navy-light: #243b55;
+  --color-slate:      #1e2d3d;
+  --color-gold:       #b8922a;
+  --color-gold-light: #d4aa50;
+  --color-gold-pale:  #f0d98e;
+  --color-surface:    #f5f4f0;      /* hueso cálido */
+  --color-surface-2:  #edeae3;
+  --color-white:      #ffffff;
+  --color-black:      #050d13;
+
+  /* ── Textos ── */
+  --text-on-dark:      #ffffff;
+  --text-on-dark-2:    rgba(255,255,255,0.75);
+  --text-on-dark-muted:rgba(255,255,255,0.45);
+  --text-on-light:     #0d1b2a;
+  --text-on-light-2:   #2c3e50;
+  --text-on-light-muted:#6b7a8d;
+
+  /* ── Bordes ── */
+  --border-dark:  rgba(255,255,255,0.1);
+  --border-gold:  rgba(184,146,42,0.5);
+  --border-light: rgba(0,0,0,0.1);
+  --border-light-2: rgba(0,0,0,0.06);
+
+  /* ── Tipografías ── */
+  --font-display:  'Barlow Condensed', sans-serif;
+  --font-body:     'Inter', sans-serif;
+  --font-barlow:   'Barlow', sans-serif;
+
+  /* ── Sombras limpias (sin colores) ── */
+  --shadow-xs: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.10);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.12);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,0.16);
+
+  /* ── Layout ── */
+  --max-width:    1280px;
+  --nav-height:   64px;
+  --area-bar-height: 48px;
+
+  /* ── Transiciones ── */
+  --t-fast:   0.18s ease;
+  --t-normal: 0.28s ease;
+}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sendero Educativo Pre-Militar | Liceo Bicentenario de Excelencia Polivalente San Nicolás</title>
+  <meta name="description"
+    content="Portal oficial del Sendero Educativo Pre-Militar del Liceo Bicentenario de Excelencia Polivalente San Nicolás. Disciplina, ciencia, tecnología y música al servicio del liderazgo." />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="stylesheet" href="/src/css/variables.css" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/animations.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <header class="navbar" id="main-navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="/assets/logo.png" alt="Logo Liceo Bicentenario San Nicolás" />
+        <div class="brand-text">
+          <span class="brand-title">Liceo Bicentenario de Excelencia Polivalente San Nicolás</span>
+          <span class="brand-subtitle">Sendero Educativo Pre-Militar</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-links" id="nav-links-list">
+          <li><a href="#historia" class="nav-link">Historia</a></li>
+          <li><a href="#areas" class="nav-link">Áreas</a></li>
+          <li><a href="#noticias" class="nav-link">Noticias</a></li>
+          <li>
+            <a href="area.html?id=disciplina-formacion" class="btn btn-primary">
+              Explorar Áreas
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Abrir menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       HERO 
+  ══════════════════════════════════════════ -->
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero__split">
+        <!-- Panel izquierdo: contenido -->
+        <div class="hero__content container">
+          <div class="hero__inner">
+            <p class="hero__eyebrow">San Nicolás, Región de Ñuble · Chile</p>
+            <h1 class="hero__title">
+              Sendero<br>Educativo<br><em>Pre-Militar</em>
+            </h1>
+            <p class="hero__description">
+              Un pilar de formación integral donde la disciplina, el rigor y la tecnología de vanguardia convergen.
+              Estudiantes de 1° a 4° medio se forman como los líderes que Chile necesita.
+            </p>
+            <div class="hero__actions">
+              <a href="#areas" class="btn btn-primary">
+                Ver las 5 Áreas
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="#historia" class="btn btn-outline-dark">Nuestra Historia</a>
+            </div>
+            <div class="hero__stats" id="hero-stats"></div>
+          </div>
+        </div>
+
+        <!-- Panel derecho: imagen real -->
+        <div class="hero__image-panel">
+          <img src="/assets/images/banda-de-guerra/IMG_0926.jpg"
+            alt="Banda de Guerra — Liceo Bicentenario San Nicolás" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         HISTORIA
+    ══════════════════════════════════════════ -->
+    <section id="historia" class="section section--alt">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Orígenes y Legado</div>
+          <h2 class="section-title">Historia del Sendero</h2>
+          <div class="gold-divider"></div>
+        </div>
+
+        <div class="history-grid">
+          <div id="history-text" class="history-text reveal">
+            <!-- Generado desde general.json -->
+          </div>
+          <div id="history-timeline" class="timeline reveal">
+            <!-- Generado desde general.json -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ÁREAS
+    ══════════════════════════════════════════ -->
+    <section id="areas" class="section section--dark">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag section-tag--light">Especialidades de Formación</div>
+          <h2 class="section-title section-title--light">Las 5 Áreas del Sendero</h2>
+          <p class="section-subtitle section-subtitle--light">
+            Cada área cuenta con programas formativos específicos, modelos 3D interactivos, proyectos activos y registro
+            audiovisual.
+          </p>
+        </div>
+      </div>
+      <div class="areas-grid" id="areas-grid">
+        <!-- Generado desde areas.json -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         NOTICIAS
+    ══════════════════════════════════════════ -->
+    <section id="noticias" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Actualidad y Logros</div>
+          <h2 class="section-title">Últimas Noticias</h2>
+          <div class="gold-divider"></div>
+          <p class="section-subtitle">
+            Cobertura en prensa y publicaciones en redes sociales. Haz clic en cada noticia para más información.
+          </p>
+        </div>
+
+        <div class="news-grid" id="news-grid">
+          <!-- Generado desde news.json -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/assets/logo.png" alt="Logo Liceo San Nicolás" />
+          <h4
+            style="color:#fff;font-family:var(--font-display);font-size:0.95rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.5rem;">
+            Liceo Bicentenario de Excelencia Polivalente San Nicolás
+          </h4>
+          <p>Sendero Educativo Pre-Militar: Formación cívica, liderazgo, ciencia y tecnología para las nuevas
+            generaciones de Ñuble.</p>
+        </div>
+        <div>
+          <h5 class="footer-col-title">Navegación</h5>
+          <ul class="footer-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#areas">5 Áreas</a></li>
+            <li><a href="#noticias">Noticias</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer-col-title">Áreas</h5>
+          <ul class="footer-links">
+            <li><a href="area.html?id=disciplina-formacion">Disciplina Militar</a></li>
+            <li><a href="area.html?id=acondicionamiento-defensa">Acondicionamiento</a></li>
+            <li><a href="area.html?id=musica-identidad">Música e Identidad</a></li>
+            <li><a href="area.html?id=ciencia-criminalistica">Criminalística</a></li>
+            <li><a href="area.html?id=tecnologia-geomatica">Tecnología y Geomática</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer-col-title">Contacto</h5>
+          <ul class="footer-links">
+            <li><span>📍 San Nicolás, Región de Ñuble</span></li>
+            <li><a href="mailto:contacto@liceosannicolas.cl">✉️ contacto@liceosannicolas.cl</a></li>
+            <li><a href="https://www.facebook.com/share/1EpZfkZBj2/" target="_blank" rel="noopener">📘 Facebook</a></li>
+            <li><a href="https://www.instagram.com/p/Db_uOQ8FPb4/" target="_blank" rel="noopener">📷 Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 - Dpto de Historia y Geografía - Liceo Bicentenario de Excelencia Polivalente San Nicolás —
+          Sendero Educativo Pre-Militar.</p>
+        <p style="color:rgba(255,255,255,0.3);">San Nicolás · Región de Ñuble · Chile</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/app.js"></script>
+</body>
+
+</html>

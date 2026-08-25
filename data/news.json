@@ -1,0 +1,54 @@
+[
+  {
+    "id": "noticia-01",
+    "title": "Inauguración de la Temporada de Campaña 2026 en el Sendero Premilitar",
+    "date": "2026-03-15",
+    "category": "Eventos",
+    "badge": "Destacado",
+    "featured": true,
+    "summary": "Más de 150 estudiantes de enseñanza media dieron inicio a las jornadas de instrucción y orientación en el circuito renovado.",
+    "content": "Con una solemne ceremonia presidida por las autoridades del Liceo Bicentenario de Excelencia Polivalente San Nicolás, se dio por iniciada la temporada formativa 2026 del Sendero Premilitar. Las actividades incluyeron la entrega de los nuevos estandartes por patrulla y un recorrido guiado por las 5 áreas operativas del sendero.",
+    "image": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1000&q=80",
+    "tags": ["Formación", "Ceremonia", "Liderazgo"],
+    "author": "Comité de Comunicaciones Liceo San Nicolás"
+  },
+  {
+    "id": "noticia-02",
+    "title": "Brigada Ecológica Planta 200 Árboles Nativos a lo Largo del Trazado",
+    "date": "2026-04-02",
+    "category": "Medio Ambiente",
+    "badge": "Ecológico",
+    "featured": false,
+    "summary": "Jornada de reforestación comunitaria con especies autóctonas para proteger la biodiversidad y cuencas locales.",
+    "content": "Estudiantes del área de Medio Ambiente y Sendero, en conjunto con docentes de ciencias, lideraron una exitosa jornada de siembra y protección de especies como Quillayes, Peumos y Maitenes, enriqueciendo el corredor biológico del Liceo.",
+    "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=80",
+    "tags": ["Sustentabilidad", "Reforestación", "Biodiversidad"],
+    "author": "Área de Medio Ambiente"
+  },
+  {
+    "id": "noticia-03",
+    "title": "Certificación en Primeros Auxilios y Rescate Agreste para Brigadieres",
+    "date": "2026-05-18",
+    "category": "Sanidad",
+    "badge": "Capacitación",
+    "featured": false,
+    "summary": "Intensa capacitación teórico-práctica con simulacros de inmovilización y maniobras de RCP de emergencia.",
+    "content": "Durante tres intensas jornadas, los líderes de escuadra fueron evaluados en protocolos de atención primaria en terreno agreste, certificándose como primeros respondientes ante incidentes escolares y comunitarios.",
+    "image": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80",
+    "tags": ["Salud", "Primeros Auxilios", "Seguridad"],
+    "author": "Área de Primeros Auxilios"
+  },
+  {
+    "id": "noticia-04",
+    "title": "Lanzamiento de Balizas QR Interactivas y Gemelos Digitales 3D",
+    "date": "2026-06-10",
+    "category": "Innovación",
+    "badge": "Tecnología",
+    "featured": false,
+    "summary": "Cada estación física del sendero cuenta ahora con acceso digital a proyectos y modelos 3D.",
+    "content": "Integrando la tecnología con la experiencia de campo, los visitantes y estudiantes pueden escanear los códigos QR distribuidos en el sendero para acceder en tiempo real a fichas técnicas, tutoriales en video y modelos 3D interactivos.",
+    "image": "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1000&q=80",
+    "tags": ["Tecnología", "QR", "Modelos 3D"],
+    "author": "Equipo de Innovación Pedagógica"
+  }
+]
