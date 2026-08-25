@@ -1,7 +1,19 @@
 // Controlador principal del Landing Page
 import { fetchGeneralData, fetchAreasData, fetchNewsData } from './data-loader.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
+const imageGlobs = import.meta.glob('/src/assets/media/**/*.{jpg,jpeg,png}', { eager: true, query: '?url', import: 'default' });
+
+function getAreaCardImage(area) {
+  // Buscar si hay imagen específica en la carpeta del área
+  for (const [path, url] of Object.entries(imageGlobs)) {
+    if (path.includes(`/${area.id}/`)) return url;
+  }
+  // Si en areas.json hay una URL web (http...)
+  if (area.heroImage && area.heroImage.startsWith('http')) return area.heroImage;
+  return 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80';
+}
+
+async function initApp() {
   initNavbar();
   initMobileMenu();
   const [general, areas, news] = await Promise.all([
@@ -13,10 +25,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderHeroStats(general.history.stats);
     renderHistory(general.history);
   }
-  if (areas) renderAreasGrid(areas);
-  if (news) renderNews(news);
+  if (areas && areas.length > 0) renderAreasGrid(areas);
+  if (news && news.length > 0) renderNews(news);
   initScrollReveal();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 // ── Navbar scroll ──────────────────────────────────────────────────────────────
 function initNavbar() {
@@ -96,7 +114,7 @@ function renderAreasGrid(areas) {
   if (!el) return;
   el.innerHTML = areas.map((area, i) => `
     <article class="area-card">
-      <img src="${area.heroImage}" alt="${area.name}" class="area-card__img" loading="lazy" />
+      <img src="${getAreaCardImage(area)}" alt="${area.name}" class="area-card__img" loading="lazy" />
       <div class="area-card__body">
         <p class="area-card__num">Área 0${i + 1}</p>
         <h3 class="area-card__title">${area.shortName || area.name}</h3>

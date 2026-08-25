@@ -1,275 +1,349 @@
 [
   {
-    "id": "instruccion-disciplina",
-    "name": "Instrucción, Orden Cerrado y Disciplina",
-    "shortName": "Instrucción y Disciplina",
-    "tagline": "Temple, coordinación y respeto por la tradición",
+    "id": "disciplina-formacion",
+    "name": "Disciplina y Formación Militar",
+    "shortName": "Disciplina Militar",
+    "tagline": "Base del carácter, liderazgo y trabajo en equipo",
     "icon": "shield",
     "accentColor": "#c59b27",
-    "description": "El área de Instrucción y Orden Cerrado desarrolla en los estudiantes la disciplina consciente, la sincronización en equipo, la marcialidad y el porte cívico. A través de formaciones, desfiles y movimientos de escuadra, se fortalecen la concentración, la autogestión y el respeto mutuo.",
+    "description": "Esta área constituye la columna vertebral del carácter y la convivencia dentro del sendero. Los estudiantes aprenden que la marcialidad no es mera rigidez, sino una herramienta de autocontrol, coordinación colectiva y respeto mutuo. Mediante el entrenamiento continuo en delegaciones de 45 alumnos, desarrollan cohesión grupal y liderazgo bajo presión.",
     "objectives": [
-      "Fomentar la disciplina personal y la cohesión grupal.",
-      "Perfeccionar técnicas de marcha, alineación y mando de escuadras.",
-      "Inculcar valores patrios y protocolo cívico institucional."
+      "Desarrollar el autocontrol, la concentración y la disciplina consciente en cada estudiante.",
+      "Perfeccionar técnicas de escuela: marchas, giros, posiciones, saludos y cantos institucionales.",
+      "Fortalecer la cohesión grupal y el liderazgo responsable bajo presión."
     ],
-    "heroImage": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "./assets/images/peloton-premilitar/IMG_0151.jpg",
     "model3D": {
-      "title": "Emblema y Estandarte Institucional 3D",
-      "description": "Inspecciona el modelo tridimensional del emblema de honor del Liceo San Nicolás en 360 grados.",
+      "title": "Estandarte e Insignias de Delegación",
+      "description": "Inspecciona el estandarte oficial y los elementos de distinción de las delegaciones del Sendero Premilitar en 360°.",
       "src": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
       "poster": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
-      "alt": "Modelo 3D del área de instrucción"
+      "alt": "Modelo 3D representativo del área de instrucción"
     },
-    "projects": [
-      {
-        "title": "Banda de Guerra y Escuadrón de Honor",
-        "status": "En Desarrollo",
-        "description": "Formación técnica de alumnos en instrumentos de percusión y viento, con coreografías de marcha de alta precisión para ceremonias comunales.",
-        "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80"
-      },
-      {
-        "title": "Manual Digital de Movimientos y Voces de Mando",
-        "status": "Completado",
-        "description": "Creación de un compendio audiovisual interactivo para la instrucción de nuevos reclutas y aspirantes.",
-        "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80"
-      }
+    "equipment": [
+      "Uniformes de instrucción táctica",
+      "Estandartes e insignias de delegación",
+      "Silbatos de mando",
+      "Megafonía móvil para conducción de bloques"
     ],
+    "practicalExample": "Durante la ejecución de ejercicios de escuela, la delegación realiza desplazamientos coordinados, giros, marchas a pie firme, saludos protocolares y cantos institucionales utilizando el sistema de mandos a viva voz y señales de silbato, donde un solo fallo individual afecta el bloque completo, enseñando la importancia de la responsabilidad compartida.",
+    "projects": [],
     "media": {
-      "videos": [
-        {
-          "title": "Presentación Oficial del Escuadrón de Honor",
-          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-          "description": "Demostración de destrezas en la explanada principal."
-        }
-      ],
-      "gallery": [
-        {
-          "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
-          "caption": "Formación matutina en el patio de honor"
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
-          "caption": "Prácticas de alineación y sincronía"
-        }
-      ]
+      "videos": [],
+      "gallery": []
     }
   },
   {
-    "id": "supervivencia-orientacion",
-    "name": "Supervivencia, Cartografía y Orientación Terrestre",
-    "shortName": "Supervivencia y Orientación",
-    "tagline": "Rumbo seguro en cualquier terreno y condición",
-    "icon": "compass",
-    "accentColor": "#2d6a4f",
-    "description": "Capacita a los estudiantes en navegación terrestre mediante brújula, lectura de cartas topográficas, uso de GPS y técnicas de supervivencia en ambientes naturales adversos como refugios de emergencia, potabilización y fuego seguro.",
-    "objectives": [
-      "Dominar la orientación con instrumentos analógicos y satelitales.",
-      "Construir refugios temporales de bajo impacto ambiental.",
-      "Aprender métodos de recolección y purificación de agua en terreno."
-    ],
-    "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
-    "model3D": {
-      "title": "Brújula Prismática Táctica 3D",
-      "description": "Inspecciona los componentes de navegación terrestre en el visor 3D.",
-      "src": "https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/MaterialsVariantsShoe/glTF-Binary/MaterialsVariantsShoe.glb",
-      "poster": "https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&w=600&q=80",
-      "alt": "Instrumento de orientación 3D"
-    },
-    "projects": [
-      {
-        "title": "Georreferenciación del Sendero con Balizas QR",
-        "status": "Activo",
-        "description": "Mapeo topográfico del sendero con puntos de control geodésicos para carreras de orientación deportiva.",
-        "image": "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80"
-      },
-      {
-        "title": "Módulo de Potabilización Solar Móvil",
-        "status": "Investigación",
-        "description": "Prototipo de purificador portátil de agua para marchas de campaña prolongadas.",
-        "image": "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=80"
-      }
-    ],
-    "media": {
-      "videos": [
-        {
-          "title": "Taller Práctico de Lectura Cartográfica",
-          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-          "description": "Ejercicios de triangulación en el cerro testigo."
-        }
-      ],
-      "gallery": [
-        {
-          "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-          "caption": "Punto de observación panorámica"
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
-          "caption": "Armado de campamento y vivac"
-        }
-      ]
-    }
-  },
-  {
-    "id": "primeros-auxilios-rescate",
-    "name": "Primeros Auxilios, Sanidad y Rescate",
-    "shortName": "Primeros Auxilios y Rescate",
-    "tagline": "Salvar vidas con decisión, serenidad y técnica",
-    "icon": "heart-pulse",
-    "accentColor": "#b91c1c",
-    "description": "Entrega competencias vitales en soporte básico de vida, RCP, inmovilización de fracturas, vendajes tácticos, triaje y transporte seguro de heridos en zonas agrestes o situaciones de emergencia comunitaria.",
-    "objectives": [
-      "Certificar a los alumnos en técnicas de RCP y desobstrucción de vía aérea.",
-      "Manejar protocolos de evacuación en camillas improvisadas y de rescate.",
-      "Establecer puestos de socorro rápido durante expediciones del liceo."
-    ],
-    "heroImage": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
-    "model3D": {
-      "title": "Botiquín Táctico Modular 3D",
-      "description": "Explora el equipamiento estándar de trauma y primeros auxilios en 3D.",
-      "src": "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
-      "poster": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=600&q=80",
-      "alt": "Modelo 3D de sanidad"
-    },
-    "projects": [
-      {
-        "title": "Brigada Escolar de Respuesta Rápida",
-        "status": "Activo",
-        "description": "Red de estudiantes capacitados que brindan soporte en actividades deportivas y eventos masivos del establecimiento.",
-        "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80"
-      },
-      {
-        "title": "Simulador de Extracción en Zonas Escarpadas",
-        "status": "Completado",
-        "description": "Construcción de circuito de tirolesa y tirolesa de carga para ejercicios de rescate técnico.",
-        "image": "https://images.unsplash.com/photo-1516841273335-e02872256c5e?auto=format&fit=crop&w=800&q=80"
-      }
-    ],
-    "media": {
-      "videos": [
-        {
-          "title": "Simulacro Anual de Evacuación y Triaje",
-          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-          "description": "Coordinación con personal de salud local."
-        }
-      ],
-      "gallery": [
-        {
-          "url": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-          "caption": "Práctica de vendaje compresivo y férulas"
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
-          "caption": "Maniobras de reanimación cardiopulmonar"
-        }
-      ]
-    }
-  },
-  {
-    "id": "medio-ambiente-sendero",
-    "name": "Cuidado del Sendero, Biodiversidad y Medio Ambiente",
-    "shortName": "Medio Ambiente y Sendero",
-    "tagline": "Custodios del patrimonio natural y la sustentabilidad",
-    "icon": "leaf",
-    "accentColor": "#15803d",
-    "description": "Fomenta la conciencia ecológica activa mediante la reforestación nativa, el mantenimiento de los senderos libres de huella de carbono, la observación de flora y fauna y la conservación de cuencas hídricas locales.",
-    "objectives": [
-      "Monitorear la biodiversidad de flora y fauna nativa del sector.",
-      "Implementar senderismo de mínimo impacto (Leave No Trace).",
-      "Realizar jornadas de reforestación comunitaria con Quillay, Boldo y Peumo."
-    ],
-    "heroImage": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
-    "model3D": {
-      "title": "Estación de Monitoreo Ambiental 3D",
-      "description": "Dispositivo solar de medición climática instalado en el sendero.",
-      "src": "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
-      "poster": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=600&q=80",
-      "alt": "Modelo 3D ambiental"
-    },
-    "projects": [
-      {
-        "title": "Arboreto Nativo San Nicolás",
-        "status": "Activo",
-        "description": "Plantación de más de 400 árboles endémicos con señalética botánica inteligente.",
-        "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80"
-      },
-      {
-        "title": "Compostaje y Tratamiento de Residuos de Campaña",
-        "status": "Completado",
-        "description": "Puntos limpios ecológicos construidos con maderas recicladas en cada estación.",
-        "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80"
-      }
-    ],
-    "media": {
-      "videos": [
-        {
-          "title": "Documental: Flora y Fauna del Sendero Premilitar",
-          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-          "description": "Grabación de especies autóctonas en alta definición."
-        }
-      ],
-      "gallery": [
-        {
-          "url": "https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=800&q=80",
-          "caption": "Bosque nativo y quebrada del sendero"
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
-          "caption": "Amanecer en el mirador ecológico"
-        }
-      ]
-    }
-  },
-  {
-    "id": "acondicionamiento-liderazgo",
-    "name": "Acondicionamiento Físico, Valores y Liderazgo",
-    "shortName": "Acondicionamiento y Liderazgo",
-    "tagline": "Fuerza física, claridad mental y vocación de servicio",
-    "icon": "trophy",
+    "id": "acondicionamiento-defensa",
+    "name": "Acondicionamiento Físico y Defensa Personal",
+    "shortName": "Acondicionamiento y Defensa",
+    "tagline": "Resistencia, agilidad y capacidad de reacción táctica",
+    "icon": "dumbbell",
     "accentColor": "#0284c7",
-    "description": "Entrenamiento físico integral, superación de pistas de obstáculos, calistenia, toma de decisiones bajo presión y desarrollo de habilidades blandas de liderazgo ético para guiar equipos en momentos de alta exigencia.",
+    "description": "La preparación corporal garantiza la resistencia física y mental necesaria para afrontar exigencias de alto rendimiento. Esta disciplina busca superar límites individuales y fomentar la capacidad de reacción táctica ante situaciones de riesgo o emergencia.",
     "objectives": [
-      "Desarrollar la resistencia aeróbica y fuerza muscular funcional.",
-      "Superar pistas de cuerdas, muros de escalada y pruebas de agilidad.",
-      "Capacitar líderes de patrulla con criterio ético y empatía."
+      "Desarrollar resistencia cardiovascular y potencia muscular funcional.",
+      "Aplicar técnicas básicas de autoprotección con enfoque preventivo y ético.",
+      "Superar límites personales mediante circuitos de alta exigencia supervisados."
     ],
-    "heroImage": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "./assets/images/peloton-premilitar/IMG_0063.jpg",
     "model3D": {
-      "title": "Torre de Entrenamiento y Pista Táctica 3D",
-      "description": "Estructura modular de ejercicios y escalada en 3D interactivo.",
-      "src": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
-      "poster": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80",
-      "alt": "Modelo 3D de liderazgo"
+      "title": "Equipamiento Táctico de Defensa Personal",
+      "description": "Explora los instrumentos de entrenamiento físico y defensa personal utilizados en el sendero.",
+      "src": "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
+      "poster": "./assets/images/peloton-premilitar/IMG_0063.jpg",
+      "alt": "Modelo 3D de equipamiento de acondicionamiento"
     },
-    "projects": [
+    "equipment": [
+      "Tatamis de goma EVA de alta densidad",
+      "Sacos de boxeo y escudos de impacto (pao)",
+      "Cuerdas de salto",
+      "Cronómetros y pulsómetros"
+    ],
+    "practicalExample": "Los estudiantes completan circuitos de alta exigencia utilizando pulsómetros para controlar su zona de frecuencia cardíaca durante rutinas en escalones e intervalos de trote, para luego pasar a los tatamis donde aplican con escudos de impacto llaves de zafada, bloqueos y esquivas de manera controlada.",
+    "projects": [],
+    "media": {
+      "videos": [],
+      "gallery": []
+    }
+  },
+  {
+    "id": "musica-identidad",
+    "name": "Música e Identidad",
+    "shortName": "Música e Identidad",
+    "tagline": "El espíritu de cuerpo y la tradición institucional hecha sonido",
+    "icon": "music",
+    "accentColor": "#7c3aed",
+    "description": "El área musical canaliza el espíritu de cuerpo y la tradición histórica del liceo, aportando el marco ceremonial a la formación militar. Fomenta la memoria auditiva, el ritmo y el sentido de pertenencia institucional a través de la Banda Instrumental y la Banda de Guerra.",
+    "objectives": [
+      "Desarrollar la memoria auditiva, el ritmo y la sincronización musical en contextos marciales.",
+      "Coordinar el desplazamiento físico con la ejecución musical impecable en desfiles.",
+      "Fortalecer el sentido de pertenencia y la mística institucional del Liceo San Nicolás."
+    ],
+    "heroImage": "./assets/images/banda-de-guerra/IMG_0926.jpg",
+    "model3D": {
+      "title": "Instrumentos de Viento y Percusión Marcial",
+      "description": "Explora los instrumentos de la Banda de Guerra y la Banda Instrumental del Liceo San Nicolás en 3D.",
+      "src": "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
+      "poster": "./assets/images/banda-de-guerra/IMG_0926.jpg",
+      "alt": "Instrumentos musicales del área de Música e Identidad"
+    },
+    "equipment": [
+      "Instrumentos de viento-metal: trompetas, cornetas, cornetines",
+      "Instrumentos de percusión: cajas claras, bombos, platillos",
+      "Accesorios de mantención y afinadores electrónicos digitales"
+    ],
+    "practicalExample": "La Banda Instrumental y la Banda de Guerra afinan sus instrumentos mediante procesadores digitales de tono y ensayan la sincronización de las marchas institucionales, ejecutando toques de caja y corneta mientras mantienen la alineación y el paso marcial durante los desfiles de la delegación.",
+    "projects": [],
+    "media": {
+      "videos": [
+        {
+          "title": "Banda de Guerra y Pelotón Premilitar",
+          "url": "./assets/videos/VID_20260814_112420.mp4",
+          "description": "Demostración de destrezas y formaciones en el patio de honor."
+        }
+      ],
+      "gallery": []
+    }
+  },
+  {
+    "id": "ciencia-criminalistica",
+    "name": "Ciencia Aplicada y Criminalística",
+    "shortName": "Ciencia y Criminalística",
+    "tagline": "Mente lógica, observadora y analítica al servicio de la verdad",
+    "icon": "microscope",
+    "accentColor": "#059669",
+    "description": "Esta área convierte la curiosidad científica en una herramienta de investigación rigurosa. Los estudiantes aplican el método científico y las ciencias naturales para analizar hechos complejos, desarrollando una mente lógica, observadora y analítica capaz de reconstruir escenas e identificar evidencia con rigor forense.",
+    "objectives": [
+      "Aplicar el método científico y las ciencias naturales a la investigación forense.",
+      "Procesar y preservar evidencias físicas manteniendo la cadena de custodia.",
+      "Integrar biología, química y física en el análisis de hechos complejos."
+    ],
+    "heroImage": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+    "model3D": {
+      "title": "Maletín Forense y Kit de Levantamiento de Evidencia",
+      "description": "Explora en 3D el equipamiento forense utilizado en los talleres de criminalística del sendero.",
+      "src": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+      "poster": "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=600&q=80",
+      "alt": "Maletín forense 3D para criminalística"
+    },
+    "equipment": [
+      "Maletines forenses: polvos dactiloscópicos reactivos, pinceles de fibra de vidrio, luz UV",
+      "Reactivos de luminol y cinta de cadena de custodia",
+      "Microscopios ópticos binoculares",
+      "Software de simulación de balística y reconstrucción de escenas (Blender / CAD forense)"
+    ],
+    "practicalExample": "En un escenario de simulación, los alumnos delimitan la escena con cinta perimetral, reactivan huellas latentes con polvo magnético del kit forense, examinan fibras al microscopio y procesan las mediciones en software CAD para generar un informe dactiloscópico y reconstructivo con validez científica.",
+    "projects": [],
+    "media": {
+      "videos": [],
+      "gallery": [
+        {
+          "url": "./assets/images/criminalistica/Gemini_Generated_Image_ag3foaag3foaag3f.jpg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "./assets/images/criminalistica/IMG_9123.jpg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "./assets/images/criminalistica/IMG_9151.jpg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "./assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.45.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "./assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.55.jpeg",
+          "caption": "Registro fotográfico"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tecnologia-geomatica",
+    "name": "Tecnología, Geomática y Topografía",
+    "shortName": "Tecnología y Geomática",
+    "tagline": "Ingeniería, drones y cartografía para los líderes del mañana",
+    "icon": "drone",
+    "accentColor": "#b91c1c",
+    "description": "Fusiona la ingeniería temprana con el estudio integral del territorio. El proyecto GeoGo (1° y 2° medio) introduce electrónica, programación y IA, mientras que Geomática y Topografía (3° y 4° medio) prepara operadores Full Stack con drones, GPS diferencial y fotogrametría para capturar, procesar e interpretar datos geográficos del territorio.",
+    "objectives": [
+      "Aprender lógica de programación, electrónica y diseño industrial 3D con Arduino e impresoras 3D.",
+      "Dominar el pilotaje de drones RPAS, planificación de vuelo autónomo y mantenimiento aeronáutico.",
+      "Generar modelos digitales del terreno y cartografía temática usando QGIS, Pix4D y Metashape."
+    ],
+    "heroImage": "./assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg",
+    "subAreas": [
       {
-        "title": "Pista de Obstáculos 'Desafío San Nicolás'",
-        "status": "Activo",
-        "description": "Circuito de 10 estaciones de alta intensidad diseñado para fortalecer la determinación y el apoyo entre compañeros.",
-        "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
+        "title": "Tecnología e Innovación — Proyecto GeoGo",
+        "level": "1° y 2° Medio",
+        "description": "Implementado en 1° y 2° medio, el proyecto GeoGo fusiona la ingeniería temprana con el estudio integral de la geografía. Los estudiantes analizan las relaciones entre el ser humano y su entorno, comprenden los paisajes que habitamos y anticipen los cambios socioambientales. También desarrollan competencias en cartografía y Sistemas de Información Geográfica (SIG).",
+        "equipment": [
+          "Placas programables Arduino Uno/Nano y módulos de sensores",
+          "Motores DC, kits de electrónica y soldadura",
+          "Impresoras 3D",
+          "Arduino IDE, Scratch / Python, QGIS, Google Earth Pro"
+        ],
+        "example": "Los estudiantes ensamblan y programan en Arduino IDE un robot autónomo con sensores de presencia y lógica predictiva. En geografía, usan QGIS para cruzar datos demográficos y de uso de suelo, creando mapas que analizan el crecimiento urbano local y simulan el impacto ambiental de nuevos proyectos."
       },
       {
-        "title": "Academia de Formación de Mandos Medios",
-        "status": "En Desarrollo",
-        "description": "Módulos de oratoria, resolución de conflictos y liderazgo situacional para brigadieres.",
-        "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+        "title": "Geomática y Topografía",
+        "level": "3° y 4° Medio",
+        "description": "Representa la vanguardia técnica del sendero. Prepara a los alumnos como operadores Full Stack capaces de capturar, procesar e interpretar datos geográficos del territorio, vinculando la tecnología aérea con el análisis de precisión del suelo.",
+        "equipment": [
+          "RPAS / Drones DJI Phantom / Mavic con cámaras de alta resolución",
+          "GPS/GNSS diferencial de precisión, estaciones totales y niveles ópticos",
+          "Software de planificación de vuelo: DJI Pilot / Pix4Dcapture",
+          "Software fotogramétrico: Pix4Dmapper / Agisoft Metashape"
+        ],
+        "example": "Los estudiantes planifican una misión de vuelo en Pix4Dcapture, operan el drone para captura de ortofotos y realizan nivelación con la estación total. Procesan las imágenes en Metashape para renderizar una nube de puntos 3D y un Modelo Digital de Elevación (MDE), redactando un informe técnico topográfico completo."
+      }
+    ],
+    "model3D": [
+      {
+        "title": "Proyecto GeoGo: Autoinver",
+        "description": "Prototipo de vehículo autónomo con electrónica integrada.",
+        "src": "/assets/models/autoinver.glb",
+        "alt": "Modelo 3D Autoinver"
+      },
+      {
+        "title": "Proyecto GeoGo: DAV Mobile Station",
+        "description": "Estación móvil de monitoreo y geoposicionamiento.",
+        "src": "/assets/models/dav-mobile-station.glb",
+        "alt": "Modelo 3D DAV Mobile Station"
+      },
+      {
+        "title": "Proyecto GeoGo: Detector de Intrusos",
+        "description": "Sistema de seguridad perimetral robótico.",
+        "src": "/assets/models/detector-intrusos.glb",
+        "alt": "Modelo 3D Detector de Intrusos"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Invernadero Inteligente: Autoinver",
+        "status": "Activo",
+        "description": "Prototipo de invernadero inteligente para monitoreo y control ambiental autónomo.",
+        "image": "/assets/images/geogo/proyectos/IMG_20260601_110649.jpg",
+        "subArea": "geogo"
+      },
+      {
+        "title": "DAV Mobile Station",
+        "status": "Activo",
+        "description": "Estación móvil de monitoreo geográfico equipada con sensores ambientales.",
+        "image": "/assets/images/geogo/proyectos/WhatsApp Image 2026-08-25 at 12.08.56.jpeg",
+        "subArea": "geogo"
+      },
+      {
+        "title": "Tanque Bombero Automático",
+        "status": "Completado",
+        "description": "Vehículo robótico diseñado para asistencia en incendios con bomba de agua integrada.",
+        "image": "/assets/images/geogo/proyectos/Gemini_Generated_Image_6r9kuc6r9kuc6r9k.jpg",
+        "subArea": "geogo"
+      },
+      {
+        "title": "Fotogrametría: Fundo Dadinco",
+        "status": "Activo",
+        "description": "Modelo digital, ortomosaico y levantamiento topográfico interactivo en Fundo Dadinco.",
+        "image": "/assets/images/geomatica/fotogrametrias/Fundo Dadinco.jpg",
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "46a5f756e73a4a02aae134b55abe349b",
+          "center": "-72.1854366630625,-36.54274241200271",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com",
+          "basemapGallery": true
+        }
+      },
+      {
+        "title": "Fotogrametría: Liceo San Nicolás",
+        "status": "Completado",
+        "description": "Levantamiento topográfico aéreo y gemelo digital del recinto educacional.",
+        "image": "/assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg",
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "722858825fe748d7a60197014d358d36",
+          "center": "-72.21867892042727,-36.50454254353803",
+          "scale": "2256.994353",
+          "portalUrl": "https://lpsn.maps.arcgis.com",
+          "basemapGallery": true
+        }
+      },
+      {
+        "title": "Fotogrametría: Terreno Cercano al Liceo",
+        "status": "Activo",
+        "description": "Estudio fotogramétrico y curvas de nivel en terreno agrícola y forestal aledaño.",
+        "image": "/assets/images/geomatica/fotogrametrias/Terreno cercano al Liceo.jpg",
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "d19388a9fb8b4454abf7d62d7678e87a",
+          "center": "-72.22001629265958,-36.508389313611325",
+          "scale": "4513.988705",
+          "portalUrl": "https://lpsn.maps.arcgis.com",
+          "basemapGallery": true
+        }
+      },
+      {
+        "title": "Fotogrametría: Lago Coipín",
+        "status": "Activo",
+        "description": "Modelo digital de elevación y ortomosaico del área de Lago Coipín.",
+        "image": "/assets/images/geomatica/fotogrametrias/Lago Coipin.jpg",
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "05d5aa94a7ca41dfb42a8b684ea82f00",
+          "center": "-72.29109780548886,-36.388510952963834",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com",
+          "basemapGallery": true
+        }
       }
     ],
     "media": {
       "videos": [
         {
-          "title": "Competencia Inter-Patrullas de Alta Exigencia",
-          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-          "description": "Pruebas de pista y trabajo en equipo."
+          "title": "Vuelo de Drone FPV (Simulación Geográfica)",
+          "url": "/assets/videos/VID_20260722_165456.mp4",
+          "description": "Captura aérea de reconocimiento topográfico."
         }
       ],
       "gallery": [
         {
-          "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
-          "caption": "Circuito de resistencia y barras"
+          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.03.35%20%281%29.jpeg",
+          "caption": "Registro fotográfico"
         },
         {
-          "url": "https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=800&q=80",
-          "caption": "Ceremonia de graduación y entrega de distintivos"
+          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.03.37.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.08.59%20%281%29.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.08.59.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.05.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.10%20%281%29.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.13.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.26.jpeg",
+          "caption": "Registro fotográfico"
+        },
+        {
+          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.30.jpeg",
+          "caption": "Registro fotográfico"
         }
       ]
     }

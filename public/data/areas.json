@@ -12,7 +12,7 @@
       "Perfeccionar técnicas de escuela: marchas, giros, posiciones, saludos y cantos institucionales.",
       "Fortalecer la cohesión grupal y el liderazgo responsable bajo presión."
     ],
-    "heroImage": "/src/assets/media/disciplina-formacion/IMG_9208_objetivo.jpg",
+    "heroImage": "./assets/images/peloton-premilitar/IMG_0151.jpg",
     "model3D": {
       "title": "Estandarte e Insignias de Delegación",
       "description": "Inspecciona el estandarte oficial y los elementos de distinción de las delegaciones del Sendero Premilitar en 360°.",
@@ -46,12 +46,12 @@
       "Aplicar técnicas básicas de autoprotección con enfoque preventivo y ético.",
       "Superar límites personales mediante circuitos de alta exigencia supervisados."
     ],
-    "heroImage": "/src/assets/media/acondicionamiento-defensa/IMG_0063_objetivo.jpg",
+    "heroImage": "./assets/images/peloton-premilitar/IMG_0063.jpg",
     "model3D": {
       "title": "Equipamiento Táctico de Defensa Personal",
       "description": "Explora los instrumentos de entrenamiento físico y defensa personal utilizados en el sendero.",
       "src": "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
-      "poster": "/src/assets/media/acondicionamiento-defensa/IMG_0063_objetivo.jpg",
+      "poster": "./assets/images/peloton-premilitar/IMG_0063.jpg",
       "alt": "Modelo 3D de equipamiento de acondicionamiento"
     },
     "equipment": [
@@ -80,12 +80,12 @@
       "Coordinar el desplazamiento físico con la ejecución musical impecable en desfiles.",
       "Fortalecer el sentido de pertenencia y la mística institucional del Liceo San Nicolás."
     ],
-    "heroImage": "/src/assets/media/musica-identidad/IMG_2038.jpg",
+    "heroImage": "./assets/images/banda-de-guerra/IMG_0926.jpg",
     "model3D": {
       "title": "Instrumentos de Viento y Percusión Marcial",
       "description": "Explora los instrumentos de la Banda de Guerra y la Banda Instrumental del Liceo San Nicolás en 3D.",
       "src": "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
-      "poster": "/src/assets/media/musica-identidad/IMG_2038.jpg",
+      "poster": "./assets/images/banda-de-guerra/IMG_0926.jpg",
       "alt": "Instrumentos musicales del área de Música e Identidad"
     },
     "equipment": [
@@ -99,7 +99,7 @@
       "videos": [
         {
           "title": "Banda de Guerra y Pelotón Premilitar",
-          "url": "/assets/videos/VID_20260814_112420.mp4",
+          "url": "./assets/videos/VID_20260814_112420.mp4",
           "description": "Demostración de destrezas y formaciones en el patio de honor."
         }
       ],
@@ -139,23 +139,23 @@
       "videos": [],
       "gallery": [
         {
-          "url": "/assets/images/criminalistica/Gemini_Generated_Image_ag3foaag3foaag3f.jpg",
+          "url": "./assets/images/criminalistica/Gemini_Generated_Image_ag3foaag3foaag3f.jpg",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/criminalistica/IMG_9123.jpg",
+          "url": "./assets/images/criminalistica/IMG_9123.jpg",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/criminalistica/IMG_9151.jpg",
+          "url": "./assets/images/criminalistica/IMG_9151.jpg",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.45.jpeg",
+          "url": "./assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.45.jpeg",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.55.jpeg",
+          "url": "./assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.55.jpeg",
           "caption": "Registro fotográfico"
         }
       ]
@@ -174,7 +174,7 @@
       "Dominar el pilotaje de drones RPAS, planificación de vuelo autónomo y mantenimiento aeronáutico.",
       "Generar modelos digitales del terreno y cartografía temática usando QGIS, Pix4D y Metashape."
     ],
-    "heroImage": "/src/assets/media/tecnologia-geomatica/dron.jpeg",
+    "heroImage": "./assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg",
     "subAreas": [
       {
         "title": "Tecnología e Innovación — Proyecto GeoGo",

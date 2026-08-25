@@ -84,7 +84,7 @@ const REAL_IMAGES = {
   },
 };
 
-document.addEventListener('DOMContentLoaded', async () => {
+async function initAreaView() {
   const urlParams = new URLSearchParams(window.location.search);
   const areaId = urlParams.get('id') || 'disciplina-formacion';
 
@@ -93,12 +93,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     fetchAreaById(areaId),
   ]);
 
-  if (areas) renderAreaTabs(areas, areaId);
+  if (areas && areas.length > 0) renderAreaTabs(areas, areaId);
   if (current) renderAreaContent(current);
 
   initScrollReveal();
   initNavbarScroll();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAreaView);
+} else {
+  initAreaView();
+}
 
 // ── Tabs en navbar ────────────────────────────────────────────────────────────
 function renderAreaTabs(areas, activeId) {
@@ -125,10 +131,14 @@ function renderAreaContent(area) {
   setById('area-tagline', area.tagline);
   setById('area-description', area.description);
   
-  if (area.heroImage) {
-    const heroBg = document.querySelector('.hero-bg');
-    if (heroBg) heroBg.style.backgroundImage = `url('${area.heroImage}')`;
-  }
+  const heroImgUrl = dynMedia.images.length > 0 
+    ? dynMedia.images[0].url 
+    : (area.heroImage && area.heroImage.startsWith('http') 
+      ? area.heroImage 
+      : 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80');
+  
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) heroBg.style.backgroundImage = `url('${heroImgUrl}')`;
 
   // Objectives
   renderObjectives(area.objectives, dynMedia.images);
@@ -297,13 +307,17 @@ function renderProjectsBySubArea(area) {
 
 function projectCard(p) {
   const statusCss = p.status ? p.status.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-') : 'activo';
+  let imgSrc = p.image || '';
+  if (imgSrc.startsWith('/assets/')) {
+    imgSrc = '.' + imgSrc;
+  }
   
   if (p.arcgis) {
     const configStr = encodeURIComponent(JSON.stringify(p.arcgis));
     return `
       <div class="project-card reveal">
         <div class="project-card__map-preview" data-arcgis-config="${configStr}">
-          <img src="${p.image}" alt="${p.title}" loading="lazy" />
+          <img src="${imgSrc}" alt="${p.title}" loading="lazy" />
           <div class="project-card__map-overlay">
             <span class="project-card__status project-card__status--${statusCss}">${p.status || 'Activo'}</span>
             <button type="button" class="project-card__btn-open-map">
@@ -323,7 +337,7 @@ function projectCard(p) {
   return `
     <div class="project-card reveal">
       <div class="project-card__img-wrap">
-        <img src="${p.image}" alt="${p.title}" loading="lazy" />
+        <img src="${imgSrc}" alt="${p.title}" loading="lazy" />
         <span class="project-card__status project-card__status--${statusCss}">${p.status || 'Activo'}</span>
       </div>
       <div class="project-card__body">
