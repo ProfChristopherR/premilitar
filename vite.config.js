@@ -2,6 +2,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: './',
   server: {
     watch: {
       // Ignorar carpetas grandes sincronizadas por OneDrive para evitar error EBUSY
