@@ -117,8 +117,8 @@ function renderNews(newsList) {
 
   // Usar fotos reales para la noticia destacada de la Banda de Guerra
   const heroNewsImages = {
-    'banda-guerra-nacional-2026': '/assets/images/banda-de-guerra/IMG_1029.jpg',
-    'facebook-2026': '/assets/images/banda-de-guerra/IMG_0927.jpg',
+    'banda-guerra-nacional-2026': './assets/images/banda-de-guerra/IMG_1029.jpg',
+    'facebook-2026': './assets/images/banda-de-guerra/IMG_0927.jpg',
   };
 
   el.innerHTML = newsList.map(n => {
