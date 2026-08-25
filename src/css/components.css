@@ -810,8 +810,27 @@ model-viewer {
   }
 }
 @media (max-width: 767px) {
+  .scroll-item {
+    flex: 0 0 calc(85% - 0.5rem);
+  }
   .scroll-item.video-item-wrap {
     flex: 0 0 calc(90% - 0.5rem); /* Larger on mobile too */
+  }
+  
+  .lightbox {
+    padding: 0;
+  }
+  .lightbox-content {
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+  .lightbox-map-wrap {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    border-radius: 0;
   }
 }
 .gallery-grid {
@@ -1079,4 +1098,31 @@ model-viewer {
   .news-grid, .projects-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
   .section { padding: 3.5rem 0; }
+
+  /* Mejoras para el Header Responsivo */
+  .brand-title {
+    font-size: 0.75rem;
+    line-height: 1.15;
+    white-space: normal;
+  }
+  .brand-subtitle {
+    font-size: 0.55rem;
+  }
+  .nav-brand img {
+    height: 30px;
+    width: 30px;
+  }
+  
+  /* Navbar en área.html (Evitar que desborde) */
+  .navbar-area__top .nav-link {
+    display: none;
+  }
+  .navbar-area__top .btn-back {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+  }
+  .area-tab {
+    padding: 0 1rem;
+    font-size: 0.75rem;
+  }
 }

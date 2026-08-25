@@ -205,19 +205,19 @@
       {
         "title": "Proyecto GeoGo: Autoinver",
         "description": "Prototipo de vehículo autónomo con electrónica integrada.",
-        "src": "/assets/models/autoinver.glb",
+        "src": "./assets/models/autoinver.glb",
         "alt": "Modelo 3D Autoinver"
       },
       {
         "title": "Proyecto GeoGo: DAV Mobile Station",
         "description": "Estación móvil de monitoreo y geoposicionamiento.",
-        "src": "/assets/models/dav-mobile-station.glb",
+        "src": "./assets/models/dav-mobile-station.glb",
         "alt": "Modelo 3D DAV Mobile Station"
       },
       {
         "title": "Proyecto GeoGo: Detector de Intrusos",
         "description": "Sistema de seguridad perimetral robótico.",
-        "src": "/assets/models/detector-intrusos.glb",
+        "src": "./assets/models/detector-intrusos.glb",
         "alt": "Modelo 3D Detector de Intrusos"
       }
     ],
