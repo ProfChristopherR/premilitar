@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import fs from 'fs';
+import { exec } from 'child_process';
 
 function localContentSaver() {
   return {
@@ -26,6 +27,21 @@ function localContentSaver() {
           });
           return;
         }
+
+        if (req.url === '/api/sync-content' && (req.method === 'POST' || req.method === 'GET')) {
+          exec('python scripts/sync_markdown_to_json.py', (error, stdout, stderr) => {
+            res.setHeader('Content-Type', 'application/json');
+            if (error) {
+              res.statusCode = 500;
+              res.end(JSON.stringify({ success: false, error: stderr || error.message }));
+            } else {
+              res.statusCode = 200;
+              res.end(JSON.stringify({ success: true, message: '¡Web actualizada y sincronizada desde Markdown con éxito!', output: stdout }));
+            }
+          });
+          return;
+        }
+
         next();
       });
     }

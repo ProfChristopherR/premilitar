@@ -315,6 +315,10 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
         Descargar JSON
       </button>
+      <button type="button" id="btn-sync-content" class="btn-secondary" style="border-color:rgba(197,155,39,0.5);color:var(--admin-gold-light);" title="Sincronizar cambios desde archivos Markdown (npm run sync-content)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        Actualizar web (Sync MD)
+      </button>
       <button type="button" id="btn-save-all" class="btn-save">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8"/></svg>
         Guardar Cambios
@@ -642,8 +646,30 @@
       return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
+    async function syncContentFromMarkdown() {
+      const btn = document.getElementById('btn-sync-content');
+      if (btn) btn.disabled = true;
+      showToast('⏳ Sincronizando datos desde Markdown...');
+
+      try {
+        const res = await fetch('/api/sync-content', { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('✅ ' + data.message);
+          await loadAreas();
+        } else {
+          showToast('❌ Error: ' + (data.error || 'No se pudo sincronizar'), true);
+        }
+      } catch (err) {
+        showToast('❌ Error al comunicarse con el sincronizador local', true);
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    }
+
     document.getElementById('btn-save-all').onclick = saveAllData;
     document.getElementById('btn-download-json').onclick = downloadJsonBackup;
+    document.getElementById('btn-sync-content').onclick = syncContentFromMarkdown;
 
     loadAreas();
   </script>
