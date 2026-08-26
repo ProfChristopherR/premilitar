@@ -58,12 +58,19 @@ function getDynamicMedia(areaId) {
   const videos = [];
   let links = { videos_youtube: [], mapas_arcgis: [] };
 
-  // Collect images — excluding map preview images (named with place names)
+  // Collect images — excluding map preview images (named with place names) y deduplicando
   const MAP_PREVIEW_PATTERN = /^(Fundo|Liceo|Terreno|Lago|result)/i;
+  const seenUrls = new Set();
+  const seenFilenames = new Set();
+
   for (const [path, url] of Object.entries(imageGlobs)) {
     if (path.includes(`/${areaId}/`)) {
       const filename = path.split('/').pop() || '';
-      if (!MAP_PREVIEW_PATTERN.test(filename)) {
+      const baseFilename = filename.toLowerCase().replace(/(_objetivo|_equipamiento|_equipo)/g, '').replace(/\s+/g, ' ');
+      
+      if (!MAP_PREVIEW_PATTERN.test(filename) && !seenUrls.has(url) && !seenFilenames.has(baseFilename)) {
+        seenUrls.add(url);
+        seenFilenames.add(baseFilename);
         images.push({ url, path, caption: 'Registro fotográfico' });
       }
     }
@@ -83,9 +90,59 @@ function getDynamicMedia(areaId) {
     }
   }
 
+  // Helper para normalizar enlaces de YouTube y YouTube Shorts a embed
+  function formatEmbedVideo(item, defaultTitle = 'Video Oficial', defaultType = 'video') {
+    let url = typeof item === 'string' ? item : (item.url || '');
+    let title = typeof item === 'object' && item.title ? item.title : defaultTitle;
+    let type = typeof item === 'object' && item.type ? item.type : defaultType;
+
+    // Si es YouTube Shorts (formato vertical 9:16)
+    if (url.includes('/shorts/')) {
+      const parts = url.split('/shorts/');
+      const id = parts[1].split('?')[0].split('/')[0];
+      url = `https://www.youtube-nocookie.com/embed/${id}`;
+      type = 'instagram'; // estilo vertical portrait
+    }
+    // Si es URL de YouTube estándar (youtube.com/watch o youtu.be)
+    else if (url.includes('youtu.be/') || (url.includes('youtube.com/') && !url.includes('/embed/'))) {
+      let id = '';
+      let start = '';
+      let end = '';
+
+      if (typeof item === 'object') {
+        if (item.start) start = item.start;
+        if (item.end) end = item.end;
+      }
+
+      try {
+        const urlObj = new URL(url.startsWith('http') ? url : 'https://' + url);
+        if (url.includes('youtu.be/')) {
+          id = urlObj.pathname.replace('/', '').split('?')[0];
+        } else if (urlObj.searchParams.get('v')) {
+          id = urlObj.searchParams.get('v');
+        }
+
+        if (!start && urlObj.searchParams.get('start')) start = urlObj.searchParams.get('start');
+        if (!start && urlObj.searchParams.get('t')) start = urlObj.searchParams.get('t').replace('s', '');
+        if (!end && urlObj.searchParams.get('end')) end = urlObj.searchParams.get('end');
+      } catch (e) {
+        if (url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
+      }
+
+      let params = [];
+      if (start) params.push(`start=${start}`);
+      if (end) params.push(`end=${end}`);
+      const paramStr = params.length > 0 ? `?${params.join('&')}` : '';
+
+      url = `https://www.youtube-nocookie.com/embed/${id}${paramStr}`;
+    }
+
+    return { title, url, type };
+  }
+
   // Combine external links with videos & maps
   if (links.videos_youtube) {
-    links.videos_youtube.forEach(url => videos.push({ title: 'Video Oficial', url }));
+    links.videos_youtube.forEach(item => videos.push(formatEmbedVideo(item, 'Video Oficial', 'video')));
   }
   if (links.videos_instagram) {
     links.videos_instagram.forEach(item => {
@@ -97,13 +154,7 @@ function getDynamicMedia(areaId) {
     });
   }
   if (links.videos_shorts) {
-    links.videos_shorts.forEach(item => {
-      if (typeof item === 'string') {
-        videos.push({ title: 'YouTube Short', url: item, type: 'instagram' });
-      } else {
-        videos.push({ title: item.title || 'YouTube Short', url: item.url, type: 'instagram' });
-      }
-    });
+    links.videos_shorts.forEach(item => videos.push(formatEmbedVideo(item, 'YouTube Short', 'instagram')));
   }
   if (links.mapas_arcgis) {
     links.mapas_arcgis.forEach(item => {

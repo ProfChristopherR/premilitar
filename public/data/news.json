@@ -11,7 +11,12 @@
     "image": "./assets/images/banda-de-guerra/IMG_1029.jpg",
     "source": "Chillán Online",
     "sourceUrl": "https://www.chillanonline.cl/V7/2026/08/13/liceo-bicentenario-de-excelencia-san-nicolas-representara-a-nuble-en-concurso-nacional-de-bandas-de-guerra-de-carabineros/",
-    "tags": ["Banda de Guerra", "Carabineros", "Ñuble", "Concurso Nacional"],
+    "tags": [
+      "Banda de Guerra",
+      "Carabineros",
+      "Ñuble",
+      "Concurso Nacional"
+    ],
     "author": "Chillán Online",
     "type": "external-link"
   },
@@ -27,7 +32,11 @@
     "image": "./assets/images/banda-de-guerra/IMG_0927.jpg",
     "source": "Facebook",
     "sourceUrl": "https://www.facebook.com/share/1EpZfkZBj2/",
-    "tags": ["Facebook", "Redes Sociales", "Comunidad"],
+    "tags": [
+      "Facebook",
+      "Redes Sociales",
+      "Comunidad"
+    ],
     "author": "Liceo Bicentenario San Nicolás",
     "type": "external-link"
   },
@@ -43,23 +52,31 @@
     "image": "./assets/images/peloton-premilitar/IMG_0151.jpg",
     "source": "Google News",
     "sourceUrl": "https://share.google/SceDiLv4GEQMnhRNI",
-    "tags": ["Prensa", "Reconocimiento", "Educación"],
+    "tags": [
+      "Prensa",
+      "Reconocimiento",
+      "Educación"
+    ],
     "author": "Prensa Regional",
     "type": "external-link"
   },
   {
     "id": "instagram-2026",
-    "title": "Galería de Actividades del Sendero Premilitar en Instagram",
-    "date": "2026-07-10",
+    "title": "Liceo San Nicolás es Campeón Regional de bandas de Guerra",
+    "date": "2026-08-13",
     "category": "Redes Sociales",
     "badge": "Instagram",
     "featured": false,
     "summary": "Explora nuestra galería en Instagram con imágenes de las jornadas de instrucción, Banda de Guerra, laboratorio de criminalística y vuelos con drones.",
     "content": "Nuestra galería de Instagram documenta visualmente el trabajo diario de las 5 áreas del Sendero Premilitar. Desde las formaciones de instrucción hasta los vuelos con drones y los laboratorios de criminalística, cada imagen cuenta la historia de nuestros estudiantes.",
-    "image": "./assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg",
+    "image": "./assets/images/banda-de-guerra/IMG_1941.jpg",
     "source": "Instagram",
     "sourceUrl": "https://www.instagram.com/p/Db_uOQ8FPb4/?img_index=2&igsi=MWhkNDc4MXBwaXEycw==",
-    "tags": ["Instagram", "Fotografía", "Actividades"],
+    "tags": [
+      "Instagram",
+      "Fotografía",
+      "Actividades"
+    ],
     "author": "Liceo Bicentenario San Nicolás",
     "type": "external-link"
   }

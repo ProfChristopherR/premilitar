@@ -31,43 +31,23 @@
       {
         "id": "ejercicio-escuela-terreno",
         "title": "Reglamento y Ejercicios de Escuela",
-        "status": "Prototipo",
-        "instructor": "Fernando Moya",
+        "status": "Activo",
         "description": "Instrucción formal en movimientos de formación militar: posiciones fundamentales (firme, a discreción y posición de descanso), giros a pie firme y sobre la marcha (hacia la derecha, izquierda y media vuelta), formaciones reglamentarias (escuadra, en columna, fila, cuadro, media luna, fila de ejercicios y formación de revista), paso regular y técnica de voces de mando para la conducción de bloques.",
-        "image": "/assets/media/disciplina-formacion/ejercicio-escuela-terreno/IMG_0060.jpg",
-        "gallery": [
-          "/assets/media/disciplina-formacion/ejercicio-escuela-terreno/IMG_0060.jpg",
-          "/assets/media/disciplina-formacion/ejercicio-escuela-terreno/IMG_9057.jpg",
-          "/assets/media/disciplina-formacion/ejercicio-escuela-terreno/IMG_9176.jpg"
-        ]
+        "instructor": "Fernando Moya"
       },
       {
         "id": "honores-guardia-vocacion",
         "title": "Honores, Saludos y Guardia de Honor",
-        "status": "Prototipo",
-        "instructor": "Fernando Moya",
+        "status": "Activo",
         "description": "Protocolo ceremonial de las Fuerzas Armadas: saludos formales con cubrecabeza y sin cubrecabeza, ceremonial de rendición de honores a autoridades e insignias patrias, conformación y desplazamiento de la guardia de honor, conocimiento del escalafón de grados militares y entonación de cantos de trote e himnos patrios.",
-        "image": "/assets/media/disciplina-formacion/honores-guardia-vocacion/IMG_0142.jpg",
-        "gallery": [
-          "/assets/media/disciplina-formacion/honores-guardia-vocacion/IMG_0142.jpg",
-          "/assets/media/disciplina-formacion/honores-guardia-vocacion/IMG_9028.jpg",
-          "/assets/media/disciplina-formacion/honores-guardia-vocacion/IMG_9048.jpg",
-          "/assets/media/disciplina-formacion/honores-guardia-vocacion/IMG_9051.jpg",
-          "/assets/media/disciplina-formacion/honores-guardia-vocacion/IMG_9208_objetivo.jpg"
-        ]
+        "instructor": "Fernando Moya"
       },
       {
         "id": "formacion-caracter-valores",
         "title": "Formación del Carácter y Orientación a FF.AA.",
-        "status": "Prototipo",
-        "instructor": "Fernando Moya",
+        "status": "Activo",
         "description": "Mentoría formativa y valórica impartida por el instructor Fernando Moya: lecciones de vida para el día a día, el respeto y cortesía al contestar a los mayores, templanza, disciplina y la importancia fundamental de ser una buena persona en la sociedad. Incluye orientación vocacional sobre qué carreras seguir y qué ramas de las Fuerzas Armadas existen para postular a escuelas matrices.",
-        "image": "/assets/media/disciplina-formacion/formacion-caracter-valores/IMG_0060.jpg",
-        "gallery": [
-          "/assets/media/disciplina-formacion/formacion-caracter-valores/IMG_0060.jpg",
-          "/assets/media/disciplina-formacion/formacion-caracter-valores/IMG_9031_equipamiento.jpg",
-          "/assets/media/disciplina-formacion/formacion-caracter-valores/IMG_9175.jpg"
-        ]
+        "instructor": "Fernando Moya"
       }
     ],
     "media": {
@@ -107,39 +87,20 @@
       {
         "id": "preparacion-pruebas-fisicas",
         "title": "Preparación Física para Escuelas Matrices",
-        "status": "Prototipo",
-        "description": "Entrenamiento físico riguroso enfocado en cumplir y superar los estándares de las pruebas de admisión de las diversas escuelas de las Fuerzas Armadas y de Orden: desarrollo de resistencia cardiovascular mediante trote continuo, fortalecimiento muscular con flexiones de brazo, abdominales, dominadas en barra, burpees y circuitos de potencia física.",
-        "image": "/assets/media/acondicionamiento-defensa/preparacion-pruebas-fisicas/IMG_0076.jpg",
-        "gallery": [
-          "/assets/media/acondicionamiento-defensa/preparacion-pruebas-fisicas/IMG_0076.jpg",
-          "/assets/media/acondicionamiento-defensa/preparacion-pruebas-fisicas/IMG_0086.jpg",
-          "/assets/media/acondicionamiento-defensa/preparacion-pruebas-fisicas/IMG_0142.jpg",
-          "/assets/media/acondicionamiento-defensa/preparacion-pruebas-fisicas/IMG_0151.jpg"
-        ]
+        "status": "Activo",
+        "description": "Entrenamiento físico riguroso enfocado en cumplir y superar los estándares de las pruebas de admisión de las diversas escuelas de las Fuerzas Armadas y de Orden: desarrollo de resistencia cardiovascular mediante trote continuo, fortalecimiento muscular con flexiones de brazo, abdominales, dominadas en barra, burpees y circuitos de potencia física."
       },
       {
         "id": "defensa-personal-militar",
         "title": "Defensa Personal Militar (Base Taekwondo)",
-        "status": "Prototipo",
-        "description": "Instrucción de defensa militar y autoprotección fundamentada técnicamente en taekwondo: bloqueos de impacto, esquivas, técnicas de golpeo táctico, caídas, neutralización de agresiones y respuesta rápida bajo estrés físico.",
-        "image": "/assets/media/acondicionamiento-defensa/defensa-personal-militar/IMG_0062_equipamiento.jpg",
-        "gallery": [
-          "/assets/media/acondicionamiento-defensa/defensa-personal-militar/IMG_0062_equipamiento.jpg",
-          "/assets/media/acondicionamiento-defensa/defensa-personal-militar/IMG_0151.jpg",
-          "/assets/media/acondicionamiento-defensa/defensa-personal-militar/IMG_0159.jpg"
-        ]
+        "status": "Activo",
+        "description": "Instrucción de defensa militar y autoprotección fundamentada técnicamente en taekwondo: bloqueos de impacto, esquivas, técnicas de golpeo táctico, caídas, neutralización de agresiones y respuesta rápida bajo estrés físico."
       },
       {
         "id": "mimetismo-camuflaje",
         "title": "Mimetismo y Camuflaje Táctico",
-        "status": "Prototipo",
-        "description": "Técnicas de ocultamiento y supervivencia táctica en terreno mediante pinturas faciales de camuflaje, adaptación a los colores y sombras de la vegetación, distorsión de la silueta humana y desplazamiento silencioso.",
-        "image": "/assets/media/acondicionamiento-defensa/mimetismo-camuflaje/IMG_0060.jpg",
-        "gallery": [
-          "/assets/media/acondicionamiento-defensa/mimetismo-camuflaje/IMG_0060.jpg",
-          "/assets/media/acondicionamiento-defensa/mimetismo-camuflaje/IMG_0063.jpg",
-          "/assets/media/acondicionamiento-defensa/mimetismo-camuflaje/IMG_0111.jpg"
-        ]
+        "status": "Activo",
+        "description": "Técnicas de ocultamiento y supervivencia táctica en terreno mediante pinturas faciales de camuflaje, adaptación a los colores y sombras de la vegetación, distorsión de la silueta humana y desplazamiento silencioso."
       }
     ],
     "media": {
@@ -169,8 +130,8 @@
       "alt": "Instrumentos musicales del área de Música e Identidad"
     },
     "equipment": [
-      "Clarines, cornetas y pífanos marciales",
-      "Cajas claras, redoblantes, bombos y platillos",
+      "Clarines y pífanos marciales",
+      "Cajas, redoblantes, bombos y platillos",
       "Lira marcial institucional",
       "Guanteletes, bastón de mando para Tambor Mayor y correajes"
     ],
@@ -179,35 +140,14 @@
       {
         "id": "instrumentacion-banda-guerra",
         "title": "Estructura e Instrumentación de la Banda de Guerra",
-        "status": "Prototipo",
-        "description": "Formación técnica por secciones musicales: Tambor Mayor en la conducción de la banda, Clarín Mayor y sección de clarines para toques de orden, pífanos melódicos, cajas claras rítmicas y la batería de percusión compuesta por bombo, platillos, redobles y lira institucional.",
-        "image": "/assets/media/musica-identidad/instrumentacion-banda-guerra/IMG_1018.jpg",
-        "gallery": [
-          "/assets/media/musica-identidad/instrumentacion-banda-guerra/IMG_1018.jpg",
-          "/assets/media/musica-identidad/instrumentacion-banda-guerra/IMG_1029.jpg",
-          "/assets/media/musica-identidad/instrumentacion-banda-guerra/IMG_1625.jpg",
-          "/assets/media/musica-identidad/instrumentacion-banda-guerra/IMG_2034.jpg",
-          "/assets/media/musica-identidad/instrumentacion-banda-guerra/IMG_2038.jpg",
-          "/assets/media/musica-identidad/instrumentacion-banda-guerra/IMG_2043.jpg"
-        ]
+        "status": "Activo",
+        "description": "Formación técnica por secciones musicales: Tambor Mayor en la conducción de la banda, Clarín Mayor y sección de clarines para toques de orden, pífanos melódicos, cajas rítmicas y la batería de percusión compuesta por bombo, platillos, redobles y lira institucional."
       },
       {
         "id": "desfiles-presentaciones-oficiales",
         "title": "Presentaciones Oficiales y Desfiles Cívicos",
-        "status": "Prototipo",
-        "description": "Despliegue ceremonial y marcial en actos cívicos, efemérides patrias y desfiles oficiales: coordinación del paso regular, sincronización de marchas tradicionales con el pelotón de honor y evolución de escuadras ante la comunidad.",
-        "image": "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_0926.jpg",
-        "gallery": [
-          "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_0926.jpg",
-          "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_1029.jpg",
-          "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_1676_equipo.jpg",
-          "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_1698.jpg",
-          "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_1699.jpg",
-          "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_1709.jpg",
-          "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_1713.jpg",
-          "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_1995.jpg",
-          "/assets/media/musica-identidad/desfiles-presentaciones-oficiales/IMG_2015.jpg"
-        ]
+        "status": "Activo",
+        "description": "Despliegue ceremonial y marcial en actos cívicos, efemérides patrias y desfiles oficiales: coordinación del paso regular, sincronización de marchas tradicionales con el pelotón de honor y evolución de escuadras ante la comunidad."
       }
     ],
     "media": {
@@ -246,25 +186,17 @@
     "projects": [
       {
         "id": "dactiloscopia-forense",
-        "title": "Dactiloscopía y Huellografía Forense",
-        "status": "Prototipo",
-        "description": "Estudio, revelado químico y levantamiento físico de huellas dactilares latentes mediante polvos reactivos magnéticos, reactivos de ninhidrina y fuentes de luz forense ultravioleta en diversas superficies.",
-        "image": "/assets/media/ciencia-criminalistica/dactiloscopia-forense/IMG_9123.jpg",
-        "gallery": [
-          "/assets/media/ciencia-criminalistica/dactiloscopia-forense/IMG_9123.jpg",
-          "/assets/media/ciencia-criminalistica/dactiloscopia-forense/IMG_9151.jpg"
-        ]
+        "title": "Pruebas Sanguineas",
+        "status": "Activo",
+        "description": "Los estudiantes aplican distintas pruebas sanguíneas para obtener pistas claves sobre algun crimen.\n1.- Identificando grupos sanguineos: Esta prueba, permite que los estudiantes identifiquen el grupo sanguíneo (A -B  -AB -RH /O ) utilizando una plaqueta divida en 4. Cada división con su nombre, agregando antígenos (anti-A Anti-B anti -AB Anti -Rh ) \n2.- Prueba de bencidina: Con esta prueba, los estudiantes pueden comprobar si una presunta mancha hemática corresponde a sangre o no, a través de una reacción química.\n3.- Prueba del luminol: Es una prueba de quimioluminiscencia, que permite identificar sangre  en una escena del crimen",
+        "instructor": "Renzo Inostroza"
       },
       {
         "id": "investigacion-escena-crimen",
-        "title": "Investigación y Reconstrucción de la Escena",
-        "status": "Prototipo",
+        "title": "Investigación y Reconstrucción de la Escena del Crimen",
+        "status": "Activo",
         "description": "Metodología científica para el acordonamiento perimetral, fijación planimétrica, recolección de indicios físicos, modelado 3D de trayectoria balística y riguroso protocolo de cadena de custodia.",
-        "image": "/assets/media/ciencia-criminalistica/investigacion-escena-crimen/Gemini_Generated_Image_ag3foaag3foaag3f.jpg",
-        "gallery": [
-          "/assets/media/ciencia-criminalistica/investigacion-escena-crimen/Gemini_Generated_Image_ag3foaag3foaag3f.jpg",
-          "/assets/media/ciencia-criminalistica/investigacion-escena-crimen/WhatsApp Image 2026-08-25 at 12.08.55.jpeg"
-        ]
+        "instructor": "Renzo Inostroza"
       }
     ],
     "media": {
@@ -338,125 +270,88 @@
         "title": "Invernadero Inteligente: Autoinver",
         "status": "Prototipo",
         "description": "Prototipo robótico autónomo diseñado con microcontroladores Arduino y sensores ambientales de temperatura, humedad y luminosidad para la automatización, monitoreo y control climático de cultivos protegidos.",
-        "image": "/assets/media/tecnologia-geomatica/autoinver/IMG_20260601_110649.jpg",
-        "gallery": [
-          "/assets/media/tecnologia-geomatica/autoinver/IMG_20260601_110649.jpg",
-          "/assets/media/tecnologia-geomatica/autoinver/IMG_20260826_115744.jpg",
-          "/assets/media/tecnologia-geomatica/autoinver/IMG_20260826_115925.jpg"
-        ],
-        "subArea": "geogo"
+        "subArea": "geogo",
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "dav-mobile-station",
         "title": "DAV Mobile Station",
         "status": "Prototipo",
         "description": "Estación móvil vehicular de monitoreo geográfico equipada con sensores ambientales, telemetría y geoposicionamiento satelital para el análisis de variables territoriales en tiempo real.",
-        "image": "/assets/media/tecnologia-geomatica/dav-mobile-station/Dav Mobile Station.jpg",
-        "gallery": [
-          "/assets/media/tecnologia-geomatica/dav-mobile-station/Dav Mobile Station.jpg",
-          "/assets/media/tecnologia-geomatica/dav-mobile-station/WhatsApp Image 2026-08-25 at 12.08.56.jpeg"
-        ],
-        "subArea": "geogo"
+        "subArea": "geogo",
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "tanque-bombero",
         "title": "Tanque Bombero Automático",
         "status": "Prototipo",
         "description": "Vehículo oruga robótico con sistema de extinción autónoma, detección de focos de calor y navegación asistida por sensores para apoyo y prevención en áreas de riesgo.",
-        "image": "/assets/media/tecnologia-geomatica/tanque-bombero/chasis tanque.jpg",
-        "gallery": [
-          "/assets/media/tecnologia-geomatica/tanque-bombero/chasis tanque.jpg",
-          "/assets/media/tecnologia-geomatica/tanque-bombero/tanque diseño.jpg"
-        ],
-        "subArea": "geogo"
+        "subArea": "geogo",
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "conteo-arboles-ia",
         "title": "Conteo Eficiente de Árboles con Inteligencia Artificial",
         "status": "Prototipo",
         "description": "Desarrollo y entrenamiento de modelos de Deep Learning en ArcGIS Pro para la extracción de bandas multiespectrales, detección y conteo automatizado de copas de árboles a partir de ortofotomosaicos RGB de alta resolución capturados por drones RPAS.",
-        "image": "/assets/media/tecnologia-geomatica/conteo-arboles-ia/conteo-arboles-ia-1.jpg",
-        "gallery": [
-          "/assets/media/tecnologia-geomatica/conteo-arboles-ia/conteo-arboles-ia-1.jpg",
-          "/assets/media/tecnologia-geomatica/conteo-arboles-ia/conteo-arboles-ia-2.jpg"
-        ],
-        "subArea": "geomatica"
+        "subArea": "geomatica",
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "fotogrametria-fundo-dadinco",
         "title": "Fotogrametría: Fundo Dadinco",
         "status": "Prototipo",
         "description": "Levantamiento topográfico aéreo de precisión con drones RPAS, generación de ortomosaico de alta resolución y modelo digital de elevación (MDE) para análisis agronómico del Fundo Dadinco.",
-        "image": "/assets/media/tecnologia-geomatica/fotogrametria-fundo-dadinco/Fundo Dadinco.jpg",
-        "gallery": [
-          "/assets/media/tecnologia-geomatica/fotogrametria-fundo-dadinco/Fundo Dadinco.jpg",
-          "/assets/media/tecnologia-geomatica/fotogrametria-fundo-dadinco/Liceo San Nicolas.jpg"
-        ],
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "46a5f756e73a4a02aae134b55abe349b",
           "center": "-72.1854366630625,-36.54274241200271",
           "scale": "9027.977411",
-          "portalUrl": "https://lpsn.maps.arcgis.com",
-          "basemapGallery": true
-        }
+          "portalUrl": "https://lpsn.maps.arcgis.com"
+        },
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "fotogrametria-liceo-san-nicolas",
         "title": "Fotogrametría: Liceo San Nicolás",
         "status": "Prototipo",
         "description": "Gemelo digital 3D y ortomosaico georreferenciado de las instalaciones del Liceo Bicentenario San Nicolás, facilitando la planificación de infraestructura y ordenamiento espacial.",
-        "image": "/assets/media/tecnologia-geomatica/fotogrametria-liceo-san-nicolas/Liceo San Nicolas.jpg",
-        "gallery": [
-          "/assets/media/tecnologia-geomatica/fotogrametria-liceo-san-nicolas/Liceo San Nicolas.jpg",
-          "/assets/media/tecnologia-geomatica/fotogrametria-liceo-san-nicolas/Terreno cercano al Liceo.jpg"
-        ],
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "722858825fe748d7a60197014d358d36",
-          "center": "-72.21867892042727,-36.50454254353803",
-          "scale": "2256.994353",
-          "portalUrl": "https://lpsn.maps.arcgis.com",
-          "basemapGallery": true
-        }
+          "center": "-72.2131665421711,-36.50291993433552",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com"
+        },
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "fotogrametria-terreno-cercano",
         "title": "Fotogrametría: Terreno Cercano al Liceo",
         "status": "Prototipo",
         "description": "Estudio fotogramétrico territorial con curvas de nivel, modelo de pendientes y análisis geomorfológico en terrenos agrícolas y forestales aledaños al establecimiento.",
-        "image": "/assets/media/tecnologia-geomatica/fotogrametria-terreno-cercano/Fundo Dadinco.jpg",
-        "gallery": [
-          "/assets/media/tecnologia-geomatica/fotogrametria-terreno-cercano/Fundo Dadinco.jpg",
-          "/assets/media/tecnologia-geomatica/fotogrametria-terreno-cercano/Terreno cercano al Liceo.jpg"
-        ],
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "d19388a9fb8b4454abf7d62d7678e87a",
-          "center": "-72.22001629265958,-36.508389313611325",
-          "scale": "4513.988705",
-          "portalUrl": "https://lpsn.maps.arcgis.com",
-          "basemapGallery": true
-        }
+          "center": "-72.22238472535084,-36.50577778508397",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com"
+        },
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
-        "id": "fotogrametria-lago-coipin",
-        "title": "Fotogrametría: Lago Coipín",
+        "id": "fotogrametria-tranque-coipin",
+        "title": "Fotogrametría: Tranque Coipín",
         "status": "Prototipo",
-        "description": "Modelo digital de elevación, ortofotografía de alta resolución y relevamiento topográfico ribereño del área de Lago Coipín para estudios hidrológicos y ambientales.",
-        "image": "/assets/media/tecnologia-geomatica/fotogrametria-lago-coipin/Lago Coipin.jpg",
-        "gallery": [
-          "/assets/media/tecnologia-geomatica/fotogrametria-lago-coipin/Lago Coipin.jpg",
-          "/assets/media/tecnologia-geomatica/fotogrametria-lago-coipin/Terreno cercano al Liceo.jpg"
-        ],
+        "description": "Modelo digital de elevación, ortofotografía de alta resolución y relevamiento topográfico ribereño del área de Tranque Coipín para estudios hidrológicos y ambientales.",
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "05d5aa94a7ca41dfb42a8b684ea82f00",
-          "center": "-72.29109780548886,-36.388510952963834",
+          "center": "-72.06208643198083,-36.56545199656157",
           "scale": "9027.977411",
-          "portalUrl": "https://lpsn.maps.arcgis.com",
-          "basemapGallery": true
-        }
+          "portalUrl": "https://lpsn.maps.arcgis.com"
+        },
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       }
     ],
     "media": {
@@ -505,6 +400,14 @@
           "caption": "Registro fotográfico"
         }
       ]
-    }
+    },
+    "practicalExample": "Los estudiantes planifican una misión de vuelo autónomo con drones para capturar ortomosaicos de alta resolución, georreferencian los puntos de control en terreno con GPS diferencial y procesan las imágenes en software fotogramétrico para generar gemelos digitales 3D, curvas de nivel y análisis de cobertura con inteligencia artificial.",
+    "equipment": [
+      "Drones RPAS profesionales DJI Mavic y Phantom para fotogrametría aérea y mapeo",
+      "GPS/GNSS diferencial de alta precisión y estaciones totales ópticas de topografía",
+      "Placas microcontroladoras Arduino Uno/Nano, módulos de sensores y actuadores electrónicos",
+      "Laboratorio de diseño e impresión 3D para prototipado y robótica aplicada",
+      "Software especializado de ingeniería y SIG: Pix4Dmapper, Agisoft Metashape, ArcGIS Pro y QGIS"
+    ]
   }
 ]
