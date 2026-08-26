@@ -59,8 +59,8 @@ Fusiona la ingeniería temprana con el estudio integral del territorio. El proye
 - **SubArea**: geomatica
 - **Descripción**: Estudio fotogramétrico territorial con curvas de nivel, modelo de pendientes y análisis geomorfológico en terrenos agrícolas y forestales aledaños al establecimiento.
 
-### Fotogrametría: Lago Coipín
-- **ID**: fotogrametria-lago-coipin
+### Fotogrametría: Tranque Coipín
+- **ID**: fotogrametria-tranque-coipin
 - **Estado**: Prototipo
 - **SubArea**: geomatica
-- **Descripción**: Modelo digital de elevación, ortofotografía de alta resolución y relevamiento topográfico ribereño del área de Lago Coipín para estudios hidrológicos y ambientales.
+- **Descripción**: Modelo digital de elevación, ortofotografía de alta resolución y relevamiento topográfico ribereño del área de Tranque Coipín para estudios hidrológicos y ambientales.

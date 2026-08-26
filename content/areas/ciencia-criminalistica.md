@@ -21,12 +21,17 @@ Esta área convierte la curiosidad científica en una herramienta de investigaci
 En un escenario de simulación, los alumnos delimitan la escena con cinta perimetral, reactivan huellas latentes con polvo magnético del kit forense, examinan fibras al microscopio y procesan las mediciones en software CAD para generar un informe dactiloscópico y reconstructivo con validez científica.
 
 ## Proyectos y Talleres
-### Dactiloscopía y Huellografía Forense
+### Pruebas Sanguineas
 - **ID**: dactiloscopia-forense
-- **Estado**: Prototipo
-- **Descripción**: Estudio, revelado químico y levantamiento físico de huellas dactilares latentes mediante polvos reactivos magnéticos, reactivos de ninhidrina y fuentes de luz forense ultravioleta en diversas superficies.
+- **Instructor**: Renzo Inostroza
+- **Estado**: Activo
+- **Descripción**: Los estudiantes aplican distintas pruebas sanguíneas para obtener pistas claves sobre algun crimen.
+1.- Identificando grupos sanguineos: Esta prueba, permite que los estudiantes identifiquen el grupo sanguíneo (A -B  -AB -RH /O ) utilizando una plaqueta divida en 4. Cada división con su nombre, agregando antígenos (anti-A Anti-B anti -AB Anti -Rh ) 
+2.- Prueba de bencidina: Con esta prueba, los estudiantes pueden comprobar si una presunta mancha hemática corresponde a sangre o no, a través de una reacción química.
+3.- Prueba del luminol: Es una prueba de quimioluminiscencia, que permite identificar sangre  en una escena del crimen
 
-### Investigación y Reconstrucción de la Escena
+### Investigación y Reconstrucción de la Escena del Crimen
 - **ID**: investigacion-escena-crimen
-- **Estado**: Prototipo
+- **Instructor**: Renzo Inostroza
+- **Estado**: Activo
 - **Descripción**: Metodología científica para el acordonamiento perimetral, fijación planimétrica, recolección de indicios físicos, modelado 3D de trayectoria balística y riguroso protocolo de cadena de custodia.

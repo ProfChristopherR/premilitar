@@ -24,17 +24,17 @@ Durante la ejecución de ejercicios de escuela, la delegación realiza desplazam
 ### Reglamento y Ejercicios de Escuela
 - **ID**: ejercicio-escuela-terreno
 - **Instructor**: Fernando Moya
-- **Estado**: Prototipo
+- **Estado**: Activo
 - **Descripción**: Instrucción formal en movimientos de formación militar: posiciones fundamentales (firme, a discreción y posición de descanso), giros a pie firme y sobre la marcha (hacia la derecha, izquierda y media vuelta), formaciones reglamentarias (escuadra, en columna, fila, cuadro, media luna, fila de ejercicios y formación de revista), paso regular y técnica de voces de mando para la conducción de bloques.
 
 ### Honores, Saludos y Guardia de Honor
 - **ID**: honores-guardia-vocacion
 - **Instructor**: Fernando Moya
-- **Estado**: Prototipo
+- **Estado**: Activo
 - **Descripción**: Protocolo ceremonial de las Fuerzas Armadas: saludos formales con cubrecabeza y sin cubrecabeza, ceremonial de rendición de honores a autoridades e insignias patrias, conformación y desplazamiento de la guardia de honor, conocimiento del escalafón de grados militares y entonación de cantos de trote e himnos patrios.
 
 ### Formación del Carácter y Orientación a FF.AA.
 - **ID**: formacion-caracter-valores
 - **Instructor**: Fernando Moya
-- **Estado**: Prototipo
+- **Estado**: Activo
 - **Descripción**: Mentoría formativa y valórica impartida por el instructor Fernando Moya: lecciones de vida para el día a día, el respeto y cortesía al contestar a los mayores, templanza, disciplina y la importancia fundamental de ser una buena persona en la sociedad. Incluye orientación vocacional sobre qué carreras seguir y qué ramas de las Fuerzas Armadas existen para postular a escuelas matrices.

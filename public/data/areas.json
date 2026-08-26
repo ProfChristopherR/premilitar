@@ -298,28 +298,52 @@
         "title": "Fotogrametría: Fundo Dadinco",
         "status": "Prototipo",
         "description": "Levantamiento topográfico aéreo de precisión con drones RPAS, generación de ortomosaico de alta resolución y modelo digital de elevación (MDE) para análisis agronómico del Fundo Dadinco.",
-        "subArea": "geomatica"
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "66c888d370124f5a9b99dfd38a086202",
+          "center": "-72.1854366630625,-36.54274241200271",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com"
+        }
       },
       {
         "id": "fotogrametria-liceo-san-nicolas",
         "title": "Fotogrametría: Liceo San Nicolás",
         "status": "Prototipo",
         "description": "Gemelo digital 3D y ortomosaico georreferenciado de las instalaciones del Liceo Bicentenario San Nicolás, facilitando la planificación de infraestructura y ordenamiento espacial.",
-        "subArea": "geomatica"
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "0573e8e2023a493a863aa98bdfc2825b",
+          "center": "-72.2131665421711,-36.50291993433552",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com"
+        }
       },
       {
         "id": "fotogrametria-terreno-cercano",
         "title": "Fotogrametría: Terreno Cercano al Liceo",
         "status": "Prototipo",
         "description": "Estudio fotogramétrico territorial con curvas de nivel, modelo de pendientes y análisis geomorfológico en terrenos agrícolas y forestales aledaños al establecimiento.",
-        "subArea": "geomatica"
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "a7895055b81a4d1e89b275bf19cceb09",
+          "center": "-72.22238472535084,-36.50577778508397",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com"
+        }
       },
       {
-        "id": "fotogrametria-lago-coipin",
-        "title": "Fotogrametría: Lago Coipín",
+        "id": "fotogrametria-tranque-coipin",
+        "title": "Fotogrametría: Tranque Coipín",
         "status": "Prototipo",
-        "description": "Modelo digital de elevación, ortofotografía de alta resolución y relevamiento topográfico ribereño del área de Lago Coipín para estudios hidrológicos y ambientales.",
-        "subArea": "geomatica"
+        "description": "Modelo digital de elevación, ortofotografía de alta resolución y relevamiento topográfico ribereño del área de Tranque Coipín para estudios hidrológicos y ambientales.",
+        "subArea": "geomatica",
+        "arcgis": {
+          "itemId": "2771d9d95f8749e7b16d123e4492bf22",
+          "center": "-72.06208643198083,-36.56545199656157",
+          "scale": "9027.977411",
+          "portalUrl": "https://lpsn.maps.arcgis.com"
+        }
       }
     ],
     "media": {

@@ -23,15 +23,15 @@ Los estudiantes entrenan rutinas de trote de resistencia, series de flexiones, a
 ## Proyectos y Talleres
 ### Preparación Física para Escuelas Matrices
 - **ID**: preparacion-pruebas-fisicas
-- **Estado**: Prototipo
+- **Estado**: Activo
 - **Descripción**: Entrenamiento físico riguroso enfocado en cumplir y superar los estándares de las pruebas de admisión de las diversas escuelas de las Fuerzas Armadas y de Orden: desarrollo de resistencia cardiovascular mediante trote continuo, fortalecimiento muscular con flexiones de brazo, abdominales, dominadas en barra, burpees y circuitos de potencia física.
 
 ### Defensa Personal Militar (Base Taekwondo)
 - **ID**: defensa-personal-militar
-- **Estado**: Prototipo
+- **Estado**: Activo
 - **Descripción**: Instrucción de defensa militar y autoprotección fundamentada técnicamente en taekwondo: bloqueos de impacto, esquivas, técnicas de golpeo táctico, caídas, neutralización de agresiones y respuesta rápida bajo estrés físico.
 
 ### Mimetismo y Camuflaje Táctico
 - **ID**: mimetismo-camuflaje
-- **Estado**: Prototipo
+- **Estado**: Activo
 - **Descripción**: Técnicas de ocultamiento y supervivencia táctica en terreno mediante pinturas faciales de camuflaje, adaptación a los colores y sombras de la vegetación, distorsión de la silueta humana y desplazamiento silencioso.

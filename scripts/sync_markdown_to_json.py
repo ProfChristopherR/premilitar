@@ -128,8 +128,17 @@ def sync_all_markdown():
                 area_dict[aid]['description'] = parsed['description']
                 area_dict[aid]['objectives'] = parsed['objectives']
                 area_dict[aid]['equipment'] = parsed['equipment']
-                area_dict[aid]['practicalExample'] = parsed['practicalExample']
-                area_dict[aid]['projects'] = parsed['projects']
+                # Preservar configuraciones de ArcGIS y metadatos en proyectos
+                existing_proj_dict = {p['id']: p for p in area_dict[aid].get('projects', [])}
+                merged_projects = []
+                for p in parsed['projects']:
+                    pid = p['id']
+                    if pid in existing_proj_dict:
+                        merged = {**existing_proj_dict[pid], **p}
+                        merged_projects.append(merged)
+                    else:
+                        merged_projects.append(p)
+                area_dict[aid]['projects'] = merged_projects
                 print(f"Sincronizado área: {aid} desde {f}")
 
     updated_areas = list(area_dict.values())

@@ -12,8 +12,8 @@ La Banda de Guerra y la Banda Instrumental canalizan la mística, el ritmo y la 
 - Fomentar la memoria auditiva, el trabajo en ensamble y el orgullo de pertenencia institucional.
 
 ## Equipamiento
-- Clarines, cornetas y pífanos marciales
-- Cajas claras, redoblantes, bombos y platillos
+- Clarines y pífanos marciales
+- Cajas, redoblantes, bombos y platillos
 - Lira marcial institucional
 - Guanteletes, bastón de mando para Tambor Mayor y correajes
 
@@ -23,10 +23,10 @@ La Banda de Guerra ensaya la sincronización entre el Tambor Mayor, Clarín Mayo
 ## Proyectos y Talleres
 ### Estructura e Instrumentación de la Banda de Guerra
 - **ID**: instrumentacion-banda-guerra
-- **Estado**: Prototipo
-- **Descripción**: Formación técnica por secciones musicales: Tambor Mayor en la conducción de la banda, Clarín Mayor y sección de clarines para toques de orden, pífanos melódicos, cajas claras rítmicas y la batería de percusión compuesta por bombo, platillos, redobles y lira institucional.
+- **Estado**: Activo
+- **Descripción**: Formación técnica por secciones musicales: Tambor Mayor en la conducción de la banda, Clarín Mayor y sección de clarines para toques de orden, pífanos melódicos, cajas rítmicas y la batería de percusión compuesta por bombo, platillos, redobles y lira institucional.
 
 ### Presentaciones Oficiales y Desfiles Cívicos
 - **ID**: desfiles-presentaciones-oficiales
-- **Estado**: Prototipo
+- **Estado**: Activo
 - **Descripción**: Despliegue ceremonial y marcial en actos cívicos, efemérides patrias y desfiles oficiales: coordinación del paso regular, sincronización de marchas tradicionales con el pelotón de honor y evolución de escuadras ante la comunidad.
