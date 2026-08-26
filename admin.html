@@ -36,6 +36,8 @@
       top: 0;
       z-index: 100;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     .admin-brand {
       display: flex;
@@ -57,7 +59,8 @@
     .admin-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
+      flex-wrap: wrap;
     }
     .btn-save {
       background: linear-gradient(135deg, #10b981 0%, #059669 100%);
@@ -67,7 +70,7 @@
       font-size: 0.85rem;
       font-weight: 800;
       letter-spacing: 0.08em;
-      padding: 0.65rem 1.4rem;
+      padding: 0.65rem 1.3rem;
       border-radius: 4px;
       cursor: pointer;
       display: flex;
@@ -87,7 +90,7 @@
       font-family: var(--font-display);
       font-size: 0.8rem;
       font-weight: 700;
-      padding: 0.6rem 1.1rem;
+      padding: 0.6rem 1rem;
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.2s;
@@ -99,6 +102,26 @@
     .btn-secondary:hover {
       background: rgba(255,255,255,0.15);
       color: var(--admin-gold-light);
+    }
+    .btn-token {
+      border-color: rgba(99, 102, 241, 0.4);
+      background: rgba(99, 102, 241, 0.12);
+      color: #a5b4fc;
+    }
+    .btn-token:hover {
+      background: rgba(99, 102, 241, 0.25);
+      color: #fff;
+    }
+    .token-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      display: inline-block;
+    }
+    .token-dot.connected {
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
     }
     .admin-layout {
       display: grid;
@@ -271,19 +294,41 @@
       padding: 1.25rem;
       margin-bottom: 1.25rem;
     }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-dialog {
+      background: #0f172a;
+      border: 1px solid var(--admin-gold);
+      border-radius: 8px;
+      max-width: 520px;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
     .toast-msg {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
       background: #10b981;
       color: #fff;
-      padding: 1rem 1.5rem;
+      padding: 1.1rem 1.6rem;
       border-radius: 6px;
       font-weight: 700;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.6);
       display: none;
-      z-index: 1000;
+      z-index: 2000;
       animation: fadeIn 0.3s;
+      max-width: 420px;
+      line-height: 1.5;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -307,21 +352,25 @@
       <h1>Panel de Contenido <span>· Sendero Pre-Militar</span></h1>
     </div>
     <div class="admin-actions">
+      <button type="button" id="btn-github-token" class="btn-secondary btn-token">
+        <span class="token-dot" id="token-status-dot"></span>
+        <span id="token-btn-label">Conectar GitHub</span>
+      </button>
       <a href="index.html" class="btn-secondary" target="_blank">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
         Ver Web en Vivo
       </a>
-      <button type="button" id="btn-download-json" class="btn-secondary">
+      <button type="button" id="btn-download-json" class="btn-secondary" title="Descargar copia de seguridad en JSON">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
         Descargar JSON
       </button>
-      <button type="button" id="btn-sync-content" class="btn-secondary" style="border-color:rgba(197,155,39,0.5);color:var(--admin-gold-light);" title="Sincronizar cambios desde archivos Markdown (npm run sync-content)">
+      <button type="button" id="btn-sync-content" class="btn-secondary" style="border-color:rgba(197,155,39,0.5);color:var(--admin-gold-light);" title="Sincronizar cambios desde archivos Markdown locales">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-        Actualizar web (Sync MD)
+        Sync Markdown
       </button>
       <button type="button" id="btn-save-all" class="btn-save">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8"/></svg>
-        Guardar Cambios
+        Guardar y Publicar
       </button>
     </div>
   </header>
@@ -341,11 +390,65 @@
     </main>
   </div>
 
+  <!-- Modal de Configuración de Token de GitHub -->
+  <div id="modal-token" class="modal-overlay" style="display:none;">
+    <div class="modal-dialog">
+      <h3 style="font-family:var(--font-display);color:var(--admin-gold-light);margin-top:0;font-size:1.1rem;text-transform:uppercase;">Conexión Directa con GitHub</h3>
+      <p style="font-size:0.88rem;color:#cbd5e1;line-height:1.6;">
+        Para guardar cambios directamente en la web en la nube sin abrir tu terminal, ingresa un <strong>Personal Access Token</strong> de GitHub con permiso <code>repo</code> o <code>contents:write</code>.
+      </p>
+      <div class="form-group" style="margin-top:1rem;">
+        <label class="form-label">GitHub Token (Classic o Fine-grained)</label>
+        <input type="password" id="input-gh-token" class="form-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+      </div>
+      <div style="font-size:0.78rem;color:#94a3b8;margin-bottom:1.5rem;">
+        💡 <a href="https://github.com/settings/tokens/new?description=Premilitar+Web+Admin&scopes=repo" target="_blank" style="color:var(--admin-gold-light);text-decoration:underline;">Crear un nuevo Token en GitHub con 1 clic ↗</a> (queda guardado solo en tu navegador).
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:0.75rem;">
+        <button type="button" id="btn-cancel-token" class="btn-secondary">Cancelar</button>
+        <button type="button" id="btn-save-token" class="btn-save">Guardar Token</button>
+      </div>
+    </div>
+  </div>
+
   <div id="toast" class="toast-msg"></div>
 
   <script type="module">
+    const REPO_OWNER = 'ProfChristopherR';
+    const REPO_NAME = 'premilitar';
+    const TARGET_BRANCH = 'qa';
+
     let areasData = [];
     let activeAreaId = 'disciplina-formacion';
+
+    function getGitHubToken() {
+      return localStorage.getItem('premilitar_gh_token') || '';
+    }
+
+    function updateTokenButtonState() {
+      const token = getGitHubToken();
+      const dot = document.getElementById('token-status-dot');
+      const label = document.getElementById('token-btn-label');
+      if (token) {
+        if (dot) dot.className = 'token-dot connected';
+        if (label) label.textContent = 'GitHub Conectado';
+      } else {
+        if (dot) dot.className = 'token-dot';
+        if (label) label.textContent = 'Conectar GitHub';
+      }
+    }
+
+    function openTokenModal() {
+      const modal = document.getElementById('modal-token');
+      const input = document.getElementById('input-gh-token');
+      if (input) input.value = getGitHubToken();
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function closeTokenModal() {
+      const modal = document.getElementById('modal-token');
+      if (modal) modal.style.display = 'none';
+    }
 
     async function loadAreas() {
       try {
@@ -495,7 +598,6 @@
     }
 
     function bindFormEvents() {
-      // Remover / agregar objetivo
       document.querySelectorAll('.btn-remove-obj').forEach(btn => {
         btn.onclick = () => btn.closest('.dynamic-list-item').remove();
       });
@@ -511,7 +613,6 @@
         list.appendChild(div);
       };
 
-      // Remover / agregar equipamiento
       document.querySelectorAll('.btn-remove-eq').forEach(btn => {
         btn.onclick = () => btn.closest('.dynamic-list-item').remove();
       });
@@ -527,7 +628,6 @@
         list.appendChild(div);
       };
 
-      // Remover / agregar proyecto
       document.querySelectorAll('.btn-remove-project').forEach(btn => {
         btn.onclick = () => {
           if (confirm('¿Estás seguro de eliminar este proyecto?')) {
@@ -567,15 +667,12 @@
       if (descEl) area.description = descEl.value;
       if (practicalEl) area.practicalExample = practicalEl.value;
 
-      // Objetivos
       const objInputs = document.querySelectorAll('.objective-input');
       area.objectives = Array.from(objInputs).map(inp => inp.value.trim()).filter(Boolean);
 
-      // Equipamiento
       const eqInputs = document.querySelectorAll('.equipment-input');
       area.equipment = Array.from(eqInputs).map(inp => inp.value.trim()).filter(Boolean);
 
-      // Proyectos
       const projectCards = document.querySelectorAll('.project-edit-card');
       const projects = [];
       projectCards.forEach((card, idx) => {
@@ -599,26 +696,96 @@
       area.projects = projects;
     }
 
-    async function saveAllData() {
-      syncCurrentFormToState();
+    // Guardar vía GitHub API directa
+    async function saveToGitHubApi(jsonString) {
+      const token = getGitHubToken();
+      if (!token) {
+        openTokenModal();
+        throw new Error('Debes ingresar un GitHub Token para publicar online.');
+      }
 
-      try {
-        const res = await fetch('/api/save-areas', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(areasData, null, 2)
+      const files = ['public/data/areas.json', 'data/areas.json'];
+      const utf8Base64 = btoa(unescape(encodeURIComponent(jsonString)));
+
+      for (const filePath of files) {
+        // 1. Obtener SHA actual del archivo
+        const getUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}?ref=${TARGET_BRANCH}`;
+        const getRes = await fetch(getUrl, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
         });
 
-        if (res.ok) {
-          showToast('✅ ¡Contenido guardado exitosamente en areas.json!');
-        } else {
-          // Si estamos en un servidor estático sin el middleware, descargamos el archivo
-          downloadJsonBackup();
-          showToast('⚠️ Servidor en modo estático: Se descargó areas.json para reemplazar.');
+        let sha = '';
+        if (getRes.ok) {
+          const fileInfo = await getRes.json();
+          sha = fileInfo.sha;
+        }
+
+        // 2. Hacer commit y push
+        const putUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`;
+        const putBody = {
+          message: `docs: actualizar contenido desde panel web admin [${TARGET_BRANCH}]`,
+          content: utf8Base64,
+          branch: TARGET_BRANCH,
+          ...(sha ? { sha } : {})
+        };
+
+        const putRes = await fetch(putUrl, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          body: JSON.stringify(putBody)
+        });
+
+        if (!putRes.ok) {
+          const errData = await putRes.json();
+          throw new Error(errData.message || `Error actualizando ${filePath}`);
+        }
+      }
+    }
+
+    async function saveAllData() {
+      syncCurrentFormToState();
+      const jsonStr = JSON.stringify(areasData, null, 2);
+      const saveBtn = document.getElementById('btn-save-all');
+      if (saveBtn) saveBtn.disabled = true;
+
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+      try {
+        if (isLocalhost) {
+          // Guardar en disco local mediante Vite
+          const localRes = await fetch('/api/save-areas', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: jsonStr
+          });
+          
+          if (localRes.ok) {
+            showToast('✅ ¡Guardado localmente en areas.json!');
+          }
+        }
+
+        // Si tenemos token de GitHub configurado o estamos en la nube, publicamos a GitHub
+        const token = getGitHubToken();
+        if (token || !isLocalhost) {
+          showToast('⏳ Guardando y subiendo a GitHub en rama QA...');
+          await saveToGitHubApi(jsonStr);
+          showToast('🚀 ¡Publicado en GitHub con éxito! La web de QA se desplegará en 1 minuto.');
         }
       } catch (err) {
-        downloadJsonBackup();
-        showToast('⚠️ Se descargó areas.json automáticamente.');
+        console.error('Error guardando:', err);
+        showToast('⚠️ ' + err.message, true);
+        if (!isLocalhost && !getGitHubToken()) {
+          openTokenModal();
+        }
+      } finally {
+        if (saveBtn) saveBtn.disabled = false;
       }
     }
 
@@ -639,7 +806,7 @@
       toast.textContent = msg;
       toast.style.background = isError ? '#ef4444' : '#10b981';
       toast.style.display = 'block';
-      setTimeout(() => { toast.style.display = 'none'; }, 4000);
+      setTimeout(() => { toast.style.display = 'none'; }, 5000);
     }
 
     function escapeHtml(str) {
@@ -661,16 +828,35 @@
           showToast('❌ Error: ' + (data.error || 'No se pudo sincronizar'), true);
         }
       } catch (err) {
-        showToast('❌ Error al comunicarse con el sincronizador local', true);
+        showToast('❌ Error: La sincronización Markdown local solo funciona en tu máquina (localhost).', true);
       } finally {
         if (btn) btn.disabled = false;
       }
     }
 
+    // Configurar Token
+    document.getElementById('btn-github-token').onclick = openTokenModal;
+    document.getElementById('btn-cancel-token').onclick = closeTokenModal;
+    document.getElementById('btn-save-token').onclick = () => {
+      const val = document.getElementById('input-gh-token').value.trim();
+      if (val) {
+        localStorage.setItem('premilitar_gh_token', val);
+        updateTokenButtonState();
+        closeTokenModal();
+        showToast('🔑 Token de GitHub guardado con éxito');
+      } else {
+        localStorage.removeItem('premilitar_gh_token');
+        updateTokenButtonState();
+        closeTokenModal();
+        showToast('Token eliminado');
+      }
+    };
+
     document.getElementById('btn-save-all').onclick = saveAllData;
     document.getElementById('btn-download-json').onclick = downloadJsonBackup;
     document.getElementById('btn-sync-content').onclick = syncContentFromMarkdown;
 
+    updateTokenButtonState();
     loadAreas();
   </script>
 </body>
