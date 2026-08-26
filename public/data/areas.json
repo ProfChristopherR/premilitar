@@ -6,11 +6,11 @@
     "tagline": "Base del carácter, liderazgo y trabajo en equipo",
     "icon": "shield",
     "accentColor": "#c59b27",
-    "description": "Esta área constituye la columna vertebral del carácter y la convivencia dentro del sendero. Los estudiantes aprenden que la marcialidad no es mera rigidez, sino una herramienta de autocontrol, coordinación colectiva y respeto mutuo. Mediante el entrenamiento continuo en delegaciones de 45 alumnos, desarrollan cohesión grupal y liderazgo bajo presión.",
+    "description": "Esta área constituye la columna vertebral del carácter y la convivencia dentro del sendero. Guiados por el instructor Fernando Moya, los estudiantes aprenden el reglamento de ejercicio de escuela e instrucción en terreno, formaciones de bloque, voces de mando, honores y marchas, complementado con una sólida formación valórica y orientación vocacional hacia las Fuerzas Armadas.",
     "objectives": [
       "Desarrollar el autocontrol, la concentración y la disciplina consciente en cada estudiante.",
       "Perfeccionar técnicas de escuela: marchas, giros, posiciones, saludos y cantos institucionales.",
-      "Fortalecer la cohesión grupal y el liderazgo responsable bajo presión."
+      "Fortalecer la cohesión grupal, el respeto a los mayores y el liderazgo responsable."
     ],
     "heroImage": "./assets/images/peloton-premilitar/IMG_0151.jpg",
     "model3D": {
@@ -26,18 +26,45 @@
       "Silbatos de mando",
       "Megafonía móvil para conducción de bloques"
     ],
-    "practicalExample": "Durante la ejecución de ejercicios de escuela, la delegación realiza desplazamientos coordinados, giros, marchas a pie firme, saludos protocolares y cantos institucionales utilizando el sistema de mandos a viva voz y señales de silbato, donde un solo fallo individual afecta el bloque completo, enseñando la importancia de la responsabilidad compartida.",
+    "practicalExample": "Durante la ejecución de ejercicios de escuela, la delegación realiza desplazamientos coordinados, giros a pie firme y sobre la marcha, saludos protocolares y cantos de trote e himnos institucionales, aplicando el reglamento y las voces de mando bajo la instrucción del instructor Fernando Moya.",
     "projects": [
       {
-        "id": "ejercicios-escuela",
-        "title": "Ejercicios de Escuela",
+        "id": "ejercicio-escuela-terreno",
+        "title": "Reglamento y Ejercicios de Escuela",
         "status": "Prototipo",
-        "description": "Enseñan una base sólida de movimientos básicos que se enseñan en escuelas matrices de formación militar, desde giros, paso regular, hasta alineaciones y formaciones coordinadas de bloque.",
+        "instructor": "Fernando Moya",
+        "description": "Instrucción formal en movimientos de formación militar: posiciones fundamentales (firme, a discreción y posición de descanso), giros a pie firme y sobre la marcha (hacia la derecha, izquierda y media vuelta), formaciones reglamentarias (escuadra, en columna, fila, cuadro, media luna, fila de ejercicios y formación de revista), paso regular y técnica de voces de mando para la conducción de bloques.",
         "image": "./assets/images/peloton-premilitar/IMG_0151.jpg",
         "gallery": [
           "./assets/images/peloton-premilitar/IMG_0151.jpg",
           "./assets/images/peloton-premilitar/IMG_0159.jpg",
           "./assets/images/peloton-premilitar/IMG_0086.jpg",
+          "./assets/images/peloton-premilitar/IMG_0060.jpg"
+        ]
+      },
+      {
+        "id": "honores-guardia-vocacion",
+        "title": "Honores, Saludos y Guardia de Honor",
+        "status": "Prototipo",
+        "instructor": "Fernando Moya",
+        "description": "Protocolo ceremonial de las Fuerzas Armadas: saludos formales con cubrecabeza y sin cubrecabeza, ceremonial de rendición de honores a autoridades e insignias patrias, conformación y desplazamiento de la guardia de honor, conocimiento del escalafón de grados militares y entonación de cantos de trote e himnos patrios.",
+        "image": "./assets/images/peloton-premilitar/IMG_0086.jpg",
+        "gallery": [
+          "./assets/images/peloton-premilitar/IMG_0086.jpg",
+          "./assets/images/peloton-premilitar/IMG_0151.jpg",
+          "./assets/images/peloton-premilitar/IMG_0159.jpg"
+        ]
+      },
+      {
+        "id": "formacion-caracter-valores",
+        "title": "Formación del Carácter y Orientación a FF.AA.",
+        "status": "Prototipo",
+        "instructor": "Fernando Moya",
+        "description": "Mentoría formativa y valórica impartida por el instructor Fernando Moya: lecciones de vida para el día a día, el respeto y cortesía al contestar a los mayores, templanza, disciplina y la importancia fundamental de ser una buena persona en la sociedad. Incluye orientación vocacional sobre qué carreras seguir y qué ramas de las Fuerzas Armadas existen para postular a escuelas matrices.",
+        "image": "./assets/images/peloton-premilitar/IMG_0159.jpg",
+        "gallery": [
+          "./assets/images/peloton-premilitar/IMG_0159.jpg",
+          "./assets/images/peloton-premilitar/IMG_0151.jpg",
           "./assets/images/peloton-premilitar/IMG_0060.jpg"
         ]
       }
@@ -54,11 +81,11 @@
     "tagline": "Resistencia, agilidad y capacidad de reacción táctica",
     "icon": "dumbbell",
     "accentColor": "#0284c7",
-    "description": "La preparación corporal garantiza la resistencia física y mental necesaria para afrontar exigencias de alto rendimiento. Esta disciplina busca superar límites individuales y fomentar la capacidad de reacción táctica ante situaciones de riesgo o emergencia.",
+    "description": "La preparación corporal garantiza la resistencia física y mental necesaria para rendir las exigencias físicas requeridas en los procesos de postulación a escuelas matrices de las FF.AA. y de Orden, complementada con defensa militar basada en taekwondo y mimetismo en terreno.",
     "objectives": [
-      "Desarrollar resistencia cardiovascular y potencia muscular funcional.",
-      "Aplicar técnicas básicas de autoprotección con enfoque preventivo y ético.",
-      "Superar límites personales mediante circuitos de alta exigencia supervisados."
+      "Desarrollar resistencia cardiovascular y fuerza física funcional para pruebas de admisión militar.",
+      "Dominar ejercicios funcionales: trote, flexiones de brazo, abdominales, dominadas en barra y burpees.",
+      "Aplicar técnicas de defensa militar basada en taekwondo y mimetismo táctico con pinturas."
     ],
     "heroImage": "./assets/images/peloton-premilitar/IMG_0063.jpg",
     "model3D": {
@@ -70,36 +97,48 @@
     },
     "equipment": [
       "Tatamis de goma EVA de alta densidad",
-      "Sacos de boxeo y escudos de impacto (pao)",
-      "Cuerdas de salto",
+      "Barras de dominadas y estaciones de calistenia",
+      "Sacos de impacto (pao) y guantillas",
       "Cronómetros y pulsómetros"
     ],
-    "practicalExample": "Los estudiantes completan circuitos de alta exigencia utilizando pulsómetros para controlar su zona de frecuencia cardíaca durante rutinas en escalones e intervalos de trote, para luego pasar a los tatamis donde aplican con escudos de impacto llaves de zafada, bloqueos y esquivas de manera controlada.",
+    "practicalExample": "Los estudiantes entrenan rutinas de trote de resistencia, series de flexiones, abdominales y burpees cronometrados emulando las tablas de evaluación física de las escuelas matrices, para luego ejecutar técnicas de defensa personal y mimetismo táctico en terreno.",
     "projects": [
       {
-        "id": "mimetismo-camuflaje",
-        "title": "Mimetismo y Enmascaramiento",
+        "id": "preparacion-pruebas-fisicas",
+        "title": "Preparación Física para Escuelas Matrices",
         "status": "Prototipo",
-        "description": "Técnicas especializadas de camuflaje táctico con pinturas faciales, patrones de distorsión visual y adaptación al terreno natural para operaciones de ocultamiento y supervivencia en terreno.",
-        "image": "./assets/images/peloton-premilitar/IMG_0060.jpg",
-        "gallery": [
-          "./assets/images/peloton-premilitar/IMG_0060.jpg",
-          "./assets/images/peloton-premilitar/IMG_0063.jpg",
-          "./assets/images/peloton-premilitar/IMG_0086.jpg",
-          "./assets/images/peloton-premilitar/IMG_0159.jpg"
-        ]
-      },
-      {
-        "id": "defensa-personal-militar",
-        "title": "Defensa Personal Militar",
-        "status": "Prototipo",
-        "description": "Instrucción de autoprotección y defensa militar con base en el taekwondo, enfocada en bloqueos tácticos, esquivas, control del adversario y respuesta rápida en situaciones de emergencia.",
+        "description": "Entrenamiento físico riguroso enfocado en cumplir y superar los estándares de las pruebas de admisión de las diversas escuelas de las Fuerzas Armadas y de Orden: desarrollo de resistencia cardiovascular mediante trote continuo, fortalecimiento muscular con flexiones de brazo, abdominales, dominadas en barra, burpees y circuitos de potencia física.",
         "image": "./assets/images/peloton-premilitar/IMG_0063.jpg",
         "gallery": [
           "./assets/images/peloton-premilitar/IMG_0063.jpg",
           "./assets/images/peloton-premilitar/IMG_0151.jpg",
           "./assets/images/peloton-premilitar/IMG_0060.jpg",
           "./assets/images/peloton-premilitar/IMG_0086.jpg"
+        ]
+      },
+      {
+        "id": "defensa-personal-militar",
+        "title": "Defensa Personal Militar (Base Taekwondo)",
+        "status": "Prototipo",
+        "description": "Instrucción de defensa militar y autoprotección fundamentada técnicamente en taekwondo: bloqueos de impacto, esquivas, técnicas de golpeo táctico, caídas, neutralización de agresiones y respuesta rápida bajo estrés físico.",
+        "image": "./assets/images/peloton-premilitar/IMG_0063.jpg",
+        "gallery": [
+          "./assets/images/peloton-premilitar/IMG_0063.jpg",
+          "./assets/images/peloton-premilitar/IMG_0151.jpg",
+          "./assets/images/peloton-premilitar/IMG_0060.jpg"
+        ]
+      },
+      {
+        "id": "mimetismo-camuflaje",
+        "title": "Mimetismo y Camuflaje Táctico",
+        "status": "Prototipo",
+        "description": "Técnicas de ocultamiento y supervivencia táctica en terreno mediante pinturas faciales de camuflaje, adaptación a los colores y sombras de la vegetación, distorsión de la silueta humana y desplazamiento silencioso.",
+        "image": "./assets/images/peloton-premilitar/IMG_0060.jpg",
+        "gallery": [
+          "./assets/images/peloton-premilitar/IMG_0060.jpg",
+          "./assets/images/peloton-premilitar/IMG_0063.jpg",
+          "./assets/images/peloton-premilitar/IMG_0086.jpg",
+          "./assets/images/peloton-premilitar/IMG_0159.jpg"
         ]
       }
     ],
@@ -115,11 +154,11 @@
     "tagline": "El espíritu de cuerpo y la tradición institucional hecha sonido",
     "icon": "music",
     "accentColor": "#7c3aed",
-    "description": "El área musical canaliza el espíritu de cuerpo y la tradición histórica del liceo, aportando el marco ceremonial a la formación militar. Fomenta la memoria auditiva, el ritmo y el sentido de pertenencia institucional a través de la Banda Instrumental y la Banda de Guerra.",
+    "description": "La Banda de Guerra y la Banda Instrumental canalizan la mística, el ritmo y la identidad del Sendero Premilitar. Integrada por Tambor Mayor, Clarín Mayor, clarines, pífanos, cajas claras y su batería rítmica (bombo, platillos, redobles y lira), la delegación participa activamente en desfiles cívicos y ceremonias oficiales.",
     "objectives": [
-      "Desarrollar la memoria auditiva, el ritmo y la sincronización musical en contextos marciales.",
-      "Coordinar el desplazamiento físico con la ejecución musical impecable en desfiles.",
-      "Fortalecer el sentido de pertenencia y la mística institucional del Liceo San Nicolás."
+      "Dominar la ejecución técnica de cornetas, clarines, pífanos, cajas claras y percusión mayor.",
+      "Coordinar la marcha marcial con la interpretación de toques reglamentarios en desfiles.",
+      "Fomentar la memoria auditiva, el trabajo en ensamble y el orgullo de pertenencia institucional."
     ],
     "heroImage": "./assets/images/banda-de-guerra/IMG_0926.jpg",
     "model3D": {
@@ -130,17 +169,18 @@
       "alt": "Instrumentos musicales del área de Música e Identidad"
     },
     "equipment": [
-      "Instrumentos de viento-metal: trompetas, cornetas, cornetines",
-      "Instrumentos de percusión: cajas claras, bombos, platillos",
-      "Accesorios de mantención y afinadores electrónicos digitales"
+      "Clarines, cornetas y pífanos marciales",
+      "Cajas claras, redoblantes, bombos y platillos",
+      "Lira marcial institucional",
+      "Guanteletes, bastón de mando para Tambor Mayor y correajes"
     ],
-    "practicalExample": "La Banda Instrumental y la Banda de Guerra afinan sus instrumentos mediante procesadores digitales de tono y ensayan la sincronización de las marchas institucionales, ejecutando toques de caja y corneta mientras mantienen la alineación y el paso marcial durante los desfiles de la delegación.",
+    "practicalExample": "La Banda de Guerra ensaya la sincronización entre el Tambor Mayor, Clarín Mayor y las secciones de clarines, pífanos, cajas y batería de percusión, afinando la ejecución de marchas oficiales para su presentación en desfiles cívico-militares.",
     "projects": [
       {
-        "id": "banda-de-guerra",
-        "title": "Banda de Guerra Institucional",
+        "id": "instrumentacion-banda-guerra",
+        "title": "Estructura e Instrumentación de la Banda de Guerra",
         "status": "Prototipo",
-        "description": "Ensamble de percusión y cornetas marciales enfocado en marchas reglamentarias, toques de corneta, cajas claras, pífanos y gallardetes institucionales para ceremonias oficiales y desfiles de honor.",
+        "description": "Formación técnica por secciones musicales: Tambor Mayor en la conducción de la banda, Clarín Mayor y sección de clarines para toques de orden, pífanos melódicos, cajas claras rítmicas y la batería de percusión compuesta por bombo, platillos, redobles y lira institucional.",
         "image": "./assets/images/banda-de-guerra/IMG_0926.jpg",
         "gallery": [
           "./assets/images/banda-de-guerra/IMG_0926.jpg",
@@ -151,10 +191,10 @@
         ]
       },
       {
-        "id": "banda-instrumental",
-        "title": "Banda Instrumental y Ensamble",
+        "id": "desfiles-presentaciones-oficiales",
+        "title": "Presentaciones Oficiales y Desfiles Cívicos",
         "status": "Prototipo",
-        "description": "Interpretación y lectura de partituras para instrumentos de viento y percusión, armonizando marchas cívico-militares, himnos patrios y repertorio ceremonial del Liceo Bicentenario.",
+        "description": "Despliegue ceremonial y marcial en actos cívicos, efemérides patrias y desfiles oficiales: coordinación del paso regular, sincronización de marchas tradicionales con el pelotón de honor y evolución de escuadras ante la comunidad.",
         "image": "./assets/images/banda-de-guerra/IMG_1713.jpg",
         "gallery": [
           "./assets/images/banda-de-guerra/IMG_1713.jpg",

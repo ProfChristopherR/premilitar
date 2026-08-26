@@ -489,6 +489,7 @@ function initProjectModal() {
   const titleEl = document.getElementById('project-modal-title');
   const subareaBadge = document.getElementById('project-modal-subarea-badge');
   const statusBadge = document.getElementById('project-modal-status-badge');
+  const instructorBadge = document.getElementById('project-modal-instructor-badge');
   const descEl = document.getElementById('project-modal-description');
   const mainImg = document.getElementById('project-modal-main-img');
   const mapContainer = document.getElementById('project-modal-map-container');
@@ -541,6 +542,16 @@ function initProjectModal() {
     if (statusBadge) {
       statusBadge.textContent = statusText;
       statusBadge.className = `project-card__status project-card__status--${statusClass}`;
+    }
+
+    // Instructor
+    if (instructorBadge) {
+      if (p.instructor) {
+        instructorBadge.innerHTML = `Instructor: <strong>${p.instructor}</strong>`;
+        instructorBadge.style.display = 'inline-flex';
+      } else {
+        instructorBadge.style.display = 'none';
+      }
     }
 
     // Descripción
