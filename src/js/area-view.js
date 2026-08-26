@@ -610,13 +610,21 @@ function initProjectModal() {
     // Descripción
     if (descEl) descEl.textContent = p.description || '';
 
-    // Imagen principal inicial
-    let primaryImg = p.image || '';
-    if (primaryImg.startsWith('/assets/')) primaryImg = '.' + primaryImg;
+    // Galería de miniaturas (fotos reales descubiertas en la carpeta)
+    let galleryList = [];
+    if (Array.isArray(p.gallery) && p.gallery.length > 0) {
+      galleryList = p.gallery.map(url => url.startsWith('/assets/') ? '.' + url : url);
+    } else if (p.image) {
+      let img = p.image.startsWith('/assets/') ? '.' + p.image : p.image;
+      galleryList = [img];
+    }
+
+    // Imagen principal inicial (primera foto real de la galería)
+    let primaryImg = galleryList[0] || '';
 
     if (mainImg) {
       mainImg.src = primaryImg;
-      mainImg.style.display = 'block';
+      mainImg.style.display = primaryImg ? 'block' : 'none';
       mainImg.style.opacity = '1';
     }
     if (mapContainer) {
@@ -630,14 +638,6 @@ function initProjectModal() {
       if (mapBtnText) mapBtnText.textContent = 'Ver Mapa Interactivo';
     } else if (mapActionWrap) {
       mapActionWrap.style.display = 'none';
-    }
-
-    // Galería de miniaturas
-    let galleryList = [];
-    if (Array.isArray(p.gallery) && p.gallery.length > 0) {
-      galleryList = p.gallery.map(url => url.startsWith('/assets/') ? '.' + url : url);
-    } else if (primaryImg) {
-      galleryList = [primaryImg];
     }
 
     if (thumbsContainer) {
