@@ -270,28 +270,32 @@
         "title": "Invernadero Inteligente: Autoinver",
         "status": "Prototipo",
         "description": "Prototipo robótico autónomo diseñado con microcontroladores Arduino y sensores ambientales de temperatura, humedad y luminosidad para la automatización, monitoreo y control climático de cultivos protegidos.",
-        "subArea": "geogo"
+        "subArea": "geogo",
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "dav-mobile-station",
         "title": "DAV Mobile Station",
         "status": "Prototipo",
         "description": "Estación móvil vehicular de monitoreo geográfico equipada con sensores ambientales, telemetría y geoposicionamiento satelital para el análisis de variables territoriales en tiempo real.",
-        "subArea": "geogo"
+        "subArea": "geogo",
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "tanque-bombero",
         "title": "Tanque Bombero Automático",
         "status": "Prototipo",
         "description": "Vehículo oruga robótico con sistema de extinción autónoma, detección de focos de calor y navegación asistida por sensores para apoyo y prevención en áreas de riesgo.",
-        "subArea": "geogo"
+        "subArea": "geogo",
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "conteo-arboles-ia",
         "title": "Conteo Eficiente de Árboles con Inteligencia Artificial",
         "status": "Prototipo",
         "description": "Desarrollo y entrenamiento de modelos de Deep Learning en ArcGIS Pro para la extracción de bandas multiespectrales, detección y conteo automatizado de copas de árboles a partir de ortofotomosaicos RGB de alta resolución capturados por drones RPAS.",
-        "subArea": "geomatica"
+        "subArea": "geomatica",
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "fotogrametria-fundo-dadinco",
@@ -304,7 +308,8 @@
           "center": "-72.1854366630625,-36.54274241200271",
           "scale": "9027.977411",
           "portalUrl": "https://lpsn.maps.arcgis.com"
-        }
+        },
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "fotogrametria-liceo-san-nicolas",
@@ -317,7 +322,8 @@
           "center": "-72.2131665421711,-36.50291993433552",
           "scale": "9027.977411",
           "portalUrl": "https://lpsn.maps.arcgis.com"
-        }
+        },
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "fotogrametria-terreno-cercano",
@@ -330,7 +336,8 @@
           "center": "-72.22238472535084,-36.50577778508397",
           "scale": "9027.977411",
           "portalUrl": "https://lpsn.maps.arcgis.com"
-        }
+        },
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       },
       {
         "id": "fotogrametria-tranque-coipin",
@@ -343,7 +350,8 @@
           "center": "-72.06208643198083,-36.56545199656157",
           "scale": "9027.977411",
           "portalUrl": "https://lpsn.maps.arcgis.com"
-        }
+        },
+        "instructor": "Christopher Ruiz y Leonardo Garrido"
       }
     ],
     "media": {
