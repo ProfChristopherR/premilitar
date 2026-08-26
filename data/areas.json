@@ -401,7 +401,13 @@
         }
       ]
     },
-    "practicalExample": "",
-    "equipment": []
+    "practicalExample": "Los estudiantes planifican una misión de vuelo autónomo con drones para capturar ortomosaicos de alta resolución, georreferencian los puntos de control en terreno con GPS diferencial y procesan las imágenes en software fotogramétrico para generar gemelos digitales 3D, curvas de nivel y análisis de cobertura con inteligencia artificial.",
+    "equipment": [
+      "Drones RPAS profesionales DJI Mavic y Phantom para fotogrametría aérea y mapeo",
+      "GPS/GNSS diferencial de alta precisión y estaciones totales ópticas de topografía",
+      "Placas microcontroladoras Arduino Uno/Nano, módulos de sensores y actuadores electrónicos",
+      "Laboratorio de diseño e impresión 3D para prototipado y robótica aplicada",
+      "Software especializado de ingeniería y SIG: Pix4Dmapper, Agisoft Metashape, ArcGIS Pro y QGIS"
+    ]
   }
 ]
