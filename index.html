@@ -116,6 +116,31 @@
     </section>
 
     <!-- ═══════════════════════════════════════
+         VIDEO DESTACADO INSTITUCIONAL
+    ══════════════════════════════════════════ -->
+    <section id="video-destacado" class="section section--featured-video">
+      <div class="container">
+        <div class="featured-video-container reveal">
+          <div class="featured-video-wrapper">
+            <div id="featured-video-player"></div>
+            <div class="featured-video-controls">
+              <button type="button" id="btn-video-play-pause" class="featured-video-btn" aria-label="Pausar o reproducir video" title="Pausar / Reproducir">
+                <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span class="btn-text">Pausar</span>
+              </button>
+              <button type="button" id="btn-video-mute" class="featured-video-btn" aria-label="Activar o desactivar sonido" title="Sonido">
+                <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                <span class="btn-text">Activar Sonido</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
          ÁREAS
     ══════════════════════════════════════════ -->
     <section id="areas" class="section section--dark">

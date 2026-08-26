@@ -333,6 +333,81 @@
 .timeline-desc { font-size: 0.88rem; color: var(--text-on-light-muted); line-height: 1.55; }
 
 /* ══════════════════════════════════════════════════════
+   VIDEO DESTACADO (Landing page)
+══════════════════════════════════════════════════════ */
+.section--featured-video {
+  padding: 3.5rem 0;
+  background: var(--color-navy);
+  border-top: 1px solid rgba(197, 155, 39, 0.25);
+  border-bottom: 1px solid rgba(197, 155, 39, 0.25);
+  position: relative;
+}
+.featured-video-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.featured-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  transition: border-color var(--t-normal), box-shadow var(--t-normal);
+}
+.featured-video-wrapper:hover {
+  border-color: var(--color-gold);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(197, 155, 39, 0.2);
+}
+.featured-video-wrapper iframe,
+.featured-video-wrapper #featured-video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+.featured-video-controls {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10;
+}
+.featured-video-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(13, 27, 42, 0.85);
+  color: #fff;
+  border: 1px solid rgba(197, 155, 39, 0.5);
+  padding: 0.5rem 0.9rem;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+.featured-video-btn:hover {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  border-color: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════════════════
    GRID DE ÁREAS (Landing)
 ══════════════════════════════════════════════════════ */
 .areas-grid {
@@ -1180,5 +1255,19 @@ model-viewer {
   .area-tab {
     padding: 0 1rem;
     font-size: 0.75rem;
+  }
+
+  /* Video destacado en móvil */
+  .section--featured-video {
+    padding: 2rem 0;
+  }
+  .featured-video-controls {
+    bottom: 0.6rem;
+    right: 0.6rem;
+    gap: 0.4rem;
+  }
+  .featured-video-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.68rem;
   }
 }

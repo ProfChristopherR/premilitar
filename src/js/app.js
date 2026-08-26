@@ -19,6 +19,7 @@ function getAreaCardImage(area) {
 async function initApp() {
   initNavbar();
   initMobileMenu();
+  initFeaturedVideo();
   const [general, areas, news] = await Promise.all([
     fetchGeneralData(),
     fetchAreasData(),
@@ -188,3 +189,106 @@ function formatDate(str) {
     return new Date(+y, +m - 1, +d).toLocaleDateString('es-CL', { day: 'numeric', month: 'long', year: 'numeric' });
   } catch { return str; }
 }
+
+// ── Video Destacado (YouTube API sin controles nativos) ────────────────────────
+function initFeaturedVideo() {
+  const container = document.getElementById('featured-video-player');
+  if (!container) return;
+
+  const playPauseBtn = document.getElementById('btn-video-play-pause');
+  const muteBtn = document.getElementById('btn-video-mute');
+  const iconPlay = playPauseBtn?.querySelector('.icon-play');
+  const iconPause = playPauseBtn?.querySelector('.icon-pause');
+  const playText = playPauseBtn?.querySelector('.btn-text');
+  const iconMuted = muteBtn?.querySelector('.icon-muted');
+  const iconUnmuted = muteBtn?.querySelector('.icon-unmuted');
+  const muteText = muteBtn?.querySelector('.btn-text');
+
+  let player = null;
+  let isPlaying = true;
+
+  function createPlayer() {
+    if (!window.YT || !window.YT.Player) return;
+    player = new window.YT.Player('featured-video-player', {
+      videoId: 'mI05qd8v570',
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        loop: 1,
+        playlist: 'mI05qd8v570',
+        controls: 0,
+        showinfo: 0,
+        rel: 0,
+        modestbranding: 1,
+        playsinline: 1,
+        iv_load_policy: 3,
+        disablekb: 1,
+        fs: 0
+      },
+      events: {
+        onReady: (event) => {
+          event.target.playVideo();
+          event.target.mute();
+        },
+        onStateChange: (event) => {
+          if (event.data === window.YT.PlayerState.PLAYING) {
+            isPlaying = true;
+            if (iconPause) iconPause.style.display = 'block';
+            if (iconPlay) iconPlay.style.display = 'none';
+            if (playText) playText.textContent = 'Pausar';
+          } else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
+            isPlaying = false;
+            if (iconPause) iconPause.style.display = 'none';
+            if (iconPlay) iconPlay.style.display = 'block';
+            if (playText) playText.textContent = 'Reproducir';
+          }
+        }
+      }
+    });
+  }
+
+  if (window.YT && window.YT.Player) {
+    createPlayer();
+  } else {
+    const prevOnReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      if (typeof prevOnReady === 'function') prevOnReady();
+      createPlayer();
+    };
+    if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
+    }
+  }
+
+  if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', () => {
+      if (!player || typeof player.getPlayerState !== 'function') return;
+      if (isPlaying) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    });
+  }
+
+  if (muteBtn) {
+    muteBtn.addEventListener('click', () => {
+      if (!player || typeof player.isMuted !== 'function') return;
+      if (player.isMuted()) {
+        player.unMute();
+        if (iconMuted) iconMuted.style.display = 'none';
+        if (iconUnmuted) iconUnmuted.style.display = 'block';
+        if (muteText) muteText.textContent = 'Silenciar';
+      } else {
+        player.mute();
+        if (iconMuted) iconMuted.style.display = 'block';
+        if (iconUnmuted) iconUnmuted.style.display = 'none';
+        if (muteText) muteText.textContent = 'Activar Sonido';
+      }
+    });
+  }
+}
+
