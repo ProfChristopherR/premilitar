@@ -87,19 +87,19 @@
       {
         "id": "preparacion-pruebas-fisicas",
         "title": "Preparación Física para Escuelas Matrices",
-        "status": "Prototipo",
+        "status": "Activo",
         "description": "Entrenamiento físico riguroso enfocado en cumplir y superar los estándares de las pruebas de admisión de las diversas escuelas de las Fuerzas Armadas y de Orden: desarrollo de resistencia cardiovascular mediante trote continuo, fortalecimiento muscular con flexiones de brazo, abdominales, dominadas en barra, burpees y circuitos de potencia física."
       },
       {
         "id": "defensa-personal-militar",
         "title": "Defensa Personal Militar (Base Taekwondo)",
-        "status": "Prototipo",
+        "status": "Activo",
         "description": "Instrucción de defensa militar y autoprotección fundamentada técnicamente en taekwondo: bloqueos de impacto, esquivas, técnicas de golpeo táctico, caídas, neutralización de agresiones y respuesta rápida bajo estrés físico."
       },
       {
         "id": "mimetismo-camuflaje",
         "title": "Mimetismo y Camuflaje Táctico",
-        "status": "Prototipo",
+        "status": "Activo",
         "description": "Técnicas de ocultamiento y supervivencia táctica en terreno mediante pinturas faciales de camuflaje, adaptación a los colores y sombras de la vegetación, distorsión de la silueta humana y desplazamiento silencioso."
       }
     ],
@@ -140,13 +140,13 @@
       {
         "id": "instrumentacion-banda-guerra",
         "title": "Estructura e Instrumentación de la Banda de Guerra",
-        "status": "Prototipo",
+        "status": "Activo",
         "description": "Formación técnica por secciones musicales: Tambor Mayor en la conducción de la banda, Clarín Mayor y sección de clarines para toques de orden, pífanos melódicos, cajas claras rítmicas y la batería de percusión compuesta por bombo, platillos, redobles y lira institucional."
       },
       {
         "id": "desfiles-presentaciones-oficiales",
         "title": "Presentaciones Oficiales y Desfiles Cívicos",
-        "status": "Prototipo",
+        "status": "Activo",
         "description": "Despliegue ceremonial y marcial en actos cívicos, efemérides patrias y desfiles oficiales: coordinación del paso regular, sincronización de marchas tradicionales con el pelotón de honor y evolución de escuadras ante la comunidad."
       }
     ],
@@ -187,13 +187,13 @@
       {
         "id": "dactiloscopia-forense",
         "title": "Dactiloscopía y Huellografía Forense",
-        "status": "Prototipo",
+        "status": "Activo",
         "description": "Estudio, revelado químico y levantamiento físico de huellas dactilares latentes mediante polvos reactivos magnéticos, reactivos de ninhidrina y fuentes de luz forense ultravioleta en diversas superficies."
       },
       {
         "id": "investigacion-escena-crimen",
         "title": "Investigación y Reconstrucción de la Escena",
-        "status": "Prototipo",
+        "status": "Activo",
         "description": "Metodología científica para el acordonamiento perimetral, fijación planimétrica, recolección de indicios físicos, modelado 3D de trayectoria balística y riguroso protocolo de cadena de custodia."
       }
     ],
