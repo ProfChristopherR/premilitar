@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor de Contenido — Sendero Pre-Militar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/css/base.css" />
+  <link rel="stylesheet" href="./src/css/components.css" />
+  <style>
+    :root {
+      --admin-bg: #090e17;
+      --admin-card: #0f172a;
+      --admin-border: rgba(255, 255, 255, 0.1);
+      --admin-gold: #c59b27;
+      --admin-gold-light: #e5b83b;
+    }
+    body {
+      background: var(--admin-bg);
+      color: #e2e8f0;
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-header {
+      background: #0d1526;
+      border-bottom: 2px solid var(--admin-gold);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .admin-brand h1 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #fff;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    .admin-brand span {
+      color: var(--admin-gold);
+    }
+    .admin-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .btn-save {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #fff;
+      border: none;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding: 0.65rem 1.4rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+    }
+    .btn-save:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid var(--admin-border);
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.6rem 1.1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+      color: var(--admin-gold-light);
+    }
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      flex: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .admin-sidebar {
+      background: var(--admin-card);
+      border: 1px solid var(--admin-border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      height: fit-content;
+      position: sticky;
+      top: 5.5rem;
+    }
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--admin-gold);
+      margin-bottom: 1rem;
+    }
+    .area-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .area-nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: #94a3b8;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.65rem 0.85rem;
+      border-radius: 4px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .area-nav-btn:hover {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+    }
+    .area-nav-btn.active {
+      background: rgba(197, 155, 39, 0.15);
+      color: var(--admin-gold-light);
+      border-color: rgba(197, 155, 39, 0.4);
+      font-weight: 700;
+    }
+    .admin-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .form-card {
+      background: var(--admin-card);
+      border: 1px solid var(--admin-border);
+      border-radius: 6px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .form-card-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--admin-gold-light);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--admin-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #cbd5e1;
+      margin-bottom: 0.4rem;
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: #090e17;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      padding: 0.65rem 0.85rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--admin-gold);
+      box-shadow: 0 0 0 2px rgba(197, 155, 39, 0.2);
+    }
+    .form-textarea {
+      min-height: 85px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+    .dynamic-list-item {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+      align-items: center;
+    }
+    .btn-icon {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      width: 34px;
+      height: 34px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .btn-icon:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+    .btn-add-item {
+      background: rgba(197, 155, 39, 0.15);
+      border: 1px dashed var(--admin-gold);
+      color: var(--admin-gold-light);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .btn-add-item:hover {
+      background: var(--admin-gold);
+      color: #0d1526;
+    }
+    .project-edit-card {
+      background: #090e17;
+      border: 1px solid var(--admin-border);
+      border-left: 3px solid var(--admin-gold);
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .toast-msg {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #10b981;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1000;
+      animation: fadeIn 0.3s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 900px) {
+      .admin-layout {
+        grid-template-columns: 1fr;
+      }
+      .admin-sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="admin-header">
+    <div class="admin-brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--admin-gold)" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <h1>Panel de Contenido <span>· Sendero Pre-Militar</span></h1>
+    </div>
+    <div class="admin-actions">
+      <a href="index.html" class="btn-secondary" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        Ver Web en Vivo
+      </a>
+      <button type="button" id="btn-download-json" class="btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Descargar JSON
+      </button>
+      <button type="button" id="btn-save-all" class="btn-save">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8"/></svg>
+        Guardar Cambios
+      </button>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <!-- Barra lateral con selector de áreas -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-title">Seleccionar Área</div>
+      <div class="area-nav-list" id="admin-area-nav">
+        <!-- Renderizado dinámico de botones de área -->
+      </div>
+    </aside>
+
+    <!-- Formulario principal del área activa -->
+    <main class="admin-main" id="admin-form-container">
+      <!-- Generado dinámicamente con JavaScript -->
+    </main>
+  </div>
+
+  <div id="toast" class="toast-msg"></div>
+
+  <script type="module">
+    let areasData = [];
+    let activeAreaId = 'disciplina-formacion';
+
+    async function loadAreas() {
+      try {
+        const res = await fetch('./data/areas.json?t=' + Date.now());
+        areasData = await res.json();
+        renderNav();
+        renderActiveAreaForm();
+      } catch (err) {
+        console.error('Error cargando areas.json:', err);
+        showToast('Error cargando los datos iniciales', true);
+      }
+    }
+
+    function renderNav() {
+      const navEl = document.getElementById('admin-area-nav');
+      if (!navEl) return;
+      navEl.innerHTML = areasData.map(a => `
+        <button type="button" class="area-nav-btn ${a.id === activeAreaId ? 'active' : ''}" data-id="${a.id}">
+          <span>🛡️</span>
+          <span>${a.shortName || a.name}</span>
+        </button>
+      `).join('');
+
+      navEl.querySelectorAll('.area-nav-btn').forEach(btn => {
+        btn.onclick = () => {
+          syncCurrentFormToState();
+          activeAreaId = btn.getAttribute('data-id');
+          renderNav();
+          renderActiveAreaForm();
+        };
+      });
+    }
+
+    function renderActiveAreaForm() {
+      const area = areasData.find(a => a.id === activeAreaId);
+      const container = document.getElementById('admin-form-container');
+      if (!area || !container) return;
+
+      container.innerHTML = `
+        <!-- Información General -->
+        <div class="form-card">
+          <div class="form-card-title">
+            <span>Información General del Área</span>
+            <a href="area.html?id=${area.id}" target="_blank" class="btn-secondary" style="font-size:0.7rem;padding:0.3rem 0.7rem;">Ver Área ↗</a>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nombre del Área</label>
+            <input type="text" id="area-name" class="form-input" value="${escapeHtml(area.name || '')}" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nombre Corto (para pestañas)</label>
+            <input type="text" id="area-shortname" class="form-input" value="${escapeHtml(area.shortName || '')}" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Lema o Tagline</label>
+            <input type="text" id="area-tagline" class="form-input" value="${escapeHtml(area.tagline || '')}" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Descripción Principal</label>
+            <textarea id="area-description" class="form-textarea">${escapeHtml(area.description || '')}</textarea>
+          </div>
+        </div>
+
+        <!-- Objetivos de Aprendizaje -->
+        <div class="form-card">
+          <div class="form-card-title">Objetivos de Aprendizaje</div>
+          <div id="objectives-list">
+            ${(area.objectives || []).map((obj, i) => `
+              <div class="dynamic-list-item">
+                <input type="text" class="form-input objective-input" value="${escapeHtml(obj)}" />
+                <button type="button" class="btn-icon btn-remove-obj" title="Eliminar objetivo">&times;</button>
+              </div>
+            `).join('')}
+          </div>
+          <button type="button" id="btn-add-obj" class="btn-add-item">+ Agregar Objetivo</button>
+        </div>
+
+        <!-- Equipamiento e Instrumentos -->
+        <div class="form-card">
+          <div class="form-card-title">Equipamiento e Instrumentos</div>
+          <div id="equipment-list">
+            ${(area.equipment || []).map((eq, i) => `
+              <div class="dynamic-list-item">
+                <input type="text" class="form-input equipment-input" value="${escapeHtml(eq)}" />
+                <button type="button" class="btn-icon btn-remove-eq" title="Eliminar equipamiento">&times;</button>
+              </div>
+            `).join('')}
+          </div>
+          <button type="button" id="btn-add-eq" class="btn-add-item">+ Agregar Equipamiento</button>
+          
+          <div class="form-group" style="margin-top:1.5rem;">
+            <label class="form-label">Ejemplo Práctico de Instrucción</label>
+            <textarea id="area-practical" class="form-textarea">${escapeHtml(area.practicalExample || '')}</textarea>
+          </div>
+        </div>
+
+        <!-- Proyectos y Talleres -->
+        <div class="form-card">
+          <div class="form-card-title">Proyectos y Talleres Formativos</div>
+          <div id="projects-container">
+            ${(area.projects || []).map((p, i) => `
+              <div class="project-edit-card" data-project-index="${i}">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                  <strong style="color:var(--admin-gold);font-family:var(--font-display);font-size:0.85rem;">Proyecto #${i+1}</strong>
+                  <button type="button" class="btn-icon btn-remove-project" data-index="${i}" title="Eliminar proyecto">🗑️</button>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Título del Proyecto</label>
+                  <input type="text" class="form-input proj-title" value="${escapeHtml(p.title || '')}" />
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                  <div class="form-group">
+                    <label class="form-label">Instructor (opcional)</label>
+                    <input type="text" class="form-input proj-instructor" value="${escapeHtml(p.instructor || '')}" placeholder="Ej: Fernando Moya" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Estado</label>
+                    <select class="form-select proj-status">
+                      <option value="Prototipo" ${p.status === 'Prototipo' ? 'selected' : ''}>Prototipo</option>
+                      <option value="Activo" ${p.status === 'Activo' ? 'selected' : ''}>Activo</option>
+                      <option value="En desarrollo" ${p.status === 'En desarrollo' ? 'selected' : ''}>En desarrollo</option>
+                      <option value="Completado" ${p.status === 'Completado' ? 'selected' : ''}>Completado</option>
+                    </select>
+                  </div>
+                </div>
+                ${area.id === 'tecnologia-geomatica' ? `
+                  <div class="form-group">
+                    <label class="form-label">Sub-Área</label>
+                    <select class="form-select proj-subarea">
+                      <option value="geogo" ${p.subArea === 'geogo' ? 'selected' : ''}>GeoGo (1° y 2° Medio)</option>
+                      <option value="geomatica" ${p.subArea === 'geomatica' ? 'selected' : ''}>Geomática y Topografía (3° y 4° Medio)</option>
+                    </select>
+                  </div>
+                ` : ''}
+                <div class="form-group">
+                  <label class="form-label">Descripción del Proyecto / Taller</label>
+                  <textarea class="form-textarea proj-desc">${escapeHtml(p.description || '')}</textarea>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+          <button type="button" id="btn-add-project" class="btn-add-item" style="padding:0.75rem 1.25rem;">+ Añadir Nuevo Proyecto / Taller</button>
+        </div>
+      `;
+
+      bindFormEvents();
+    }
+
+    function bindFormEvents() {
+      // Remover / agregar objetivo
+      document.querySelectorAll('.btn-remove-obj').forEach(btn => {
+        btn.onclick = () => btn.closest('.dynamic-list-item').remove();
+      });
+      document.getElementById('btn-add-obj').onclick = () => {
+        const list = document.getElementById('objectives-list');
+        const div = document.createElement('div');
+        div.className = 'dynamic-list-item';
+        div.innerHTML = `
+          <input type="text" class="form-input objective-input" value="" placeholder="Nuevo objetivo de aprendizaje..." />
+          <button type="button" class="btn-icon btn-remove-obj">&times;</button>
+        `;
+        div.querySelector('.btn-remove-obj').onclick = () => div.remove();
+        list.appendChild(div);
+      };
+
+      // Remover / agregar equipamiento
+      document.querySelectorAll('.btn-remove-eq').forEach(btn => {
+        btn.onclick = () => btn.closest('.dynamic-list-item').remove();
+      });
+      document.getElementById('btn-add-eq').onclick = () => {
+        const list = document.getElementById('equipment-list');
+        const div = document.createElement('div');
+        div.className = 'dynamic-list-item';
+        div.innerHTML = `
+          <input type="text" class="form-input equipment-input" value="" placeholder="Nuevo equipamiento..." />
+          <button type="button" class="btn-icon btn-remove-eq">&times;</button>
+        `;
+        div.querySelector('.btn-remove-eq').onclick = () => div.remove();
+        list.appendChild(div);
+      };
+
+      // Remover / agregar proyecto
+      document.querySelectorAll('.btn-remove-project').forEach(btn => {
+        btn.onclick = () => {
+          if (confirm('¿Estás seguro de eliminar este proyecto?')) {
+            btn.closest('.project-edit-card').remove();
+          }
+        };
+      });
+      document.getElementById('btn-add-project').onclick = () => {
+        syncCurrentFormToState();
+        const area = areasData.find(a => a.id === activeAreaId);
+        if (!area) return;
+        if (!area.projects) area.projects = [];
+        area.projects.push({
+          id: 'nuevo-proyecto-' + Date.now(),
+          title: 'Nuevo Taller o Proyecto',
+          status: 'Prototipo',
+          instructor: '',
+          description: 'Escribe aquí la descripción del nuevo taller o proyecto.'
+        });
+        renderActiveAreaForm();
+      };
+    }
+
+    function syncCurrentFormToState() {
+      const area = areasData.find(a => a.id === activeAreaId);
+      if (!area) return;
+
+      const nameEl = document.getElementById('area-name');
+      const shortNameEl = document.getElementById('area-shortname');
+      const taglineEl = document.getElementById('area-tagline');
+      const descEl = document.getElementById('area-description');
+      const practicalEl = document.getElementById('area-practical');
+
+      if (nameEl) area.name = nameEl.value;
+      if (shortNameEl) area.shortName = shortNameEl.value;
+      if (taglineEl) area.tagline = taglineEl.value;
+      if (descEl) area.description = descEl.value;
+      if (practicalEl) area.practicalExample = practicalEl.value;
+
+      // Objetivos
+      const objInputs = document.querySelectorAll('.objective-input');
+      area.objectives = Array.from(objInputs).map(inp => inp.value.trim()).filter(Boolean);
+
+      // Equipamiento
+      const eqInputs = document.querySelectorAll('.equipment-input');
+      area.equipment = Array.from(eqInputs).map(inp => inp.value.trim()).filter(Boolean);
+
+      // Proyectos
+      const projectCards = document.querySelectorAll('.project-edit-card');
+      const projects = [];
+      projectCards.forEach((card, idx) => {
+        const title = card.querySelector('.proj-title')?.value.trim() || 'Proyecto sin título';
+        const instructor = card.querySelector('.proj-instructor')?.value.trim() || '';
+        const status = card.querySelector('.proj-status')?.value || 'Prototipo';
+        const description = card.querySelector('.proj-desc')?.value.trim() || '';
+        const subArea = card.querySelector('.proj-subarea')?.value || (area.projects && area.projects[idx]?.subArea);
+        const existingProj = (area.projects && area.projects[idx]) || {};
+
+        projects.push({
+          ...existingProj,
+          id: existingProj.id || title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-'),
+          title,
+          instructor: instructor || undefined,
+          status,
+          description,
+          subArea: subArea || undefined
+        });
+      });
+      area.projects = projects;
+    }
+
+    async function saveAllData() {
+      syncCurrentFormToState();
+
+      try {
+        const res = await fetch('/api/save-areas', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(areasData, null, 2)
+        });
+
+        if (res.ok) {
+          showToast('✅ ¡Contenido guardado exitosamente en areas.json!');
+        } else {
+          // Si estamos en un servidor estático sin el middleware, descargamos el archivo
+          downloadJsonBackup();
+          showToast('⚠️ Servidor en modo estático: Se descargó areas.json para reemplazar.');
+        }
+      } catch (err) {
+        downloadJsonBackup();
+        showToast('⚠️ Se descargó areas.json automáticamente.');
+      }
+    }
+
+    function downloadJsonBackup() {
+      syncCurrentFormToState();
+      const blob = new Blob([JSON.stringify(areasData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'areas.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.style.background = isError ? '#ef4444' : '#10b981';
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 4000);
+    }
+
+    function escapeHtml(str) {
+      return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    document.getElementById('btn-save-all').onclick = saveAllData;
+    document.getElementById('btn-download-json').onclick = downloadJsonBackup;
+
+    loadAreas();
+  </script>
+</body>
+</html>
