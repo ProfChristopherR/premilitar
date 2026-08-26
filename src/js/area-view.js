@@ -14,10 +14,14 @@ function getDynamicMedia(areaId) {
   const videos = [];
   let links = { videos_youtube: [], mapas_arcgis: [] };
 
-  // Collect images
+  // Collect images — excluding map preview images (named with place names)
+  const MAP_PREVIEW_PATTERN = /^(Fundo|Liceo|Terreno|Lago|result)/i;
   for (const [path, url] of Object.entries(imageGlobs)) {
     if (path.includes(`/${areaId}/`)) {
-      images.push({ url, path, caption: 'Registro fotográfico' });
+      const filename = path.split('/').pop() || '';
+      if (!MAP_PREVIEW_PATTERN.test(filename)) {
+        images.push({ url, path, caption: 'Registro fotográfico' });
+      }
     }
   }
   
@@ -429,19 +433,19 @@ function renderMultimedia(dynMedia) {
           if (v.type === 'arcgis') {
             const configStr = encodeURIComponent(JSON.stringify(v));
             return `
-              <div class="scroll-item video-item-wrap">
+              <div class="scroll-item video-item-wrap video-item-wrap--map">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
                   <p style="font-size: 0.8rem; color:var(--color-gold);">${v.title}</p>
                   <button type="button" class="project-card__btn-open-map trigger-map-fullscreen" data-arcgis-config="${configStr}" style="padding:0.25rem 0.6rem; font-size:0.65rem;">⛶ Pantalla Completa</button>
                 </div>
                 <div class="video-wrap">
-                  <arcgis-embedded-map style="width:100%; height:100%; min-height:350px; border-radius:var(--radius); display:block;" item-id="${v.itemId}" theme="light" time-zone-label-enabled center="${v.center}" scale="${v.scale}" portal-url="${v.portalUrl}"></arcgis-embedded-map>
+                  <arcgis-embedded-map style="width:100%; height:100%; border-radius:var(--radius); display:block;" item-id="${v.itemId}" theme="light" time-zone-label-enabled center="${v.center}" scale="${v.scale}" portal-url="${v.portalUrl}"></arcgis-embedded-map>
                 </div>
               </div>
             `;
           }
           return `
-            <div class="scroll-item video-item-wrap">
+            <div class="scroll-item video-item-wrap ${v.type === 'instagram' ? 'video-item-wrap--portrait' : ''}">
               <p style="font-size: 0.8rem; margin-bottom:0.5rem; color:var(--color-gold);">${v.title}</p>
               <div class="${v.type === 'instagram' ? 'video-wrap video-wrap--portrait' : 'video-wrap'}">
                 ${(typeof v.url === 'string' && v.url.endsWith('.mp4'))
