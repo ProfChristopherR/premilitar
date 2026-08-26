@@ -192,7 +192,7 @@ function renderAreaContent(area) {
     renderProjectsSimple(area);
   }
 
-  // Visor 3D solo en Tecnología/Geomática
+  // Visor 3D 
   if (area.id === TECH_AREA_ID && area.model3D) {
     const section3d = document.getElementById('modelo-3d');
     if (section3d) section3d.style.display = 'block';
@@ -201,6 +201,10 @@ function renderAreaContent(area) {
 
   // Multimedia
   renderMultimedia(dynMedia);
+
+  // Modal de Proyecto y Lightbox
+  initProjectModal();
+  initLightboxHandlers();
 }
 
 // ── Objetivos ─────────────────────────────────────────────────────────────────
@@ -242,31 +246,30 @@ function renderEquipment(equipment, practicalExample, dynamicImages) {
     `).join('');
     
     // Buscar si hay una imagen que se llame "equipo" o "equipamiento"
-    let imgObj = dynamicImages.find(img => (img.path && (img.path.toLowerCase().includes('equipo') || img.path.toLowerCase().includes('equipamiento'))) || (img.url && (img.url.toLowerCase().includes('equipo') || img.url.toLowerCase().includes('equipamiento'))));
-    let imgUrl = imgObj ? imgObj.url : (dynamicImages.length > 1 ? dynamicImages[1].url : (dynamicImages.length > 0 ? dynamicImages[0].url : './assets/images/peloton-premilitar/IMG_0060.jpg'));
+    let imgEq = dynamicImages.find(img => (img.path && (img.path.toLowerCase().includes('equip') || img.path.toLowerCase().includes('tactico'))) || (img.url && (img.url.toLowerCase().includes('equip') || img.url.toLowerCase().includes('tactico'))));
+    let imgUrl = imgEq ? imgEq.url : (dynamicImages.length > 1 ? dynamicImages[1].url : './assets/images/peloton-premilitar/IMG_0063.jpg');
 
     el.innerHTML = `
-      <div class="text-image-split reverse">
+      <div class="text-image-split">
+        <img src="${imgUrl}" alt="Equipamiento Táctico" class="split-image" loading="lazy" />
         <ul class="equipment-list">${listHtml}</ul>
-        <img src="${imgUrl}" alt="Equipamiento" class="split-image" loading="lazy" />
       </div>
     `;
   }
-  const practBlock = document.getElementById('area-practical');
-  const practText = document.getElementById('area-practical-text');
-  if (practBlock && practText && practicalExample) {
-    practBlock.style.display = 'block';
-    practText.textContent = practicalExample;
+  
+  if (practicalExample) {
+    const pEl = document.getElementById('practical-example-text');
+    if (pEl) pEl.textContent = practicalExample;
   }
 }
 
-// ── Sub-áreas (Tecnología) — en sección de equipamiento ───────────────────────
+// ── Sub-Áreas (Tecnología y Geomática) ─────────────────────────────────────────
 function renderSubAreas(subAreas) {
   const el = document.getElementById('area-subareas');
-  if (!el) return;
-  el.innerHTML = subAreas.map(sub => `
-    <div class="reveal" style="margin-bottom:3rem;">
-      <span class="subarea-level-badge">${sub.level}</span>
+  if (!el || !subAreas) return;
+
+  el.innerHTML = subAreas.map((sub, i) => `
+    <div class="subarea-block reveal">
       <div class="subarea-header"><h3>${sub.title}</h3></div>
       <p style="color:var(--text-on-light-2);margin-bottom:1.5rem;line-height:1.75;">${sub.description}</p>
       <div class="subarea-grid">
@@ -297,12 +300,12 @@ function renderProjectsBySubArea(area) {
   const el = document.getElementById('area-projects');
   const titleEl = document.getElementById('projects-title');
   if (!el) return;
-  if (titleEl) titleEl.textContent = 'Proyectos por Sub-Área';
+  if (titleEl) titleEl.textContent = 'Proyectos y Talleres por Sub-Área';
 
   // Separar proyectos: GeoGo (1°-2° medio) vs Geomática (3°-4° medio)
-  const geogoProjects   = area.projects.filter(p => p.subArea === 'geogo' || p.id?.includes('robot') || p.title.toLowerCase().includes('arduino') || p.title.toLowerCase().includes('robot') || p.title.toLowerCase().includes('cartogr'));
-  const geomProjects    = area.projects.filter(p => p.subArea === 'geomatica' || p.title.toLowerCase().includes('fotogram') || p.title.toLowerCase().includes('levant') || p.title.toLowerCase().includes('drone'));
-  // Si no hay separación clara, GeoGo = primer mitad, Geomática = segunda mitad
+  const geogoProjects   = area.projects.filter(p => p.subArea === 'geogo' || p.id?.includes('robot') || p.title.toLowerCase().includes('arduino') || p.title.toLowerCase().includes('robot') || p.title.toLowerCase().includes('invernadero') || p.title.toLowerCase().includes('tanque') || p.title.toLowerCase().includes('dav'));
+  const geomProjects    = area.projects.filter(p => p.subArea === 'geomatica' || p.title.toLowerCase().includes('fotogram') || p.title.toLowerCase().includes('levant') || p.title.toLowerCase().includes('drone') || p.title.toLowerCase().includes('arbol'));
+  
   const allProjects = area.projects;
   const half = Math.ceil(allProjects.length / 2);
   const geo = (geogoProjects.length > 0 || geomProjects.length > 0)
@@ -311,14 +314,14 @@ function renderProjectsBySubArea(area) {
 
   el.innerHTML = `
     <div style="margin-bottom:3rem;">
-      <div style="display:inline-block;background:var(--color-navy);color:var(--color-gold-light);font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.9rem;margin-bottom:1.25rem;">
+      <div style="display:inline-block;background:var(--color-navy);color:var(--color-gold-light);font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.9rem;margin-bottom:1.25rem;border-left:3px solid var(--color-gold);">
         GeoGo · 1° y 2° Medio
       </div>
       <div class="projects-grid">${geo.googo.map(p => projectCard(p)).join('')}</div>
     </div>
     <hr style="border:none;border-top:2px solid var(--border-light);margin:2rem 0 3rem;" />
     <div>
-      <div style="display:inline-block;background:var(--color-navy);color:var(--color-gold-light);font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.9rem;margin-bottom:1.25rem;">
+      <div style="display:inline-block;background:var(--color-navy);color:var(--color-gold-light);font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.9rem;margin-bottom:1.25rem;border-left:3px solid var(--color-gold);">
         Geomática y Topografía · 3° y 4° Medio
       </div>
       <div class="projects-grid">${geo.geom.map(p => projectCard(p)).join('')}</div>
@@ -327,43 +330,28 @@ function renderProjectsBySubArea(area) {
 }
 
 function projectCard(p) {
-  const statusCss = p.status ? p.status.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-') : 'activo';
+  const statusCss = p.status ? p.status.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-') : 'prototipo';
   let imgSrc = p.image || '';
   if (imgSrc.startsWith('/assets/')) {
     imgSrc = '.' + imgSrc;
   }
-  
-  if (p.arcgis) {
-    const configStr = encodeURIComponent(JSON.stringify(p.arcgis));
-    return `
-      <div class="project-card reveal">
-        <div class="project-card__map-preview" data-arcgis-config="${configStr}">
-          <img src="${imgSrc}" alt="${p.title}" loading="lazy" />
-          <div class="project-card__map-overlay">
-            <span class="project-card__status project-card__status--${statusCss}">${p.status || 'Activo'}</span>
-            <button type="button" class="project-card__btn-open-map">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-              Explorar Mapa
-            </button>
-          </div>
-        </div>
-        <div class="project-card__body">
-          <h4 class="project-card__title">${p.title}</h4>
-          <p class="project-card__desc">${p.description}</p>
-        </div>
-      </div>
-    `;
-  }
+  const projectJson = encodeURIComponent(JSON.stringify(p));
+  const hasMap = !!p.arcgis;
+  const countPhotos = (Array.isArray(p.gallery) ? p.gallery.length : 1) + (hasMap ? 1 : 0);
 
   return `
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-project-data="${projectJson}">
       <div class="project-card__img-wrap">
         <img src="${imgSrc}" alt="${p.title}" loading="lazy" />
-        <span class="project-card__status project-card__status--${statusCss}">${p.status || 'Activo'}</span>
+        <span class="project-card__status project-card__status--${statusCss}">${p.status || 'Prototipo'}</span>
       </div>
       <div class="project-card__body">
         <h4 class="project-card__title">${p.title}</h4>
         <p class="project-card__desc">${p.description}</p>
+        <div class="project-card__hint">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>Ver proyecto y galería (${countPhotos} fotos)</span>
+        </div>
       </div>
     </div>
   `;
@@ -489,6 +477,234 @@ function renderMultimedia(dynMedia) {
   el.innerHTML = html;
 
   initLightboxHandlers();
+}
+
+// ── Modal de Detalle de Proyecto (Visor expandido con galería de miniaturas) ──
+function initProjectModal() {
+  const modal = document.getElementById('project-modal');
+  if (!modal) return;
+
+  const overlay = document.getElementById('project-modal-overlay');
+  const closeBtn = document.getElementById('project-modal-close-btn');
+  const titleEl = document.getElementById('project-modal-title');
+  const subareaBadge = document.getElementById('project-modal-subarea-badge');
+  const statusBadge = document.getElementById('project-modal-status-badge');
+  const descEl = document.getElementById('project-modal-description');
+  const mainImg = document.getElementById('project-modal-main-img');
+  const mapContainer = document.getElementById('project-modal-map-container');
+  const mapActionWrap = document.getElementById('project-modal-map-action-wrap');
+  const toggleMapBtn = document.getElementById('project-modal-toggle-map');
+  const mapBtnText = document.getElementById('project-modal-map-btn-text');
+  const thumbsContainer = document.getElementById('project-modal-thumbnails');
+
+  let currentProject = null;
+  let isMapActive = false;
+
+  function closeModal() {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (mapContainer) {
+      mapContainer.innerHTML = '';
+      mapContainer.style.display = 'none';
+    }
+    if (mainImg) {
+      mainImg.style.display = 'block';
+      mainImg.src = '';
+    }
+    isMapActive = false;
+  }
+
+  function openProject(p) {
+    currentProject = p;
+    isMapActive = false;
+
+    // Título
+    if (titleEl) titleEl.textContent = p.title || 'Detalle del Proyecto';
+
+    // Sub-área badge
+    if (subareaBadge) {
+      if (p.subArea === 'geogo') {
+        subareaBadge.textContent = 'GeoGo · 1° y 2° Medio';
+        subareaBadge.style.display = 'inline-block';
+      } else if (p.subArea === 'geomatica') {
+        subareaBadge.textContent = 'Geomática y Topografía · 3° y 4° Medio';
+        subareaBadge.style.display = 'inline-block';
+      } else {
+        subareaBadge.style.display = 'none';
+      }
+    }
+
+    // Estado
+    const statusText = p.status || 'Prototipo';
+    const statusClass = statusText.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-');
+    if (statusBadge) {
+      statusBadge.textContent = statusText;
+      statusBadge.className = `project-card__status project-card__status--${statusClass}`;
+    }
+
+    // Descripción
+    if (descEl) descEl.textContent = p.description || '';
+
+    // Imagen principal inicial
+    let primaryImg = p.image || '';
+    if (primaryImg.startsWith('/assets/')) primaryImg = '.' + primaryImg;
+
+    if (mainImg) {
+      mainImg.src = primaryImg;
+      mainImg.style.display = 'block';
+      mainImg.style.opacity = '1';
+    }
+    if (mapContainer) {
+      mapContainer.innerHTML = '';
+      mapContainer.style.display = 'none';
+    }
+
+    // Botón de mapa si aplica
+    if (p.arcgis && mapActionWrap) {
+      mapActionWrap.style.display = 'block';
+      if (mapBtnText) mapBtnText.textContent = 'Ver Mapa Interactivo';
+    } else if (mapActionWrap) {
+      mapActionWrap.style.display = 'none';
+    }
+
+    // Galería de miniaturas
+    let galleryList = [];
+    if (Array.isArray(p.gallery) && p.gallery.length > 0) {
+      galleryList = p.gallery.map(url => url.startsWith('/assets/') ? '.' + url : url);
+    } else if (primaryImg) {
+      galleryList = [primaryImg];
+    }
+
+    if (thumbsContainer) {
+      let thumbsHtml = galleryList.map((url, i) => `
+        <div class="project-modal__thumb ${i === 0 ? 'active' : ''}" data-thumb-src="${url}">
+          <img src="${url}" alt="${p.title} foto ${i + 1}" loading="lazy" />
+        </div>
+      `).join('');
+
+      if (p.arcgis) {
+        thumbsHtml += `
+          <div class="project-modal__thumb" data-thumb-type="arcgis" title="Explorar Mapa ArcGIS">
+            <img src="${primaryImg}" alt="Mapa interactivo" loading="lazy" />
+            <div class="project-modal__thumb-map-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+              <span>Mapa</span>
+            </div>
+          </div>
+        `;
+      }
+
+      thumbsContainer.innerHTML = thumbsHtml;
+
+      // Eventos clic en miniaturas
+      thumbsContainer.querySelectorAll('.project-modal__thumb').forEach(thumb => {
+        thumb.addEventListener('click', (e) => {
+          e.stopPropagation();
+          thumbsContainer.querySelectorAll('.project-modal__thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+
+          const thumbType = thumb.getAttribute('data-thumb-type');
+          if (thumbType === 'arcgis') {
+            showInteractiveMap(p.arcgis);
+          } else {
+            const src = thumb.getAttribute('data-thumb-src');
+            showLargeImage(src);
+          }
+        });
+      });
+    }
+
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function showLargeImage(src) {
+    if (!mainImg) return;
+    if (mapContainer) {
+      mapContainer.style.display = 'none';
+      mapContainer.innerHTML = '';
+    }
+    isMapActive = false;
+    if (mapBtnText) mapBtnText.textContent = 'Ver Mapa Interactivo';
+
+    mainImg.style.opacity = '0.3';
+    mainImg.style.transform = 'scale(0.98)';
+    setTimeout(() => {
+      mainImg.src = src;
+      mainImg.style.display = 'block';
+      mainImg.style.opacity = '1';
+      mainImg.style.transform = 'scale(1)';
+    }, 150);
+  }
+
+  function showInteractiveMap(arcgisConfig) {
+    if (!mapContainer || !arcgisConfig) return;
+    isMapActive = true;
+    if (mainImg) mainImg.style.display = 'none';
+    if (mapBtnText) mapBtnText.textContent = 'Ver Foto Principal';
+
+    const itemId = arcgisConfig.itemId || arcgisConfig['item-id'];
+    const center = arcgisConfig.center || '-72.1854366630625,-36.54274241200271';
+    const scale = arcgisConfig.scale || '9027.977411';
+    const portalUrl = arcgisConfig.portalUrl || arcgisConfig['portal-url'] || 'https://lpsn.maps.arcgis.com';
+
+    mapContainer.innerHTML = `
+      <arcgis-embedded-map 
+        style="width: 100%; height: 100%; display: block;" 
+        item-id="${itemId}" 
+        theme="light" 
+        basemap-gallery-enabled 
+        time-zone-label-enabled 
+        center="${center}" 
+        scale="${scale}" 
+        portal-url="${portalUrl}">
+      </arcgis-embedded-map>
+    `;
+    mapContainer.style.display = 'block';
+  }
+
+  if (toggleMapBtn) {
+    toggleMapBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!currentProject || !currentProject.arcgis) return;
+      if (isMapActive) {
+        let primaryImg = currentProject.image || '';
+        if (primaryImg.startsWith('/assets/')) primaryImg = '.' + primaryImg;
+        showLargeImage(primaryImg);
+      } else {
+        showInteractiveMap(currentProject.arcgis);
+      }
+    });
+  }
+
+  // Clic en tarjetas de proyecto para abrir modal
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const dataStr = card.getAttribute('data-project-data');
+      if (!dataStr) return;
+      try {
+        const projectData = JSON.parse(decodeURIComponent(dataStr));
+        openProject(projectData);
+      } catch (err) {
+        console.error('Error al abrir modal de proyecto:', err);
+      }
+    });
+  });
+
+  if (closeBtn) closeBtn.onclick = closeModal;
+  if (overlay) overlay.onclick = closeModal;
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      closeModal();
+    }
+  });
 }
 
 function initLightboxHandlers() {

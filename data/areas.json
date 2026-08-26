@@ -27,7 +27,21 @@
       "Megafonía móvil para conducción de bloques"
     ],
     "practicalExample": "Durante la ejecución de ejercicios de escuela, la delegación realiza desplazamientos coordinados, giros, marchas a pie firme, saludos protocolares y cantos institucionales utilizando el sistema de mandos a viva voz y señales de silbato, donde un solo fallo individual afecta el bloque completo, enseñando la importancia de la responsabilidad compartida.",
-    "projects": [],
+    "projects": [
+      {
+        "id": "ejercicios-escuela",
+        "title": "Ejercicios de Escuela",
+        "status": "Prototipo",
+        "description": "Enseñan una base sólida de movimientos básicos que se enseñan en escuelas matrices de formación militar, desde giros, paso regular, hasta alineaciones y formaciones coordinadas de bloque.",
+        "image": "./assets/images/peloton-premilitar/IMG_0151.jpg",
+        "gallery": [
+          "./assets/images/peloton-premilitar/IMG_0151.jpg",
+          "./assets/images/peloton-premilitar/IMG_0159.jpg",
+          "./assets/images/peloton-premilitar/IMG_0086.jpg",
+          "./assets/images/peloton-premilitar/IMG_0060.jpg"
+        ]
+      }
+    ],
     "media": {
       "videos": [],
       "gallery": []
@@ -61,7 +75,34 @@
       "Cronómetros y pulsómetros"
     ],
     "practicalExample": "Los estudiantes completan circuitos de alta exigencia utilizando pulsómetros para controlar su zona de frecuencia cardíaca durante rutinas en escalones e intervalos de trote, para luego pasar a los tatamis donde aplican con escudos de impacto llaves de zafada, bloqueos y esquivas de manera controlada.",
-    "projects": [],
+    "projects": [
+      {
+        "id": "mimetismo-camuflaje",
+        "title": "Mimetismo y Enmascaramiento",
+        "status": "Prototipo",
+        "description": "Técnicas especializadas de camuflaje táctico con pinturas faciales, patrones de distorsión visual y adaptación al terreno natural para operaciones de ocultamiento y supervivencia en terreno.",
+        "image": "./assets/images/peloton-premilitar/IMG_0060.jpg",
+        "gallery": [
+          "./assets/images/peloton-premilitar/IMG_0060.jpg",
+          "./assets/images/peloton-premilitar/IMG_0063.jpg",
+          "./assets/images/peloton-premilitar/IMG_0086.jpg",
+          "./assets/images/peloton-premilitar/IMG_0159.jpg"
+        ]
+      },
+      {
+        "id": "defensa-personal-militar",
+        "title": "Defensa Personal Militar",
+        "status": "Prototipo",
+        "description": "Instrucción de autoprotección y defensa militar con base en el taekwondo, enfocada en bloqueos tácticos, esquivas, control del adversario y respuesta rápida en situaciones de emergencia.",
+        "image": "./assets/images/peloton-premilitar/IMG_0063.jpg",
+        "gallery": [
+          "./assets/images/peloton-premilitar/IMG_0063.jpg",
+          "./assets/images/peloton-premilitar/IMG_0151.jpg",
+          "./assets/images/peloton-premilitar/IMG_0060.jpg",
+          "./assets/images/peloton-premilitar/IMG_0086.jpg"
+        ]
+      }
+    ],
     "media": {
       "videos": [],
       "gallery": []
@@ -94,15 +135,37 @@
       "Accesorios de mantención y afinadores electrónicos digitales"
     ],
     "practicalExample": "La Banda Instrumental y la Banda de Guerra afinan sus instrumentos mediante procesadores digitales de tono y ensayan la sincronización de las marchas institucionales, ejecutando toques de caja y corneta mientras mantienen la alineación y el paso marcial durante los desfiles de la delegación.",
-    "projects": [],
+    "projects": [
+      {
+        "id": "banda-de-guerra",
+        "title": "Banda de Guerra Institucional",
+        "status": "Prototipo",
+        "description": "Ensamble de percusión y cornetas marciales enfocado en marchas reglamentarias, toques de corneta, cajas claras, pífanos y gallardetes institucionales para ceremonias oficiales y desfiles de honor.",
+        "image": "./assets/images/banda-de-guerra/IMG_0926.jpg",
+        "gallery": [
+          "./assets/images/banda-de-guerra/IMG_0926.jpg",
+          "./assets/images/banda-de-guerra/IMG_0927.jpg",
+          "./assets/images/banda-de-guerra/IMG_0938.jpg",
+          "./assets/images/banda-de-guerra/IMG_1018.jpg",
+          "./assets/images/banda-de-guerra/IMG_1029.jpg"
+        ]
+      },
+      {
+        "id": "banda-instrumental",
+        "title": "Banda Instrumental y Ensamble",
+        "status": "Prototipo",
+        "description": "Interpretación y lectura de partituras para instrumentos de viento y percusión, armonizando marchas cívico-militares, himnos patrios y repertorio ceremonial del Liceo Bicentenario.",
+        "image": "./assets/images/banda-de-guerra/IMG_1713.jpg",
+        "gallery": [
+          "./assets/images/banda-de-guerra/IMG_1713.jpg",
+          "./assets/images/banda-de-guerra/IMG_1995.jpg",
+          "./assets/images/banda-de-guerra/IMG_1029.jpg",
+          "./assets/images/banda-de-guerra/IMG_0926.jpg"
+        ]
+      }
+    ],
     "media": {
-      "videos": [
-        {
-          "title": "Banda de Guerra y Pelotón Premilitar",
-          "url": "./assets/videos/VID_20260814_112420.mp4",
-          "description": "Demostración de destrezas y formaciones en el patio de honor."
-        }
-      ],
+      "videos": [],
       "gallery": []
     }
   },
@@ -134,31 +197,35 @@
       "Software de simulación de balística y reconstrucción de escenas (Blender / CAD forense)"
     ],
     "practicalExample": "En un escenario de simulación, los alumnos delimitan la escena con cinta perimetral, reactivan huellas latentes con polvo magnético del kit forense, examinan fibras al microscopio y procesan las mediciones en software CAD para generar un informe dactiloscópico y reconstructivo con validez científica.",
-    "projects": [],
+    "projects": [
+      {
+        "id": "dactiloscopia-forense",
+        "title": "Dactiloscopía y Huellografía Forense",
+        "status": "Prototipo",
+        "description": "Estudio, revelado químico y levantamiento físico de huellas dactilares latentes mediante polvos reactivos magnéticos, reactivos de ninhidrina y fuentes de luz forense ultravioleta en diversas superficies.",
+        "image": "./assets/images/criminalistica/IMG_9123.jpg",
+        "gallery": [
+          "./assets/images/criminalistica/IMG_9123.jpg",
+          "./assets/images/criminalistica/IMG_9151.jpg",
+          "./assets/images/criminalistica/WhatsApp Image 2026-08-25 at 12.08.45.jpeg"
+        ]
+      },
+      {
+        "id": "investigacion-escena-crimen",
+        "title": "Investigación y Reconstrucción de la Escena",
+        "status": "Prototipo",
+        "description": "Metodología científica para el acordonamiento perimetral, fijación planimétrica, recolección de indicios físicos, modelado 3D de trayectoria balística y riguroso protocolo de cadena de custodia.",
+        "image": "./assets/images/criminalistica/WhatsApp Image 2026-08-25 at 12.08.55.jpeg",
+        "gallery": [
+          "./assets/images/criminalistica/WhatsApp Image 2026-08-25 at 12.08.55.jpeg",
+          "./assets/images/criminalistica/Gemini_Generated_Image_ag3foaag3foaag3f.jpg",
+          "./assets/images/criminalistica/IMG_9151.jpg"
+        ]
+      }
+    ],
     "media": {
       "videos": [],
-      "gallery": [
-        {
-          "url": "./assets/images/criminalistica/Gemini_Generated_Image_ag3foaag3foaag3f.jpg",
-          "caption": "Registro fotográfico"
-        },
-        {
-          "url": "./assets/images/criminalistica/IMG_9123.jpg",
-          "caption": "Registro fotográfico"
-        },
-        {
-          "url": "./assets/images/criminalistica/IMG_9151.jpg",
-          "caption": "Registro fotográfico"
-        },
-        {
-          "url": "./assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.45.jpeg",
-          "caption": "Registro fotográfico"
-        },
-        {
-          "url": "./assets/images/criminalistica/WhatsApp%20Image%202026-08-25%20at%2012.08.55.jpeg",
-          "caption": "Registro fotográfico"
-        }
-      ]
+      "gallery": []
     }
   },
   {
@@ -174,7 +241,7 @@
       "Dominar el pilotaje de drones RPAS, planificación de vuelo autónomo y mantenimiento aeronáutico.",
       "Generar modelos digitales del terreno y cartografía temática usando QGIS, Pix4D y Metashape."
     ],
-    "heroImage": "./assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg",
+    "heroImage": "./assets/images/geogo/proyectos/WhatsApp Image 2026-08-25 at 12.08.56.jpeg",
     "subAreas": [
       {
         "title": "Tecnología e Innovación — Proyecto GeoGo",
@@ -224,30 +291,58 @@
     "projects": [
       {
         "title": "Invernadero Inteligente: Autoinver",
-        "status": "Activo",
-        "description": "Prototipo de invernadero inteligente para monitoreo y control ambiental autónomo.",
-        "image": "/assets/images/geogo/proyectos/IMG_20260601_110649.jpg",
+        "status": "Prototipo",
+        "description": "Prototipo robótico autónomo diseñado con microcontroladores Arduino y sensores ambientales de temperatura, humedad y luminosidad para la automatización, monitoreo y control climático de cultivos protegidos.",
+        "image": "./assets/images/geogo/proyectos/IMG_20260601_110649.jpg",
+        "gallery": [
+          "./assets/images/geogo/proyectos/IMG_20260601_110649.jpg",
+          "./assets/images/geogo/proyectos/IMG_20260601_110651.jpg",
+          "./assets/images/geogo/proyectos/WhatsApp Image 2026-08-25 at 12.08.56.jpeg"
+        ],
         "subArea": "geogo"
       },
       {
         "title": "DAV Mobile Station",
-        "status": "Activo",
-        "description": "Estación móvil de monitoreo geográfico equipada con sensores ambientales.",
-        "image": "/assets/images/geogo/proyectos/WhatsApp Image 2026-08-25 at 12.08.56.jpeg",
+        "status": "Prototipo",
+        "description": "Estación móvil vehicular de monitoreo geográfico equipada con sensores ambientales, telemetría y geoposicionamiento satelital para el análisis de variables territoriales en tiempo real.",
+        "image": "./assets/images/geogo/proyectos/WhatsApp Image 2026-08-25 at 12.08.56.jpeg",
+        "gallery": [
+          "./assets/images/geogo/proyectos/WhatsApp Image 2026-08-25 at 12.08.56.jpeg",
+          "./assets/images/geogo/proyectos/IMG_20260601_110649.jpg"
+        ],
         "subArea": "geogo"
       },
       {
         "title": "Tanque Bombero Automático",
-        "status": "Completado",
-        "description": "Vehículo robótico diseñado para asistencia en incendios con bomba de agua integrada.",
-        "image": "/assets/images/geogo/proyectos/Gemini_Generated_Image_6r9kuc6r9kuc6r9k.jpg",
+        "status": "Prototipo",
+        "description": "Vehículo oruga robótico con sistema de extinción autónoma, detección de focos de calor y navegación asistida por sensores para apoyo y prevención en áreas de riesgo.",
+        "image": "./assets/images/geogo/proyectos/Gemini_Generated_Image_6r9kuc6r9kuc6r9k.jpg",
+        "gallery": [
+          "./assets/images/geogo/proyectos/Gemini_Generated_Image_6r9kuc6r9kuc6r9k.jpg",
+          "./assets/images/geogo/proyectos/IMG_20260601_110649.jpg"
+        ],
         "subArea": "geogo"
       },
       {
+        "title": "Conteo Eficiente de Árboles con Inteligencia Artificial",
+        "status": "Prototipo",
+        "description": "Desarrollo y entrenamiento de modelos de Deep Learning en ArcGIS Pro para la extracción de bandas multiespectrales, detección y conteo automatizado de copas de árboles a partir de ortofotomosaicos RGB de alta resolución capturados por drones RPAS.",
+        "image": "./assets/images/geomatica/conteo-arboles-ia-1.jpg",
+        "gallery": [
+          "./assets/images/geomatica/conteo-arboles-ia-1.jpg",
+          "./assets/images/geomatica/conteo-arboles-ia-2.jpg"
+        ],
+        "subArea": "geomatica"
+      },
+      {
         "title": "Fotogrametría: Fundo Dadinco",
-        "status": "Activo",
-        "description": "Modelo digital, ortomosaico y levantamiento topográfico interactivo en Fundo Dadinco.",
-        "image": "/assets/images/geomatica/fotogrametrias/Fundo Dadinco.jpg",
+        "status": "Prototipo",
+        "description": "Levantamiento topográfico aéreo de precisión con drones RPAS, generación de ortomosaico de alta resolución y modelo digital de elevación (MDE) para análisis agronómico del Fundo Dadinco.",
+        "image": "./assets/images/geomatica/fotogrametrias/Fundo Dadinco.jpg",
+        "gallery": [
+          "./assets/images/geomatica/fotogrametrias/Fundo Dadinco.jpg",
+          "./assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg"
+        ],
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "46a5f756e73a4a02aae134b55abe349b",
@@ -259,9 +354,13 @@
       },
       {
         "title": "Fotogrametría: Liceo San Nicolás",
-        "status": "Completado",
-        "description": "Levantamiento topográfico aéreo y gemelo digital del recinto educacional.",
-        "image": "/assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg",
+        "status": "Prototipo",
+        "description": "Gemelo digital 3D y ortomosaico georreferenciado de las instalaciones del Liceo Bicentenario San Nicolás, facilitando la planificación de infraestructura y ordenamiento espacial.",
+        "image": "./assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg",
+        "gallery": [
+          "./assets/images/geomatica/fotogrametrias/Liceo San Nicolas.jpg",
+          "./assets/images/geomatica/fotogrametrias/Terreno cercano al Liceo.jpg"
+        ],
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "722858825fe748d7a60197014d358d36",
@@ -273,9 +372,13 @@
       },
       {
         "title": "Fotogrametría: Terreno Cercano al Liceo",
-        "status": "Activo",
-        "description": "Estudio fotogramétrico y curvas de nivel en terreno agrícola y forestal aledaño.",
-        "image": "/assets/images/geomatica/fotogrametrias/Terreno cercano al Liceo.jpg",
+        "status": "Prototipo",
+        "description": "Estudio fotogramétrico territorial con curvas de nivel, modelo de pendientes y análisis geomorfológico en terrenos agrícolas y forestales aledaños al establecimiento.",
+        "image": "./assets/images/geomatica/fotogrametrias/Terreno cercano al Liceo.jpg",
+        "gallery": [
+          "./assets/images/geomatica/fotogrametrias/Terreno cercano al Liceo.jpg",
+          "./assets/images/geomatica/fotogrametrias/Fundo Dadinco.jpg"
+        ],
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "d19388a9fb8b4454abf7d62d7678e87a",
@@ -287,9 +390,13 @@
       },
       {
         "title": "Fotogrametría: Lago Coipín",
-        "status": "Activo",
-        "description": "Modelo digital de elevación y ortomosaico del área de Lago Coipín.",
-        "image": "/assets/images/geomatica/fotogrametrias/Lago Coipin.jpg",
+        "status": "Prototipo",
+        "description": "Modelo digital de elevación, ortofotografía de alta resolución y relevamiento topográfico ribereño del área de Lago Coipín para estudios hidrológicos y ambientales.",
+        "image": "./assets/images/geomatica/fotogrametrias/Lago Coipin.jpg",
+        "gallery": [
+          "./assets/images/geomatica/fotogrametrias/Lago Coipin.jpg",
+          "./assets/images/geomatica/fotogrametrias/Terreno cercano al Liceo.jpg"
+        ],
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "05d5aa94a7ca41dfb42a8b684ea82f00",
