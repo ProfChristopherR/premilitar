@@ -305,8 +305,8 @@
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "46a5f756e73a4a02aae134b55abe349b",
-          "center": "-72.1854366630625,-36.54274241200271",
-          "scale": "9027.977411",
+          "center": "-72.185437,-36.542742",
+          "scale": "4500",
           "portalUrl": "https://lpsn.maps.arcgis.com"
         },
         "instructor": "Christopher Ruiz y Leonardo Garrido"
@@ -319,8 +319,8 @@
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "722858825fe748d7a60197014d358d36",
-          "center": "-72.2131665421711,-36.50291993433552",
-          "scale": "9027.977411",
+          "center": "-72.218679,-36.504543",
+          "scale": "4500",
           "portalUrl": "https://lpsn.maps.arcgis.com"
         },
         "instructor": "Christopher Ruiz y Leonardo Garrido"
@@ -333,8 +333,8 @@
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "d19388a9fb8b4454abf7d62d7678e87a",
-          "center": "-72.22238472535084,-36.50577778508397",
-          "scale": "9027.977411",
+          "center": "-72.219862,-36.508472",
+          "scale": "4500",
           "portalUrl": "https://lpsn.maps.arcgis.com"
         },
         "instructor": "Christopher Ruiz y Leonardo Garrido"
@@ -347,8 +347,8 @@
         "subArea": "geomatica",
         "arcgis": {
           "itemId": "05d5aa94a7ca41dfb42a8b684ea82f00",
-          "center": "-72.06208643198083,-36.56545199656157",
-          "scale": "9027.977411",
+          "center": "-72.291681,-36.388449",
+          "scale": "4500",
           "portalUrl": "https://lpsn.maps.arcgis.com"
         },
         "instructor": "Christopher Ruiz y Leonardo Garrido"
