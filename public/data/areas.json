@@ -130,8 +130,8 @@
       "alt": "Instrumentos musicales del área de Música e Identidad"
     },
     "equipment": [
-      "Clarines, cornetas y pífanos marciales",
-      "Cajas claras, redoblantes, bombos y platillos",
+      "Clarines y pífanos marciales",
+      "Cajas, redoblantes, bombos y platillos",
       "Lira marcial institucional",
       "Guanteletes, bastón de mando para Tambor Mayor y correajes"
     ],
@@ -141,7 +141,7 @@
         "id": "instrumentacion-banda-guerra",
         "title": "Estructura e Instrumentación de la Banda de Guerra",
         "status": "Activo",
-        "description": "Formación técnica por secciones musicales: Tambor Mayor en la conducción de la banda, Clarín Mayor y sección de clarines para toques de orden, pífanos melódicos, cajas claras rítmicas y la batería de percusión compuesta por bombo, platillos, redobles y lira institucional."
+        "description": "Formación técnica por secciones musicales: Tambor Mayor en la conducción de la banda, Clarín Mayor y sección de clarines para toques de orden, pífanos melódicos, cajas rítmicas y la batería de percusión compuesta por bombo, platillos, redobles y lira institucional."
       },
       {
         "id": "desfiles-presentaciones-oficiales",
