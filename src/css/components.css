@@ -816,7 +816,7 @@ model-viewer {
     flex: 0 0 calc(25% - 0.75rem);
   }
   .scroll-item.video-item-wrap {
-    flex: 0 0 calc(85% - 1rem); /* Much wider for videos on PC */
+    flex: 0 0 calc(55% - 1rem); /* Video 16:9 cómodo sin ocupar toda la pantalla */
   }
   /* ArcGIS maps need more height — override aspect-ratio */
   .scroll-item.video-item-wrap--map .video-wrap {

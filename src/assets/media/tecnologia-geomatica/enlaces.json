@@ -6,38 +6,5 @@
       "url": "https://www.instagram.com/reel/DceOVpDIEoD/embed/"
     }
   ],
-  "mapas_arcgis": [
-    {
-      "title": "Fotogrametría: Fundo Dadinco",
-      "itemId": "46a5f756e73a4a02aae134b55abe349b",
-      "center": "-72.1854366630625,-36.54274241200271",
-      "scale": "9027.977411",
-      "portalUrl": "https://lpsn.maps.arcgis.com",
-      "basemapGallery": true
-    },
-    {
-      "title": "Fotogrametría: Liceo San Nicolás",
-      "itemId": "722858825fe748d7a60197014d358d36",
-      "center": "-72.21867892042727,-36.50454254353803",
-      "scale": "2256.994353",
-      "portalUrl": "https://lpsn.maps.arcgis.com",
-      "basemapGallery": true
-    },
-    {
-      "title": "Fotogrametría: Terreno Cercano al Liceo",
-      "itemId": "d19388a9fb8b4454abf7d62d7678e87a",
-      "center": "-72.22001629265958,-36.508389313611325",
-      "scale": "4513.988705",
-      "portalUrl": "https://lpsn.maps.arcgis.com",
-      "basemapGallery": true
-    },
-    {
-      "title": "Fotogrametría: Lago Coipín",
-      "itemId": "05d5aa94a7ca41dfb42a8b684ea82f00",
-      "center": "-72.29109780548886,-36.388510952963834",
-      "scale": "9027.977411",
-      "portalUrl": "https://lpsn.maps.arcgis.com",
-      "basemapGallery": true
-    }
-  ]
+  "mapas_arcgis": []
 }
