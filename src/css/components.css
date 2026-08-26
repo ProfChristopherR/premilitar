@@ -1128,9 +1128,9 @@ model-viewer {
    MULTIMEDIA — VIDEO Y GALERÍA
 ══════════════════════════════════════════════════════ */
 .media-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 .video-wrap {
   position: relative;
@@ -1142,11 +1142,12 @@ model-viewer {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 /* Reels de Instagram y videos verticales */
 .video-wrap--portrait {
   aspect-ratio: 9 / 16;
-  max-height: 560px;
+  max-height: 520px;
 }
 .video-wrap iframe, .video-wrap video {
   position: absolute;
@@ -1158,7 +1159,7 @@ model-viewer {
 }
 .media-scroll-container {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
@@ -1175,46 +1176,50 @@ model-viewer {
   border-radius: 4px;
 }
 .scroll-item {
-  flex: 0 0 calc(50% - 0.5rem);
   min-width: 0;
   scroll-snap-align: start;
 }
-/* On larger screens */
-@media (min-width: 768px) {
-  .scroll-item {
-    flex: 0 0 calc(25% - 0.75rem);
-  }
-  .scroll-item.video-item-wrap {
-    flex: 0 0 calc(55% - 1rem); /* Video 16:9 cómodo sin ocupar toda la pantalla */
-  }
-  /* ArcGIS maps need more height — override aspect-ratio */
-  .scroll-item.video-item-wrap--map .video-wrap {
-    aspect-ratio: unset;
-    height: 400px;
-  }
-  /* Portrait Instagram reels: narrower item */
-  .scroll-item.video-item-wrap--portrait {
-    flex: 0 0 320px;
-  }
+
+/* Videos 16:9 cómodos y amplios */
+.scroll-item.video-item-wrap {
+  flex: 0 0 min(100%, 520px);
 }
+/* ArcGIS maps */
+.scroll-item.video-item-wrap--map {
+  flex: 0 0 min(100%, 640px);
+}
+.scroll-item.video-item-wrap--map .video-wrap {
+  aspect-ratio: unset;
+  height: 380px;
+}
+/* Instagram Reels / YouTube Shorts */
+.scroll-item.video-item-wrap--portrait {
+  flex: 0 0 280px;
+}
+/* Galería fotográfica */
+.scroll-item.gallery-item {
+  flex: 0 0 260px;
+}
+
 @media (max-width: 767px) {
-  .scroll-item {
-    flex: 0 0 calc(85% - 0.5rem);
-  }
   .scroll-item.video-item-wrap {
-    flex: 0 0 calc(90% - 0.5rem); /* Larger on mobile too */
+    flex: 0 0 88vw;
   }
-  /* ArcGIS maps: altura fija en móvil */
+  .scroll-item.video-item-wrap--map {
+    flex: 0 0 92vw;
+  }
   .scroll-item.video-item-wrap--map .video-wrap {
     aspect-ratio: unset;
     height: 280px;
   }
-  /* Instagram Reels: item angosto para que el reel vertical se vea bien */
   .scroll-item.video-item-wrap--portrait {
-    flex: 0 0 220px;
+    flex: 0 0 240px;
   }
   .video-wrap--portrait {
-    max-height: 400px;
+    max-height: 420px;
+  }
+  .scroll-item.gallery-item {
+    flex: 0 0 220px;
   }
   
   .lightbox {
