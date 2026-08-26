@@ -58,12 +58,19 @@ function getDynamicMedia(areaId) {
   const videos = [];
   let links = { videos_youtube: [], mapas_arcgis: [] };
 
-  // Collect images — excluding map preview images (named with place names)
+  // Collect images — excluding map preview images (named with place names) y deduplicando
   const MAP_PREVIEW_PATTERN = /^(Fundo|Liceo|Terreno|Lago|result)/i;
+  const seenUrls = new Set();
+  const seenFilenames = new Set();
+
   for (const [path, url] of Object.entries(imageGlobs)) {
     if (path.includes(`/${areaId}/`)) {
       const filename = path.split('/').pop() || '';
-      if (!MAP_PREVIEW_PATTERN.test(filename)) {
+      const baseFilename = filename.toLowerCase().replace(/(_objetivo|_equipamiento|_equipo)/g, '').replace(/\s+/g, ' ');
+      
+      if (!MAP_PREVIEW_PATTERN.test(filename) && !seenUrls.has(url) && !seenFilenames.has(baseFilename)) {
+        seenUrls.add(url);
+        seenFilenames.add(baseFilename);
         images.push({ url, path, caption: 'Registro fotográfico' });
       }
     }
