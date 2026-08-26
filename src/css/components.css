@@ -856,6 +856,16 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  position: relative;
+}
+.project-modal__status-group .project-card__status {
+  position: static !important;
+  display: inline-block !important;
+  font-size: 0.72rem;
+  padding: 0.22rem 0.65rem;
+  letter-spacing: 0.06em;
+  font-weight: 800;
+  border-radius: 3px;
 }
 .project-modal__status-label {
   font-family: var(--font-display);

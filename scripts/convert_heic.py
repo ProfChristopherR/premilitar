@@ -1,25 +1,33 @@
 import os
-from PIL import Image
-import pillow_heif
+import subprocess
+import imageio_ffmpeg
 
-pillow_heif.register_heif_opener()
+ffmpeg_exe = imageio_ffmpeg.get_ffmpeg_exe()
 
-print("Buscando y convirtiendo archivos .HEIC a .JPG...")
-converted = 0
-for root, dirs, files in os.walk('.'):
-    if 'node_modules' in root or '.git' in root or '.system_generated' in root:
-        continue
-    for f in files:
-        if f.lower().endswith('.heic'):
-            src = os.path.join(root, f)
-            dest = os.path.splitext(src)[0] + '.jpg'
-            if not os.path.exists(dest):
-                try:
-                    im = Image.open(src)
-                    im.convert('RGB').save(dest, 'JPEG', quality=92)
-                    print(f"✓ Convertido: {src} -> {dest}")
-                    converted += 1
-                except Exception as e:
-                    print(f"✗ Error en {src}: {e}")
+def convert_all_heic():
+    converted_count = 0
+    for root, dirs, files in os.walk('.'):
+        # Ignore node_modules and .git
+        if 'node_modules' in root or '.git' in root or '.system_generated' in root:
+            continue
+        for f in files:
+            if f.lower().endswith(('.heic', '.heif')):
+                heic_path = os.path.join(root, f)
+                jpg_path = os.path.splitext(heic_path)[0] + '.jpg'
+                print(f"Convirtiendo HEIC a JPG: {heic_path} -> {jpg_path}")
+                res = subprocess.run([ffmpeg_exe, '-y', '-i', heic_path, '-q:v', '2', jpg_path], capture_output=True)
+                if res.returncode == 0:
+                    converted_count += 1
+                    # Remove original heic so it doesn't duplicate
+                    try:
+                        os.remove(heic_path)
+                        print(f"  [OK] Convertido y original HEIC eliminado: {heic_path}")
+                    except Exception as e:
+                        print(f"  [OK] Convertido a JPG ({e})")
+                else:
+                    print(f"  [ERROR] No se pudo convertir {heic_path}")
 
-print(f"\nListo. Total archivos nuevos convertidos: {converted}")
+    print(f"\nProceso finalizado. Total de imágenes HEIC convertidas a JPG: {converted_count}")
+
+if __name__ == '__main__':
+    convert_all_heic()

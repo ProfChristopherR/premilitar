@@ -37,19 +37,20 @@ function getProjectDynamicGallery(areaId, project) {
     }
   }
 
-  // Galería base definida en JSON (si la hay)
-  const baseGallery = Array.isArray(project.gallery)
-    ? project.gallery.map(u => u.startsWith('/assets/') ? '.' + u : u)
-    : (project.image ? [project.image.startsWith('/assets/') ? '.' + project.image : project.image] : []);
-
-  const merged = [...baseGallery];
-  for (const img of discovered) {
-    if (!merged.includes(img)) {
-      merged.push(img);
-    }
+  // Si se descubren fotos en la carpeta del proyecto, ESA ES LA GALERÍA REAL
+  // (Si agregas o borras una foto de la carpeta, se actualiza de inmediato)
+  if (discovered.length > 0) {
+    return discovered;
   }
 
-  return merged.length > 0 ? merged : (project.image ? [project.image] : []);
+  // Fallback si la carpeta aún no tiene fotos
+  if (project.image) {
+    let img = project.image;
+    if (img.startsWith('/assets/')) img = '.' + img;
+    return [img];
+  }
+
+  return [];
 }
 
 function getDynamicMedia(areaId) {
