@@ -774,6 +774,11 @@ model-viewer {
   align-items: center;
   justify-content: center;
 }
+/* Reels de Instagram y videos verticales */
+.video-wrap--portrait {
+  aspect-ratio: 9 / 16;
+  max-height: 560px;
+}
 .video-wrap iframe, .video-wrap video {
   position: absolute;
   inset: 0;

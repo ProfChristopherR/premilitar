@@ -1,5 +1,11 @@
 {
   "videos_youtube": [],
+  "videos_instagram": [
+    {
+      "title": "Reel Tecnología y Geomática",
+      "url": "https://www.instagram.com/reel/DceOVpDIEoD/embed/"
+    }
+  ],
   "mapas_arcgis": [
     {
       "title": "Fotogrametría: Fundo Dadinco",

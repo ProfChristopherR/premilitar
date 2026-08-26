@@ -39,6 +39,15 @@ function getDynamicMedia(areaId) {
   if (links.videos_youtube) {
     links.videos_youtube.forEach(url => videos.push({ title: 'Video Oficial', url }));
   }
+  if (links.videos_instagram) {
+    links.videos_instagram.forEach(item => {
+      if (typeof item === 'string') {
+        videos.push({ title: 'Instagram Reel', url: item, type: 'instagram' });
+      } else {
+        videos.push({ title: item.title || 'Instagram Reel', url: item.url, type: 'instagram' });
+      }
+    });
+  }
   if (links.mapas_arcgis) {
     links.mapas_arcgis.forEach(item => {
       if (typeof item === 'string') {
@@ -434,10 +443,10 @@ function renderMultimedia(dynMedia) {
           return `
             <div class="scroll-item video-item-wrap">
               <p style="font-size: 0.8rem; margin-bottom:0.5rem; color:var(--color-gold);">${v.title}</p>
-              <div class="video-wrap">
+              <div class="${v.type === 'instagram' ? 'video-wrap video-wrap--portrait' : 'video-wrap'}">
                 ${(typeof v.url === 'string' && v.url.endsWith('.mp4'))
                   ? `<video src="${v.url}" controls style="width: 100%; height: 100%; border-radius: var(--radius); object-fit: cover;"></video>` 
-                  : `<iframe src="${v.url}" title="${v.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+                  : `<iframe src="${v.url}" title="${v.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
                 }
               </div>
             </div>
