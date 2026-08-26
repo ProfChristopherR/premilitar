@@ -5,9 +5,52 @@ import { setupModelViewerControls } from './model-viewer-init.js';
 const TECH_AREA_ID = 'tecnologia-geomatica';
 
 // Glob all media from public folder statically
-const imageGlobs = import.meta.glob('/src/assets/media/**/*.{jpg,jpeg,png,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' });
+const imageGlobs = import.meta.glob('/src/assets/media/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', { eager: true, query: '?url', import: 'default' });
 const videoGlobs = import.meta.glob('/src/assets/media/**/*.{mp4,MP4}', { eager: true, query: '?url', import: 'default' });
 const linksGlobs = import.meta.glob('/src/assets/media/**/enlaces.json', { eager: true });
+
+// ── Descubrimiento automático de imágenes para cada proyecto ──────────────────
+function getProjectDynamicGallery(areaId, project) {
+  const projectId = (project.id || '').toLowerCase().trim();
+  const projectTitleSlug = (project.title || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-');
+
+  const discovered = [];
+
+  for (const [path, url] of Object.entries(imageGlobs)) {
+    const normPath = path.toLowerCase();
+    const inArea = normPath.includes(`/${areaId}/`);
+    const inProjectFolder = projectId && (
+      normPath.includes(`/${projectId}/`) ||
+      normPath.includes(`/${projectTitleSlug}/`)
+    );
+    const filename = normPath.split('/').pop() || '';
+    const filenameMatches = (projectId && filename.startsWith(projectId)) || (projectTitleSlug && filename.startsWith(projectTitleSlug));
+
+    if ((inArea && inProjectFolder) || filenameMatches) {
+      if (!discovered.includes(url)) {
+        discovered.push(url);
+      }
+    }
+  }
+
+  // Galería base definida en JSON (si la hay)
+  const baseGallery = Array.isArray(project.gallery)
+    ? project.gallery.map(u => u.startsWith('/assets/') ? '.' + u : u)
+    : (project.image ? [project.image.startsWith('/assets/') ? '.' + project.image : project.image] : []);
+
+  const merged = [...baseGallery];
+  for (const img of discovered) {
+    if (!merged.includes(img)) {
+      merged.push(img);
+    }
+  }
+
+  return merged.length > 0 ? merged : (project.image ? [project.image] : []);
+}
 
 function getDynamicMedia(areaId) {
   const images = [];
@@ -292,7 +335,11 @@ function renderSubAreas(subAreas) {
 function renderProjectsSimple(area) {
   const el = document.getElementById('area-projects');
   if (!el || !area.projects) return;
-  el.innerHTML = `<div class="projects-grid">${area.projects.map(p => projectCard(p)).join('')}</div>`;
+  const enrichedProjects = area.projects.map(p => {
+    const dynamicGallery = getProjectDynamicGallery(area.id, p);
+    return { ...p, gallery: dynamicGallery, image: dynamicGallery[0] || p.image };
+  });
+  el.innerHTML = `<div class="projects-grid">${enrichedProjects.map(p => projectCard(p)).join('')}</div>`;
 }
 
 // ── Proyectos por sub-área (Tecnología) ───────────────────────────────────────
@@ -302,11 +349,16 @@ function renderProjectsBySubArea(area) {
   if (!el) return;
   if (titleEl) titleEl.textContent = 'Proyectos y Talleres por Sub-Área';
 
+  const enrichedProjects = area.projects.map(p => {
+    const dynamicGallery = getProjectDynamicGallery(area.id, p);
+    return { ...p, gallery: dynamicGallery, image: dynamicGallery[0] || p.image };
+  });
+
   // Separar proyectos: GeoGo (1°-2° medio) vs Geomática (3°-4° medio)
-  const geogoProjects   = area.projects.filter(p => p.subArea === 'geogo' || p.id?.includes('robot') || p.title.toLowerCase().includes('arduino') || p.title.toLowerCase().includes('robot') || p.title.toLowerCase().includes('invernadero') || p.title.toLowerCase().includes('tanque') || p.title.toLowerCase().includes('dav'));
-  const geomProjects    = area.projects.filter(p => p.subArea === 'geomatica' || p.title.toLowerCase().includes('fotogram') || p.title.toLowerCase().includes('levant') || p.title.toLowerCase().includes('drone') || p.title.toLowerCase().includes('arbol'));
+  const geogoProjects   = enrichedProjects.filter(p => p.subArea === 'geogo' || p.id?.includes('robot') || p.title.toLowerCase().includes('arduino') || p.title.toLowerCase().includes('robot') || p.title.toLowerCase().includes('invernadero') || p.title.toLowerCase().includes('tanque') || p.title.toLowerCase().includes('dav'));
+  const geomProjects    = enrichedProjects.filter(p => p.subArea === 'geomatica' || p.title.toLowerCase().includes('fotogram') || p.title.toLowerCase().includes('levant') || p.title.toLowerCase().includes('drone') || p.title.toLowerCase().includes('arbol'));
   
-  const allProjects = area.projects;
+  const allProjects = enrichedProjects;
   const half = Math.ceil(allProjects.length / 2);
   const geo = (geogoProjects.length > 0 || geomProjects.length > 0)
     ? { googo: geogoProjects, geom: geomProjects }

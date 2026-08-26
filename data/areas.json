@@ -330,6 +330,7 @@
     ],
     "projects": [
       {
+        "id": "autoinver",
         "title": "Invernadero Inteligente: Autoinver",
         "status": "Prototipo",
         "description": "Prototipo robótico autónomo diseñado con microcontroladores Arduino y sensores ambientales de temperatura, humedad y luminosidad para la automatización, monitoreo y control climático de cultivos protegidos.",
@@ -342,6 +343,7 @@
         "subArea": "geogo"
       },
       {
+        "id": "dav-mobile-station",
         "title": "DAV Mobile Station",
         "status": "Prototipo",
         "description": "Estación móvil vehicular de monitoreo geográfico equipada con sensores ambientales, telemetría y geoposicionamiento satelital para el análisis de variables territoriales en tiempo real.",
@@ -353,6 +355,7 @@
         "subArea": "geogo"
       },
       {
+        "id": "tanque-bombero",
         "title": "Tanque Bombero Automático",
         "status": "Prototipo",
         "description": "Vehículo oruga robótico con sistema de extinción autónoma, detección de focos de calor y navegación asistida por sensores para apoyo y prevención en áreas de riesgo.",
@@ -364,6 +367,7 @@
         "subArea": "geogo"
       },
       {
+        "id": "conteo-arboles-ia",
         "title": "Conteo Eficiente de Árboles con Inteligencia Artificial",
         "status": "Prototipo",
         "description": "Desarrollo y entrenamiento de modelos de Deep Learning en ArcGIS Pro para la extracción de bandas multiespectrales, detección y conteo automatizado de copas de árboles a partir de ortofotomosaicos RGB de alta resolución capturados por drones RPAS.",
@@ -375,6 +379,7 @@
         "subArea": "geomatica"
       },
       {
+        "id": "fotogrametria-fundo-dadinco",
         "title": "Fotogrametría: Fundo Dadinco",
         "status": "Prototipo",
         "description": "Levantamiento topográfico aéreo de precisión con drones RPAS, generación de ortomosaico de alta resolución y modelo digital de elevación (MDE) para análisis agronómico del Fundo Dadinco.",
@@ -393,6 +398,7 @@
         }
       },
       {
+        "id": "fotogrametria-liceo-san-nicolas",
         "title": "Fotogrametría: Liceo San Nicolás",
         "status": "Prototipo",
         "description": "Gemelo digital 3D y ortomosaico georreferenciado de las instalaciones del Liceo Bicentenario San Nicolás, facilitando la planificación de infraestructura y ordenamiento espacial.",
@@ -411,6 +417,7 @@
         }
       },
       {
+        "id": "fotogrametria-terreno-cercano",
         "title": "Fotogrametría: Terreno Cercano al Liceo",
         "status": "Prototipo",
         "description": "Estudio fotogramétrico territorial con curvas de nivel, modelo de pendientes y análisis geomorfológico en terrenos agrícolas y forestales aledaños al establecimiento.",
@@ -429,6 +436,7 @@
         }
       },
       {
+        "id": "fotogrametria-lago-coipin",
         "title": "Fotogrametría: Lago Coipín",
         "status": "Prototipo",
         "description": "Modelo digital de elevación, ortofotografía de alta resolución y relevamiento topográfico ribereño del área de Lago Coipín para estudios hidrológicos y ambientales.",
