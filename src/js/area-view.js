@@ -52,6 +52,15 @@ function getDynamicMedia(areaId) {
       }
     });
   }
+  if (links.videos_shorts) {
+    links.videos_shorts.forEach(item => {
+      if (typeof item === 'string') {
+        videos.push({ title: 'YouTube Short', url: item, type: 'instagram' });
+      } else {
+        videos.push({ title: item.title || 'YouTube Short', url: item.url, type: 'instagram' });
+      }
+    });
+  }
   if (links.mapas_arcgis) {
     links.mapas_arcgis.forEach(item => {
       if (typeof item === 'string') {

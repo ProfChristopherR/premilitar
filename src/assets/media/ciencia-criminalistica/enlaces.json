@@ -1,4 +1,14 @@
 {
   "videos_youtube": [],
+  "videos_shorts": [
+    {
+      "title": "YouTube Short — Criminalística",
+      "url": "https://www.youtube.com/embed/dqw5B8Ci4UE"
+    },
+    {
+      "title": "YouTube Short — Criminalística",
+      "url": "https://www.youtube.com/embed/ZrRZBuoyyEY"
+    }
+  ],
   "mapas_arcgis": []
 }
