@@ -1,19 +1,26 @@
 // Controlador principal del Landing Page
 import { fetchGeneralData, fetchAreasData, fetchNewsData } from './data-loader.js';
 
-const imageGlobs = import.meta.glob('/src/assets/media/**/*.{jpg,jpeg,png,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' });
+// Glob all media from public folder statically (excluye respaldo _originals_jpg)
+const imageGlobs = import.meta.glob(
+  ['/src/assets/media/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', '!/src/assets/media/_originals_jpg/**'],
+  { eager: true, query: '?url', import: 'default' }
+);
 
 function getAreaCardImage(area) {
-  // 1. Si en areas.json hay una imagen definida, respetarla
+  // 1. Si en areas.json hay una imagen definida, respetarla y asegurar webp
   if (area.heroImage) {
-    if (area.heroImage.startsWith('./') || area.heroImage.startsWith('http')) return area.heroImage;
-    if (area.heroImage.startsWith('/assets/')) return '.' + area.heroImage;
+    let hero = area.heroImage;
+    if (hero.startsWith('http')) return hero;
+    hero = hero.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    if (hero.startsWith('/assets/')) return '.' + hero;
+    if (hero.startsWith('./assets/')) return hero;
   }
   // 2. Buscar si hay imagen específica en la carpeta del área
   for (const [path, url] of Object.entries(imageGlobs)) {
     if (path.includes(`/${area.id}/`)) return url;
   }
-  return './assets/images/peloton-premilitar/IMG_0151.jpg';
+  return './assets/images/peloton-premilitar/IMG_0151.webp';
 }
 
 async function initApp() {
@@ -139,8 +146,8 @@ function renderNews(newsList) {
 
   // Usar fotos reales para la noticia destacada de la Banda de Guerra
   const heroNewsImages = {
-    'banda-guerra-nacional-2026': './assets/images/banda-de-guerra/IMG_1029.jpg',
-    'facebook-2026': './assets/images/banda-de-guerra/IMG_0927.jpg',
+    'banda-guerra-nacional-2026': './assets/images/banda-de-guerra/IMG_1029.webp',
+    'facebook-2026': './assets/images/banda-de-guerra/IMG_0927.webp',
   };
 
   el.innerHTML = newsList.map(n => {

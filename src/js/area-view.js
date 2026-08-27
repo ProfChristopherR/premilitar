@@ -4,8 +4,11 @@ import { setupModelViewerControls } from './model-viewer-init.js';
 
 const TECH_AREA_ID = 'tecnologia-geomatica';
 
-// Glob all media from public folder statically
-const imageGlobs = import.meta.glob('/src/assets/media/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', { eager: true, query: '?url', import: 'default' });
+// Glob all media from public folder statically (excluye respaldo _originals_jpg)
+const imageGlobs = import.meta.glob(
+  ['/src/assets/media/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', '!/src/assets/media/_originals_jpg/**'],
+  { eager: true, query: '?url', import: 'default' }
+);
 const videoGlobs = import.meta.glob('/src/assets/media/**/*.{mp4,MP4}', { eager: true, query: '?url', import: 'default' });
 const linksGlobs = import.meta.glob('/src/assets/media/**/enlaces.json', { eager: true });
 

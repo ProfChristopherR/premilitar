@@ -12,7 +12,7 @@
       "Perfeccionar técnicas de escuela: marchas, giros, posiciones, saludos y cantos institucionales.",
       "Fortalecer la cohesión grupal, el respeto a los mayores y el liderazgo responsable."
     ],
-    "heroImage": "./assets/images/peloton-premilitar/IMG_0151.jpg",
+    "heroImage": "./assets/images/peloton-premilitar/IMG_0151.webp",
     "model3D": {
       "title": "Estandarte e Insignias de Delegación",
       "description": "Inspecciona el estandarte oficial y los elementos de distinción de las delegaciones del Sendero Premilitar en 360°.",
@@ -68,12 +68,12 @@
       "Dominar ejercicios funcionales: trote, flexiones de brazo, abdominales, dominadas en barra y burpees.",
       "Aplicar técnicas de defensa militar basada en taekwondo y mimetismo táctico con pinturas."
     ],
-    "heroImage": "./assets/images/peloton-premilitar/IMG_0063.jpg",
+    "heroImage": "./assets/images/peloton-premilitar/IMG_0063.webp",
     "model3D": {
       "title": "Equipamiento Táctico de Defensa Personal",
       "description": "Explora los instrumentos de entrenamiento físico y defensa personal utilizados en el sendero.",
       "src": "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
-      "poster": "./assets/images/peloton-premilitar/IMG_0063.jpg",
+      "poster": "./assets/images/peloton-premilitar/IMG_0063.webp",
       "alt": "Modelo 3D de equipamiento de acondicionamiento"
     },
     "equipment": [
@@ -121,12 +121,12 @@
       "Coordinar la marcha marcial con la interpretación de toques reglamentarios en desfiles.",
       "Fomentar la memoria auditiva, el trabajo en ensamble y el orgullo de pertenencia institucional."
     ],
-    "heroImage": "./assets/images/banda-de-guerra/IMG_0926.jpg",
+    "heroImage": "./assets/images/banda-de-guerra/IMG_0926.webp",
     "model3D": {
       "title": "Instrumentos de Viento y Percusión Marcial",
       "description": "Explora los instrumentos de la Banda de Guerra y la Banda Instrumental del Liceo San Nicolás en 3D.",
       "src": "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
-      "poster": "./assets/images/banda-de-guerra/IMG_0926.jpg",
+      "poster": "./assets/images/banda-de-guerra/IMG_0926.webp",
       "alt": "Instrumentos musicales del área de Música e Identidad"
     },
     "equipment": [
@@ -217,7 +217,7 @@
       "Dominar el pilotaje de drones RPAS, planificación de vuelo autónomo y mantenimiento aeronáutico.",
       "Generar modelos digitales del terreno y cartografía temática usando QGIS, Pix4D y Metashape."
     ],
-    "heroImage": "./assets/images/geogo/proyectos/WhatsApp Image 2026-08-25 at 12.08.56.jpeg",
+    "heroImage": "./assets/images/geogo/proyectos/dav-mobile-station-prototipo.webp",
     "subAreas": [
       {
         "title": "Tecnología e Innovación — Proyecto GeoGo",
@@ -364,39 +364,39 @@
       ],
       "gallery": [
         {
-          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.03.35%20%281%29.jpeg",
+          "url": "/assets/images/geogo/exposiciones/geogo-robotica-innovacion-01.webp",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.03.37.jpeg",
+          "url": "/assets/images/geogo/exposiciones/geogo-robotica-innovacion-02.webp",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.08.59%20%281%29.jpeg",
+          "url": "/assets/images/geogo/exposiciones/geogo-robotica-innovacion-03.webp",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/geogo/exposiciones/WhatsApp%20Image%202026-08-25%20at%2012.08.59.jpeg",
+          "url": "/assets/images/geogo/exposiciones/geogo-robotica-innovacion-04.webp",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.05.jpeg",
+          "url": "/assets/images/geomatica/geomatica-vuelo-fotogrametria-01.webp",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.10%20%281%29.jpeg",
+          "url": "/assets/images/geomatica/geomatica-vuelo-fotogrametria-02.webp",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.13.jpeg",
+          "url": "/assets/images/geomatica/geomatica-vuelo-fotogrametria-03.webp",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.26.jpeg",
+          "url": "/assets/images/geomatica/geomatica-vuelo-fotogrametria-04.webp",
           "caption": "Registro fotográfico"
         },
         {
-          "url": "/assets/images/geomatica/WhatsApp%20Image%202026-06-16%20at%2016.21.30.jpeg",
+          "url": "/assets/images/geomatica/geomatica-vuelo-fotogrametria-05.webp",
           "caption": "Registro fotográfico"
         }
       ]
