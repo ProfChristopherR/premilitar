@@ -24,48 +24,56 @@ Los estudiantes planifican una misión de vuelo autónomo con drones para captur
 ## Proyectos y Talleres
 ### Invernadero Inteligente: Autoinver
 - **ID**: autoinver
+- **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geogo
 - **Descripción**: Prototipo robótico autónomo diseñado con microcontroladores Arduino y sensores ambientales de temperatura, humedad y luminosidad para la automatización, monitoreo y control climático de cultivos protegidos.
 
 ### DAV Mobile Station
 - **ID**: dav-mobile-station
+- **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geogo
 - **Descripción**: Estación móvil vehicular de monitoreo geográfico equipada con sensores ambientales, telemetría y geoposicionamiento satelital para el análisis de variables territoriales en tiempo real.
 
 ### Tanque Bombero Automático
 - **ID**: tanque-bombero
+- **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geogo
 - **Descripción**: Vehículo oruga robótico con sistema de extinción autónoma, detección de focos de calor y navegación asistida por sensores para apoyo y prevención en áreas de riesgo.
 
 ### Conteo Eficiente de Árboles con Inteligencia Artificial
 - **ID**: conteo-arboles-ia
+- **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geomatica
 - **Descripción**: Desarrollo y entrenamiento de modelos de Deep Learning en ArcGIS Pro para la extracción de bandas multiespectrales, detección y conteo automatizado de copas de árboles a partir de ortofotomosaicos RGB de alta resolución capturados por drones RPAS.
 
 ### Fotogrametría: Fundo Dadinco
 - **ID**: fotogrametria-fundo-dadinco
+- **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geomatica
 - **Descripción**: Levantamiento topográfico aéreo de precisión con drones RPAS, generación de ortomosaico de alta resolución y modelo digital de elevación (MDE) para análisis agronómico del Fundo Dadinco.
 
 ### Fotogrametría: Liceo San Nicolás
 - **ID**: fotogrametria-liceo-san-nicolas
+- **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geomatica
 - **Descripción**: Gemelo digital 3D y ortomosaico georreferenciado de las instalaciones del Liceo Bicentenario San Nicolás, facilitando la planificación de infraestructura y ordenamiento espacial.
 
 ### Fotogrametría: Terreno Cercano al Liceo
 - **ID**: fotogrametria-terreno-cercano
+- **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geomatica
 - **Descripción**: Estudio fotogramétrico territorial con curvas de nivel, modelo de pendientes y análisis geomorfológico en terrenos agrícolas y forestales aledaños al establecimiento.
 
 ### Fotogrametría: Tranque Coipín
 - **ID**: fotogrametria-tranque-coipin
+- **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geomatica
 - **Descripción**: Modelo digital de elevación, ortofotografía de alta resolución y relevamiento topográfico ribereño del área de Tranque Coipín para estudios hidrológicos y ambientales.
