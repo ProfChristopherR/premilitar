@@ -87,6 +87,24 @@ def parse_markdown_area(md_path):
                     current_proj['status'] = line.split('- **Estado**:')[1].strip()
                 elif line.startswith('- **SubArea**:'):
                     current_proj['subArea'] = line.split('- **SubArea**:')[1].strip()
+                elif line.startswith('- **Modelo3D**:'):
+                    val = line.split('- **Modelo3D**:')[1].strip()
+                    src_match = re.search(r'src=["\']([^"\']+)["\']', val)
+                    if src_match:
+                        current_proj['model3dEmbed'] = src_match.group(1)
+                    elif val.startswith('http'):
+                        current_proj['model3dEmbed'] = val
+                    else:
+                        current_proj['model3dEmbed'] = None
+                elif line.startswith('- **Modelo 3D**:'):
+                    val = line.split('- **Modelo 3D**:')[1].strip()
+                    src_match = re.search(r'src=["\']([^"\']+)["\']', val)
+                    if src_match:
+                        current_proj['model3dEmbed'] = src_match.group(1)
+                    elif val.startswith('http'):
+                        current_proj['model3dEmbed'] = val
+                    else:
+                        current_proj['model3dEmbed'] = None
                 elif line.startswith('- **Descripción**:'):
                     current_proj['description'] = line.split('- **Descripción**:')[1].strip()
 
@@ -128,6 +146,9 @@ def sync_all_markdown():
                 area_dict[aid]['description'] = parsed['description']
                 area_dict[aid]['objectives'] = parsed['objectives']
                 area_dict[aid]['equipment'] = parsed['equipment']
+                # Remover model3D global de tecnologia-geomatica si existe
+                if aid == 'tecnologia-geomatica' and 'model3D' in area_dict[aid]:
+                    del area_dict[aid]['model3D']
                 # Preservar configuraciones de ArcGIS y metadatos en proyectos
                 existing_proj_dict = {p['id']: p for p in area_dict[aid].get('projects', [])}
                 merged_projects = []
