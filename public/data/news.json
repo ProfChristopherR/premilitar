@@ -1,5 +1,23 @@
 [
   {
+    "id": "test-2026",
+    "type": "own-post",
+    "title": "test",
+    "date": "2026-09-02",
+    "category": "",
+    "badge": "",
+    "featured": false,
+    "summary": "test",
+    "author": "Prof. Christopher Ruiz",
+    "coverImage": "",
+    "body": "test",
+    "gallery": [],
+    "tags": [],
+    "source": "Sendero Pre-Militar",
+    "sourceUrl": "",
+    "image": ""
+  },
+  {
     "id": "estudiantes-del-sendero-premilitar-de-san-nicolas-destacan-c-2026",
     "type": "own-post",
     "title": "Estudiantes del Sendero Premilitar de San Nicolás destacan con proyectos de innovación tecnológica en la 1.ª Exposición Internacional del Ejército",
