@@ -33,6 +33,29 @@ export default {
       );
     }
 
+    // Endpoint: Extraer metadatos e imagen de portada de una URL externa
+    if (url.pathname === '/extract-meta') {
+      const targetUrl = url.searchParams.get('url') || '';
+      if (!targetUrl) {
+        return new Response(
+          JSON.stringify({ success: false, error: 'Falta el parámetro url.' }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+      try {
+        const meta = await fetchPageMetadata(targetUrl);
+        return new Response(
+          JSON.stringify({ success: true, meta }),
+          { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      } catch (err) {
+        return new Response(
+          JSON.stringify({ success: false, error: err.message || 'Error al obtener metadatos de la URL' }),
+          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
     // 1. Extraer contraseña enviada por el cliente
     let clientPassword = '';
     const authHeader = request.headers.get('Authorization') || '';
@@ -268,5 +291,78 @@ function toBase64String(data) {
   }
   return btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
 }
+
+async function fetchPageMetadata(targetUrl) {
+  const res = await fetch(targetUrl, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    },
+    redirect: 'follow',
+  });
+
+  if (!res.ok) {
+    throw new Error('No se pudo acceder a la URL externa (código HTTP ' + res.status + ')');
+  }
+
+  const html = await res.text();
+
+  // 1. Extraer imagen (og:image, twitter:image)
+  let image = '';
+  const ogImgMatch = html.match(/property=["']og:image["'][^>]*content=["']([^"']+)/i) ||
+                     html.match(/content=["']([^"']+)["'][^>]*property=["']og:image["']/i) ||
+                     html.match(/name=["']twitter:image["'][^>]*content=["']([^"']+)/i) ||
+                     html.match(/content=["']([^"']+)["'][^>]*name=["']twitter:image["']/i);
+
+  if (ogImgMatch && ogImgMatch[1]) {
+    image = ogImgMatch[1].trim();
+    try { image = new URL(image, targetUrl).href; } catch (_) {}
+  }
+
+  // 2. Extraer título (og:title o <title>)
+  let title = '';
+  const ogTitleMatch = html.match(/property=["']og:title["'][^>]*content=["']([^"']+)/i) ||
+                       html.match(/content=["']([^"']+)["'][^>]*property=["']og:title["']/i) ||
+                       html.match(/<title[^>]*>([^<]+)<\/title>/i);
+  if (ogTitleMatch && ogTitleMatch[1]) {
+    title = decodeHtmlEntities(ogTitleMatch[1].trim());
+  }
+
+  // 3. Extraer resumen (og:description o meta description)
+  let description = '';
+  const ogDescMatch = html.match(/property=["']og:description["'][^>]*content=["']([^"']+)/i) ||
+                      html.match(/content=["']([^"']+)["'][^>]*property=["']og:description["']/i) ||
+                      html.match(/name=["']description["'][^>]*content=["']([^"']+)/i) ||
+                      html.match(/content=["']([^"']+)["'][^>]*name=["']description["']/i);
+  if (ogDescMatch && ogDescMatch[1]) {
+    description = decodeHtmlEntities(ogDescMatch[1].trim());
+  }
+
+  // 4. Extraer nombre del medio/fuente (og:site_name o hostname)
+  let source = '';
+  const ogSiteMatch = html.match(/property=["']og:site_name["'][^>]*content=["']([^"']+)/i) ||
+                      html.match(/content=["']([^"']+)["'][^>]*property=["']og:site_name["']/i);
+  if (ogSiteMatch && ogSiteMatch[1]) {
+    source = decodeHtmlEntities(ogSiteMatch[1].trim());
+  } else {
+    try { source = new URL(targetUrl).hostname.replace(/^www\./, ''); } catch (_) {}
+  }
+
+  return { image, title, description, source };
+}
+
+function decodeHtmlEntities(str) {
+  return (str || '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 
 
