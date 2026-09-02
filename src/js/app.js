@@ -151,33 +151,136 @@ function renderNews(newsList) {
   };
 
   el.innerHTML = newsList.map(n => {
-    const img = heroNewsImages[n.id] || n.image;
+    const img = heroNewsImages[n.id] || n.coverImage || n.image;
+    const isOwn = n.type === 'own-post';
     return `
-    <article class="news-card" data-href="${n.sourceUrl || '#'}">
+    <article class="news-card ${isOwn ? 'news-card--own' : ''}" data-news-id="${n.id}" data-href="${n.sourceUrl || '#'}">
       <div class="news-card__img-wrap">
         <img src="${img}" alt="${n.title}" class="news-card__img" loading="lazy" />
         <span class="news-card__category">${n.category}</span>
         ${n.featured ? '<span class="news-card__featured">Destacado</span>' : ''}
+        ${isOwn ? '<span class="news-card__badge-own">📖 Artículo</span>' : ''}
       </div>
       <div class="news-card__body">
-        <p class="news-card__source">${n.source}</p>
+        <p class="news-card__source">${n.source || (isOwn ? 'Sendero Pre-Militar' : '')}</p>
         <p class="news-card__date">${formatDate(n.date)}</p>
         <h3 class="news-card__title">${n.title}</h3>
         <p class="news-card__summary">${n.summary}</p>
         <div class="news-card__read-more">
-          <span>Leer en ${n.source}</span>
+          ${isOwn
+            ? '<span>Leer artículo</span>'
+            : `<span>Leer en ${n.source}</span>`
+          }
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </div>
     </article>
   `}).join('');
 
+  // Inyectar modal de noticia propia si no existe
+  if (!document.getElementById('news-modal')) {
+    const modalHtml = `
+    <div id="news-modal" class="news-modal" role="dialog" aria-modal="true" style="display:none;">
+      <div class="news-modal__overlay" id="news-modal-overlay"></div>
+      <div class="news-modal__box">
+        <button class="news-modal__close" id="news-modal-close" aria-label="Cerrar">&times;</button>
+        <div class="news-modal__content" id="news-modal-content"></div>
+      </div>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    document.getElementById('news-modal-overlay').addEventListener('click', closeNewsModal);
+    document.getElementById('news-modal-close').addEventListener('click', closeNewsModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNewsModal(); });
+  }
+
+  // Store newsData for modal
+  el._newsData = newsList;
+
   el.querySelectorAll('.news-card').forEach(card => {
     card.addEventListener('click', () => {
-      const href = card.getAttribute('data-href');
-      if (href && href !== '#') window.open(href, '_blank', 'noopener,noreferrer');
+      const id   = card.getAttribute('data-news-id');
+      const news = (el._newsData || []).find(n => n.id === id);
+      if (!news) return;
+      if (news.type === 'own-post') {
+        openNewsModal(news);
+      } else {
+        const href = card.getAttribute('data-href');
+        if (href && href !== '#') window.open(href, '_blank', 'noopener,noreferrer');
+      }
     });
   });
+}
+
+function openNewsModal(news) {
+  const modal   = document.getElementById('news-modal');
+  const content = document.getElementById('news-modal-content');
+  if (!modal || !content) return;
+
+  const coverHtml = news.coverImage
+    ? `<img src="${news.coverImage}" alt="${news.title}" class="news-modal__cover" loading="lazy" />`
+    : '';
+
+  const galleryHtml = (news.gallery && news.gallery.length)
+    ? `<div class="news-modal__gallery">
+        <h4 class="news-modal__gallery-title">📸 Galería</h4>
+        <div class="news-modal__gallery-grid">
+          ${news.gallery.map(item => {
+            if (item.type === 'image') {
+              return `<img src="${item.src}" alt="${item.caption || ''}" class="news-modal__gallery-img" loading="lazy" title="${item.caption || ''}" />`;
+            }
+            const ytMatch = (item.src || '').match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+            const ytId = ytMatch ? ytMatch[1] : null;
+            if (ytId) {
+              return `<div class="news-modal__video-wrap"><iframe src="https://www.youtube.com/embed/${ytId}" title="${item.caption || 'Video'}" allowfullscreen loading="lazy"></iframe></div>`;
+            }
+            return `<a href="${item.src}" target="_blank" rel="noopener" class="news-modal__video-link">▶ ${item.caption || 'Ver video'}</a>`;
+          }).join('')}
+        </div>
+      </div>`
+    : '';
+
+  const tagsHtml = (news.tags && news.tags.length)
+    ? `<div class="news-modal__tags">${news.tags.map(t => `<span class="news-modal__tag">${t}</span>`).join('')}</div>`
+    : '';
+
+  content.innerHTML = `
+    ${coverHtml}
+    <div class="news-modal__header">
+      ${news.category ? `<span class="news-modal__category">${news.category}</span>` : ''}
+      <h2 class="news-modal__title">${news.title}</h2>
+      <div class="news-modal__meta">
+        <span>📅 ${formatDate(news.date)}</span>
+        ${news.author ? `<span>✍️ ${news.author}</span>` : ''}
+      </div>
+    </div>
+    <div class="news-modal__body">${news.body || ''}</div>
+    ${tagsHtml}
+    ${galleryHtml}
+  `;
+
+  // Lightbox for gallery images
+  content.querySelectorAll('.news-modal__gallery-img').forEach(img => {
+    img.addEventListener('click', () => {
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      if (lb && lbImg) {
+        lbImg.src = img.src;
+        lbImg.style.display = 'block';
+        const mapWrap = document.getElementById('lightbox-map-wrap');
+        if (mapWrap) mapWrap.style.display = 'none';
+        lb.classList.add('active');
+      }
+    });
+  });
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeNewsModal() {
+  const modal = document.getElementById('news-modal');
+  if (modal) modal.style.display = 'none';
+  document.body.style.overflow = '';
 }
 
 // ── Scroll Reveal ─────────────────────────────────────────────────────────────

@@ -1,4 +1,137 @@
 /* ══════════════════════════════════════════════════════
+   MODAL DE NOTICIA PROPIA (own-post)
+══════════════════════════════════════════════════════ */
+.news-modal {
+  display: none;
+  position: fixed; inset: 0;
+  z-index: 1500;
+  align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.news-modal__overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(6px);
+}
+.news-modal__box {
+  position: relative;
+  background: #0d1525;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  width: 100%; max-width: 780px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+  animation: nmSlideIn 0.3s ease;
+  z-index: 1;
+}
+@keyframes nmSlideIn {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.news-modal__close {
+  position: sticky; top: 0.75rem;
+  float: right; margin: 0.75rem 0.75rem 0 0;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; font-size: 1.4rem; line-height: 1;
+  width: 34px; height: 34px;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; z-index: 10;
+}
+.news-modal__close:hover { background: rgba(239,68,68,0.5); }
+.news-modal__cover {
+  width: 100%; max-height: 340px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  display: block;
+}
+.news-modal__content { padding: 0 0 2rem; }
+.news-modal__header { padding: 1.5rem 2rem 1rem; }
+.news-modal__category {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #c59b27; background: rgba(197,155,39,0.15);
+  border-radius: 3px; padding: 0.2rem 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.news-modal__title {
+  font-family: var(--font-display, 'Cinzel', serif);
+  font-size: 1.5rem; font-weight: 700;
+  color: #fff; line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+.news-modal__meta {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  font-size: 0.8rem; color: #64748b;
+}
+.news-modal__body {
+  padding: 0 2rem;
+  font-size: 0.95rem; line-height: 1.8;
+  color: #cbd5e1;
+}
+.news-modal__body h2 { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 1.25rem 0 0.5rem; }
+.news-modal__body h3 { font-size: 1rem; font-weight: 700; color: #e2e8f0; margin: 1rem 0 0.4rem; }
+.news-modal__body p  { margin-bottom: 0.85rem; }
+.news-modal__body ul, .news-modal__body ol { padding-left: 1.5rem; margin-bottom: 0.85rem; }
+.news-modal__body li { margin-bottom: 0.3rem; }
+.news-modal__body strong { color: #e5b83b; }
+.news-modal__tags {
+  padding: 0.75rem 2rem;
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.news-modal__tag {
+  background: rgba(197,155,39,0.12);
+  color: #e5b83b;
+  font-size: 0.72rem; font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+.news-modal__gallery { padding: 1rem 2rem 0; }
+.news-modal__gallery-title { font-size: 0.85rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.75rem; }
+.news-modal__gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+.news-modal__gallery-img {
+  width: 100%; height: 120px; object-fit: cover;
+  border-radius: 6px; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+}
+.news-modal__gallery-img:hover { transform: scale(1.03); box-shadow: 0 4px 16px rgba(0,0,0,0.4); border-color: #c59b27; }
+.news-modal__video-wrap {
+  grid-column: 1 / -1;
+  position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+  border-radius: 8px;
+}
+.news-modal__video-wrap iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: none;
+}
+.news-modal__video-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: #93c5fd; font-size: 0.85rem; font-weight: 600;
+  text-decoration: none;
+}
+.news-modal__video-link:hover { color: #fff; }
+
+/* Badge de artículo propio en las tarjetas */
+.news-card__badge-own {
+  position: absolute; top: 0.5rem; left: 0.5rem;
+  background: rgba(59,130,246,0.85);
+  color: #fff; font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.2rem 0.5rem; border-radius: 3px;
+  backdrop-filter: blur(4px);
+}
+.news-card--own { cursor: pointer; }
+.news-card--own .news-card__read-more { color: #3b82f6; }
+
+/* ══════════════════════════════════════════════════════
    NAVBAR PRINCIPAL (Landing page)
 ══════════════════════════════════════════════════════ */
 .navbar {
