@@ -1,6 +1,5 @@
 // Controlador de la vista detallada de Área
 import { fetchAreasData, fetchAreaById } from './data-loader.js';
-import { setupModelViewerControls } from './model-viewer-init.js';
 
 const TECH_AREA_ID = 'tecnologia-geomatica';
 
@@ -11,6 +10,17 @@ const imageGlobs = import.meta.glob(
 );
 const videoGlobs = import.meta.glob('/src/assets/media/**/*.{mp4,MP4}', { eager: true, query: '?url', import: 'default' });
 const linksGlobs = import.meta.glob('/src/assets/media/**/enlaces.json', { eager: true });
+
+// Helper para limpiar y extraer URLs seguras de iframes o enlaces directos
+export function getCleanEmbedUrl(raw) {
+  if (!raw || typeof raw !== 'string') return null;
+  const trimmed = raw.trim();
+  if (!trimmed) return null;
+  const match = trimmed.match(/src=["']([^"']+)["']/i);
+  if (match && match[1]) return match[1];
+  if (trimmed.startsWith('http')) return trimmed;
+  return null;
+}
 
 // ── Descubrimiento automático de imágenes para cada proyecto ──────────────────
 function getProjectDynamicGallery(areaId, project) {
@@ -51,6 +61,10 @@ function getProjectDynamicGallery(areaId, project) {
     let img = project.image;
     if (img.startsWith('/assets/')) img = '.' + img;
     return [img];
+  }
+
+  if (project.subArea === 'geogo') {
+    return ['./assets/images/geogo/exposiciones/geogo-robotica-innovacion-03.webp'];
   }
 
   return [];
@@ -290,13 +304,6 @@ function renderAreaContent(area) {
     renderProjectsSimple(area);
   }
 
-  // Visor 3D 
-  if (area.id === TECH_AREA_ID && area.model3D) {
-    const section3d = document.getElementById('modelo-3d');
-    if (section3d) section3d.style.display = 'block';
-    renderModelViewer(area.model3D);
-  }
-
   // Multimedia
   renderMultimedia(dynMedia);
 
@@ -444,78 +451,39 @@ function projectCard(p) {
   }
   const projectJson = encodeURIComponent(JSON.stringify(p));
   const hasMap = !!p.arcgis;
-  const countPhotos = (Array.isArray(p.gallery) ? p.gallery.length : 1) + (hasMap ? 1 : 0);
+  const clean3dUrl = getCleanEmbedUrl(p.model3dEmbed);
+  const has3D = !!clean3dUrl;
+  const countPhotos = (Array.isArray(p.gallery) ? p.gallery.length : 1) + (hasMap ? 1 : 0) + (has3D ? 1 : 0);
+
+  let hintText = `Ver proyecto y galería (${countPhotos} fotos)`;
+  if (has3D) {
+    hintText = `Ver proyecto, galería y modelo 3D`;
+  } else if (hasMap) {
+    hintText = `Ver proyecto, galería y mapa`;
+  }
 
   return `
     <div class="project-card reveal" data-project-data="${projectJson}">
       <div class="project-card__img-wrap">
         <img src="${imgSrc}" alt="${p.title}" loading="lazy" />
         <span class="project-card__status project-card__status--${statusCss}">${p.status || 'Prototipo'}</span>
+        ${has3D ? `
+          <span class="project-card__badge-3d" title="Incluye modelo 3D interactivo">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            3D
+          </span>
+        ` : ''}
       </div>
       <div class="project-card__body">
         <h4 class="project-card__title">${p.title}</h4>
         <p class="project-card__desc">${p.description}</p>
         <div class="project-card__hint">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          <span>Ver proyecto y galería (${countPhotos} fotos)</span>
+          <span>${hintText}</span>
         </div>
       </div>
     </div>
   `;
-}
-
-// ── Visor 3D ──────────────────────────────────────────────────────────────────
-function renderModelViewer(model3D) {
-  const viewer = document.getElementById('area-model-viewer');
-  const controls = document.getElementById('area-viewer-controls');
-  if (!viewer || !model3D) return;
-
-  const models = Array.isArray(model3D) ? model3D : [model3D];
-  let currentIndex = 0;
-
-  function showModel(index) {
-    const m = models[index];
-    viewer.src = m.src;
-    if (m.poster) viewer.setAttribute('poster', m.poster);
-    viewer.alt = m.alt || m.title;
-    setById('model3d-title', m.title);
-    setById('model3d-desc', m.description);
-  }
-
-  showModel(0);
-  setupModelViewerControls(viewer, controls);
-
-  // If multiple, add navigation buttons
-  if (models.length > 1) {
-    const navDiv = document.createElement('div');
-    navDiv.style.cssText = "display:flex; gap:1rem; justify-content:center; margin-top:1rem;";
-    
-    const prevBtn = document.createElement('button');
-    prevBtn.innerHTML = "◀ Anterior";
-    prevBtn.className = "btn-primary";
-    prevBtn.style.padding = "0.5rem 1rem";
-    prevBtn.onclick = () => {
-      currentIndex = (currentIndex - 1 + models.length) % models.length;
-      showModel(currentIndex);
-    };
-
-    const nextBtn = document.createElement('button');
-    nextBtn.innerHTML = "Siguiente ▶";
-    nextBtn.className = "btn-primary";
-    nextBtn.style.padding = "0.5rem 1rem";
-    nextBtn.onclick = () => {
-      currentIndex = (currentIndex + 1) % models.length;
-      showModel(currentIndex);
-    };
-
-    navDiv.appendChild(prevBtn);
-    navDiv.appendChild(nextBtn);
-    
-    const textDesc = document.getElementById('model3d-desc');
-    if (textDesc && textDesc.parentElement) {
-      textDesc.parentElement.appendChild(navDiv);
-    }
-  }
 }
 
 // ── Multimedia ────────────────────────────────────────────────────────────────
@@ -603,10 +571,15 @@ function initProjectModal() {
   const mapActionWrap = document.getElementById('project-modal-map-action-wrap');
   const toggleMapBtn = document.getElementById('project-modal-toggle-map');
   const mapBtnText = document.getElementById('project-modal-map-btn-text');
+  const model3dContainer = document.getElementById('project-modal-model3d-container');
+  const model3dActionWrap = document.getElementById('project-modal-3d-action-wrap');
+  const toggle3dBtn = document.getElementById('project-modal-toggle-3d');
+  const model3dBtnText = document.getElementById('project-modal-3d-btn-text');
   const thumbsContainer = document.getElementById('project-modal-thumbnails');
 
   let currentProject = null;
   let isMapActive = false;
+  let is3dActive = false;
 
   function closeModal() {
     modal.style.display = 'none';
@@ -616,16 +589,22 @@ function initProjectModal() {
       mapContainer.innerHTML = '';
       mapContainer.style.display = 'none';
     }
+    if (model3dContainer) {
+      model3dContainer.innerHTML = '';
+      model3dContainer.style.display = 'none';
+    }
     if (mainImg) {
       mainImg.style.display = 'block';
       mainImg.src = '';
     }
     isMapActive = false;
+    is3dActive = false;
   }
 
   function openProject(p) {
     currentProject = p;
     isMapActive = false;
+    is3dActive = false;
 
     // Título
     if (titleEl) titleEl.textContent = p.title || 'Detalle del Proyecto';
@@ -685,6 +664,10 @@ function initProjectModal() {
       mapContainer.innerHTML = '';
       mapContainer.style.display = 'none';
     }
+    if (model3dContainer) {
+      model3dContainer.innerHTML = '';
+      model3dContainer.style.display = 'none';
+    }
 
     // Botón de mapa si aplica
     if (p.arcgis && mapActionWrap) {
@@ -692,6 +675,15 @@ function initProjectModal() {
       if (mapBtnText) mapBtnText.textContent = 'Ver Mapa Interactivo';
     } else if (mapActionWrap) {
       mapActionWrap.style.display = 'none';
+    }
+
+    // Botón de modelo 3D si aplica
+    const clean3dUrl = getCleanEmbedUrl(p.model3dEmbed);
+    if (clean3dUrl && model3dActionWrap) {
+      model3dActionWrap.style.display = 'block';
+      if (model3dBtnText) model3dBtnText.textContent = 'Ver Modelo 3D';
+    } else if (model3dActionWrap) {
+      model3dActionWrap.style.display = 'none';
     }
 
     if (thumbsContainer) {
@@ -713,6 +705,18 @@ function initProjectModal() {
         `;
       }
 
+      if (clean3dUrl) {
+        thumbsHtml += `
+          <div class="project-modal__thumb" data-thumb-type="model3d" title="Explorar Modelo 3D Interactivo">
+            <img src="${primaryImg}" alt="Modelo 3D" loading="lazy" />
+            <div class="project-modal__thumb-3d-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              <span>Modelo 3D</span>
+            </div>
+          </div>
+        `;
+      }
+
       thumbsContainer.innerHTML = thumbsHtml;
 
       // Eventos clic en miniaturas
@@ -725,6 +729,8 @@ function initProjectModal() {
           const thumbType = thumb.getAttribute('data-thumb-type');
           if (thumbType === 'arcgis') {
             showInteractiveMap(p.arcgis);
+          } else if (thumbType === 'model3d') {
+            showEmbedded3D(clean3dUrl);
           } else {
             const src = thumb.getAttribute('data-thumb-src');
             showLargeImage(src);
@@ -744,8 +750,14 @@ function initProjectModal() {
       mapContainer.style.display = 'none';
       mapContainer.innerHTML = '';
     }
+    if (model3dContainer) {
+      model3dContainer.style.display = 'none';
+      model3dContainer.innerHTML = '';
+    }
     isMapActive = false;
+    is3dActive = false;
     if (mapBtnText) mapBtnText.textContent = 'Ver Mapa Interactivo';
+    if (model3dBtnText) model3dBtnText.textContent = 'Ver Modelo 3D';
 
     mainImg.style.opacity = '0.3';
     mainImg.style.transform = 'scale(0.98)';
@@ -760,8 +772,14 @@ function initProjectModal() {
   function showInteractiveMap(arcgisConfig) {
     if (!mapContainer || !arcgisConfig) return;
     isMapActive = true;
+    is3dActive = false;
     if (mainImg) mainImg.style.display = 'none';
+    if (model3dContainer) {
+      model3dContainer.style.display = 'none';
+      model3dContainer.innerHTML = '';
+    }
     if (mapBtnText) mapBtnText.textContent = 'Ver Foto Principal';
+    if (model3dBtnText) model3dBtnText.textContent = 'Ver Modelo 3D';
 
     const itemId = arcgisConfig.itemId || arcgisConfig['item-id'];
     const center = arcgisConfig.center || '-72.1854366630625,-36.54274241200271';
@@ -783,16 +801,77 @@ function initProjectModal() {
     mapContainer.style.display = 'block';
   }
 
+  function showEmbedded3D(embedUrl) {
+    const cleanUrl = getCleanEmbedUrl(embedUrl);
+    if (!model3dContainer || !cleanUrl) return;
+    is3dActive = true;
+    isMapActive = false;
+    if (mainImg) mainImg.style.display = 'none';
+    if (mapContainer) {
+      mapContainer.style.display = 'none';
+      mapContainer.innerHTML = '';
+    }
+    if (model3dBtnText) model3dBtnText.textContent = 'Ver Foto Principal';
+    if (mapBtnText) mapBtnText.textContent = 'Ver Mapa Interactivo';
+
+    model3dContainer.innerHTML = `
+      <iframe 
+        src="${cleanUrl}" 
+        style="width: 100%; height: 100%; border: 0; display: block;" 
+        allowfullscreen="true" 
+        webkitallowfullscreen="true" 
+        mozallowfullscreen="true" 
+        frameborder="0">
+      </iframe>
+    `;
+    model3dContainer.style.display = 'block';
+  }
+
   if (toggleMapBtn) {
     toggleMapBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       if (!currentProject || !currentProject.arcgis) return;
       if (isMapActive) {
-        let primaryImg = currentProject.image || '';
+        let primaryImg = (Array.isArray(currentProject.gallery) && currentProject.gallery[0]) || currentProject.image || '';
         if (primaryImg.startsWith('/assets/')) primaryImg = '.' + primaryImg;
         showLargeImage(primaryImg);
+        if (thumbsContainer) {
+          thumbsContainer.querySelectorAll('.project-modal__thumb').forEach(t => t.classList.remove('active'));
+          const firstThumb = thumbsContainer.querySelector('.project-modal__thumb[data-thumb-src]');
+          if (firstThumb) firstThumb.classList.add('active');
+        }
       } else {
         showInteractiveMap(currentProject.arcgis);
+        if (thumbsContainer) {
+          thumbsContainer.querySelectorAll('.project-modal__thumb').forEach(t => t.classList.remove('active'));
+          const mapThumb = thumbsContainer.querySelector('.project-modal__thumb[data-thumb-type="arcgis"]');
+          if (mapThumb) mapThumb.classList.add('active');
+        }
+      }
+    });
+  }
+
+  if (toggle3dBtn) {
+    toggle3dBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const clean3dUrl = currentProject ? getCleanEmbedUrl(currentProject.model3dEmbed) : null;
+      if (!clean3dUrl) return;
+      if (is3dActive) {
+        let primaryImg = (Array.isArray(currentProject.gallery) && currentProject.gallery[0]) || currentProject.image || '';
+        if (primaryImg.startsWith('/assets/')) primaryImg = '.' + primaryImg;
+        showLargeImage(primaryImg);
+        if (thumbsContainer) {
+          thumbsContainer.querySelectorAll('.project-modal__thumb').forEach(t => t.classList.remove('active'));
+          const firstThumb = thumbsContainer.querySelector('.project-modal__thumb[data-thumb-src]');
+          if (firstThumb) firstThumb.classList.add('active');
+        }
+      } else {
+        showEmbedded3D(clean3dUrl);
+        if (thumbsContainer) {
+          thumbsContainer.querySelectorAll('.project-modal__thumb').forEach(t => t.classList.remove('active'));
+          const thumb3d = thumbsContainer.querySelector('.project-modal__thumb[data-thumb-type="model3d"]');
+          if (thumb3d) thumb3d.classList.add('active');
+        }
       }
     });
   }

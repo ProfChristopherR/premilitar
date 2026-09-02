@@ -27,6 +27,7 @@ Los estudiantes planifican una misión de vuelo autónomo con drones para captur
 - **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geogo
+- **Modelo3D**: https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72bf9f90b87a7a7b051?mode=embed
 - **Descripción**: Prototipo robótico autónomo diseñado con microcontroladores Arduino y sensores ambientales de temperatura, humedad y luminosidad para la automatización, monitoreo y control climático de cultivos protegidos.
 
 ### DAV Mobile Station
@@ -34,13 +35,23 @@ Los estudiantes planifican una misión de vuelo autónomo con drones para captur
 - **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geogo
+- **Modelo3D**: https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72b3d04b56e8ad0a444?mode=embed
 - **Descripción**: Estación móvil vehicular de monitoreo geográfico equipada con sensores ambientales, telemetría y geoposicionamiento satelital para el análisis de variables territoriales en tiempo real.
+
+### Detector de Intrusos
+- **ID**: detector-intrusos
+- **Instructor**: Christopher Ruiz y Leonardo Garrido
+- **Estado**: Prototipo
+- **SubArea**: geogo
+- **Modelo3D**: https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72b92da3813aa895e88?mode=embed
+- **Descripción**: Prototipo de seguridad perimetral robótica basado en microcontroladores y sensores infrarrojos para la detección y alerta autónoma ante intrusiones perimetrales.
 
 ### Tanque Bombero Automático
 - **ID**: tanque-bombero
 - **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geogo
+- **Modelo3D**: https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72b14cf3cda435804aa?mode=embed
 - **Descripción**: Vehículo oruga robótico con sistema de extinción autónoma, detección de focos de calor y navegación asistida por sensores para apoyo y prevención en áreas de riesgo.
 
 ### Conteo Eficiente de Árboles con Inteligencia Artificial
