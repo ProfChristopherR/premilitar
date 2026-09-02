@@ -510,14 +510,15 @@ function bindModalEvents() {
 
 // ── Auth & Credentials ────────────────────────────────────────────────────────
 function getWorkerUrl() {
-  const url = (localStorage.getItem('premilitar_worker_url') || '').trim();
-  if (url && (url.startsWith('https://') || url.startsWith('http://'))) {
-    return url;
+  let url = (localStorage.getItem('premilitar_worker_url') || '').trim();
+  if (!url) return DEFAULT_WORKER_URL;
+  if (!url.startsWith('https://') && !url.startsWith('http://')) {
+    url = 'https://' + url;
   }
-  return DEFAULT_WORKER_URL;
+  return url;
 }
-function getAdminPass()   { return localStorage.getItem('premilitar_admin_pass') || ''; }
-function getToken()       { return localStorage.getItem('premilitar_gh_token') || ''; }
+function getAdminPass()   { return (localStorage.getItem('premilitar_admin_pass') || '').trim(); }
+function getToken()       { return (localStorage.getItem('premilitar_gh_token') || '').trim(); }
 function hasAuth()        { return !!getAdminPass() || !!getToken(); }
 
 function openTokenModal() {

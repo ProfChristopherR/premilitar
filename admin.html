@@ -449,17 +449,18 @@
     let activeAreaId = 'disciplina-formacion';
 
     function getWorkerUrl() {
-      const url = (localStorage.getItem('premilitar_worker_url') || '').trim();
-      if (url && (url.startsWith('https://') || url.startsWith('http://'))) {
-        return url;
+      let url = (localStorage.getItem('premilitar_worker_url') || '').trim();
+      if (!url) return DEFAULT_WORKER_URL;
+      if (!url.startsWith('https://') && !url.startsWith('http://')) {
+        url = 'https://' + url;
       }
-      return DEFAULT_WORKER_URL;
+      return url;
     }
     function getAdminPass() {
-      return localStorage.getItem('premilitar_admin_pass') || '';
+      return (localStorage.getItem('premilitar_admin_pass') || '').trim();
     }
     function getGitHubToken() {
-      return localStorage.getItem('premilitar_gh_token') || '';
+      return (localStorage.getItem('premilitar_gh_token') || '').trim();
     }
     function hasAuth() {
       return !!getAdminPass() || !!getGitHubToken();
