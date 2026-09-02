@@ -449,7 +449,11 @@
     let activeAreaId = 'disciplina-formacion';
 
     function getWorkerUrl() {
-      return localStorage.getItem('premilitar_worker_url') || DEFAULT_WORKER_URL;
+      const url = (localStorage.getItem('premilitar_worker_url') || '').trim();
+      if (url && (url.startsWith('https://') || url.startsWith('http://'))) {
+        return url;
+      }
+      return DEFAULT_WORKER_URL;
     }
     function getAdminPass() {
       return localStorage.getItem('premilitar_admin_pass') || '';
