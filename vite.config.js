@@ -28,6 +28,26 @@ function localContentSaver() {
           return;
         }
 
+        if (req.url === '/api/save-news' && req.method === 'POST') {
+          let body = '';
+          req.on('data', chunk => { body += chunk; });
+          req.on('end', () => {
+            try {
+              const data = JSON.parse(body);
+              const jsonStr = JSON.stringify(data, null, 2);
+              fs.writeFileSync(resolve(__dirname, 'public/data/news.json'), jsonStr, 'utf-8');
+              fs.writeFileSync(resolve(__dirname, 'data/news.json'), jsonStr, 'utf-8');
+              res.setHeader('Content-Type', 'application/json');
+              res.statusCode = 200;
+              res.end(JSON.stringify({ success: true, message: 'Noticias guardadas exitosamente' }));
+            } catch (err) {
+              res.statusCode = 500;
+              res.end(JSON.stringify({ success: false, error: err.message }));
+            }
+          });
+          return;
+        }
+
         if (req.url === '/api/sync-content' && (req.method === 'POST' || req.method === 'GET')) {
           exec('python scripts/sync_markdown_to_json.py', (error, stdout, stderr) => {
             res.setHeader('Content-Type', 'application/json');
@@ -68,6 +88,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         area: resolve(__dirname, 'area.html'),
         admin: resolve(__dirname, 'admin.html'),
+        panelprensa: resolve(__dirname, 'panel-prensa.html'),
       },
     },
   },
