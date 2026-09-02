@@ -275,12 +275,12 @@ async function saveNews() {
   const isLocal = ['localhost','127.0.0.1'].includes(window.location.hostname);
   try {
     if (isLocal) await saveLocal();
-    if (getToken()) {
-      showToast('Publicando a GitHub...');
+    if (hasAuth()) {
+      showToast('⏳ Publicando en QA y Producción...');
       await publishGitHub();
-      showToast('🚀 Publicado en GitHub!');
+      showToast('🚀 ¡Publicado en QA y Producción con éxito!');
     } else {
-      showToast('✅ Guardado localmente. Agrega un token para publicar.');
+      showToast('✅ Guardado localmente. Configura tu clave para publicar en la web.');
     }
     setStatus('Guardado ✓');
     renderSidebarList();
@@ -310,7 +310,7 @@ async function deleteNews() {
   document.getElementById('editor-empty-state').style.display = '';
   try {
     if (['localhost','127.0.0.1'].includes(window.location.hostname)) await saveLocal();
-    if (getToken()) await publishGitHub();
+    if (hasAuth()) await publishGitHub();
     showToast('Noticia eliminada');
   } catch (err) { showToast('Error: ' + err.message, true); }
   renderSidebarList();
@@ -509,7 +509,13 @@ function bindModalEvents() {
 }
 
 // ── Auth & Credentials ────────────────────────────────────────────────────────
-function getWorkerUrl()   { return localStorage.getItem('premilitar_worker_url') || DEFAULT_WORKER_URL; }
+function getWorkerUrl() {
+  const url = (localStorage.getItem('premilitar_worker_url') || '').trim();
+  if (url && (url.startsWith('https://') || url.startsWith('http://'))) {
+    return url;
+  }
+  return DEFAULT_WORKER_URL;
+}
 function getAdminPass()   { return localStorage.getItem('premilitar_admin_pass') || ''; }
 function getToken()       { return localStorage.getItem('premilitar_gh_token') || ''; }
 function hasAuth()        { return !!getAdminPass() || !!getToken(); }
