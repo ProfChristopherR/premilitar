@@ -27,7 +27,7 @@ Los estudiantes planifican una misión de vuelo autónomo con drones para captur
 - **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geogo
-- **Modelo3D**: https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72b41706334ec9bb262?mode=embed
+- **Modelo3D**: https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72bf9f90b87a7a7b051?mode=embed
 - **Descripción**: Prototipo robótico autónomo diseñado con microcontroladores Arduino y sensores ambientales de temperatura, humedad y luminosidad para la automatización, monitoreo y control climático de cultivos protegidos.
 
 ### DAV Mobile Station
@@ -51,7 +51,7 @@ Los estudiantes planifican una misión de vuelo autónomo con drones para captur
 - **Instructor**: Christopher Ruiz y Leonardo Garrido
 - **Estado**: Prototipo
 - **SubArea**: geogo
-- **Modelo3D**: 
+- **Modelo3D**: https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72b14cf3cda435804aa?mode=embed
 - **Descripción**: Vehículo oruga robótico con sistema de extinción autónoma, detección de focos de calor y navegación asistida por sensores para apoyo y prevención en áreas de riesgo.
 
 ### Conteo Eficiente de Árboles con Inteligencia Artificial

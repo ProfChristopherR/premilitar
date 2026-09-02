@@ -252,7 +252,7 @@
         "description": "Prototipo robótico autónomo diseñado con microcontroladores Arduino y sensores ambientales de temperatura, humedad y luminosidad para la automatización, monitoreo y control climático de cultivos protegidos.",
         "subArea": "geogo",
         "instructor": "Christopher Ruiz y Leonardo Garrido",
-        "model3dEmbed": "https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72b41706334ec9bb262?mode=embed"
+        "model3dEmbed": "https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72bf9f90b87a7a7b051?mode=embed"
       },
       {
         "id": "dav-mobile-station",
@@ -279,7 +279,7 @@
         "description": "Vehículo oruga robótico con sistema de extinción autónoma, detección de focos de calor y navegación asistida por sensores para apoyo y prevención en áreas de riesgo.",
         "subArea": "geogo",
         "instructor": "Christopher Ruiz y Leonardo Garrido",
-        "model3dEmbed": null
+        "model3dEmbed": "https://liceosannicolas7.autodesk360.com/shares/public/SH28cd1QT2badd0ea72b14cf3cda435804aa?mode=embed"
       },
       {
         "id": "conteo-arboles-ia",
