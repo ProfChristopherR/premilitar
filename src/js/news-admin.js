@@ -1,11 +1,12 @@
 // ── Panel Prensa: Administrador de Noticias ──────────────────────────────────
 
-const REPO_OWNER    = 'ProfChristopherR';
-const REPO_NAME     = 'premilitar';
-const TARGET_BRANCH = 'qa';
-const NEWS_FILE     = 'public/data/news.json';
-const NEWS_FILE_2   = 'data/news.json';
-const IMAGES_PATH   = 'public/data/news-images';
+const REPO_OWNER        = 'ProfChristopherR';
+const REPO_NAME         = 'premilitar';
+const TARGET_BRANCH     = 'qa';
+const DEFAULT_WORKER_URL = 'https://premilitar-prensa-api.christopherruiz.workers.dev';
+const NEWS_FILE         = 'public/data/news.json';
+const NEWS_FILE_2       = 'data/news.json';
+const IMAGES_PATH       = 'public/data/news-images';
 
 let newsData      = [];
 let activeNewsId  = null;
@@ -329,7 +330,7 @@ async function publishGitHub() {
   // 1. Ruta preferida: Cloudflare Worker seguro con contraseña
   if (workerUrl && adminPass) {
     const payload = {
-      branch: TARGET_BRANCH,
+      branches: ['qa', 'main'],
       password: adminPass,
       newsJson: newsData,
       images: Object.values(pendingImages).map(img => ({
@@ -399,9 +400,9 @@ function bindHeaderEvents() {
     const btn = document.getElementById('btn-publish');
     btn.disabled = true;
     try {
-      showToast('⏳ Publicando noticias...');
+      showToast('⏳ Publicando en QA y Producción...');
       await publishGitHub();
-      showToast('🚀 ¡Publicado en GitHub con éxito! Se desplegará en ~1 min.');
+      showToast('🚀 ¡Publicado en QA y Producción con éxito! Se desplegará en ~1-2 min.');
     } catch (err) {
       showToast('❌ ' + err.message, true);
     } finally {
@@ -508,10 +509,10 @@ function bindModalEvents() {
 }
 
 // ── Auth & Credentials ────────────────────────────────────────────────────────
-function getWorkerUrl()   { return localStorage.getItem('premilitar_worker_url') || ''; }
+function getWorkerUrl()   { return localStorage.getItem('premilitar_worker_url') || DEFAULT_WORKER_URL; }
 function getAdminPass()   { return localStorage.getItem('premilitar_admin_pass') || ''; }
 function getToken()       { return localStorage.getItem('premilitar_gh_token') || ''; }
-function hasAuth()        { return (getWorkerUrl() && getAdminPass()) || !!getToken(); }
+function hasAuth()        { return !!getAdminPass() || !!getToken(); }
 
 function openTokenModal() {
   setVal('input-worker-url', getWorkerUrl());

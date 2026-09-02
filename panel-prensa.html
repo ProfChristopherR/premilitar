@@ -266,22 +266,35 @@
         Publica noticias de forma segura con tu <strong>Contraseña de Administrador</strong> usando el microservicio Cloudflare Worker, sin tokens en el navegador.
       </p>
 
-      <div class="form-group" style="margin-bottom:0.75rem;">
-        <label class="form-label" for="input-worker-url">URL del Microservicio (Cloudflare Worker)</label>
-        <input type="url" id="input-worker-url" class="form-input" placeholder="https://premilitar-api.tu-usuario.workers.dev" />
-        <p class="field-hint">URL de tu Cloudflare Worker una vez desplegado.</p>
+      <div style="background:rgba(197,155,39,0.08);border:1px solid rgba(197,155,39,0.25);border-radius:6px;padding:0.75rem 1rem;margin-bottom:1rem;font-size:0.8rem;color:#cbd5e1;">
+        <div style="display:flex;align-items:center;gap:0.4rem;color:#e5b83b;font-weight:700;margin-bottom:0.25rem;">
+          <span>🌐 Servidor Cloudflare Conectado</span>
+        </div>
+        <div style="font-family:monospace;font-size:0.75rem;color:#94a3b8;word-break:break-all;">
+          https://premilitar-prensa-api.christopherruiz.workers.dev
+        </div>
+        <div style="font-size:0.72rem;color:#10b981;margin-top:0.35rem;">
+          ✓ Publica automáticamente en <strong>QA</strong> y <strong>Producción</strong>
+        </div>
       </div>
 
-      <div class="form-group" style="margin-bottom:0.75rem;">
+      <div class="form-group" style="margin-bottom:1rem;">
         <label class="form-label" for="input-admin-pass">Contraseña de Administrador</label>
-        <input type="password" id="input-admin-pass" class="form-input" placeholder="Tu clave de administrador..." />
+        <input type="password" id="input-admin-pass" class="form-input" placeholder="Ingresa tu contraseña de administrador..." autofocus />
+        <p class="field-hint">La contraseña configurada en ADMIN_PASSWORD en Cloudflare.</p>
       </div>
 
       <details style="margin-bottom:1rem;font-size:0.75rem;color:#94a3b8;cursor:pointer;">
-        <summary style="outline:none;padding:0.3rem 0;color:#c59b27;">⚙️ Modo alternativo: Token GitHub directo</summary>
-        <div style="margin-top:0.5rem;padding:0.75rem;background:rgba(255,255,255,0.04);border-radius:4px;">
-          <label class="form-label" for="input-gh-token" style="font-size:0.7rem;">Personal Access Token (ghp_...)</label>
-          <input type="password" id="input-gh-token" class="form-input" placeholder="ghp_..." style="font-size:0.8rem;margin-top:0.25rem;" />
+        <summary style="outline:none;padding:0.3rem 0;color:#c59b27;">⚙️ Opciones avanzadas (URL personalizada / Token directo)</summary>
+        <div style="margin-top:0.5rem;padding:0.75rem;background:rgba(255,255,255,0.04);border-radius:4px;display:flex;flex-direction:column;gap:0.6rem;">
+          <div>
+            <label class="form-label" for="input-worker-url" style="font-size:0.7rem;">URL del Microservicio Personalizado</label>
+            <input type="url" id="input-worker-url" class="form-input" placeholder="https://premilitar-prensa-api.christopherruiz.workers.dev" style="font-size:0.8rem;margin-top:0.2rem;" />
+          </div>
+          <div>
+            <label class="form-label" for="input-gh-token" style="font-size:0.7rem;">Token GitHub Directo (ghp_...)</label>
+            <input type="password" id="input-gh-token" class="form-input" placeholder="ghp_..." style="font-size:0.8rem;margin-top:0.2rem;" />
+          </div>
         </div>
       </details>
 

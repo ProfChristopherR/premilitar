@@ -83,9 +83,11 @@ export default {
       );
     }
 
-    // Endpoint principal de publicación
+    // Determinar ramas destino (por defecto AMBAS: 'qa' y 'main')
+    const branches = resolveBranches(body);
+
+    // ── Endpoint: Publicar Noticias ───────────────────────────────────────────
     if (url.pathname === '/publish' && request.method === 'POST') {
-      const branch = body.branch || DEFAULT_BRANCH;
       const images = body.images || []; // [{ filename: 'foto.webp', base64: '...' }]
       const newsJson = body.newsJson;
 
@@ -97,43 +99,85 @@ export default {
       }
 
       try {
-        // 1. Subir cada imagen pendiente
-        for (const img of images) {
-          if (!img.filename || !img.base64) continue;
-          const cleanB64 = img.base64.includes(',') ? img.base64.split(',')[1] : img.base64;
-          const imgPath = 'public/data/news-images/' + img.filename;
-          await commitToGitHub(
-            env.GITHUB_TOKEN,
-            imgPath,
-            cleanB64,
-            'feat: subir imagen ' + img.filename + ' [' + branch + ']',
-            branch
-          );
-        }
-
-        // 2. Subir news.json en ambas rutas
-        const newsB64 = newsJson.includes(',')
-          ? newsJson.split(',')[1]
-          : isBase64(newsJson)
-          ? newsJson
-          : btoa(unescape(encodeURIComponent(typeof newsJson === 'string' ? newsJson : JSON.stringify(newsJson, null, 2))));
-
+        const newsB64 = toBase64String(newsJson);
         const paths = ['public/data/news.json', 'data/news.json'];
-        for (const p of paths) {
-          await commitToGitHub(
-            env.GITHUB_TOKEN,
-            p,
-            newsB64,
-            'docs: actualizar noticias desde panel web [' + branch + ']',
-            branch
-          );
+
+        for (const branch of branches) {
+          // 1. Subir cada imagen pendiente a la rama
+          for (const img of images) {
+            if (!img.filename || !img.base64) continue;
+            const cleanB64 = img.base64.includes(',') ? img.base64.split(',')[1] : img.base64;
+            const imgPath = 'public/data/news-images/' + img.filename;
+            await commitToGitHub(
+              env.GITHUB_TOKEN,
+              imgPath,
+              cleanB64,
+              'feat: subir imagen ' + img.filename + ' [' + branch + ']',
+              branch
+            );
+          }
+
+          // 2. Subir news.json en ambas rutas a la rama
+          for (const p of paths) {
+            await commitToGitHub(
+              env.GITHUB_TOKEN,
+              p,
+              newsB64,
+              'docs: actualizar noticias [' + branch + ']',
+              branch
+            );
+          }
         }
 
         return new Response(
           JSON.stringify({
             success: true,
-            message: '¡Publicación exitosa en GitHub! Desplegándose en la rama ' + branch,
+            message: '¡Publicado con éxito en GitHub! Ramas: ' + branches.join(', '),
+            branches,
             uploadedImages: images.length,
+          }),
+          { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      } catch (err) {
+        return new Response(
+          JSON.stringify({ success: false, error: err.message || 'Error en la API de GitHub' }),
+          { status: 502, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
+    // ── Endpoint: Guardar Áreas (admin.html) ───────────────────────────────────
+    if ((url.pathname === '/save-areas' || url.pathname === '/areas') && request.method === 'POST') {
+      const areasJson = body.areasJson || body.data;
+
+      if (!areasJson) {
+        return new Response(
+          JSON.stringify({ success: false, error: 'Falta el contenido de areasJson.' }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      try {
+        const areasB64 = toBase64String(areasJson);
+        const paths = ['public/data/areas.json', 'data/areas.json'];
+
+        for (const branch of branches) {
+          for (const p of paths) {
+            await commitToGitHub(
+              env.GITHUB_TOKEN,
+              p,
+              areasB64,
+              'docs: actualizar areas desde panel web [' + branch + ']',
+              branch
+            );
+          }
+        }
+
+        return new Response(
+          JSON.stringify({
+            success: true,
+            message: '¡Áreas actualizadas con éxito en GitHub! Ramas: ' + branches.join(', '),
+            branches,
           }),
           { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
@@ -202,4 +246,27 @@ function isBase64(str) {
     return false;
   }
 }
+
+function resolveBranches(body) {
+  if (Array.isArray(body.branches) && body.branches.length) {
+    return body.branches;
+  }
+  if (body.branch) {
+    if (body.branch === 'both' || body.branch === 'all') return ['qa', 'main'];
+    if (body.branch.includes(',')) return body.branch.split(',').map(b => b.trim()).filter(Boolean);
+    return [body.branch];
+  }
+  // Por defecto, aplicar siempre a ambas ramas: QA y Producción
+  return ['qa', 'main'];
+}
+
+function toBase64String(data) {
+  if (typeof data === 'string') {
+    if (data.includes(',')) return data.split(',')[1];
+    if (isBase64(data)) return data;
+    return btoa(unescape(encodeURIComponent(data)));
+  }
+  return btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+}
+
 
