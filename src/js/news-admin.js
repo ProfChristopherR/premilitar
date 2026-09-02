@@ -315,10 +315,47 @@ async function deleteNews() {
   renderSidebarList();
 }
 
-// ── Publish GitHub ────────────────────────────────────────────────────────────
+// ── Publish (Worker or Direct Token) ──────────────────────────────────────────
 async function publishGitHub() {
+  const workerUrl = getWorkerUrl();
+  const adminPass = getAdminPass();
   const token = getToken();
-  if (!token) { openTokenModal(); throw new Error('Se requiere Token de GitHub'); }
+
+  if ((!workerUrl || !adminPass) && !token) {
+    openTokenModal();
+    throw new Error('Configura tu Contraseña de Administrador o Token de GitHub.');
+  }
+
+  // 1. Ruta preferida: Cloudflare Worker seguro con contraseña
+  if (workerUrl && adminPass) {
+    const payload = {
+      branch: TARGET_BRANCH,
+      password: adminPass,
+      newsJson: newsData,
+      images: Object.values(pendingImages).map(img => ({
+        filename: img.filename,
+        base64: img.dataUrl
+      }))
+    };
+
+    const res = await fetch(workerUrl.replace(/\/+$/, '') + '/publish', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + adminPass
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.success) {
+      throw new Error(data.error || 'Error en el microservicio (código ' + res.status + ')');
+    }
+    pendingImages = {};
+    return;
+  }
+
+  // 2. Ruta alternativa: Token GitHub directo en cliente
   for (const img of Object.values(pendingImages)) {
     await ghCommit(token, IMAGES_PATH + '/' + img.filename, img.dataUrl.split(',')[1],
       'feat: imagen noticias ' + img.filename);
@@ -358,12 +395,18 @@ function toggleSections(type) {
 function bindHeaderEvents() {
   document.getElementById('btn-gh-token').addEventListener('click', openTokenModal);
   document.getElementById('btn-publish').addEventListener('click', async () => {
-    if (!getToken()) { openTokenModal(); return; }
+    if (!hasAuth()) { openTokenModal(); return; }
     const btn = document.getElementById('btn-publish');
     btn.disabled = true;
-    try { showToast('Publicando...'); await publishGitHub(); showToast('🚀 Publicado en GitHub!'); }
-    catch (err) { showToast('Error: ' + err.message, true); }
-    finally { btn.disabled = false; }
+    try {
+      showToast('⏳ Publicando noticias...');
+      await publishGitHub();
+      showToast('🚀 ¡Publicado en GitHub con éxito! Se desplegará en ~1 min.');
+    } catch (err) {
+      showToast('❌ ' + err.message, true);
+    } finally {
+      btn.disabled = false;
+    }
   });
 }
 
@@ -430,12 +473,30 @@ function bindModalEvents() {
 
   document.getElementById('btn-cancel-token').addEventListener('click', closeTokenModal);
   document.getElementById('btn-remove-token').addEventListener('click', () => {
+    localStorage.removeItem('premilitar_worker_url');
+    localStorage.removeItem('premilitar_admin_pass');
     localStorage.removeItem('premilitar_gh_token');
-    updateTokenDot(); closeTokenModal(); showToast('Token eliminado');
+    updateTokenDot();
+    closeTokenModal();
+    showToast('Credenciales eliminadas');
   });
   document.getElementById('btn-save-token').addEventListener('click', () => {
-    const v = document.getElementById('input-gh-token').value.trim();
-    if (v) { localStorage.setItem('premilitar_gh_token', v); updateTokenDot(); closeTokenModal(); showToast('Token guardado'); }
+    const wUrl = (document.getElementById('input-worker-url')?.value || '').trim();
+    const pass = (document.getElementById('input-admin-pass')?.value || '').trim();
+    const tok  = (document.getElementById('input-gh-token')?.value || '').trim();
+
+    if (wUrl) localStorage.setItem('premilitar_worker_url', wUrl);
+    else localStorage.removeItem('premilitar_worker_url');
+
+    if (pass) localStorage.setItem('premilitar_admin_pass', pass);
+    else localStorage.removeItem('premilitar_admin_pass');
+
+    if (tok)  localStorage.setItem('premilitar_gh_token', tok);
+    else localStorage.removeItem('premilitar_gh_token');
+
+    updateTokenDot();
+    closeTokenModal();
+    showToast('🔑 Credenciales guardadas');
   });
 
   document.querySelectorAll('.modal-overlay').forEach(o =>
@@ -446,13 +507,22 @@ function bindModalEvents() {
   });
 }
 
-// ── Token ─────────────────────────────────────────────────────────────────────
+// ── Auth & Credentials ────────────────────────────────────────────────────────
+function getWorkerUrl()   { return localStorage.getItem('premilitar_worker_url') || ''; }
+function getAdminPass()   { return localStorage.getItem('premilitar_admin_pass') || ''; }
 function getToken()       { return localStorage.getItem('premilitar_gh_token') || ''; }
-function openTokenModal() { document.getElementById('input-gh-token').value = getToken(); document.getElementById('modal-token').classList.add('open'); }
+function hasAuth()        { return (getWorkerUrl() && getAdminPass()) || !!getToken(); }
+
+function openTokenModal() {
+  setVal('input-worker-url', getWorkerUrl());
+  setVal('input-admin-pass', getAdminPass());
+  setVal('input-gh-token',   getToken());
+  document.getElementById('modal-token').classList.add('open');
+}
 function closeTokenModal(){ document.getElementById('modal-token').classList.remove('open'); }
 function updateTokenDot() {
   const d = document.getElementById('token-dot');
-  if (d) d.classList.toggle('connected', !!getToken());
+  if (d) d.classList.toggle('connected', hasAuth());
 }
 
 // ── Toast ─────────────────────────────────────────────────────────────────────

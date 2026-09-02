@@ -20,10 +20,10 @@
     <div class="pn-header-actions">
       <button class="btn-pn btn-pn-blue" id="btn-gh-token" type="button">
         <span class="token-dot" id="token-dot"></span>
-        Token GitHub
+        🔐 Conexión Segura
       </button>
       <button class="btn-pn btn-pn-green" id="btn-publish" type="button">
-        🚀 Publicar a GitHub
+        🚀 Publicar Noticias
       </button>
       <a href="index.html" class="btn-pn btn-pn-ghost" target="_blank">↗ Ver Sitio</a>
     </div>
@@ -258,22 +258,37 @@
     </div>
   </div>
 
-  <!-- Modal: GitHub Token -->
+  <!-- Modal: Conexión Segura (Worker / Token) -->
   <div class="modal-overlay" id="modal-token">
     <div class="modal-box">
-      <div class="modal-title">🔑 Token de GitHub</div>
+      <div class="modal-title">🔐 Conexión Segura de Publicación</div>
       <p class="modal-desc">
-        Ingresa tu GitHub Personal Access Token con permisos <code style="background:rgba(255,255,255,0.08);padding:0.1rem 0.3rem;border-radius:3px;font-size:0.8rem;">repo</code> para publicar cambios directamente al repositorio.
-        El token se guarda localmente en tu navegador y nunca se envía a terceros.
+        Publica noticias de forma segura con tu <strong>Contraseña de Administrador</strong> usando el microservicio Cloudflare Worker, sin tokens en el navegador.
       </p>
-      <div class="form-group" style="margin-bottom:0.5rem;">
-        <label class="form-label" for="input-gh-token">Token</label>
-        <input type="password" id="input-gh-token" class="form-input" placeholder="ghp_..." />
+
+      <div class="form-group" style="margin-bottom:0.75rem;">
+        <label class="form-label" for="input-worker-url">URL del Microservicio (Cloudflare Worker)</label>
+        <input type="url" id="input-worker-url" class="form-input" placeholder="https://premilitar-api.tu-usuario.workers.dev" />
+        <p class="field-hint">URL de tu Cloudflare Worker una vez desplegado.</p>
       </div>
+
+      <div class="form-group" style="margin-bottom:0.75rem;">
+        <label class="form-label" for="input-admin-pass">Contraseña de Administrador</label>
+        <input type="password" id="input-admin-pass" class="form-input" placeholder="Tu clave de administrador..." />
+      </div>
+
+      <details style="margin-bottom:1rem;font-size:0.75rem;color:#94a3b8;cursor:pointer;">
+        <summary style="outline:none;padding:0.3rem 0;color:#c59b27;">⚙️ Modo alternativo: Token GitHub directo</summary>
+        <div style="margin-top:0.5rem;padding:0.75rem;background:rgba(255,255,255,0.04);border-radius:4px;">
+          <label class="form-label" for="input-gh-token" style="font-size:0.7rem;">Personal Access Token (ghp_...)</label>
+          <input type="password" id="input-gh-token" class="form-input" placeholder="ghp_..." style="font-size:0.8rem;margin-top:0.25rem;" />
+        </div>
+      </details>
+
       <div class="modal-actions">
-        <button class="btn-pn btn-pn-danger" id="btn-remove-token" type="button">Eliminar Token</button>
+        <button class="btn-pn btn-pn-danger" id="btn-remove-token" type="button">Limpiar</button>
         <button class="btn-pn btn-pn-ghost" id="btn-cancel-token" type="button">Cancelar</button>
-        <button class="btn-pn btn-pn-gold" id="btn-save-token" type="button">Guardar Token</button>
+        <button class="btn-pn btn-pn-gold" id="btn-save-token" type="button">Guardar Credenciales</button>
       </div>
     </div>
   </div>
