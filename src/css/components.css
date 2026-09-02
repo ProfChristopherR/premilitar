@@ -1567,7 +1567,7 @@ model-viewer {
 .project-card__badge-3d {
   position: absolute;
   top: 0.6rem;
-  right: 0.6rem;
+  left: 0.6rem;
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
