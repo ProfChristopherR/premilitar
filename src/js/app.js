@@ -139,10 +139,16 @@ function renderAreasGrid(areas) {
   `).join('');
 }
 
-// ── Noticias ───────────────────────────────────────────────────────────────────
+// ── Noticias (Galería 2x3 con Paginación y Modal Amplio) ──────────────────────
+let newsCurrentPage = 1;
+const NEWS_ITEMS_PER_PAGE = 6;
+let cachedNewsList = [];
+
 function renderNews(newsList) {
   const el = document.getElementById('news-grid');
   if (!el) return;
+
+  cachedNewsList = newsList || [];
 
   // Usar fotos reales para la noticia destacada de la Banda de Guerra
   const heroNewsImages = {
@@ -150,14 +156,22 @@ function renderNews(newsList) {
     'facebook-2026': './assets/images/banda-de-guerra/IMG_0927.webp',
   };
 
-  el.innerHTML = newsList.map(n => {
+  const totalPages = Math.ceil(cachedNewsList.length / NEWS_ITEMS_PER_PAGE) || 1;
+  if (newsCurrentPage > totalPages) newsCurrentPage = totalPages;
+  if (newsCurrentPage < 1) newsCurrentPage = 1;
+
+  const startIndex = (newsCurrentPage - 1) * NEWS_ITEMS_PER_PAGE;
+  const endIndex   = startIndex + NEWS_ITEMS_PER_PAGE;
+  const pageItems  = cachedNewsList.slice(startIndex, endIndex);
+
+  el.innerHTML = pageItems.map(n => {
     const img = heroNewsImages[n.id] || n.coverImage || n.image;
     const isOwn = n.type === 'own-post';
     return `
     <article class="news-card ${isOwn ? 'news-card--own' : ''}" data-news-id="${n.id}" data-href="${n.sourceUrl || '#'}">
       <div class="news-card__img-wrap">
         <img src="${img}" alt="${n.title}" class="news-card__img" loading="lazy" />
-        <span class="news-card__category">${n.category}</span>
+        <span class="news-card__category">${n.category || 'Actualidad'}</span>
         ${n.featured ? '<span class="news-card__featured">Destacado</span>' : ''}
         ${isOwn ? '<span class="news-card__badge-own">📖 Artículo</span>' : ''}
       </div>
@@ -177,6 +191,9 @@ function renderNews(newsList) {
     </article>
   `}).join('');
 
+  // Renderizar controles de galería / paginación
+  renderNewsPagination(totalPages);
+
   // Inyectar modal de noticia propia si no existe
   if (!document.getElementById('news-modal')) {
     const modalHtml = `
@@ -193,8 +210,28 @@ function renderNews(newsList) {
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNewsModal(); });
   }
 
-  // Store newsData for modal
-  el._newsData = newsList;
+  // Inyectar lightbox de pantalla completa para fotos si no existe
+  if (!document.getElementById('news-fullscreen-lightbox')) {
+    const fsHtml = `
+    <div id="news-fullscreen-lightbox" class="news-fullscreen-lightbox" style="display:none;" role="dialog" aria-modal="true">
+      <div class="news-fullscreen-overlay" id="news-fs-overlay"></div>
+      <button class="news-fullscreen-close" id="news-fs-close" aria-label="Cerrar pantalla completa">&times;</button>
+      <div class="news-fullscreen-body">
+        <img id="news-fs-img" class="news-fullscreen-img" src="" alt="" />
+        <div id="news-fs-caption" class="news-fullscreen-caption"></div>
+      </div>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend', fsHtml);
+    const closeFs = () => {
+      const fs = document.getElementById('news-fullscreen-lightbox');
+      if (fs) fs.style.display = 'none';
+    };
+    document.getElementById('news-fs-overlay').addEventListener('click', closeFs);
+    document.getElementById('news-fs-close').addEventListener('click', closeFs);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFs(); });
+  }
+
+  el._newsData = cachedNewsList;
 
   el.querySelectorAll('.news-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -211,6 +248,62 @@ function renderNews(newsList) {
   });
 }
 
+function renderNewsPagination(totalPages) {
+  const paginationWrap = document.getElementById('news-pagination');
+  if (!paginationWrap) return;
+
+  if (totalPages <= 1) {
+    paginationWrap.style.display = 'none';
+    return;
+  }
+
+  paginationWrap.style.display = 'flex';
+  const prevBtn  = document.getElementById('news-prev-btn');
+  const nextBtn  = document.getElementById('news-next-btn');
+  const dotsWrap = document.getElementById('news-page-dots');
+
+  if (prevBtn) {
+    prevBtn.disabled = newsCurrentPage <= 1;
+    prevBtn.onclick = () => {
+      if (newsCurrentPage > 1) {
+        newsCurrentPage--;
+        renderNews(cachedNewsList);
+        document.getElementById('noticias')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+  }
+
+  if (nextBtn) {
+    nextBtn.disabled = newsCurrentPage >= totalPages;
+    nextBtn.onclick = () => {
+      if (newsCurrentPage < totalPages) {
+        newsCurrentPage++;
+        renderNews(cachedNewsList);
+        document.getElementById('noticias')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+  }
+
+  if (dotsWrap) {
+    dotsWrap.innerHTML = Array.from({ length: totalPages }, (_, i) => i + 1).map(num => `
+      <button type="button" class="news-dot ${num === newsCurrentPage ? 'active' : ''}" data-page="${num}">
+        ${num}
+      </button>
+    `).join('');
+
+    dotsWrap.querySelectorAll('.news-dot').forEach(btn => {
+      btn.onclick = () => {
+        const p = parseInt(btn.dataset.page, 10);
+        if (p && p !== newsCurrentPage) {
+          newsCurrentPage = p;
+          renderNews(cachedNewsList);
+          document.getElementById('noticias')?.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+    });
+  }
+}
+
 function openNewsModal(news) {
   const modal   = document.getElementById('news-modal');
   const content = document.getElementById('news-modal-content');
@@ -222,7 +315,7 @@ function openNewsModal(news) {
 
   const galleryHtml = (news.gallery && news.gallery.length)
     ? `<div class="news-modal__gallery">
-        <h4 class="news-modal__gallery-title">📸 Galería</h4>
+        <h4 class="news-modal__gallery-title">📸 Galería de Fotografías y Videos</h4>
         <div class="news-modal__gallery-grid">
           ${news.gallery.map(item => {
             if (item.type === 'image') {
@@ -258,17 +351,20 @@ function openNewsModal(news) {
     ${galleryHtml}
   `;
 
-  // Lightbox for gallery images
+  // Abrir fotos en Pantalla Completa (Full Screen Lightbox)
   content.querySelectorAll('.news-modal__gallery-img').forEach(img => {
     img.addEventListener('click', () => {
-      const lb = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightbox-img');
-      if (lb && lbImg) {
-        lbImg.src = img.src;
-        lbImg.style.display = 'block';
-        const mapWrap = document.getElementById('lightbox-map-wrap');
-        if (mapWrap) mapWrap.style.display = 'none';
-        lb.classList.add('active');
+      const fs = document.getElementById('news-fullscreen-lightbox');
+      const fsImg = document.getElementById('news-fs-img');
+      const fsCap = document.getElementById('news-fs-caption');
+      if (fs && fsImg) {
+        fsImg.src = img.src;
+        const cap = img.getAttribute('title') || img.alt || '';
+        if (fsCap) {
+          fsCap.textContent = cap;
+          fsCap.style.display = cap ? 'block' : 'none';
+        }
+        fs.style.display = 'flex';
       }
     });
   });

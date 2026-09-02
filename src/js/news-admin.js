@@ -262,6 +262,18 @@ function handleCoverFile(file) {
 // ── Save ──────────────────────────────────────────────────────────────────────
 async function saveNews() {
   const data = collectFormData();
+
+  // Si es un enlace externo y no se especificó imagen, intentar auto-extraerla
+  if (data.type === 'external-link' && !data.image && data.sourceUrl) {
+    showToast('🔍 Extrayendo imagen de portada desde el enlace...');
+    const meta = await fetchMetadataForUrl(false);
+    if (meta && meta.image) {
+      data.image = meta.image;
+      const imgInp = document.getElementById('f-ext-image');
+      if (imgInp) imgInp.value = meta.image;
+    }
+  }
+
   if (!data.title) { showToast('El título es obligatorio', true); return; }
   if (!data.date)  { showToast('La fecha es obligatoria', true); return; }
 
@@ -457,6 +469,21 @@ function bindEditorEvents() {
     document.getElementById('video-caption-input').value = '';
     document.getElementById('modal-video').classList.add('open');
   });
+
+  const btnFetchMeta = document.getElementById('btn-fetch-meta');
+  if (btnFetchMeta) {
+    btnFetchMeta.addEventListener('click', () => fetchMetadataForUrl(true));
+  }
+
+  const srcUrlInp = document.getElementById('f-source-url');
+  if (srcUrlInp) {
+    srcUrlInp.addEventListener('blur', () => {
+      const imgInp = document.getElementById('f-ext-image');
+      if (srcUrlInp.value.trim() && (!imgInp || !imgInp.value.trim())) {
+        fetchMetadataForUrl(true);
+      }
+    });
+  }
 }
 
 function bindModalEvents() {
@@ -531,6 +558,59 @@ function closeTokenModal(){ document.getElementById('modal-token').classList.rem
 function updateTokenDot() {
   const d = document.getElementById('token-dot');
   if (d) d.classList.toggle('connected', hasAuth());
+}
+
+// ── Metadata Extractor ────────────────────────────────────────────────────────
+async function fetchMetadataForUrl(showToasts = true) {
+  const url = (document.getElementById('f-source-url')?.value || '').trim();
+  if (!url || !url.startsWith('http')) {
+    if (showToasts) showToast('Ingresa una URL válida que empiece con http:// o https://', true);
+    return null;
+  }
+  const btn = document.getElementById('btn-fetch-meta');
+  if (btn) btn.disabled = true;
+  if (showToasts) showToast('🔍 Obteniendo portada y datos del sitio...');
+
+  try {
+    const workerUrl = getWorkerUrl();
+    const endpoint = workerUrl.replace(/\/+$/, '') + '/extract-meta?url=' + encodeURIComponent(url);
+    const res = await fetch(endpoint);
+    const data = await res.json().catch(() => ({}));
+
+    if (data && data.success && data.meta) {
+      const { image, title, description, source } = data.meta;
+      const imgInput     = document.getElementById('f-ext-image');
+      const titleInput   = document.getElementById('f-title');
+      const summaryInput = document.getElementById('f-summary');
+      const sourceInput  = document.getElementById('f-source');
+
+      if (image && imgInput && !imgInput.value) {
+        imgInput.value = image;
+      }
+      if (source && sourceInput && !sourceInput.value) {
+        sourceInput.value = source;
+      }
+      if (title && titleInput && !titleInput.value) {
+        titleInput.value = title;
+      }
+      if (description && summaryInput && !summaryInput.value) {
+        summaryInput.value = description;
+      }
+
+      if (showToasts) {
+        if (image) showToast('✨ ¡Portada y datos detectados con éxito!');
+        else showToast('ℹ️ Datos detectados, pero el sitio no definió imagen pública.');
+      }
+      return data.meta;
+    } else {
+      if (showToasts) showToast(data?.error || 'No se pudo extraer portada automáticamente.', true);
+    }
+  } catch (err) {
+    if (showToasts) showToast('Error detectando datos: ' + err.message, true);
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+  return null;
 }
 
 // ── Toast ─────────────────────────────────────────────────────────────────────

@@ -208,20 +208,26 @@
           <div class="pn-card">
             <div class="pn-card-title">🔗 Fuente y Enlace Externo</div>
             <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="f-source">Fuente</label>
-                <input id="f-source" type="text" class="form-input" placeholder="Chillán Online, Instagram, Google News..." />
-              </div>
               <div class="form-group full">
                 <label class="form-label" for="f-source-url">URL de la Noticia <span>*</span></label>
-                <input id="f-source-url" type="url" class="form-input" placeholder="https://..." />
+                <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                  <input id="f-source-url" type="url" class="form-input" placeholder="https://..." style="flex:1;min-width:200px;" />
+                  <button type="button" class="btn-pn btn-pn-blue" id="btn-fetch-meta" style="white-space:nowrap;">
+                    ✨ Detectar Portada y Datos
+                  </button>
+                </div>
+                <p class="field-hint">Pega el link y pulsa el botón para extraer automáticamente la imagen de portada, medio y resumen.</p>
               </div>
             </div>
             <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="f-source">Fuente / Medio</label>
+                <input id="f-source" type="text" class="form-input" placeholder="Chillán Online, Instagram, Google News..." />
+              </div>
               <div class="form-group full">
                 <label class="form-label" for="f-ext-image">URL o ruta de imagen de portada</label>
                 <input id="f-ext-image" type="text" class="form-input" placeholder="https://... o ./assets/images/..." />
-                <p class="field-hint">Para noticias externas, pega la URL de la imagen de portada o una ruta local del repositorio.</p>
+                <p class="field-hint">Se llenará sola con la foto del link. También puedes pegar una URL propia si deseas.</p>
               </div>
             </div>
           </div>
