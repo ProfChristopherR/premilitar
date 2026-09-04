@@ -352,6 +352,13 @@
       <h1>Panel de Contenido <span>· Sendero Pre-Militar</span></h1>
     </div>
     <div class="admin-actions">
+      <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);padding:0.25rem 0.5rem;border-radius:6px;">
+        <label for="select-target-branch" style="font-size:0.7rem;font-weight:700;color:#94a3b8;text-transform:uppercase;">Destino:</label>
+        <select id="select-target-branch" style="background:#0f172a;color:#f8fafc;border:1px solid rgba(197,155,39,0.5);border-radius:4px;padding:0.3rem 0.5rem;font-size:0.78rem;font-weight:700;cursor:pointer;outline:none;" title="Selecciona la rama donde se publicarán los cambios">
+          <option value="qa">🟡 QA (Staging)</option>
+          <option value="main">🟢 Producción (Main)</option>
+        </select>
+      </div>
       <button type="button" id="btn-github-token" class="btn-secondary btn-token">
         <span class="token-dot" id="token-status-dot"></span>
         <span id="token-btn-label">🔐 Conexión Segura</span>
@@ -447,6 +454,38 @@
 
     let areasData = [];
     let activeAreaId = 'disciplina-formacion';
+
+    function getActiveBranch() {
+      const select = document.getElementById('select-target-branch');
+      if (select && select.value) return select.value;
+      if (window.location.pathname.includes('/qa')) return 'qa';
+      return localStorage.getItem('premilitar_target_branch') || 'main';
+    }
+
+    function initBranchSelector() {
+      const select = document.getElementById('select-target-branch');
+      if (!select) return;
+      const isQaEnv = window.location.pathname.includes('/qa');
+      const saved = localStorage.getItem('premilitar_target_branch');
+      const initialBranch = isQaEnv ? 'qa' : (saved || 'main');
+      select.value = initialBranch;
+      updateSaveButtonText(initialBranch);
+
+      select.addEventListener('change', () => {
+        localStorage.setItem('premilitar_target_branch', select.value);
+        updateSaveButtonText(select.value);
+      });
+    }
+
+    function updateSaveButtonText(branch) {
+      const btn = document.getElementById('btn-save-all');
+      if (btn) {
+        btn.innerHTML = `
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8"/></svg>
+          Guardar en ${branch === 'qa' ? 'QA' : 'Producción'}
+        `;
+      }
+    }
 
     function getWorkerUrl() {
       let url = (localStorage.getItem('premilitar_worker_url') || '').trim();
@@ -818,12 +857,15 @@
         const workerUrl = getWorkerUrl();
         const adminPass = getAdminPass();
         const token     = getGitHubToken();
+        const targetBranch = getActiveBranch();
+        const targetLabel  = targetBranch === 'qa' ? 'QA' : 'Producción';
 
-        // 1. Enviar vía Cloudflare Worker (ambas ramas: QA y Producción)
+        // 1. Enviar vía Cloudflare Worker (solo a la rama seleccionada)
         if (workerUrl && adminPass) {
-          showToast('⏳ Publicando cambios en QA y Producción...');
+          showToast('⏳ Publicando cambios en ' + targetLabel + '...');
           const payload = {
-            branches: ['qa', 'main'],
+            branches: [targetBranch],
+            branch: targetBranch,
             password: adminPass,
             areasJson: areasData
           };
@@ -842,17 +884,15 @@
             throw new Error(data.error || 'Error en el microservicio (código ' + res.status + ')');
           }
 
-          showToast('🚀 ¡Áreas publicadas en QA y Producción con éxito! Se desplegará en ~1-2 min.');
+          showToast('🚀 ¡Áreas publicadas en ' + targetLabel + ' con éxito! Se desplegará en ~1-2 min.');
           return;
         }
 
         // 2. Ruta de respaldo con Token directo
         if (token) {
-          showToast('⏳ Guardando y subiendo con token de GitHub...');
-          for (const br of TARGET_BRANCHES) {
-            await saveToGitHubApi(jsonStr, br);
-          }
-          showToast('🚀 ¡Publicado con éxito en ramas QA y Producción!');
+          showToast('⏳ Guardando y subiendo con token de GitHub en ' + targetLabel + '...');
+          await saveToGitHubApi(jsonStr, targetBranch);
+          showToast('🚀 ¡Publicado con éxito en rama ' + targetLabel + '!');
           return;
         }
 
@@ -942,6 +982,7 @@
     document.getElementById('btn-sync-content').onclick = syncContentFromMarkdown;
 
     updateTokenButtonState();
+    initBranchSelector();
     loadAreas();
   </script>
 </body>

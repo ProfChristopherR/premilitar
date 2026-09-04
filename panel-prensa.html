@@ -18,6 +18,13 @@
       <h1>Panel <span>Prensa</span></h1>
     </div>
     <div class="pn-header-actions">
+      <div class="pn-env-selector">
+        <label for="select-target-branch" class="pn-env-label">Destino:</label>
+        <select id="select-target-branch" class="pn-env-select" title="Selecciona la rama donde se publicarán los cambios">
+          <option value="qa">🟡 QA (Staging)</option>
+          <option value="main">🟢 Producción (Main)</option>
+        </select>
+      </div>
       <button class="btn-pn btn-pn-blue" id="btn-gh-token" type="button">
         <span class="token-dot" id="token-dot"></span>
         🔐 Conexión Segura
