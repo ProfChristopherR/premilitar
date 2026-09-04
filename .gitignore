@@ -29,6 +29,12 @@ dist-ssr/
 *.sw?
 Thumbs.db
 
-# System Generated
+# System Generated & AI Assistant
 .system_generated/
 .gemini/
+.agents/
+
+# Original Heavy Backups & Local Utilities
+src/assets/media/_originals_jpg/
+scripts/
+content/
