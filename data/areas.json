@@ -13,13 +13,6 @@
       "Fortalecer la cohesión grupal, el respeto a los mayores y el liderazgo responsable."
     ],
     "heroImage": "./assets/images/peloton-premilitar/IMG_0151.webp",
-    "model3D": {
-      "title": "Estandarte e Insignias de Delegación",
-      "description": "Inspecciona el estandarte oficial y los elementos de distinción de las delegaciones del Sendero Premilitar en 360°.",
-      "src": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
-      "poster": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
-      "alt": "Modelo 3D representativo del área de instrucción"
-    },
     "equipment": [
       "Uniformes de instrucción táctica",
       "Estandartes e insignias de delegación",
@@ -53,7 +46,9 @@
     "media": {
       "videos": [],
       "gallery": []
-    }
+    },
+    "objectivesImage": "",
+    "equipmentImage": ""
   },
   {
     "id": "acondicionamiento-defensa",
@@ -69,13 +64,6 @@
       "Aplicar técnicas de defensa militar basada en taekwondo y mimetismo táctico con pinturas."
     ],
     "heroImage": "./assets/images/peloton-premilitar/IMG_0063.webp",
-    "model3D": {
-      "title": "Equipamiento Táctico de Defensa Personal",
-      "description": "Explora los instrumentos de entrenamiento físico y defensa personal utilizados en el sendero.",
-      "src": "https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb",
-      "poster": "./assets/images/peloton-premilitar/IMG_0063.webp",
-      "alt": "Modelo 3D de equipamiento de acondicionamiento"
-    },
     "equipment": [
       "Tatamis de goma EVA de alta densidad",
       "Barras de dominadas y estaciones de calistenia",
@@ -106,7 +94,9 @@
     "media": {
       "videos": [],
       "gallery": []
-    }
+    },
+    "objectivesImage": "",
+    "equipmentImage": ""
   },
   {
     "id": "musica-identidad",
@@ -122,13 +112,6 @@
       "Fomentar la memoria auditiva, el trabajo en ensamble y el orgullo de pertenencia institucional."
     ],
     "heroImage": "./assets/images/banda-de-guerra/IMG_0926.webp",
-    "model3D": {
-      "title": "Instrumentos de Viento y Percusión Marcial",
-      "description": "Explora los instrumentos de la Banda de Guerra y la Banda Instrumental del Liceo San Nicolás en 3D.",
-      "src": "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
-      "poster": "./assets/images/banda-de-guerra/IMG_0926.webp",
-      "alt": "Instrumentos musicales del área de Música e Identidad"
-    },
     "equipment": [
       "Clarines y pífanos marciales",
       "Cajas, redoblantes, bombos y platillos",
@@ -153,7 +136,9 @@
     "media": {
       "videos": [],
       "gallery": []
-    }
+    },
+    "objectivesImage": "",
+    "equipmentImage": ""
   },
   {
     "id": "ciencia-criminalistica",
@@ -169,13 +154,6 @@
       "Integrar biología, química y física en el análisis de hechos complejos."
     ],
     "heroImage": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
-    "model3D": {
-      "title": "Maletín Forense y Kit de Levantamiento de Evidencia",
-      "description": "Explora en 3D el equipamiento forense utilizado en los talleres de criminalística del sendero.",
-      "src": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
-      "poster": "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=600&q=80",
-      "alt": "Maletín forense 3D para criminalística"
-    },
     "equipment": [
       "Maletines forenses: polvos dactiloscópicos reactivos, pinceles de fibra de vidrio, luz UV",
       "Reactivos de luminol y cinta de cadena de custodia",
@@ -202,7 +180,9 @@
     "media": {
       "videos": [],
       "gallery": []
-    }
+    },
+    "objectivesImage": "",
+    "equipmentImage": ""
   },
   {
     "id": "tecnologia-geomatica",
@@ -400,6 +380,8 @@
       "Placas microcontroladoras Arduino Uno/Nano, módulos de sensores y actuadores electrónicos",
       "Laboratorio de diseño e impresión 3D para prototipado y robótica aplicada",
       "Software especializado de ingeniería y SIG: Pix4Dmapper, Agisoft Metashape, ArcGIS Pro y QGIS"
-    ]
+    ],
+    "objectivesImage": "",
+    "equipmentImage": ""
   }
 ]

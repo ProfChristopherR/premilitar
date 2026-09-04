@@ -280,7 +280,7 @@ function renderAreaContent(area) {
   if (heroBg) heroBg.style.backgroundImage = `url('${heroImgUrl}')`;
 
   // Objectives
-  renderObjectives(area.objectives, dynMedia.images);
+  renderObjectives(area.objectives, dynMedia.images, area);
 
   // Equipment & Sub-areas
   if (area.equipment || area.practicalExample) {
@@ -288,7 +288,7 @@ function renderAreaContent(area) {
     if (equipBlock && equipBlock.closest('.reveal')) {
       equipBlock.closest('.reveal').style.display = 'block';
     }
-    renderEquipment(area.equipment, area.practicalExample, dynMedia.images);
+    renderEquipment(area.equipment, area.practicalExample, dynMedia.images, area);
   } else {
     const equipBlock = document.getElementById('area-equipment');
     if (equipBlock && equipBlock.closest('.reveal')) {
@@ -305,7 +305,7 @@ function renderAreaContent(area) {
   }
 
   // Multimedia
-  renderMultimedia(dynMedia);
+  renderMultimedia(dynMedia, area);
 
   // Modal de Proyecto y Lightbox
   initProjectModal();
@@ -313,13 +313,18 @@ function renderAreaContent(area) {
 }
 
 // ── Objetivos ─────────────────────────────────────────────────────────────────
-function renderObjectives(objectives, dynamicImages) {
+function renderObjectives(objectives, dynamicImages, area) {
   const el = document.getElementById('area-objectives');
   if (!el || !objectives) return;
   
-  // Buscar si hay una imagen que se llame "objetivo"
-  let imgObj = dynamicImages.find(img => (img.path && img.path.toLowerCase().includes('objetivo')) || (img.url && img.url.toLowerCase().includes('objetivo')));
-  let imgUrl = imgObj ? imgObj.url : (dynamicImages.length > 0 ? dynamicImages[0].url : './assets/images/peloton-premilitar/IMG_0151.jpg');
+  // Usar la imagen explícita de area.objectivesImage si existe, luego heurística de nombre, luego primera dinámica
+  let imgUrl = '';
+  if (area && area.objectivesImage) {
+    imgUrl = area.objectivesImage.startsWith('/data/') ? '.' + area.objectivesImage : area.objectivesImage;
+  } else {
+    let imgObj = dynamicImages.find(img => (img.path && img.path.toLowerCase().includes('objetivo')) || (img.url && img.url.toLowerCase().includes('objetivo')));
+    imgUrl = imgObj ? imgObj.url : (dynamicImages.length > 0 ? dynamicImages[0].url : './assets/images/peloton-premilitar/IMG_0151.jpg');
+  }
 
   const listHtml = objectives.map(o => `
     <li class="objective-item">
@@ -339,7 +344,7 @@ function renderObjectives(objectives, dynamicImages) {
 }
 
 // ── Equipamiento ──────────────────────────────────────────────────────────────
-function renderEquipment(equipment, practicalExample, dynamicImages) {
+function renderEquipment(equipment, practicalExample, dynamicImages, area) {
   const el = document.getElementById('area-equipment');
   
   if (el && equipment) {
@@ -350,9 +355,14 @@ function renderEquipment(equipment, practicalExample, dynamicImages) {
       </li>
     `).join('');
     
-    // Buscar si hay una imagen que se llame "equipo" o "equipamiento"
-    let imgEq = dynamicImages.find(img => (img.path && (img.path.toLowerCase().includes('equip') || img.path.toLowerCase().includes('tactico'))) || (img.url && (img.url.toLowerCase().includes('equip') || img.url.toLowerCase().includes('tactico'))));
-    let imgUrl = imgEq ? imgEq.url : (dynamicImages.length > 1 ? dynamicImages[1].url : './assets/images/peloton-premilitar/IMG_0063.jpg');
+    // Usar imagen explícita de area.equipmentImage si existe, luego heurística de nombre
+    let imgUrl = '';
+    if (area && area.equipmentImage) {
+      imgUrl = area.equipmentImage.startsWith('/data/') ? '.' + area.equipmentImage : area.equipmentImage;
+    } else {
+      let imgEq = dynamicImages.find(img => (img.path && (img.path.toLowerCase().includes('equip') || img.path.toLowerCase().includes('tactico'))) || (img.url && (img.url.toLowerCase().includes('equip') || img.url.toLowerCase().includes('tactico'))));
+      imgUrl = imgEq ? imgEq.url : (dynamicImages.length > 1 ? dynamicImages[1].url : './assets/images/peloton-premilitar/IMG_0063.jpg');
+    }
 
     el.innerHTML = `
       <div class="text-image-split">
@@ -487,12 +497,26 @@ function projectCard(p) {
 }
 
 // ── Multimedia ────────────────────────────────────────────────────────────────
-function renderMultimedia(dynMedia) {
+function renderMultimedia(dynMedia, area) {
   const el = document.getElementById('area-media');
   if (!el) return;
 
-  const gallery = dynMedia.images;
-  const videos = dynMedia.videos;
+  // Merge gallery: JSON-stored (media.gallery) + dynamic discovery
+  const jsonGallery = (area && area.media && area.media.gallery) || [];
+  const jsonGalleryNorm = jsonGallery.map(g => ({
+    url: g.url.startsWith('/data/') ? '.' + g.url : g.url,
+    caption: g.caption || 'Registro fotográfico'
+  }));
+  // Combine: JSON-stored first, then dynamic ones not already in JSON
+  const jsonUrls = new Set(jsonGalleryNorm.map(g => g.url));
+  const dynOnly  = dynMedia.images.filter(img => !jsonUrls.has(img.url));
+  const gallery  = [...jsonGalleryNorm, ...dynOnly];
+
+  // Merge videos: JSON-stored (media.videos) + dynamic discovery
+  const jsonVideos = (area && area.media && area.media.videos) || [];
+  const dynVideoUrls = new Set(dynMedia.videos.map(v => v.url));
+  const jsonOnlyVids = jsonVideos.filter(v => v.url && !dynVideoUrls.has(v.url));
+  const videos = [...dynMedia.videos, ...jsonOnlyVids];
 
   let html = '';
 
