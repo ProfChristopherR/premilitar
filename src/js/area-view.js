@@ -34,6 +34,66 @@ export function resolveMediaUrl(u, fallback = '') {
   return u;
 }
 
+export function formatEmbedVideo(item, defaultTitle = 'Video Oficial', defaultType = 'video') {
+  let url = typeof item === 'string' ? item : (item?.url || '');
+  let title = typeof item === 'object' && item?.title ? item.title : defaultTitle;
+  let type = typeof item === 'object' && item?.type ? item.type : defaultType;
+
+  if (typeof url === 'string' && url.endsWith('.mp4')) {
+    return { title, url: resolveMediaUrl(url), type: 'video' };
+  }
+
+  // Si es YouTube Shorts (formato vertical 9:16)
+  if (url.includes('/shorts/')) {
+    const parts = url.split('/shorts/');
+    const id = parts[1].split('?')[0].split('/')[0];
+    url = `https://www.youtube-nocookie.com/embed/${id}`;
+    type = 'instagram'; // estilo vertical portrait
+  }
+  // Si es URL de YouTube estándar (youtube.com/watch o youtu.be)
+  else if (url.includes('youtu.be/') || (url.includes('youtube.com/') && !url.includes('/embed/'))) {
+    let id = '';
+    let start = '';
+    let end = '';
+
+    if (typeof item === 'object') {
+      if (item.start) start = item.start;
+      if (item.end) end = item.end;
+    }
+
+    try {
+      const urlObj = new URL(url.startsWith('http') ? url : 'https://' + url);
+      if (url.includes('youtu.be/')) {
+        id = urlObj.pathname.replace('/', '').split('?')[0];
+      } else if (urlObj.searchParams.get('v')) {
+        id = urlObj.searchParams.get('v');
+      }
+
+      if (!start && urlObj.searchParams.get('start')) start = urlObj.searchParams.get('start');
+      if (!start && urlObj.searchParams.get('t')) start = urlObj.searchParams.get('t').replace('s', '');
+      if (!end && urlObj.searchParams.get('end')) end = urlObj.searchParams.get('end');
+    } catch (e) {
+      if (url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
+    }
+
+    let params = [];
+    if (start) params.push(`start=${start}`);
+    if (end) params.push(`end=${end}`);
+    const paramStr = params.length > 0 ? `?${params.join('&')}` : '';
+
+    url = `https://www.youtube-nocookie.com/embed/${id}${paramStr}`;
+  }
+  // Si es Instagram Reel
+  else if (url.includes('instagram.com/')) {
+    type = 'instagram';
+    if (!url.includes('/embed')) {
+      url = url.replace(/\/+$/, '') + '/embed/';
+    }
+  }
+
+  return { title, url, type };
+}
+
 // ── Descubrimiento automático de imágenes para cada proyecto ──────────────────
 function getProjectDynamicGallery(areaId, project) {
   const projectId = (project.id || '').toLowerCase().trim();
@@ -114,59 +174,10 @@ function getDynamicMedia(areaId) {
 
   // Collect external links
   for (const [path, module] of Object.entries(linksGlobs)) {
-    if (path.includes(`/${areaId}/`) && module.default) {
-      links = module.default;
+    if (path.includes(`/${areaId}/`)) {
+      const modObj = (module && module.default) ? module.default : module;
+      if (modObj) links = modObj;
     }
-  }
-
-  // Helper para normalizar enlaces de YouTube y YouTube Shorts a embed
-  function formatEmbedVideo(item, defaultTitle = 'Video Oficial', defaultType = 'video') {
-    let url = typeof item === 'string' ? item : (item.url || '');
-    let title = typeof item === 'object' && item.title ? item.title : defaultTitle;
-    let type = typeof item === 'object' && item.type ? item.type : defaultType;
-
-    // Si es YouTube Shorts (formato vertical 9:16)
-    if (url.includes('/shorts/')) {
-      const parts = url.split('/shorts/');
-      const id = parts[1].split('?')[0].split('/')[0];
-      url = `https://www.youtube-nocookie.com/embed/${id}`;
-      type = 'instagram'; // estilo vertical portrait
-    }
-    // Si es URL de YouTube estándar (youtube.com/watch o youtu.be)
-    else if (url.includes('youtu.be/') || (url.includes('youtube.com/') && !url.includes('/embed/'))) {
-      let id = '';
-      let start = '';
-      let end = '';
-
-      if (typeof item === 'object') {
-        if (item.start) start = item.start;
-        if (item.end) end = item.end;
-      }
-
-      try {
-        const urlObj = new URL(url.startsWith('http') ? url : 'https://' + url);
-        if (url.includes('youtu.be/')) {
-          id = urlObj.pathname.replace('/', '').split('?')[0];
-        } else if (urlObj.searchParams.get('v')) {
-          id = urlObj.searchParams.get('v');
-        }
-
-        if (!start && urlObj.searchParams.get('start')) start = urlObj.searchParams.get('start');
-        if (!start && urlObj.searchParams.get('t')) start = urlObj.searchParams.get('t').replace('s', '');
-        if (!end && urlObj.searchParams.get('end')) end = urlObj.searchParams.get('end');
-      } catch (e) {
-        if (url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
-      }
-
-      let params = [];
-      if (start) params.push(`start=${start}`);
-      if (end) params.push(`end=${end}`);
-      const paramStr = params.length > 0 ? `?${params.join('&')}` : '';
-
-      url = `https://www.youtube-nocookie.com/embed/${id}${paramStr}`;
-    }
-
-    return { title, url, type };
   }
 
   // Combine external links with videos & maps
@@ -525,9 +536,22 @@ function renderMultimedia(dynMedia, area) {
 
   // Merge videos: JSON-stored (media.videos) + dynamic discovery
   const jsonVideos = (area && area.media && area.media.videos) || [];
-  const dynVideoUrls = new Set(dynMedia.videos.map(v => v.url));
-  const jsonOnlyVids = jsonVideos.filter(v => v.url && !dynVideoUrls.has(v.url));
-  const videos = [...dynMedia.videos, ...jsonOnlyVids];
+  const allRawVideos = [...jsonVideos, ...dynMedia.videos];
+  const seenVideoUrls = new Set();
+  const videos = [];
+
+  for (const raw of allRawVideos) {
+    if (!raw || !raw.url) continue;
+    if (raw.type === 'arcgis') {
+      videos.push(raw);
+      continue;
+    }
+    const formatted = formatEmbedVideo(raw, raw.title || 'Video Oficial', raw.type || 'video');
+    if (!seenVideoUrls.has(formatted.url)) {
+      seenVideoUrls.add(formatted.url);
+      videos.push(formatted);
+    }
+  }
 
   let html = '';
 

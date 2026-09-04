@@ -447,7 +447,10 @@
               <div class="video-admin-item">
                 <div class="video-admin-fields">
                   <input type="text" class="form-input video-title-input" value="${esc(v.title||'Video')}" placeholder="Título..." />
-                  <input type="url"  class="form-input video-url-input"   value="${esc(v.url||'')}"        placeholder="https://www.youtube.com/watch?v=..." />
+                  <div style="display:flex;gap:0.5rem;align-items:center;">
+                    <input type="url"  class="form-input video-url-input"   value="${esc(v.url||'')}"        placeholder="https://www.youtube.com/watch?v=..." style="flex:1;" />
+                    ${v.url ? `<a href="${esc(v.url)}" target="_blank" class="btn-secondary" style="padding:0.4rem 0.65rem;font-size:0.65rem;white-space:nowrap;text-decoration:none;" title="Abrir enlace">Abrir ↗</a>` : ''}
+                  </div>
                 </div>
                 <button type="button" class="btn-icon btn-remove-video" title="Eliminar">×</button>
               </div>
