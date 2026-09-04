@@ -22,6 +22,18 @@ export function getCleanEmbedUrl(raw) {
   return null;
 }
 
+export function resolveMediaUrl(u, fallback = '') {
+  if (!u) return fallback;
+  if (u.startsWith('http://') || u.startsWith('https://') || u.startsWith('data:')) return u;
+  if (u.startsWith('/assets/')) return '.' + u;
+  if (u.startsWith('/data/')) return '.' + u;
+  if (u.startsWith('/src/assets/')) return '.' + u.replace(/^\/src/, '');
+  if (u.startsWith('src/assets/')) return './' + u.replace(/^src\//, '');
+  if (u.startsWith('assets/')) return './' + u;
+  if (u.startsWith('data/')) return './' + u;
+  return u;
+}
+
 // ── Descubrimiento automático de imágenes para cada proyecto ──────────────────
 function getProjectDynamicGallery(areaId, project) {
   const projectId = (project.id || '').toLowerCase().trim();
@@ -271,7 +283,7 @@ function renderAreaContent(area) {
   
   let heroImgUrl = './assets/images/peloton-premilitar/IMG_0151.jpg';
   if (area.heroImage) {
-    heroImgUrl = area.heroImage.startsWith('/assets/') ? '.' + area.heroImage : area.heroImage;
+    heroImgUrl = resolveMediaUrl(area.heroImage, heroImgUrl);
   } else if (dynMedia.images.length > 0) {
     heroImgUrl = dynMedia.images[0].url;
   }
@@ -320,8 +332,9 @@ function renderObjectives(objectives, dynamicImages, area) {
   // Usar la imagen explícita de area.objectivesImage si existe, luego heurística de nombre, luego primera dinámica
   let imgUrl = '';
   if (area && area.objectivesImage) {
-    imgUrl = area.objectivesImage.startsWith('/data/') ? '.' + area.objectivesImage : area.objectivesImage;
-  } else {
+    imgUrl = resolveMediaUrl(area.objectivesImage);
+  }
+  if (!imgUrl) {
     let imgObj = dynamicImages.find(img => (img.path && img.path.toLowerCase().includes('objetivo')) || (img.url && img.url.toLowerCase().includes('objetivo')));
     imgUrl = imgObj ? imgObj.url : (dynamicImages.length > 0 ? dynamicImages[0].url : './assets/images/peloton-premilitar/IMG_0151.jpg');
   }
@@ -338,7 +351,7 @@ function renderObjectives(objectives, dynamicImages, area) {
   el.innerHTML = `
     <div class="text-image-split">
       <ul class="objectives-list">${listHtml}</ul>
-      <img src="${imgUrl}" alt="Objetivos" class="split-image" loading="lazy" />
+      <img src="${imgUrl}" alt="Objetivos" class="split-image" loading="lazy" onerror="this.src='./assets/images/peloton-premilitar/IMG_0151.jpg'" />
     </div>
   `;
 }
@@ -358,15 +371,16 @@ function renderEquipment(equipment, practicalExample, dynamicImages, area) {
     // Usar imagen explícita de area.equipmentImage si existe, luego heurística de nombre
     let imgUrl = '';
     if (area && area.equipmentImage) {
-      imgUrl = area.equipmentImage.startsWith('/data/') ? '.' + area.equipmentImage : area.equipmentImage;
-    } else {
+      imgUrl = resolveMediaUrl(area.equipmentImage);
+    }
+    if (!imgUrl) {
       let imgEq = dynamicImages.find(img => (img.path && (img.path.toLowerCase().includes('equip') || img.path.toLowerCase().includes('tactico'))) || (img.url && (img.url.toLowerCase().includes('equip') || img.url.toLowerCase().includes('tactico'))));
       imgUrl = imgEq ? imgEq.url : (dynamicImages.length > 1 ? dynamicImages[1].url : './assets/images/peloton-premilitar/IMG_0063.jpg');
     }
 
     el.innerHTML = `
       <div class="text-image-split">
-        <img src="${imgUrl}" alt="Equipamiento Táctico" class="split-image" loading="lazy" />
+        <img src="${imgUrl}" alt="Equipamiento Táctico" class="split-image" loading="lazy" onerror="this.src='./assets/images/peloton-premilitar/IMG_0063.jpg'" />
         <ul class="equipment-list">${listHtml}</ul>
       </div>
     `;
@@ -455,10 +469,7 @@ function renderProjectsBySubArea(area) {
 
 function projectCard(p) {
   const statusCss = p.status ? p.status.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-') : 'prototipo';
-  let imgSrc = p.image || '';
-  if (imgSrc.startsWith('/assets/')) {
-    imgSrc = '.' + imgSrc;
-  }
+  let imgSrc = resolveMediaUrl(p.image, './assets/images/default-project.jpg');
   const projectJson = encodeURIComponent(JSON.stringify(p));
   const hasMap = !!p.arcgis;
   const clean3dUrl = getCleanEmbedUrl(p.model3dEmbed);
@@ -475,7 +486,7 @@ function projectCard(p) {
   return `
     <div class="project-card reveal" data-project-data="${projectJson}">
       <div class="project-card__img-wrap">
-        <img src="${imgSrc}" alt="${p.title}" loading="lazy" />
+        <img src="${imgSrc}" alt="${p.title}" loading="lazy" onerror="this.src='./assets/images/default-project.jpg'" />
         <span class="project-card__status project-card__status--${statusCss}">${p.status || 'Prototipo'}</span>
         ${has3D ? `
           <span class="project-card__badge-3d" title="Incluye modelo 3D interactivo">
@@ -504,9 +515,9 @@ function renderMultimedia(dynMedia, area) {
   // Merge gallery: JSON-stored (media.gallery) + dynamic discovery
   const jsonGallery = (area && area.media && area.media.gallery) || [];
   const jsonGalleryNorm = jsonGallery.map(g => ({
-    url: g.url.startsWith('/data/') ? '.' + g.url : g.url,
+    url: resolveMediaUrl(g.url),
     caption: g.caption || 'Registro fotográfico'
-  }));
+  })).filter(g => g.url);
   // Combine: JSON-stored first, then dynamic ones not already in JSON
   const jsonUrls = new Set(jsonGalleryNorm.map(g => g.url));
   const dynOnly  = dynMedia.images.filter(img => !jsonUrls.has(img.url));
@@ -667,21 +678,22 @@ function initProjectModal() {
     // Descripción
     if (descEl) descEl.textContent = p.description || '';
 
-    // Galería de miniaturas (fotos reales descubiertas en la carpeta)
+    // Galería de miniaturas (fotos reales del proyecto)
     let galleryList = [];
     if (Array.isArray(p.gallery) && p.gallery.length > 0) {
-      galleryList = p.gallery.map(url => url.startsWith('/assets/') ? '.' + url : url);
+      galleryList = p.gallery.map(url => resolveMediaUrl(url)).filter(Boolean);
     } else if (p.image) {
-      let img = p.image.startsWith('/assets/') ? '.' + p.image : p.image;
-      galleryList = [img];
+      const u = resolveMediaUrl(p.image);
+      if (u) galleryList = [u];
     }
 
-    // Imagen principal inicial (primera foto real de la galería)
-    let primaryImg = galleryList[0] || '';
+    // Imagen principal inicial (primera foto real de la galería, o por defecto si no hay ninguna)
+    let primaryImg = galleryList[0] || './assets/images/default-project.jpg';
 
     if (mainImg) {
       mainImg.src = primaryImg;
-      mainImg.style.display = primaryImg ? 'block' : 'none';
+      mainImg.onerror = () => { mainImg.src = './assets/images/default-project.jpg'; };
+      mainImg.style.display = 'block';
       mainImg.style.opacity = '1';
     }
     if (mapContainer) {

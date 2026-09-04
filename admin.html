@@ -288,8 +288,13 @@
 
     function resolveUrl(u) {
       if (!u) return '';
-      if (u.startsWith('http')) return u;
-      if (u.startsWith('/data/area-images/')) return '.' + u;
+      if (u.startsWith('http://') || u.startsWith('https://') || u.startsWith('data:')) return u;
+      if (u.startsWith('/data/')) return '.' + u;
+      if (u.startsWith('/assets/')) return '.' + u;
+      if (u.startsWith('/src/assets/')) return '.' + u.replace(/^\/src/, '');
+      if (u.startsWith('src/assets/')) return './' + u.replace(/^src\//, '');
+      if (u.startsWith('assets/')) return './' + u;
+      if (u.startsWith('data/')) return './' + u;
       return u;
     }
 
@@ -308,6 +313,11 @@
       inp.value = '';
       inp.onchange = async () => {
         const f = inp.files[0]; if(!f) return;
+        const isWebp = f.name.toLowerCase().endsWith('.webp') || f.type === 'image/webp';
+        if (!isWebp) {
+          showToast('⚠️ Solo se permiten imágenes en formato .webp', true);
+          return;
+        }
         const reader = new FileReader();
         reader.onload = () => cb({ filename: f.name, base64: reader.result, objectUrl: URL.createObjectURL(f) });
         reader.readAsDataURL(f);
@@ -355,7 +365,7 @@
             <div class="img-upload-actions">
               <button type="button" class="btn-upload-img" id="btn-hero-upload">📁 Subir imagen</button>
               <button type="button" class="btn-remove-img" id="btn-hero-remove">🗑 Eliminar</button>
-              <p class="form-hint">.webp, .jpg, .png</p>
+              <p class="form-hint">Solo imágenes .webp</p>
             </div>
           </div>
           <input type="hidden" id="hero-img-value" value="${esc(area.heroImage||'')}" />
@@ -570,6 +580,7 @@
         document.getElementById('hero-img-value').value = '';
         const img = document.getElementById('hero-img-preview');
         if (img) img.src = DEFAULT_IMG;
+        showToast('🗑 Imagen principal eliminada (se usará imagen por defecto).');
       });
 
       // ── Objectives Image ──
@@ -578,16 +589,16 @@
           const fname = activeAreaId + '-objectives-' + filename;
           pendingImages[fname] = base64;
           document.getElementById('obj-img-value').value = AREA_IMG_BASE + fname;
-          const el = document.getElementById('obj-img-preview');
-          if (el.tagName === 'IMG') el.src = objectUrl;
-          else el.outerHTML = `<img id="obj-img-preview" src="${objectUrl}" alt="Objetivos" />`;
+          const wrap = document.getElementById('btn-obj-upload').closest('.img-upload-block')?.querySelector('.img-preview-wrap');
+          if (wrap) wrap.innerHTML = `<img id="obj-img-preview" src="${objectUrl}" alt="Objetivos" />`;
           showToast('✅ Imagen de objetivos seleccionada.');
         });
       });
       document.getElementById('btn-obj-remove')?.addEventListener('click', () => {
         document.getElementById('obj-img-value').value = '';
-        const el = document.getElementById('obj-img-preview');
-        if (el && el.tagName === 'IMG') el.src = DEFAULT_IMG;
+        const wrap = document.getElementById('btn-obj-remove').closest('.img-upload-block')?.querySelector('.img-preview-wrap');
+        if (wrap) wrap.innerHTML = `<div class="img-no-img" id="obj-img-preview">🖼️</div>`;
+        showToast('🗑 Imagen de objetivos eliminada.');
       });
 
       // ── Equipment Image ──
@@ -596,16 +607,16 @@
           const fname = activeAreaId + '-equipment-' + filename;
           pendingImages[fname] = base64;
           document.getElementById('eq-img-value').value = AREA_IMG_BASE + fname;
-          const el = document.getElementById('eq-img-preview');
-          if (el.tagName === 'IMG') el.src = objectUrl;
-          else el.outerHTML = `<img id="eq-img-preview" src="${objectUrl}" alt="Equipamiento" />`;
+          const wrap = document.getElementById('btn-eq-upload').closest('.img-upload-block')?.querySelector('.img-preview-wrap');
+          if (wrap) wrap.innerHTML = `<img id="eq-img-preview" src="${objectUrl}" alt="Equipamiento" />`;
           showToast('✅ Imagen de equipamiento seleccionada.');
         });
       });
       document.getElementById('btn-eq-remove')?.addEventListener('click', () => {
         document.getElementById('eq-img-value').value = '';
-        const el = document.getElementById('eq-img-preview');
-        if (el && el.tagName === 'IMG') el.src = DEFAULT_IMG;
+        const wrap = document.getElementById('btn-eq-remove').closest('.img-upload-block')?.querySelector('.img-preview-wrap');
+        if (wrap) wrap.innerHTML = `<div class="img-no-img" id="eq-img-preview">🖼️</div>`;
+        showToast('🗑 Imagen de equipamiento eliminada.');
       });
 
       // ── Objectives List ──
