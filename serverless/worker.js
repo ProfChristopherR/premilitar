@@ -172,6 +172,7 @@ export default {
     // ── Endpoint: Guardar Áreas (admin.html) ───────────────────────────────────
     if ((url.pathname === '/save-areas' || url.pathname === '/areas') && request.method === 'POST') {
       const areasJson = body.areasJson || body.data;
+      const images    = body.images || []; // [{ filename: 'X.webp', base64: '...' }]
 
       if (!areasJson) {
         return new Response(
@@ -182,10 +183,25 @@ export default {
 
       try {
         const areasB64 = toBase64String(areasJson);
-        const paths = ['public/data/areas.json', 'data/areas.json'];
+        const jsonPaths = ['public/data/areas.json', 'data/areas.json'];
 
         for (const branch of branches) {
-          for (const p of paths) {
+          // 1. Subir imágenes de áreas pendientes a public/data/area-images/
+          for (const img of images) {
+            if (!img.filename || !img.base64) continue;
+            const cleanB64 = img.base64.includes(',') ? img.base64.split(',')[1] : img.base64;
+            const imgPath = 'public/data/area-images/' + img.filename;
+            await commitToGitHub(
+              env.GITHUB_TOKEN,
+              imgPath,
+              cleanB64,
+              'feat: subir imagen de área ' + img.filename + ' [' + branch + ']',
+              branch
+            );
+          }
+
+          // 2. Actualizar areas.json en ambas rutas
+          for (const p of jsonPaths) {
             await commitToGitHub(
               env.GITHUB_TOKEN,
               p,
@@ -201,6 +217,7 @@ export default {
             success: true,
             message: '¡Áreas actualizadas con éxito en GitHub! Ramas: ' + branches.join(', '),
             branches,
+            uploadedImages: images.length,
           }),
           { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );

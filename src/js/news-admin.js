@@ -16,12 +16,14 @@ let currentTags   = [];
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 async function init() {
+  initBranchSelector();
   updateTokenDot();
   await loadNews();
   bindHeaderEvents();
   bindEditorEvents();
   bindModalEvents();
 }
+
 
 // ── Load news ─────────────────────────────────────────────────────────────────
 async function loadNews() {
@@ -288,9 +290,10 @@ async function saveNews() {
   try {
     if (isLocal) await saveLocal();
     if (hasAuth()) {
-      showToast('⏳ Publicando en QA y Producción...');
+      const targetLabel = getActiveBranch() === 'qa' ? 'QA' : 'Producción';
+      showToast('⏳ Publicando en ' + targetLabel + '...');
       await publishGitHub();
-      showToast('🚀 ¡Publicado en QA y Producción con éxito!');
+      showToast('🚀 ¡Publicado en ' + targetLabel + ' con éxito!');
     } else {
       showToast('✅ Guardado localmente. Configura tu clave para publicar en la web.');
     }
@@ -339,10 +342,14 @@ async function publishGitHub() {
     throw new Error('Configura tu Contraseña de Administrador o Token de GitHub.');
   }
 
+  const targetBranch = getActiveBranch();
+  const targetLabel  = targetBranch === 'qa' ? 'QA' : 'Producción';
+
   // 1. Ruta preferida: Cloudflare Worker seguro con contraseña
   if (workerUrl && adminPass) {
     const payload = {
-      branches: ['qa', 'main'],
+      branches: [targetBranch],
+      branch: targetBranch,
       password: adminPass,
       newsJson: newsData,
       images: Object.values(pendingImages).map(img => ({
@@ -536,6 +543,37 @@ function bindModalEvents() {
 }
 
 // ── Auth & Credentials ────────────────────────────────────────────────────────
+function getActiveBranch() {
+  const select = document.getElementById('select-target-branch');
+  if (select && select.value) return select.value;
+  if (window.location.pathname.includes('/qa')) return 'qa';
+  return localStorage.getItem('premilitar_target_branch') || 'main';
+}
+
+function initBranchSelector() {
+  const select = document.getElementById('select-target-branch');
+  if (!select) return;
+
+  const isQaEnv = window.location.pathname.includes('/qa');
+  const saved = localStorage.getItem('premilitar_target_branch');
+  const initialBranch = isQaEnv ? 'qa' : (saved || 'main');
+
+  select.value = initialBranch;
+  updatePublishButtonText(initialBranch);
+
+  select.addEventListener('change', () => {
+    localStorage.setItem('premilitar_target_branch', select.value);
+    updatePublishButtonText(select.value);
+  });
+}
+
+function updatePublishButtonText(branch) {
+  const btn = document.getElementById('btn-publish');
+  if (btn) {
+    btn.textContent = branch === 'qa' ? '🚀 Publicar en QA' : '🚀 Publicar en Producción';
+  }
+}
+
 function getWorkerUrl() {
   let url = (localStorage.getItem('premilitar_worker_url') || '').trim();
   if (!url) return DEFAULT_WORKER_URL;

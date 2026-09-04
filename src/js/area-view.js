@@ -22,6 +22,78 @@ export function getCleanEmbedUrl(raw) {
   return null;
 }
 
+export function resolveMediaUrl(u, fallback = '') {
+  if (!u) return fallback;
+  if (u.startsWith('http://') || u.startsWith('https://') || u.startsWith('data:')) return u;
+  if (u.startsWith('/assets/')) return '.' + u;
+  if (u.startsWith('/data/')) return '.' + u;
+  if (u.startsWith('/src/assets/')) return '.' + u.replace(/^\/src/, '');
+  if (u.startsWith('src/assets/')) return './' + u.replace(/^src\//, '');
+  if (u.startsWith('assets/')) return './' + u;
+  if (u.startsWith('data/')) return './' + u;
+  return u;
+}
+
+export function formatEmbedVideo(item, defaultTitle = 'Video Oficial', defaultType = 'video') {
+  let url = typeof item === 'string' ? item : (item?.url || '');
+  let title = typeof item === 'object' && item?.title ? item.title : defaultTitle;
+  let type = typeof item === 'object' && item?.type ? item.type : defaultType;
+
+  if (typeof url === 'string' && url.endsWith('.mp4')) {
+    return { title, url: resolveMediaUrl(url), type: 'video' };
+  }
+
+  // Si es YouTube Shorts (formato vertical 9:16)
+  if (url.includes('/shorts/')) {
+    const parts = url.split('/shorts/');
+    const id = parts[1].split('?')[0].split('/')[0];
+    url = `https://www.youtube-nocookie.com/embed/${id}`;
+    type = 'instagram'; // estilo vertical portrait
+  }
+  // Si es URL de YouTube estándar (youtube.com/watch o youtu.be)
+  else if (url.includes('youtu.be/') || (url.includes('youtube.com/') && !url.includes('/embed/'))) {
+    let id = '';
+    let start = '';
+    let end = '';
+
+    if (typeof item === 'object') {
+      if (item.start) start = item.start;
+      if (item.end) end = item.end;
+    }
+
+    try {
+      const urlObj = new URL(url.startsWith('http') ? url : 'https://' + url);
+      if (url.includes('youtu.be/')) {
+        id = urlObj.pathname.replace('/', '').split('?')[0];
+      } else if (urlObj.searchParams.get('v')) {
+        id = urlObj.searchParams.get('v');
+      }
+
+      if (!start && urlObj.searchParams.get('start')) start = urlObj.searchParams.get('start');
+      if (!start && urlObj.searchParams.get('t')) start = urlObj.searchParams.get('t').replace('s', '');
+      if (!end && urlObj.searchParams.get('end')) end = urlObj.searchParams.get('end');
+    } catch (e) {
+      if (url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
+    }
+
+    let params = [];
+    if (start) params.push(`start=${start}`);
+    if (end) params.push(`end=${end}`);
+    const paramStr = params.length > 0 ? `?${params.join('&')}` : '';
+
+    url = `https://www.youtube-nocookie.com/embed/${id}${paramStr}`;
+  }
+  // Si es Instagram Reel
+  else if (url.includes('instagram.com/')) {
+    type = 'instagram';
+    if (!url.includes('/embed')) {
+      url = url.replace(/\/+$/, '') + '/embed/';
+    }
+  }
+
+  return { title, url, type };
+}
+
 // ── Descubrimiento automático de imágenes para cada proyecto ──────────────────
 function getProjectDynamicGallery(areaId, project) {
   const projectId = (project.id || '').toLowerCase().trim();
@@ -102,59 +174,10 @@ function getDynamicMedia(areaId) {
 
   // Collect external links
   for (const [path, module] of Object.entries(linksGlobs)) {
-    if (path.includes(`/${areaId}/`) && module.default) {
-      links = module.default;
+    if (path.includes(`/${areaId}/`)) {
+      const modObj = (module && module.default) ? module.default : module;
+      if (modObj) links = modObj;
     }
-  }
-
-  // Helper para normalizar enlaces de YouTube y YouTube Shorts a embed
-  function formatEmbedVideo(item, defaultTitle = 'Video Oficial', defaultType = 'video') {
-    let url = typeof item === 'string' ? item : (item.url || '');
-    let title = typeof item === 'object' && item.title ? item.title : defaultTitle;
-    let type = typeof item === 'object' && item.type ? item.type : defaultType;
-
-    // Si es YouTube Shorts (formato vertical 9:16)
-    if (url.includes('/shorts/')) {
-      const parts = url.split('/shorts/');
-      const id = parts[1].split('?')[0].split('/')[0];
-      url = `https://www.youtube-nocookie.com/embed/${id}`;
-      type = 'instagram'; // estilo vertical portrait
-    }
-    // Si es URL de YouTube estándar (youtube.com/watch o youtu.be)
-    else if (url.includes('youtu.be/') || (url.includes('youtube.com/') && !url.includes('/embed/'))) {
-      let id = '';
-      let start = '';
-      let end = '';
-
-      if (typeof item === 'object') {
-        if (item.start) start = item.start;
-        if (item.end) end = item.end;
-      }
-
-      try {
-        const urlObj = new URL(url.startsWith('http') ? url : 'https://' + url);
-        if (url.includes('youtu.be/')) {
-          id = urlObj.pathname.replace('/', '').split('?')[0];
-        } else if (urlObj.searchParams.get('v')) {
-          id = urlObj.searchParams.get('v');
-        }
-
-        if (!start && urlObj.searchParams.get('start')) start = urlObj.searchParams.get('start');
-        if (!start && urlObj.searchParams.get('t')) start = urlObj.searchParams.get('t').replace('s', '');
-        if (!end && urlObj.searchParams.get('end')) end = urlObj.searchParams.get('end');
-      } catch (e) {
-        if (url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
-      }
-
-      let params = [];
-      if (start) params.push(`start=${start}`);
-      if (end) params.push(`end=${end}`);
-      const paramStr = params.length > 0 ? `?${params.join('&')}` : '';
-
-      url = `https://www.youtube-nocookie.com/embed/${id}${paramStr}`;
-    }
-
-    return { title, url, type };
   }
 
   // Combine external links with videos & maps
@@ -271,7 +294,7 @@ function renderAreaContent(area) {
   
   let heroImgUrl = './assets/images/peloton-premilitar/IMG_0151.jpg';
   if (area.heroImage) {
-    heroImgUrl = area.heroImage.startsWith('/assets/') ? '.' + area.heroImage : area.heroImage;
+    heroImgUrl = resolveMediaUrl(area.heroImage, heroImgUrl);
   } else if (dynMedia.images.length > 0) {
     heroImgUrl = dynMedia.images[0].url;
   }
@@ -280,7 +303,7 @@ function renderAreaContent(area) {
   if (heroBg) heroBg.style.backgroundImage = `url('${heroImgUrl}')`;
 
   // Objectives
-  renderObjectives(area.objectives, dynMedia.images);
+  renderObjectives(area.objectives, dynMedia.images, area);
 
   // Equipment & Sub-areas
   if (area.equipment || area.practicalExample) {
@@ -288,7 +311,7 @@ function renderAreaContent(area) {
     if (equipBlock && equipBlock.closest('.reveal')) {
       equipBlock.closest('.reveal').style.display = 'block';
     }
-    renderEquipment(area.equipment, area.practicalExample, dynMedia.images);
+    renderEquipment(area.equipment, area.practicalExample, dynMedia.images, area);
   } else {
     const equipBlock = document.getElementById('area-equipment');
     if (equipBlock && equipBlock.closest('.reveal')) {
@@ -305,7 +328,7 @@ function renderAreaContent(area) {
   }
 
   // Multimedia
-  renderMultimedia(dynMedia);
+  renderMultimedia(dynMedia, area);
 
   // Modal de Proyecto y Lightbox
   initProjectModal();
@@ -313,13 +336,19 @@ function renderAreaContent(area) {
 }
 
 // ── Objetivos ─────────────────────────────────────────────────────────────────
-function renderObjectives(objectives, dynamicImages) {
+function renderObjectives(objectives, dynamicImages, area) {
   const el = document.getElementById('area-objectives');
   if (!el || !objectives) return;
   
-  // Buscar si hay una imagen que se llame "objetivo"
-  let imgObj = dynamicImages.find(img => (img.path && img.path.toLowerCase().includes('objetivo')) || (img.url && img.url.toLowerCase().includes('objetivo')));
-  let imgUrl = imgObj ? imgObj.url : (dynamicImages.length > 0 ? dynamicImages[0].url : './assets/images/peloton-premilitar/IMG_0151.jpg');
+  // Usar la imagen explícita de area.objectivesImage si existe, luego heurística de nombre, luego primera dinámica
+  let imgUrl = '';
+  if (area && area.objectivesImage) {
+    imgUrl = resolveMediaUrl(area.objectivesImage);
+  }
+  if (!imgUrl) {
+    let imgObj = dynamicImages.find(img => (img.path && img.path.toLowerCase().includes('objetivo')) || (img.url && img.url.toLowerCase().includes('objetivo')));
+    imgUrl = imgObj ? imgObj.url : (dynamicImages.length > 0 ? dynamicImages[0].url : './assets/images/peloton-premilitar/IMG_0151.jpg');
+  }
 
   const listHtml = objectives.map(o => `
     <li class="objective-item">
@@ -333,13 +362,13 @@ function renderObjectives(objectives, dynamicImages) {
   el.innerHTML = `
     <div class="text-image-split">
       <ul class="objectives-list">${listHtml}</ul>
-      <img src="${imgUrl}" alt="Objetivos" class="split-image" loading="lazy" />
+      <img src="${imgUrl}" alt="Objetivos" class="split-image" loading="lazy" onerror="this.src='./assets/images/peloton-premilitar/IMG_0151.jpg'" />
     </div>
   `;
 }
 
 // ── Equipamiento ──────────────────────────────────────────────────────────────
-function renderEquipment(equipment, practicalExample, dynamicImages) {
+function renderEquipment(equipment, practicalExample, dynamicImages, area) {
   const el = document.getElementById('area-equipment');
   
   if (el && equipment) {
@@ -350,13 +379,19 @@ function renderEquipment(equipment, practicalExample, dynamicImages) {
       </li>
     `).join('');
     
-    // Buscar si hay una imagen que se llame "equipo" o "equipamiento"
-    let imgEq = dynamicImages.find(img => (img.path && (img.path.toLowerCase().includes('equip') || img.path.toLowerCase().includes('tactico'))) || (img.url && (img.url.toLowerCase().includes('equip') || img.url.toLowerCase().includes('tactico'))));
-    let imgUrl = imgEq ? imgEq.url : (dynamicImages.length > 1 ? dynamicImages[1].url : './assets/images/peloton-premilitar/IMG_0063.jpg');
+    // Usar imagen explícita de area.equipmentImage si existe, luego heurística de nombre
+    let imgUrl = '';
+    if (area && area.equipmentImage) {
+      imgUrl = resolveMediaUrl(area.equipmentImage);
+    }
+    if (!imgUrl) {
+      let imgEq = dynamicImages.find(img => (img.path && (img.path.toLowerCase().includes('equip') || img.path.toLowerCase().includes('tactico'))) || (img.url && (img.url.toLowerCase().includes('equip') || img.url.toLowerCase().includes('tactico'))));
+      imgUrl = imgEq ? imgEq.url : (dynamicImages.length > 1 ? dynamicImages[1].url : './assets/images/peloton-premilitar/IMG_0063.jpg');
+    }
 
     el.innerHTML = `
       <div class="text-image-split">
-        <img src="${imgUrl}" alt="Equipamiento Táctico" class="split-image" loading="lazy" />
+        <img src="${imgUrl}" alt="Equipamiento Táctico" class="split-image" loading="lazy" onerror="this.src='./assets/images/peloton-premilitar/IMG_0063.jpg'" />
         <ul class="equipment-list">${listHtml}</ul>
       </div>
     `;
@@ -445,10 +480,7 @@ function renderProjectsBySubArea(area) {
 
 function projectCard(p) {
   const statusCss = p.status ? p.status.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-') : 'prototipo';
-  let imgSrc = p.image || '';
-  if (imgSrc.startsWith('/assets/')) {
-    imgSrc = '.' + imgSrc;
-  }
+  let imgSrc = resolveMediaUrl(p.image, './assets/images/default-project.jpg');
   const projectJson = encodeURIComponent(JSON.stringify(p));
   const hasMap = !!p.arcgis;
   const clean3dUrl = getCleanEmbedUrl(p.model3dEmbed);
@@ -465,7 +497,7 @@ function projectCard(p) {
   return `
     <div class="project-card reveal" data-project-data="${projectJson}">
       <div class="project-card__img-wrap">
-        <img src="${imgSrc}" alt="${p.title}" loading="lazy" />
+        <img src="${imgSrc}" alt="${p.title}" loading="lazy" onerror="this.src='./assets/images/default-project.jpg'" />
         <span class="project-card__status project-card__status--${statusCss}">${p.status || 'Prototipo'}</span>
         ${has3D ? `
           <span class="project-card__badge-3d" title="Incluye modelo 3D interactivo">
@@ -487,12 +519,39 @@ function projectCard(p) {
 }
 
 // ── Multimedia ────────────────────────────────────────────────────────────────
-function renderMultimedia(dynMedia) {
+function renderMultimedia(dynMedia, area) {
   const el = document.getElementById('area-media');
   if (!el) return;
 
-  const gallery = dynMedia.images;
-  const videos = dynMedia.videos;
+  // Merge gallery: JSON-stored (media.gallery) + dynamic discovery
+  const jsonGallery = (area && area.media && area.media.gallery) || [];
+  const jsonGalleryNorm = jsonGallery.map(g => ({
+    url: resolveMediaUrl(g.url),
+    caption: g.caption || 'Registro fotográfico'
+  })).filter(g => g.url);
+  // Combine: JSON-stored first, then dynamic ones not already in JSON
+  const jsonUrls = new Set(jsonGalleryNorm.map(g => g.url));
+  const dynOnly  = dynMedia.images.filter(img => !jsonUrls.has(img.url));
+  const gallery  = [...jsonGalleryNorm, ...dynOnly];
+
+  // Merge videos: JSON-stored (media.videos) + dynamic discovery
+  const jsonVideos = (area && area.media && area.media.videos) || [];
+  const allRawVideos = [...jsonVideos, ...dynMedia.videos];
+  const seenVideoUrls = new Set();
+  const videos = [];
+
+  for (const raw of allRawVideos) {
+    if (!raw || !raw.url) continue;
+    if (raw.type === 'arcgis') {
+      videos.push(raw);
+      continue;
+    }
+    const formatted = formatEmbedVideo(raw, raw.title || 'Video Oficial', raw.type || 'video');
+    if (!seenVideoUrls.has(formatted.url)) {
+      seenVideoUrls.add(formatted.url);
+      videos.push(formatted);
+    }
+  }
 
   let html = '';
 
@@ -643,21 +702,22 @@ function initProjectModal() {
     // Descripción
     if (descEl) descEl.textContent = p.description || '';
 
-    // Galería de miniaturas (fotos reales descubiertas en la carpeta)
+    // Galería de miniaturas (fotos reales del proyecto)
     let galleryList = [];
     if (Array.isArray(p.gallery) && p.gallery.length > 0) {
-      galleryList = p.gallery.map(url => url.startsWith('/assets/') ? '.' + url : url);
+      galleryList = p.gallery.map(url => resolveMediaUrl(url)).filter(Boolean);
     } else if (p.image) {
-      let img = p.image.startsWith('/assets/') ? '.' + p.image : p.image;
-      galleryList = [img];
+      const u = resolveMediaUrl(p.image);
+      if (u) galleryList = [u];
     }
 
-    // Imagen principal inicial (primera foto real de la galería)
-    let primaryImg = galleryList[0] || '';
+    // Imagen principal inicial (primera foto real de la galería, o por defecto si no hay ninguna)
+    let primaryImg = galleryList[0] || './assets/images/default-project.jpg';
 
     if (mainImg) {
       mainImg.src = primaryImg;
-      mainImg.style.display = primaryImg ? 'block' : 'none';
+      mainImg.onerror = () => { mainImg.src = './assets/images/default-project.jpg'; };
+      mainImg.style.display = 'block';
       mainImg.style.opacity = '1';
     }
     if (mapContainer) {

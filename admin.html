@@ -13,18 +13,22 @@
     :root {
       --admin-bg: #090e17;
       --admin-card: #0f172a;
+      --admin-card2: #131c2f;
       --admin-border: rgba(255, 255, 255, 0.1);
       --admin-gold: #c59b27;
       --admin-gold-light: #e5b83b;
+      --admin-green: #10b981;
+      --admin-red: #ef4444;
     }
-    body {
+    html, body {
       background: var(--admin-bg);
       color: #e2e8f0;
-      font-family: var(--font-body);
+      font-family: 'Montserrat', sans-serif;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      margin: 0;
+      padding: 0;
     }
+    body { display: flex; flex-direction: column; }
     .admin-header {
       background: #0d1526;
       border-bottom: 2px solid var(--admin-gold);
@@ -39,309 +43,83 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .admin-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .admin-brand h1 {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: #fff;
-      margin: 0;
-      text-transform: uppercase;
-    }
-    .admin-brand span {
-      color: var(--admin-gold);
-    }
-    .admin-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
-    .btn-save {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      color: #fff;
-      border: none;
-      font-family: var(--font-display);
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      padding: 0.65rem 1.3rem;
-      border-radius: 4px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
-    }
-    .btn-save:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5);
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      border: 1px solid var(--admin-border);
-      font-family: var(--font-display);
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.6rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.15);
-      color: var(--admin-gold-light);
-    }
-    .btn-token {
-      border-color: rgba(99, 102, 241, 0.4);
-      background: rgba(99, 102, 241, 0.12);
-      color: #a5b4fc;
-    }
-    .btn-token:hover {
-      background: rgba(99, 102, 241, 0.25);
-      color: #fff;
-    }
-    .token-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #ef4444;
-      display: inline-block;
-    }
-    .token-dot.connected {
-      background: #10b981;
-      box-shadow: 0 0 6px #10b981;
-    }
-    .admin-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      flex: 1;
-      max-width: 1400px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 2rem;
-      gap: 2rem;
-    }
-    .admin-sidebar {
-      background: var(--admin-card);
-      border: 1px solid var(--admin-border);
-      border-radius: 6px;
-      padding: 1.25rem;
-      height: fit-content;
-      position: sticky;
-      top: 5.5rem;
-    }
-    .sidebar-title {
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--admin-gold);
-      margin-bottom: 1rem;
-    }
-    .area-nav-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .area-nav-btn {
-      background: transparent;
-      border: 1px solid transparent;
-      color: #94a3b8;
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 0.65rem 0.85rem;
-      border-radius: 4px;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .area-nav-btn:hover {
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-    }
-    .area-nav-btn.active {
-      background: rgba(197, 155, 39, 0.15);
-      color: var(--admin-gold-light);
-      border-color: rgba(197, 155, 39, 0.4);
-      font-weight: 700;
-    }
-    .admin-main {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .form-card {
-      background: var(--admin-card);
-      border: 1px solid var(--admin-border);
-      border-radius: 6px;
-      padding: 1.75rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    .form-card-title {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: var(--admin-gold-light);
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--admin-border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-    .form-label {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #cbd5e1;
-      margin-bottom: 0.4rem;
-    }
-    .form-input, .form-textarea, .form-select {
-      width: 100%;
-      background: #090e17;
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #fff;
-      padding: 0.65rem 0.85rem;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      border-radius: 4px;
-      transition: border-color 0.2s;
-    }
-    .form-input:focus, .form-textarea:focus, .form-select:focus {
-      outline: none;
-      border-color: var(--admin-gold);
-      box-shadow: 0 0 0 2px rgba(197, 155, 39, 0.2);
-    }
-    .form-textarea {
-      min-height: 85px;
-      resize: vertical;
-      line-height: 1.6;
-    }
-    .dynamic-list-item {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.6rem;
-      align-items: center;
-    }
-    .btn-icon {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #f87171;
-      width: 34px;
-      height: 34px;
-      border-radius: 4px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: all 0.2s;
-    }
-    .btn-icon:hover {
-      background: #ef4444;
-      color: #fff;
-    }
-    .btn-add-item {
-      background: rgba(197, 155, 39, 0.15);
-      border: 1px dashed var(--admin-gold);
-      color: var(--admin-gold-light);
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all 0.2s;
-    }
-    .btn-add-item:hover {
-      background: var(--admin-gold);
-      color: #0d1526;
-    }
-    .project-edit-card {
-      background: #090e17;
-      border: 1px solid var(--admin-border);
-      border-left: 3px solid var(--admin-gold);
-      border-radius: 4px;
-      padding: 1.25rem;
-      margin-bottom: 1.25rem;
-    }
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(4px);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    .modal-dialog {
-      background: #0f172a;
-      border: 1px solid var(--admin-gold);
-      border-radius: 8px;
-      max-width: 520px;
-      width: 100%;
-      padding: 2rem;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    }
-    .toast-msg {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: #10b981;
-      color: #fff;
-      padding: 1.1rem 1.6rem;
-      border-radius: 6px;
-      font-weight: 700;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.6);
-      display: none;
-      z-index: 2000;
-      animation: fadeIn 0.3s;
-      max-width: 420px;
-      line-height: 1.5;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @media (max-width: 900px) {
-      .admin-layout {
-        grid-template-columns: 1fr;
-      }
-      .admin-sidebar {
-        position: static;
-      }
-    }
+    .admin-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .admin-brand h1 { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 0.08em; color: #fff; margin: 0; text-transform: uppercase; }
+    .admin-brand span { color: var(--admin-gold); }
+    .admin-actions { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+    .btn-save { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff; border: none; font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.08em; padding: 0.65rem 1.3rem; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s ease; box-shadow: 0 2px 10px rgba(16,185,129,0.3); }
+    .btn-save:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(16,185,129,0.5); }
+    .btn-save:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--admin-border); font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.15); color: var(--admin-gold-light); }
+    .btn-token { border-color: rgba(99,102,241,0.4); background: rgba(99,102,241,0.12); color: #a5b4fc; }
+    .btn-token:hover { background: rgba(99,102,241,0.25); color: #fff; }
+    .token-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--admin-red); display: inline-block; }
+    .token-dot.connected { background: var(--admin-green); box-shadow: 0 0 6px var(--admin-green); }
+    .btn-add-item { background: rgba(197,155,39,0.12); border: 1px dashed var(--admin-gold); color: var(--admin-gold-light); font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 700; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.2s; }
+    .btn-add-item:hover { background: var(--admin-gold); color: #0d1526; }
+    .btn-icon { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #f87171; width: 32px; height: 32px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-size: 0.9rem; }
+    .btn-icon:hover { background: var(--admin-red); color: #fff; }
+    .admin-layout { display: grid; grid-template-columns: 260px 1fr; flex: 1; max-width: 1400px; margin: 0 auto; width: 100%; padding: 2rem; gap: 2rem; box-sizing: border-box; }
+    .admin-sidebar { background: var(--admin-card); border: 1px solid var(--admin-border); border-radius: 6px; padding: 1.25rem; height: fit-content; position: sticky; top: 5.5rem; }
+    .sidebar-title { font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--admin-gold); margin-bottom: 1rem; }
+    .area-nav-list { display: flex; flex-direction: column; gap: 0.35rem; }
+    .area-nav-btn { background: transparent; border: 1px solid transparent; color: #94a3b8; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 600; padding: 0.6rem 0.8rem; border-radius: 4px; text-align: left; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 0.5rem; }
+    .area-nav-btn:hover { background: rgba(255,255,255,0.05); color: #fff; }
+    .area-nav-btn.active { background: rgba(197,155,39,0.15); color: var(--admin-gold-light); border-color: rgba(197,155,39,0.4); font-weight: 700; }
+    .admin-main { display: flex; flex-direction: column; gap: 1.5rem; }
+    .form-card { background: var(--admin-card); border: 1px solid var(--admin-border); border-radius: 6px; padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .form-card-title { font-family: 'Cinzel', serif; font-size: 0.88rem; font-weight: 800; letter-spacing: 0.08em; color: var(--admin-gold-light); text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--admin-border); display: flex; justify-content: space-between; align-items: center; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #94a3b8; margin-bottom: 0.35rem; }
+    .form-hint { font-size: 0.7rem; color: #64748b; margin-top: 0.2rem; }
+    .form-input, .form-textarea, .form-select { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 0.6rem 0.8rem; font-family: 'Montserrat', sans-serif; font-size: 0.88rem; border-radius: 4px; transition: border-color 0.2s; box-sizing: border-box; }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--admin-gold); box-shadow: 0 0 0 2px rgba(197,155,39,0.2); }
+    .form-textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
+    .form-select option { background: #0f172a; }
+    .dynamic-list-item { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center; }
+    .img-upload-block { display: flex; gap: 1rem; align-items: flex-start; flex-wrap: wrap; }
+    .img-preview-wrap { position: relative; width: 120px; height: 90px; flex-shrink: 0; border-radius: 4px; overflow: hidden; background: rgba(0,0,0,0.3); border: 1px solid var(--admin-border); }
+    .img-preview-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .img-no-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #475569; font-size: 1.5rem; }
+    .img-upload-actions { display: flex; flex-direction: column; gap: 0.4rem; justify-content: center; }
+    .btn-upload-img { background: rgba(197,155,39,0.12); border: 1px solid rgba(197,155,39,0.4); color: var(--admin-gold-light); font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; padding: 0.45rem 0.8rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .btn-upload-img:hover { background: var(--admin-gold); color: #0d1526; }
+    .btn-remove-img { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #f87171; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; padding: 0.45rem 0.8rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+    .btn-remove-img:hover { background: var(--admin-red); color: #fff; }
+    .gallery-admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 0.75rem; }
+    .gallery-admin-item { position: relative; border-radius: 4px; overflow: hidden; border: 1px solid var(--admin-border); background: rgba(0,0,0,0.3); }
+    .gallery-admin-item img { width: 100%; height: 90px; object-fit: cover; display: block; }
+    .gallery-admin-item-actions { position: absolute; top: 4px; right: 4px; display: flex; gap: 3px; }
+    .gallery-admin-item-btn { width: 24px; height: 24px; border-radius: 3px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; transition: all 0.15s; }
+    .gallery-admin-item-btn--del { background: rgba(239,68,68,0.85); color: #fff; }
+    .gallery-admin-item-btn--del:hover { background: var(--admin-red); }
+    .gallery-caption-input { width: 100%; background: rgba(0,0,0,0.4); border: none; border-top: 1px solid var(--admin-border); color: #94a3b8; font-size: 0.68rem; padding: 0.25rem 0.4rem; box-sizing: border-box; }
+    .gallery-caption-input:focus { outline: none; color: #fff; background: rgba(197,155,39,0.1); }
+    .project-edit-card { background: #131c2f; border: 1px solid var(--admin-border); border-left: 3px solid var(--admin-gold); border-radius: 4px; padding: 1.25rem; margin-bottom: 1rem; }
+    .project-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .project-card-title { color: var(--admin-gold); font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 800; }
+    .collapsible-section { border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; margin-top: 0.75rem; overflow: hidden; }
+    .collapsible-header { background: rgba(255,255,255,0.04); padding: 0.6rem 0.9rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; user-select: none; transition: all 0.2s; }
+    .collapsible-header:hover { background: rgba(255,255,255,0.08); color: #cbd5e1; }
+    .collapsible-header.open { color: var(--admin-gold-light); background: rgba(197,155,39,0.08); }
+    .collapsible-body { display: none; padding: 1rem; }
+    .collapsible-body.open { display: block; }
+    .collapsible-arrow { transition: transform 0.2s; }
+    .collapsible-header.open .collapsible-arrow { transform: rotate(180deg); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-dialog { background: #0f172a; border: 1px solid var(--admin-gold); border-radius: 8px; max-width: 520px; width: 100%; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+    .toast-msg { position: fixed; bottom: 2rem; right: 2rem; background: var(--admin-green); color: #fff; padding: 1rem 1.5rem; border-radius: 6px; font-weight: 700; box-shadow: 0 6px 25px rgba(0,0,0,0.6); display: none; z-index: 2000; animation: fadeIn 0.3s; max-width: 400px; line-height: 1.5; font-size: 0.9rem; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .video-admin-item { background: rgba(0,0,0,0.2); border: 1px solid var(--admin-border); border-radius: 4px; padding: 0.75rem; margin-bottom: 0.6rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+    .video-admin-fields { flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+    .env-selector-wrap { display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 6px; }
+    .env-selector-label { font-size: 0.68rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.04em; }
+    .env-selector-select { background: #0f172a; color: #f8fafc; border: 1px solid rgba(197,155,39,0.5); border-radius: 4px; padding: 0.25rem 0.5rem; font-size: 0.78rem; font-weight: 700; cursor: pointer; outline: none; }
+    .env-selector-select:focus { border-color: var(--admin-gold); }
+    @media (max-width: 900px) { .admin-layout { grid-template-columns: 1fr; } .admin-sidebar { position: static; } }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -352,84 +130,70 @@
       <h1>Panel de Contenido <span>· Sendero Pre-Militar</span></h1>
     </div>
     <div class="admin-actions">
+      <div class="env-selector-wrap">
+        <label for="select-target-branch" class="env-selector-label">Destino:</label>
+        <select id="select-target-branch" class="env-selector-select">
+          <option value="qa">🟡 QA (Staging)</option>
+          <option value="main">🟢 Producción (Main)</option>
+        </select>
+      </div>
       <button type="button" id="btn-github-token" class="btn-secondary btn-token">
         <span class="token-dot" id="token-status-dot"></span>
         <span id="token-btn-label">🔐 Conexión Segura</span>
       </button>
       <a href="index.html" class="btn-secondary" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-        Ver Web en Vivo
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        Ver Web
       </a>
-      <button type="button" id="btn-download-json" class="btn-secondary" title="Descargar copia de seguridad en JSON">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Descargar JSON
+      <button type="button" id="btn-download-json" class="btn-secondary" title="Descargar backup JSON">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Backup
       </button>
-      <button type="button" id="btn-sync-content" class="btn-secondary" style="border-color:rgba(197,155,39,0.5);color:var(--admin-gold-light);" title="Sincronizar cambios desde archivos Markdown locales">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-        Sync Markdown
+      <button type="button" id="btn-sync-content" class="btn-secondary" style="border-color:rgba(197,155,39,0.5);color:var(--admin-gold-light);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        Sync MD
       </button>
       <button type="button" id="btn-save-all" class="btn-save">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8"/></svg>
         Guardar y Publicar
       </button>
     </div>
   </header>
 
   <div class="admin-layout">
-    <!-- Barra lateral con selector de áreas -->
     <aside class="admin-sidebar">
       <div class="sidebar-title">Seleccionar Área</div>
-      <div class="area-nav-list" id="admin-area-nav">
-        <!-- Renderizado dinámico de botones de área -->
-      </div>
+      <div class="area-nav-list" id="admin-area-nav"></div>
     </aside>
-
-    <!-- Formulario principal del área activa -->
-    <main class="admin-main" id="admin-form-container">
-      <!-- Generado dinámicamente con JavaScript -->
-    </main>
+    <main class="admin-main" id="admin-form-container"></main>
   </div>
 
-  <!-- Modal de Configuración de Acceso Seguro -->
+  <!-- Modal Credenciales -->
   <div id="modal-token" class="modal-overlay" style="display:none;">
     <div class="modal-dialog">
-      <h3 style="font-family:var(--font-display);color:var(--admin-gold-light);margin-top:0;font-size:1.1rem;text-transform:uppercase;">🔐 Conexión Segura de Publicación</h3>
-      <p style="font-size:0.88rem;color:#cbd5e1;line-height:1.6;">
-        Publica cambios directamente en <strong>QA</strong> y <strong>Producción</strong> con tu contraseña de administrador a través del microservicio seguro, sin tokens en el navegador.
-      </p>
-
-      <div style="background:rgba(197,155,39,0.08);border:1px solid rgba(197,155,39,0.25);border-radius:6px;padding:0.75rem 1rem;margin-bottom:1rem;font-size:0.8rem;color:#cbd5e1;">
-        <div style="display:flex;align-items:center;gap:0.4rem;color:#e5b83b;font-weight:700;margin-bottom:0.25rem;">
-          <span>🌐 Servidor Cloudflare Conectado</span>
-        </div>
-        <div style="font-family:monospace;font-size:0.75rem;color:#94a3b8;word-break:break-all;">
-          https://premilitar-prensa-api.christopherruiz.workers.dev
-        </div>
-        <div style="font-size:0.72rem;color:#10b981;margin-top:0.35rem;">
-          ✓ Publica automáticamente en <strong>QA</strong> y <strong>Producción</strong>
-        </div>
+      <h3 style="font-family:'Cinzel',serif;color:var(--admin-gold-light);margin-top:0;font-size:1.05rem;text-transform:uppercase;">🔐 Conexión Segura</h3>
+      <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.6;">Publica cambios directamente a GitHub con tu contraseña de administrador.</p>
+      <div style="background:rgba(197,155,39,0.08);border:1px solid rgba(197,155,39,0.25);border-radius:6px;padding:0.75rem 1rem;margin-bottom:1rem;font-size:0.78rem;">
+        <div style="color:#e5b83b;font-weight:700;margin-bottom:0.2rem;">🌐 Cloudflare Worker</div>
+        <div style="font-family:monospace;font-size:0.72rem;color:#94a3b8;">https://premilitar-prensa-api.christopherruiz.workers.dev</div>
       </div>
-
-      <div class="form-group" style="margin-top:1rem;">
+      <div class="form-group">
         <label class="form-label">Contraseña de Administrador</label>
-        <input type="password" id="input-admin-pass" class="form-input" placeholder="Ingresa tu contraseña de administrador..." autofocus />
-        <p style="font-size:0.72rem;color:#64748b;margin-top:0.25rem;">La contraseña configurada en ADMIN_PASSWORD en Cloudflare.</p>
+        <input type="password" id="input-admin-pass" class="form-input" placeholder="Tu contraseña..." autofocus />
       </div>
-
       <details style="margin-bottom:1.5rem;font-size:0.75rem;color:#94a3b8;cursor:pointer;">
-        <summary style="outline:none;padding:0.3rem 0;color:#c59b27;">⚙️ Opciones avanzadas (URL personalizada / Token directo)</summary>
-        <div style="margin-top:0.5rem;padding:0.75rem;background:rgba(255,255,255,0.04);border-radius:4px;display:flex;flex-direction:column;gap:0.6rem;">
+        <summary style="outline:none;padding:0.3rem 0;color:var(--admin-gold);">⚙️ Opciones avanzadas</summary>
+        <div style="margin-top:0.5rem;padding:0.75rem;background:rgba(255,255,255,0.03);border-radius:4px;display:flex;flex-direction:column;gap:0.6rem;">
           <div>
-            <label class="form-label" style="font-size:0.7rem;">URL del Microservicio Personalizado</label>
-            <input type="url" id="input-worker-url" class="form-input" placeholder="https://premilitar-prensa-api.christopherruiz.workers.dev" style="font-size:0.8rem;margin-top:0.2rem;" />
+            <label class="form-label">URL del Microservicio</label>
+            <input type="url" id="input-worker-url" class="form-input" placeholder="https://premilitar-prensa-api..." />
           </div>
           <div>
-            <label class="form-label" style="font-size:0.7rem;">Token GitHub Directo (ghp_...)</label>
-            <input type="password" id="input-gh-token" class="form-input" placeholder="ghp_..." style="font-size:0.8rem;margin-top:0.2rem;" />
+            <label class="form-label">Token GitHub (ghp_...)</label>
+            <input type="password" id="input-gh-token" class="form-input" placeholder="ghp_..." />
           </div>
         </div>
       </details>
-
       <div style="display:flex;justify-content:flex-end;gap:0.75rem;">
         <button type="button" id="btn-cancel-token" class="btn-secondary">Cancelar</button>
         <button type="button" id="btn-save-token" class="btn-save">Guardar Credenciales</button>
@@ -438,510 +202,715 @@
   </div>
 
   <div id="toast" class="toast-msg"></div>
+  <input type="file" id="file-input-hidden" accept=".webp,.jpg,.jpeg,.png" style="display:none;" />
 
   <script type="module">
     const REPO_OWNER        = 'ProfChristopherR';
     const REPO_NAME         = 'premilitar';
-    const TARGET_BRANCHES   = ['qa', 'main'];
     const DEFAULT_WORKER_URL = 'https://premilitar-prensa-api.christopherruiz.workers.dev';
+    const DEFAULT_IMG       = './assets/images/default-project.jpg';
+    const AREA_IMG_BASE     = '/data/area-images/';
 
-    let areasData = [];
-    let activeAreaId = 'disciplina-formacion';
+    let areasData    = [];
+    let activeAreaId = '';
+    let pendingImages = {}; // filename -> base64 dataURL
 
+    // ── Branch ─────────────────────────────────────────────────────────────────
+    function getActiveBranch() {
+      const sel = document.getElementById('select-target-branch');
+      if (sel && sel.value) return sel.value;
+      return localStorage.getItem('premilitar_target_branch') || 'main';
+    }
+    function initBranchSelector() {
+      const sel  = document.getElementById('select-target-branch');
+      if (!sel) return;
+      const saved = localStorage.getItem('premilitar_target_branch');
+      sel.value = window.location.pathname.includes('/qa') ? 'qa' : (saved || 'main');
+      updateSaveBtnText(sel.value);
+      sel.addEventListener('change', () => {
+        localStorage.setItem('premilitar_target_branch', sel.value);
+        updateSaveBtnText(sel.value);
+      });
+    }
+    function updateSaveBtnText(branch) {
+      const btn = document.getElementById('btn-save-all');
+      if (!btn) return;
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8"/></svg> Guardar en ${branch === 'qa' ? 'QA' : 'Producción'}`;
+    }
+
+    // ── Auth ───────────────────────────────────────────────────────────────────
     function getWorkerUrl() {
-      let url = (localStorage.getItem('premilitar_worker_url') || '').trim();
-      if (!url) return DEFAULT_WORKER_URL;
-      if (!url.startsWith('https://') && !url.startsWith('http://')) {
-        url = 'https://' + url;
-      }
-      return url;
+      let u = (localStorage.getItem('premilitar_worker_url') || '').trim();
+      if (!u) return DEFAULT_WORKER_URL;
+      if (!u.startsWith('http')) u = 'https://' + u;
+      return u;
     }
-    function getAdminPass() {
-      return (localStorage.getItem('premilitar_admin_pass') || '').trim();
-    }
-    function getGitHubToken() {
-      return (localStorage.getItem('premilitar_gh_token') || '').trim();
-    }
-    function hasAuth() {
-      return !!getAdminPass() || !!getGitHubToken();
-    }
+    function getAdminPass()    { return (localStorage.getItem('premilitar_admin_pass') || '').trim(); }
+    function getGitHubToken()  { return (localStorage.getItem('premilitar_gh_token')   || '').trim(); }
+    function hasAuth()         { return !!getAdminPass() || !!getGitHubToken(); }
 
-    function updateTokenButtonState() {
-      const dot = document.getElementById('token-status-dot');
+    function updateTokenBtn() {
+      const dot   = document.getElementById('token-status-dot');
       const label = document.getElementById('token-btn-label');
       if (hasAuth()) {
-        if (dot) dot.className = 'token-dot connected';
+        if (dot)   dot.className = 'token-dot connected';
         if (label) label.textContent = 'Conexión Activa 🔐';
       } else {
-        if (dot) dot.className = 'token-dot';
+        if (dot)   dot.className = 'token-dot';
         if (label) label.textContent = 'Conexión Segura';
       }
     }
+    function openModal()  { const m = document.getElementById('modal-token'); if(!m) return; document.getElementById('input-admin-pass').value = getAdminPass(); document.getElementById('input-worker-url').value = getWorkerUrl(); document.getElementById('input-gh-token').value = getGitHubToken(); m.style.display='flex'; }
+    function closeModal() { const m = document.getElementById('modal-token'); if(m) m.style.display='none'; }
 
-    function openTokenModal() {
-      const modal = document.getElementById('modal-token');
-      if (!modal) return;
-      const passEl = document.getElementById('input-admin-pass');
-      const urlEl  = document.getElementById('input-worker-url');
-      const tokEl  = document.getElementById('input-gh-token');
-      if (passEl) passEl.value = getAdminPass();
-      if (urlEl)  urlEl.value  = getWorkerUrl();
-      if (tokEl)  tokEl.value  = getGitHubToken();
-      modal.style.display = 'flex';
-    }
-    function closeTokenModal() {
-      const modal = document.getElementById('modal-token');
-      if (modal) modal.style.display = 'none';
-    }
-
-
-
+    // ── Load ───────────────────────────────────────────────────────────────────
     async function loadAreas() {
       try {
-        const res = await fetch('./data/areas.json?t=' + Date.now());
-        areasData = await res.json();
+        areasData = await (await fetch('./data/areas.json?t=' + Date.now())).json();
+        if (!activeAreaId && areasData.length) activeAreaId = areasData[0].id;
         renderNav();
-        renderActiveAreaForm();
-      } catch (err) {
-        console.error('Error cargando areas.json:', err);
-        showToast('Error cargando los datos iniciales', true);
-      }
+        renderForm();
+      } catch(e) { showToast('Error cargando datos', true); }
     }
 
+    // ── Nav ────────────────────────────────────────────────────────────────────
     function renderNav() {
-      const navEl = document.getElementById('admin-area-nav');
-      if (!navEl) return;
-      navEl.innerHTML = areasData.map(a => `
-        <button type="button" class="area-nav-btn ${a.id === activeAreaId ? 'active' : ''}" data-id="${a.id}">
-          <span>🛡️</span>
-          <span>${a.shortName || a.name}</span>
-        </button>
-      `).join('');
-
-      navEl.querySelectorAll('.area-nav-btn').forEach(btn => {
-        btn.onclick = () => {
-          syncCurrentFormToState();
-          activeAreaId = btn.getAttribute('data-id');
-          renderNav();
-          renderActiveAreaForm();
-        };
+      const el = document.getElementById('admin-area-nav');
+      if (!el) return;
+      el.innerHTML = areasData.map(a => `<button type="button" class="area-nav-btn ${a.id === activeAreaId ? 'active':''}" data-id="${a.id}">🛡️ ${a.shortName||a.name}</button>`).join('');
+      el.querySelectorAll('.area-nav-btn').forEach(b => {
+        b.onclick = () => { syncForm(); activeAreaId = b.dataset.id; renderNav(); renderForm(); };
       });
     }
 
-    function renderActiveAreaForm() {
-      const area = areasData.find(a => a.id === activeAreaId);
-      const container = document.getElementById('admin-form-container');
-      if (!area || !container) return;
+    // ── Utilities ──────────────────────────────────────────────────────────────
+    function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-      container.innerHTML = `
-        <!-- Información General -->
+    function resolveUrl(u) {
+      if (!u) return '';
+      if (u.startsWith('http://') || u.startsWith('https://') || u.startsWith('data:')) return u;
+      if (u.startsWith('/data/')) return '.' + u;
+      if (u.startsWith('/assets/')) return '.' + u;
+      if (u.startsWith('/src/assets/')) return '.' + u.replace(/^\/src/, '');
+      if (u.startsWith('src/assets/')) return './' + u.replace(/^src\//, '');
+      if (u.startsWith('assets/')) return './' + u;
+      if (u.startsWith('data/')) return './' + u;
+      return u;
+    }
+
+    function parseArcGIS(rawUrl) {
+      if (!rawUrl) return null;
+      try {
+        const u = new URL(rawUrl);
+        let itemId = u.searchParams.get('id') || u.searchParams.get('itemId') || u.searchParams.get('webmap') || '';
+        if (!itemId) { const m = u.pathname.match(/\/items\/([a-f0-9]{32})/i); if(m) itemId = m[1]; }
+        return itemId ? { itemId, center: u.searchParams.get('center')||'', scale: u.searchParams.get('scale')||'4500', portalUrl: u.origin } : null;
+      } catch(_) { return null; }
+    }
+
+    function pickImg(cb) {
+      const inp = document.getElementById('file-input-hidden');
+      inp.value = '';
+      inp.onchange = async () => {
+        const f = inp.files[0]; if(!f) return;
+        const isWebp = f.name.toLowerCase().endsWith('.webp') || f.type === 'image/webp';
+        if (!isWebp) {
+          showToast('⚠️ Solo se permiten imágenes en formato .webp', true);
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => cb({ filename: f.name, base64: reader.result, objectUrl: URL.createObjectURL(f) });
+        reader.readAsDataURL(f);
+      };
+      inp.click();
+    }
+
+    // ── Render Form ────────────────────────────────────────────────────────────
+    function renderForm() {
+      const area = areasData.find(a => a.id === activeAreaId);
+      const c    = document.getElementById('admin-form-container');
+      if (!area || !c) return;
+
+      const media    = area.media || { gallery:[], videos:[] };
+      const gallery  = media.gallery || [];
+      const videos   = media.videos  || [];
+      const projects = area.projects || [];
+      const heroUrl  = resolveUrl(area.heroImage) || DEFAULT_IMG;
+      const objUrl   = resolveUrl(area.objectivesImage) || '';
+      const eqUrl    = resolveUrl(area.equipmentImage)  || '';
+
+      c.innerHTML = `
+        <!-- Info General -->
         <div class="form-card">
           <div class="form-card-title">
-            <span>Información General del Área</span>
-            <a href="area.html?id=${area.id}" target="_blank" class="btn-secondary" style="font-size:0.7rem;padding:0.3rem 0.7rem;">Ver Área ↗</a>
+            <span>Información General</span>
+            <a href="area.html?id=${area.id}" target="_blank" class="btn-secondary" style="font-size:0.68rem;padding:0.25rem 0.6rem;">Ver Área ↗</a>
           </div>
-          <div class="form-group">
-            <label class="form-label">Nombre del Área</label>
-            <input type="text" id="area-name" class="form-input" value="${escapeHtml(area.name || '')}" />
+          <div class="grid-2">
+            <div class="form-group"><label class="form-label">Nombre del Área</label><input type="text" id="area-name" class="form-input" value="${esc(area.name||'')}" /></div>
+            <div class="form-group"><label class="form-label">Nombre Corto</label><input type="text" id="area-shortname" class="form-input" value="${esc(area.shortName||'')}" /></div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Nombre Corto (para pestañas)</label>
-            <input type="text" id="area-shortname" class="form-input" value="${escapeHtml(area.shortName || '')}" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Lema o Tagline</label>
-            <input type="text" id="area-tagline" class="form-input" value="${escapeHtml(area.tagline || '')}" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Descripción Principal</label>
-            <textarea id="area-description" class="form-textarea">${escapeHtml(area.description || '')}</textarea>
-          </div>
+          <div class="form-group"><label class="form-label">Lema (Tagline)</label><input type="text" id="area-tagline" class="form-input" value="${esc(area.tagline||'')}" /></div>
+          <div class="form-group"><label class="form-label">Descripción Principal</label><textarea id="area-description" class="form-textarea" style="min-height:100px;">${esc(area.description||'')}</textarea></div>
         </div>
 
-        <!-- Objetivos de Aprendizaje -->
+        <!-- Imagen Principal (Hero) -->
         <div class="form-card">
-          <div class="form-card-title">Objetivos de Aprendizaje</div>
+          <div class="form-card-title">📷 Imagen Principal del Área</div>
+          <p class="form-hint" style="margin-bottom:1rem;">Aparece como miniatura en el índice y como fondo hero del área.</p>
+          <div class="img-upload-block">
+            <div class="img-preview-wrap" style="width:160px;height:110px;">
+              <img id="hero-img-preview" src="${heroUrl}" alt="Hero" onerror="this.src='${DEFAULT_IMG}'" />
+            </div>
+            <div class="img-upload-actions">
+              <button type="button" class="btn-upload-img" id="btn-hero-upload">📁 Subir imagen</button>
+              <button type="button" class="btn-remove-img" id="btn-hero-remove">🗑 Eliminar</button>
+              <p class="form-hint">Solo imágenes .webp</p>
+            </div>
+          </div>
+          <input type="hidden" id="hero-img-value" value="${esc(area.heroImage||'')}" />
+        </div>
+
+        <!-- Imagen Objetivos -->
+        <div class="form-card">
+          <div class="form-card-title">🎯 Sección Objetivos de Aprendizaje</div>
+          <p class="form-hint" style="margin-bottom:1rem;">Imagen decorativa que acompaña la lista de objetivos.</p>
+          <div class="img-upload-block">
+            <div class="img-preview-wrap">
+              ${objUrl ? `<img id="obj-img-preview" src="${objUrl}" alt="Objetivos" onerror="this.src='${DEFAULT_IMG}'" />` : `<div class="img-no-img" id="obj-img-preview">🖼️</div>`}
+            </div>
+            <div class="img-upload-actions">
+              <button type="button" class="btn-upload-img" id="btn-obj-upload">📁 Subir imagen</button>
+              <button type="button" class="btn-remove-img" id="btn-obj-remove">🗑 Eliminar</button>
+            </div>
+          </div>
+          <input type="hidden" id="obj-img-value" value="${esc(area.objectivesImage||'')}" />
+          <hr style="border:none;border-top:1px solid var(--admin-border);margin:1.25rem 0;" />
+          <div class="form-group" style="margin-bottom:0.5rem;font-family:'Cinzel',serif;font-size:0.78rem;color:var(--admin-gold-light);text-transform:uppercase;font-weight:800;">Objetivos</div>
           <div id="objectives-list">
-            ${(area.objectives || []).map((obj, i) => `
-              <div class="dynamic-list-item">
-                <input type="text" class="form-input objective-input" value="${escapeHtml(obj)}" />
-                <button type="button" class="btn-icon btn-remove-obj" title="Eliminar objetivo">&times;</button>
-              </div>
-            `).join('')}
+            ${(area.objectives||[]).map(o => `<div class="dynamic-list-item"><input type="text" class="form-input objective-input" value="${esc(o)}" /><button type="button" class="btn-icon btn-remove-obj">×</button></div>`).join('')}
           </div>
           <button type="button" id="btn-add-obj" class="btn-add-item">+ Agregar Objetivo</button>
         </div>
 
-        <!-- Equipamiento e Instrumentos -->
+        <!-- Imagen Equipamiento -->
         <div class="form-card">
-          <div class="form-card-title">Equipamiento e Instrumentos</div>
+          <div class="form-card-title">⚙️ Sección Equipamiento e Instrumentos</div>
+          <p class="form-hint" style="margin-bottom:1rem;">Imagen decorativa que acompaña el listado de equipamiento.</p>
+          <div class="img-upload-block">
+            <div class="img-preview-wrap">
+              ${eqUrl ? `<img id="eq-img-preview" src="${eqUrl}" alt="Equipamiento" onerror="this.src='${DEFAULT_IMG}'" />` : `<div class="img-no-img" id="eq-img-preview">🖼️</div>`}
+            </div>
+            <div class="img-upload-actions">
+              <button type="button" class="btn-upload-img" id="btn-eq-upload">📁 Subir imagen</button>
+              <button type="button" class="btn-remove-img" id="btn-eq-remove">🗑 Eliminar</button>
+            </div>
+          </div>
+          <input type="hidden" id="eq-img-value" value="${esc(area.equipmentImage||'')}" />
+          <hr style="border:none;border-top:1px solid var(--admin-border);margin:1.25rem 0;" />
+          <div class="form-group" style="margin-bottom:0.5rem;font-family:'Cinzel',serif;font-size:0.78rem;color:var(--admin-gold-light);text-transform:uppercase;font-weight:800;">Equipamiento</div>
           <div id="equipment-list">
-            ${(area.equipment || []).map((eq, i) => `
-              <div class="dynamic-list-item">
-                <input type="text" class="form-input equipment-input" value="${escapeHtml(eq)}" />
-                <button type="button" class="btn-icon btn-remove-eq" title="Eliminar equipamiento">&times;</button>
-              </div>
-            `).join('')}
+            ${(area.equipment||[]).map(e => `<div class="dynamic-list-item"><input type="text" class="form-input equipment-input" value="${esc(e)}" /><button type="button" class="btn-icon btn-remove-eq">×</button></div>`).join('')}
           </div>
           <button type="button" id="btn-add-eq" class="btn-add-item">+ Agregar Equipamiento</button>
-          
-          <div class="form-group" style="margin-top:1.5rem;">
-            <label class="form-label">Ejemplo Práctico de Instrucción</label>
-            <textarea id="area-practical" class="form-textarea">${escapeHtml(area.practicalExample || '')}</textarea>
+          <div class="form-group" style="margin-top:1.25rem;">
+            <label class="form-label">Ejemplo Práctico</label>
+            <textarea id="area-practical" class="form-textarea">${esc(area.practicalExample||'')}</textarea>
           </div>
         </div>
 
-        <!-- Proyectos y Talleres -->
+        <!-- Galería -->
         <div class="form-card">
-          <div class="form-card-title">Proyectos y Talleres Formativos</div>
-          <div id="projects-container">
-            ${(area.projects || []).map((p, i) => `
-              <div class="project-edit-card" data-project-index="${i}">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-                  <strong style="color:var(--admin-gold);font-family:var(--font-display);font-size:0.85rem;">Proyecto #${i+1}</strong>
-                  <button type="button" class="btn-icon btn-remove-project" data-index="${i}" title="Eliminar proyecto">🗑️</button>
+          <div class="form-card-title">🖼️ Galería de Imágenes del Área</div>
+          <p class="form-hint" style="margin-bottom:1rem;">Imágenes en la sección multimedia del área (scroll horizontal).</p>
+          <div class="gallery-admin-grid" id="gallery-admin-grid">
+            ${gallery.map((img, i) => `
+              <div class="gallery-admin-item">
+                <img src="${resolveUrl(img.url)}" alt="${esc(img.caption||'')}" loading="lazy" onerror="this.src='${DEFAULT_IMG}'" />
+                <div class="gallery-admin-item-actions">
+                  <button type="button" class="gallery-admin-item-btn gallery-admin-item-btn--del btn-remove-gallery" title="Eliminar">×</button>
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Título del Proyecto</label>
-                  <input type="text" class="form-input proj-title" value="${escapeHtml(p.title || '')}" />
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-                  <div class="form-group">
-                    <label class="form-label">Instructor (opcional)</label>
-                    <input type="text" class="form-input proj-instructor" value="${escapeHtml(p.instructor || '')}" placeholder="Ej: Fernando Moya" />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Estado</label>
-                    <select class="form-select proj-status">
-                      <option value="Prototipo" ${p.status === 'Prototipo' ? 'selected' : ''}>Prototipo</option>
-                      <option value="Activo" ${p.status === 'Activo' ? 'selected' : ''}>Activo</option>
-                      <option value="En desarrollo" ${p.status === 'En desarrollo' ? 'selected' : ''}>En desarrollo</option>
-                      <option value="Completado" ${p.status === 'Completado' ? 'selected' : ''}>Completado</option>
-                    </select>
-                  </div>
-                </div>
-                ${area.id === 'tecnologia-geomatica' ? `
-                  <div class="form-group">
-                    <label class="form-label">Sub-Área</label>
-                    <select class="form-select proj-subarea">
-                      <option value="geogo" ${p.subArea === 'geogo' ? 'selected' : ''}>GeoGo (1° y 2° Medio)</option>
-                      <option value="geomatica" ${p.subArea === 'geomatica' ? 'selected' : ''}>Geomática y Topografía (3° y 4° Medio)</option>
-                    </select>
-                  </div>
-                ` : ''}
-                <div class="form-group">
-                  <label class="form-label">Descripción del Proyecto / Taller</label>
-                  <textarea class="form-textarea proj-desc">${escapeHtml(p.description || '')}</textarea>
-                </div>
+                <input type="text"   class="gallery-caption-input gallery-caption" value="${esc(img.caption||'Registro fotográfico')}" placeholder="Caption..." />
+                <input type="hidden" class="gallery-url-hidden" value="${esc(img.url||'')}" />
               </div>
             `).join('')}
           </div>
-          <button type="button" id="btn-add-project" class="btn-add-item" style="padding:0.75rem 1.25rem;">+ Añadir Nuevo Proyecto / Taller</button>
+          <button type="button" id="btn-add-gallery-img" class="btn-add-item">+ Agregar imagen a galería</button>
+        </div>
+
+        <!-- Videos -->
+        <div class="form-card">
+          <div class="form-card-title">🎬 Videos y Multimedia</div>
+          <p class="form-hint" style="margin-bottom:1rem;">Pega links de YouTube, Vimeo, Instagram Reels, etc. El sistema los incrusta automáticamente.</p>
+          <div id="videos-list">
+            ${videos.map((v, i) => `
+              <div class="video-admin-item">
+                <div class="video-admin-fields">
+                  <input type="text" class="form-input video-title-input" value="${esc(v.title||'Video')}" placeholder="Título..." />
+                  <div style="display:flex;gap:0.5rem;align-items:center;">
+                    <input type="url"  class="form-input video-url-input"   value="${esc(v.url||'')}"        placeholder="https://www.youtube.com/watch?v=..." style="flex:1;" />
+                    ${v.url ? `<a href="${esc(v.url)}" target="_blank" class="btn-secondary" style="padding:0.4rem 0.65rem;font-size:0.65rem;white-space:nowrap;text-decoration:none;" title="Abrir enlace">Abrir ↗</a>` : ''}
+                  </div>
+                </div>
+                <button type="button" class="btn-icon btn-remove-video" title="Eliminar">×</button>
+              </div>
+            `).join('')}
+          </div>
+          <button type="button" id="btn-add-video" class="btn-add-item">+ Agregar video</button>
+        </div>
+
+        <!-- Proyectos -->
+        <div class="form-card">
+          <div class="form-card-title">📁 Proyectos y Talleres Formativos</div>
+          <div id="projects-container">
+            ${projects.map((p, i) => renderProjectCard(area, p, i)).join('')}
+          </div>
+          <button type="button" id="btn-add-project" class="btn-add-item" style="padding:0.75rem 1.25rem;">+ Añadir Nuevo Proyecto</button>
         </div>
       `;
 
-      bindFormEvents();
+      bindEvents();
     }
 
-    function bindFormEvents() {
-      document.querySelectorAll('.btn-remove-obj').forEach(btn => {
-        btn.onclick = () => btn.closest('.dynamic-list-item').remove();
+    function renderProjectCard(area, p, i) {
+      const imgUrl = resolveUrl(p.image) || DEFAULT_IMG;
+      return `
+        <div class="project-edit-card" data-project-index="${i}">
+          <div class="project-card-header">
+            <span class="project-card-title">Proyecto #${i+1}</span>
+            <button type="button" class="btn-icon btn-remove-project" data-index="${i}" title="Eliminar">🗑️</button>
+          </div>
+          <div class="grid-2">
+            <div class="form-group"><label class="form-label">Título</label><input type="text" class="form-input proj-title" value="${esc(p.title||'')}" /></div>
+            <div class="form-group">
+              <label class="form-label">Estado</label>
+              <select class="form-select proj-status">
+                <option value="Prototipo" ${p.status==='Prototipo'?'selected':''}>Prototipo</option>
+                <option value="Activo"    ${p.status==='Activo'?'selected':''}>Activo</option>
+                <option value="En desarrollo" ${p.status==='En desarrollo'?'selected':''}>En desarrollo</option>
+                <option value="Completado"    ${p.status==='Completado'?'selected':''}>Completado</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label class="form-label">Instructor (opcional)</label><input type="text" class="form-input proj-instructor" value="${esc(p.instructor||'')}" placeholder="Ej: Fernando Moya" /></div>
+          ${area.id === 'tecnologia-geomatica' ? `
+          <div class="form-group">
+            <label class="form-label">Sub-Área</label>
+            <select class="form-select proj-subarea">
+              <option value="geogo"     ${p.subArea==='geogo'?'selected':''}>GeoGo (1° y 2° Medio)</option>
+              <option value="geomatica" ${p.subArea==='geomatica'?'selected':''}>Geomática (3° y 4° Medio)</option>
+            </select>
+          </div>
+          ` : ''}
+          <div class="form-group"><label class="form-label">Descripción</label><textarea class="form-textarea proj-desc">${esc(p.description||'')}</textarea></div>
+
+          <!-- Imagen del proyecto -->
+          <div class="collapsible-section">
+            <div class="collapsible-header ${p.image?'open':''}" data-collapsible>
+              <span>📷 Imagen del Proyecto</span>
+              <svg class="collapsible-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="collapsible-body ${p.image?'open':''}">
+              <div class="img-upload-block">
+                <div class="img-preview-wrap"><img class="proj-img-preview" src="${imgUrl}" alt="Proyecto" onerror="this.src='${DEFAULT_IMG}'" /></div>
+                <div class="img-upload-actions">
+                  <button type="button" class="btn-upload-img btn-proj-img-upload">📁 Subir imagen</button>
+                  <button type="button" class="btn-remove-img btn-proj-img-remove">🗑 Eliminar</button>
+                </div>
+              </div>
+              <input type="hidden" class="proj-img-value" value="${esc(p.image||'')}" />
+            </div>
+          </div>
+
+          <!-- Modelo 3D Autodesk -->
+          <div class="collapsible-section">
+            <div class="collapsible-header ${p.model3dEmbed?'open':''}" data-collapsible>
+              <span>🧊 Modelo 3D Autodesk (opcional)</span>
+              <svg class="collapsible-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="collapsible-body ${p.model3dEmbed?'open':''}">
+              <div class="form-group">
+                <label class="form-label">URL de Autodesk Fusion 360 (Compartir → Insertar)</label>
+                <input type="url" class="form-input proj-model3d" value="${esc(p.model3dEmbed||'')}" placeholder="https://liceosannicolas7.autodesk360.com/shares/public/..." />
+                <p class="form-hint">Si el proyecto no tiene modelo 3D, deja esto vacío.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mapa ArcGIS -->
+          <div class="collapsible-section">
+            <div class="collapsible-header ${(p.arcgis&&p.arcgis.itemId)?'open':''}" data-collapsible>
+              <span>🗺️ Mapa ArcGIS (opcional)</span>
+              <svg class="collapsible-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="collapsible-body ${(p.arcgis&&p.arcgis.itemId)?'open':''}">
+              <div class="form-group">
+                <label class="form-label">Link del Portal ArcGIS</label>
+                <input type="url" class="form-input proj-arcgis-url" value="${esc(p.arcgis?p.arcgis._rawUrl||'':'')}" placeholder="https://lpsn.maps.arcgis.com/home/item.html?id=..." />
+                <p class="form-hint">Los datos se extraen automáticamente al salir del campo.</p>
+              </div>
+              <div class="grid-2">
+                <div class="form-group"><label class="form-label">Item ID (autodetectado)</label><input type="text" class="form-input proj-arcgis-itemid" value="${esc(p.arcgis?p.arcgis.itemId||'':'')}" readonly /></div>
+                <div class="form-group"><label class="form-label">Escala</label><input type="text" class="form-input proj-arcgis-scale" value="${esc(p.arcgis?p.arcgis.scale||'4500':'4500')}" /></div>
+              </div>
+              <div class="form-group"><label class="form-label">Centro (lon,lat — opcional)</label><input type="text" class="form-input proj-arcgis-center" value="${esc(p.arcgis?p.arcgis.center||'':'')}" placeholder="-72.185,-36.542" /></div>
+              <div class="form-group"><label class="form-label">Portal URL</label><input type="url" class="form-input proj-arcgis-portal" value="${esc(p.arcgis?p.arcgis.portalUrl||'https://lpsn.maps.arcgis.com':'https://lpsn.maps.arcgis.com')}" /></div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // ── Bind Events ────────────────────────────────────────────────────────────
+    function bindEvents() {
+      // Collapsibles
+      document.querySelectorAll('[data-collapsible]').forEach(h => {
+        h.addEventListener('click', () => { h.classList.toggle('open'); h.nextElementSibling.classList.toggle('open'); });
       });
-      document.getElementById('btn-add-obj').onclick = () => {
+
+      // ── Hero Image ──
+      document.getElementById('btn-hero-upload')?.addEventListener('click', () => {
+        pickImg(({filename, base64, objectUrl}) => {
+          const fname = activeAreaId + '-hero-' + filename;
+          pendingImages[fname] = base64;
+          document.getElementById('hero-img-value').value = AREA_IMG_BASE + fname;
+          const img = document.getElementById('hero-img-preview');
+          if (img) img.src = objectUrl;
+          showToast('✅ Imagen hero seleccionada. Se subirá al guardar.');
+        });
+      });
+      document.getElementById('btn-hero-remove')?.addEventListener('click', () => {
+        document.getElementById('hero-img-value').value = '';
+        const img = document.getElementById('hero-img-preview');
+        if (img) img.src = DEFAULT_IMG;
+        showToast('🗑 Imagen principal eliminada (se usará imagen por defecto).');
+      });
+
+      // ── Objectives Image ──
+      document.getElementById('btn-obj-upload')?.addEventListener('click', () => {
+        pickImg(({filename, base64, objectUrl}) => {
+          const fname = activeAreaId + '-objectives-' + filename;
+          pendingImages[fname] = base64;
+          document.getElementById('obj-img-value').value = AREA_IMG_BASE + fname;
+          const wrap = document.getElementById('btn-obj-upload').closest('.img-upload-block')?.querySelector('.img-preview-wrap');
+          if (wrap) wrap.innerHTML = `<img id="obj-img-preview" src="${objectUrl}" alt="Objetivos" />`;
+          showToast('✅ Imagen de objetivos seleccionada.');
+        });
+      });
+      document.getElementById('btn-obj-remove')?.addEventListener('click', () => {
+        document.getElementById('obj-img-value').value = '';
+        const wrap = document.getElementById('btn-obj-remove').closest('.img-upload-block')?.querySelector('.img-preview-wrap');
+        if (wrap) wrap.innerHTML = `<div class="img-no-img" id="obj-img-preview">🖼️</div>`;
+        showToast('🗑 Imagen de objetivos eliminada.');
+      });
+
+      // ── Equipment Image ──
+      document.getElementById('btn-eq-upload')?.addEventListener('click', () => {
+        pickImg(({filename, base64, objectUrl}) => {
+          const fname = activeAreaId + '-equipment-' + filename;
+          pendingImages[fname] = base64;
+          document.getElementById('eq-img-value').value = AREA_IMG_BASE + fname;
+          const wrap = document.getElementById('btn-eq-upload').closest('.img-upload-block')?.querySelector('.img-preview-wrap');
+          if (wrap) wrap.innerHTML = `<img id="eq-img-preview" src="${objectUrl}" alt="Equipamiento" />`;
+          showToast('✅ Imagen de equipamiento seleccionada.');
+        });
+      });
+      document.getElementById('btn-eq-remove')?.addEventListener('click', () => {
+        document.getElementById('eq-img-value').value = '';
+        const wrap = document.getElementById('btn-eq-remove').closest('.img-upload-block')?.querySelector('.img-preview-wrap');
+        if (wrap) wrap.innerHTML = `<div class="img-no-img" id="eq-img-preview">🖼️</div>`;
+        showToast('🗑 Imagen de equipamiento eliminada.');
+      });
+
+      // ── Objectives List ──
+      document.querySelectorAll('.btn-remove-obj').forEach(b => b.onclick = () => b.closest('.dynamic-list-item').remove());
+      document.getElementById('btn-add-obj')?.addEventListener('click', () => {
         const list = document.getElementById('objectives-list');
-        const div = document.createElement('div');
-        div.className = 'dynamic-list-item';
-        div.innerHTML = `
-          <input type="text" class="form-input objective-input" value="" placeholder="Nuevo objetivo de aprendizaje..." />
-          <button type="button" class="btn-icon btn-remove-obj">&times;</button>
-        `;
-        div.querySelector('.btn-remove-obj').onclick = () => div.remove();
-        list.appendChild(div);
-      };
-
-      document.querySelectorAll('.btn-remove-eq').forEach(btn => {
-        btn.onclick = () => btn.closest('.dynamic-list-item').remove();
+        const d = document.createElement('div'); d.className = 'dynamic-list-item';
+        d.innerHTML = `<input type="text" class="form-input objective-input" placeholder="Nuevo objetivo..." /><button type="button" class="btn-icon btn-remove-obj">×</button>`;
+        d.querySelector('.btn-remove-obj').onclick = () => d.remove();
+        list.appendChild(d);
       });
-      document.getElementById('btn-add-eq').onclick = () => {
+
+      // ── Equipment List ──
+      document.querySelectorAll('.btn-remove-eq').forEach(b => b.onclick = () => b.closest('.dynamic-list-item').remove());
+      document.getElementById('btn-add-eq')?.addEventListener('click', () => {
         const list = document.getElementById('equipment-list');
-        const div = document.createElement('div');
-        div.className = 'dynamic-list-item';
-        div.innerHTML = `
-          <input type="text" class="form-input equipment-input" value="" placeholder="Nuevo equipamiento..." />
-          <button type="button" class="btn-icon btn-remove-eq">&times;</button>
-        `;
-        div.querySelector('.btn-remove-eq').onclick = () => div.remove();
-        list.appendChild(div);
-      };
-
-      document.querySelectorAll('.btn-remove-project').forEach(btn => {
-        btn.onclick = () => {
-          if (confirm('¿Estás seguro de eliminar este proyecto?')) {
-            btn.closest('.project-edit-card').remove();
-          }
-        };
+        const d = document.createElement('div'); d.className = 'dynamic-list-item';
+        d.innerHTML = `<input type="text" class="form-input equipment-input" placeholder="Nuevo equipamiento..." /><button type="button" class="btn-icon btn-remove-eq">×</button>`;
+        d.querySelector('.btn-remove-eq').onclick = () => d.remove();
+        list.appendChild(d);
       });
-      document.getElementById('btn-add-project').onclick = () => {
-        syncCurrentFormToState();
+
+      // ── Gallery ──
+      document.querySelectorAll('.btn-remove-gallery').forEach(b => b.onclick = () => b.closest('.gallery-admin-item').remove());
+      document.getElementById('btn-add-gallery-img')?.addEventListener('click', () => {
+        pickImg(({filename, base64, objectUrl}) => {
+          const fname = activeAreaId + '-gallery-' + Date.now() + '-' + filename;
+          pendingImages[fname] = base64;
+          const newPath = AREA_IMG_BASE + fname;
+          const grid = document.getElementById('gallery-admin-grid');
+          const item = document.createElement('div'); item.className = 'gallery-admin-item';
+          item.innerHTML = `
+            <img src="${objectUrl}" alt="Nueva imagen" loading="lazy" />
+            <div class="gallery-admin-item-actions"><button type="button" class="gallery-admin-item-btn gallery-admin-item-btn--del btn-remove-gallery" title="Eliminar">×</button></div>
+            <input type="text" class="gallery-caption-input gallery-caption" value="Registro fotográfico" placeholder="Caption..." />
+            <input type="hidden" class="gallery-url-hidden" value="${newPath}" />
+          `;
+          item.querySelector('.btn-remove-gallery').onclick = () => item.remove();
+          grid.appendChild(item);
+          showToast('✅ Imagen agregada. Se subirá al guardar.');
+        });
+      });
+
+      // ── Videos ──
+      document.querySelectorAll('.btn-remove-video').forEach(b => b.onclick = () => b.closest('.video-admin-item').remove());
+      document.getElementById('btn-add-video')?.addEventListener('click', () => {
+        const list = document.getElementById('videos-list');
+        const item = document.createElement('div'); item.className = 'video-admin-item';
+        item.innerHTML = `
+          <div class="video-admin-fields">
+            <input type="text" class="form-input video-title-input" placeholder="Título del video..." />
+            <input type="url"  class="form-input video-url-input"   placeholder="https://www.youtube.com/watch?v=..." />
+          </div>
+          <button type="button" class="btn-icon btn-remove-video" title="Eliminar">×</button>
+        `;
+        item.querySelector('.btn-remove-video').onclick = () => item.remove();
+        list.appendChild(item);
+      });
+
+      // ── Projects: Remove ──
+      document.querySelectorAll('.btn-remove-project').forEach(b => {
+        b.onclick = () => { if(confirm('¿Eliminar este proyecto?')) b.closest('.project-edit-card').remove(); };
+      });
+
+      // ── Projects: Add ──
+      document.getElementById('btn-add-project')?.addEventListener('click', () => {
+        syncForm();
         const area = areasData.find(a => a.id === activeAreaId);
         if (!area) return;
         if (!area.projects) area.projects = [];
-        area.projects.push({
-          id: 'nuevo-proyecto-' + Date.now(),
-          title: 'Nuevo Taller o Proyecto',
-          status: 'Prototipo',
-          instructor: '',
-          description: 'Escribe aquí la descripción del nuevo taller o proyecto.'
+        area.projects.push({ id:'nuevo-'+Date.now(), title:'Nuevo Proyecto', status:'Prototipo', instructor:'', description:'' });
+        renderForm();
+      });
+
+      // ── Project Image ──
+      document.querySelectorAll('.btn-proj-img-upload').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card  = btn.closest('.project-edit-card');
+          const idx   = parseInt(card.dataset.projectIndex);
+          const area  = areasData.find(a => a.id === activeAreaId);
+          const projId = (area && area.projects && area.projects[idx]?.id) || ('proj-' + idx);
+          pickImg(({filename, base64, objectUrl}) => {
+            const fname = activeAreaId + '-proj-' + projId + '-' + filename;
+            pendingImages[fname] = base64;
+            card.querySelector('.proj-img-value').value = AREA_IMG_BASE + fname;
+            const prev = card.querySelector('.proj-img-preview');
+            if (prev) prev.src = objectUrl;
+            showToast('✅ Imagen del proyecto seleccionada.');
+          });
         });
-        renderActiveAreaForm();
-      };
+      });
+      document.querySelectorAll('.btn-proj-img-remove').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.project-edit-card');
+          card.querySelector('.proj-img-value').value = '';
+          const prev = card.querySelector('.proj-img-preview');
+          if (prev) prev.src = DEFAULT_IMG;
+        });
+      });
+
+      // ── ArcGIS auto-parse ──
+      document.querySelectorAll('.proj-arcgis-url').forEach(input => {
+        input.addEventListener('blur', () => {
+          const card   = input.closest('.project-edit-card');
+          const parsed = parseArcGIS(input.value.trim());
+          if (parsed) {
+            if (parsed.itemId)    card.querySelector('.proj-arcgis-itemid').value = parsed.itemId;
+            if (parsed.center)    card.querySelector('.proj-arcgis-center').value  = parsed.center;
+            if (parsed.scale)     card.querySelector('.proj-arcgis-scale').value   = parsed.scale;
+            if (parsed.portalUrl) card.querySelector('.proj-arcgis-portal').value  = parsed.portalUrl;
+            showToast('✅ Datos del mapa detectados automáticamente.');
+          }
+        });
+      });
     }
 
-    function syncCurrentFormToState() {
+    // ── Sync Form to State ─────────────────────────────────────────────────────
+    function syncForm() {
       const area = areasData.find(a => a.id === activeAreaId);
       if (!area) return;
 
-      const nameEl = document.getElementById('area-name');
-      const shortNameEl = document.getElementById('area-shortname');
-      const taglineEl = document.getElementById('area-tagline');
-      const descEl = document.getElementById('area-description');
-      const practicalEl = document.getElementById('area-practical');
+      // Info general
+      const n = id => document.getElementById(id);
+      if (n('area-name'))      area.name             = n('area-name').value;
+      if (n('area-shortname')) area.shortName        = n('area-shortname').value;
+      if (n('area-tagline'))   area.tagline          = n('area-tagline').value;
+      if (n('area-description')) area.description   = n('area-description').value;
+      if (n('area-practical')) area.practicalExample = n('area-practical').value;
 
-      if (nameEl) area.name = nameEl.value;
-      if (shortNameEl) area.shortName = shortNameEl.value;
-      if (taglineEl) area.tagline = taglineEl.value;
-      if (descEl) area.description = descEl.value;
-      if (practicalEl) area.practicalExample = practicalEl.value;
+      // Imágenes de sección
+      if (n('hero-img-value')) area.heroImage        = n('hero-img-value').value || null;
+      if (n('obj-img-value'))  area.objectivesImage  = n('obj-img-value').value  || null;
+      if (n('eq-img-value'))   area.equipmentImage   = n('eq-img-value').value   || null;
 
-      const objInputs = document.querySelectorAll('.objective-input');
-      area.objectives = Array.from(objInputs).map(inp => inp.value.trim()).filter(Boolean);
+      // Listas
+      area.objectives = Array.from(document.querySelectorAll('.objective-input')).map(i=>i.value.trim()).filter(Boolean);
+      area.equipment  = Array.from(document.querySelectorAll('.equipment-input')).map(i=>i.value.trim()).filter(Boolean);
 
-      const eqInputs = document.querySelectorAll('.equipment-input');
-      area.equipment = Array.from(eqInputs).map(inp => inp.value.trim()).filter(Boolean);
+      // Galería
+      area.media = area.media || { gallery:[], videos:[] };
+      area.media.gallery = Array.from(document.querySelectorAll('.gallery-admin-item')).map(item => ({
+        url:     item.querySelector('.gallery-url-hidden')?.value || '',
+        caption: item.querySelector('.gallery-caption')?.value   || 'Registro fotográfico'
+      })).filter(g => g.url);
 
-      const projectCards = document.querySelectorAll('.project-edit-card');
-      const projects = [];
-      projectCards.forEach((card, idx) => {
-        const title = card.querySelector('.proj-title')?.value.trim() || 'Proyecto sin título';
-        const instructor = card.querySelector('.proj-instructor')?.value.trim() || '';
-        const status = card.querySelector('.proj-status')?.value || 'Prototipo';
-        const description = card.querySelector('.proj-desc')?.value.trim() || '';
-        const subArea = card.querySelector('.proj-subarea')?.value || (area.projects && area.projects[idx]?.subArea);
-        const existingProj = (area.projects && area.projects[idx]) || {};
+      // Videos
+      area.media.videos = Array.from(document.querySelectorAll('.video-admin-item')).map(item => ({
+        title: item.querySelector('.video-title-input')?.value || 'Video',
+        url:   item.querySelector('.video-url-input')?.value   || ''
+      })).filter(v => v.url);
 
-        projects.push({
-          ...existingProj,
-          id: existingProj.id || title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-'),
+      // Proyectos
+      area.projects = Array.from(document.querySelectorAll('.project-edit-card')).map((card, idx) => {
+        const existing  = (area.projects && area.projects[idx]) || {};
+        const title     = card.querySelector('.proj-title')?.value.trim()      || 'Proyecto';
+        const instructor= card.querySelector('.proj-instructor')?.value.trim() || '';
+        const status    = card.querySelector('.proj-status')?.value            || 'Prototipo';
+        const desc      = card.querySelector('.proj-desc')?.value.trim()       || '';
+        const subArea   = card.querySelector('.proj-subarea')?.value           || existing.subArea;
+        const imgVal    = card.querySelector('.proj-img-value')?.value         || '';
+        const model3d   = card.querySelector('.proj-model3d')?.value.trim()    || '';
+        const arcgisUrl = card.querySelector('.proj-arcgis-url')?.value.trim()    || '';
+        const itemId    = card.querySelector('.proj-arcgis-itemid')?.value.trim() || '';
+        const center    = card.querySelector('.proj-arcgis-center')?.value.trim() || '';
+        const scale     = card.querySelector('.proj-arcgis-scale')?.value.trim()  || '4500';
+        const portal    = card.querySelector('.proj-arcgis-portal')?.value.trim() || 'https://lpsn.maps.arcgis.com';
+
+        return {
+          ...existing,
+          id: existing.id || title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-'),
           title,
           instructor: instructor || undefined,
           status,
-          description,
-          subArea: subArea || undefined
-        });
-      });
-      area.projects = projects;
-    }
-
-    // Guardar vía GitHub API directa
-    async function saveToGitHubApi(jsonString, branch = 'qa') {
-      const token = getGitHubToken();
-      if (!token) {
-        openTokenModal();
-        throw new Error('Debes ingresar un GitHub Token para publicar online.');
-      }
-
-      const files = ['public/data/areas.json', 'data/areas.json'];
-      const utf8Base64 = btoa(unescape(encodeURIComponent(jsonString)));
-
-      for (const filePath of files) {
-        // 1. Obtener SHA actual del archivo
-        const getUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}?ref=${branch}`;
-        const getRes = await fetch(getUrl, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json'
-          }
-        });
-
-        let sha = '';
-        if (getRes.ok) {
-          const fileInfo = await getRes.json();
-          sha = fileInfo.sha;
-        }
-
-        // 2. Hacer commit y push
-        const putUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`;
-        const putBody = {
-          message: `docs: actualizar contenido desde panel web admin [${branch}]`,
-          content: utf8Base64,
-          branch: branch,
-          ...(sha ? { sha } : {})
+          description: desc,
+          subArea:      subArea  || undefined,
+          image:        imgVal   || undefined,
+          model3dEmbed: model3d  || undefined,
+          arcgis: itemId ? { _rawUrl: arcgisUrl, itemId, center, scale, portalUrl: portal } : undefined
         };
+      });
+    }
 
-        const putRes = await fetch(putUrl, {
+    // ── Save ───────────────────────────────────────────────────────────────────
+    async function saveToGitHub(jsonStr, branch) {
+      const token = getGitHubToken();
+      if (!token) { openModal(); throw new Error('Se requiere Token de GitHub.'); }
+      for (const filePath of ['public/data/areas.json', 'data/areas.json']) {
+        const getRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}?ref=${branch}`, { headers:{ Authorization:`Bearer ${token}`, Accept:'application/vnd.github.v3+json' }});
+        let sha = '';
+        if (getRes.ok) sha = (await getRes.json()).sha || '';
+        const putRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`, {
           method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-            'Accept': 'application/vnd.github.v3+json'
-          },
-          body: JSON.stringify(putBody)
+          headers: { Authorization:`Bearer ${token}`, 'Content-Type':'application/json', Accept:'application/vnd.github.v3+json' },
+          body: JSON.stringify({ message:`docs: actualizar áreas [${branch}]`, content: btoa(unescape(encodeURIComponent(jsonStr))), branch, ...(sha?{sha}:{}) })
         });
-
-        if (!putRes.ok) {
-          const errData = await putRes.json();
-          throw new Error(errData.message || `Error actualizando ${filePath}`);
-        }
+        if (!putRes.ok) { const e = await putRes.json(); throw new Error(e.message || 'Error en GitHub API'); }
       }
     }
 
-    async function saveAllData() {
-      syncCurrentFormToState();
+    async function saveAll() {
+      syncForm();
       const jsonStr = JSON.stringify(areasData, null, 2);
       const saveBtn = document.getElementById('btn-save-all');
       if (saveBtn) saveBtn.disabled = true;
-
-      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
+      const isLocal  = ['localhost','127.0.0.1'].includes(location.hostname);
+      const branch   = getActiveBranch();
+      const label    = branch === 'qa' ? 'QA' : 'Producción';
+      const imgsArr  = Object.entries(pendingImages).map(([filename, base64]) => ({ filename, base64 }));
       try {
-        if (isLocalhost) {
-          const localRes = await fetch('/api/save-areas', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: jsonStr
-          });
-          if (localRes.ok) {
-            showToast('✅ Guardado localmente en areas.json');
-          }
+        if (isLocal) {
+          const r = await fetch('/api/save-areas', { method:'POST', headers:{'Content-Type':'application/json'}, body: jsonStr });
+          if (r.ok) showToast('✅ Guardado localmente');
         }
-
         const workerUrl = getWorkerUrl();
         const adminPass = getAdminPass();
         const token     = getGitHubToken();
-
-        // 1. Enviar vía Cloudflare Worker (ambas ramas: QA y Producción)
         if (workerUrl && adminPass) {
-          showToast('⏳ Publicando cambios en QA y Producción...');
-          const payload = {
-            branches: ['qa', 'main'],
-            password: adminPass,
-            areasJson: areasData
-          };
-
-          const res = await fetch(workerUrl.replace(/\/+$/, '') + '/save-areas', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + adminPass
-            },
+          showToast(`⏳ Publicando en ${label}...`);
+          const payload = { branches:[branch], branch, password:adminPass, areasJson:areasData, images:imgsArr };
+          const res = await fetch(workerUrl.replace(/\/+$/,'') + '/save-areas', {
+            method:'POST', headers:{'Content-Type':'application/json', Authorization:'Bearer '+adminPass},
             body: JSON.stringify(payload)
           });
-
-          const data = await res.json().catch(() => ({}));
-          if (!res.ok || !data.success) {
-            throw new Error(data.error || 'Error en el microservicio (código ' + res.status + ')');
-          }
-
-          showToast('🚀 ¡Áreas publicadas en QA y Producción con éxito! Se desplegará en ~1-2 min.');
+          const data = await res.json().catch(()=>({}));
+          if (!res.ok || !data.success) throw new Error(data.error || 'Error en microservicio ('+res.status+')');
+          pendingImages = {};
+          showToast(`🚀 ¡Publicado en ${label}! (${data.uploadedImages||0} imágenes)`);
           return;
         }
-
-        // 2. Ruta de respaldo con Token directo
         if (token) {
-          showToast('⏳ Guardando y subiendo con token de GitHub...');
-          for (const br of TARGET_BRANCHES) {
-            await saveToGitHubApi(jsonStr, br);
-          }
-          showToast('🚀 ¡Publicado con éxito en ramas QA y Producción!');
+          showToast(`⏳ Publicando con token en ${label}...`);
+          await saveToGitHub(jsonStr, branch);
+          pendingImages = {};
+          showToast(`🚀 ¡Publicado en ${label}!`);
           return;
         }
-
-        if (!isLocalhost && !hasAuth()) {
-          openTokenModal();
-        }
-      } catch (err) {
-        console.error('Error guardando:', err);
+        if (!isLocal && !hasAuth()) openModal();
+      } catch(err) {
         showToast('⚠️ ' + err.message, true);
-        if (!isLocalhost && !hasAuth()) {
-          openTokenModal();
-        }
+        console.error(err);
       } finally {
         if (saveBtn) saveBtn.disabled = false;
       }
     }
 
-    function downloadJsonBackup() {
-      syncCurrentFormToState();
-      const blob = new Blob([JSON.stringify(areasData, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'areas.json';
+    function downloadBackup() {
+      syncForm();
+      const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([JSON.stringify(areasData,null,2)],{type:'application/json'})), download:'areas.json' });
       a.click();
-      URL.revokeObjectURL(url);
     }
 
-    function showToast(msg, isError = false) {
-      const toast = document.getElementById('toast');
-      if (!toast) return;
-      toast.textContent = msg;
-      toast.style.background = isError ? '#ef4444' : '#10b981';
-      toast.style.display = 'block';
-      setTimeout(() => { toast.style.display = 'none'; }, 5000);
+    function showToast(msg, isErr=false) {
+      const t = document.getElementById('toast');
+      if (!t) return;
+      t.textContent = msg;
+      t.style.background = isErr ? '#ef4444' : '#10b981';
+      t.style.display = 'block';
+      clearTimeout(t._t);
+      t._t = setTimeout(() => t.style.display='none', 5500);
     }
 
-    function escapeHtml(str) {
-      return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }
-
-    async function syncContentFromMarkdown() {
+    async function syncMarkdown() {
       const btn = document.getElementById('btn-sync-content');
       if (btn) btn.disabled = true;
-      showToast('⏳ Sincronizando datos desde Markdown...');
-
+      showToast('⏳ Sincronizando desde Markdown...');
       try {
-        const res = await fetch('/api/sync-content', { method: 'POST' });
-        const data = await res.json();
-        if (data.success) {
-          showToast('✅ ' + data.message);
-          await loadAreas();
-        } else {
-          showToast('❌ Error: ' + (data.error || 'No se pudo sincronizar'), true);
-        }
-      } catch (err) {
-        showToast('❌ Error: La sincronización Markdown local solo funciona en tu máquina (localhost).', true);
-      } finally {
-        if (btn) btn.disabled = false;
-      }
+        const d = await (await fetch('/api/sync-content', {method:'POST'})).json();
+        if (d.success) { showToast('✅ ' + d.message); await loadAreas(); }
+        else showToast('❌ ' + (d.error||'Error'), true);
+      } catch(_) { showToast('❌ Solo funciona en localhost.', true); }
+      finally { if(btn) btn.disabled = false; }
     }
 
-    // Configurar Credenciales
-    document.getElementById('btn-github-token').onclick = openTokenModal;
-    document.getElementById('btn-cancel-token').onclick = closeTokenModal;
+    // ── Init ───────────────────────────────────────────────────────────────────
+    document.getElementById('btn-github-token').onclick = openModal;
+    document.getElementById('btn-cancel-token').onclick = closeModal;
     document.getElementById('btn-save-token').onclick = () => {
-      const pass = (document.getElementById('input-admin-pass')?.value || '').trim();
-      const url  = (document.getElementById('input-worker-url')?.value || '').trim();
-      const tok  = (document.getElementById('input-gh-token')?.value || '').trim();
-
-      if (pass) localStorage.setItem('premilitar_admin_pass', pass);
-      else localStorage.removeItem('premilitar_admin_pass');
-
-      if (url)  localStorage.setItem('premilitar_worker_url', url);
-      else localStorage.removeItem('premilitar_worker_url');
-
-      if (tok)  localStorage.setItem('premilitar_gh_token', tok);
-      else localStorage.removeItem('premilitar_gh_token');
-
-      updateTokenButtonState();
-      closeTokenModal();
-      showToast('🔑 Credenciales guardadas con éxito');
+      const pass = (document.getElementById('input-admin-pass')?.value||'').trim();
+      const url  = (document.getElementById('input-worker-url')?.value||'').trim();
+      const tok  = (document.getElementById('input-gh-token')?.value||'').trim();
+      if(pass) localStorage.setItem('premilitar_admin_pass', pass); else localStorage.removeItem('premilitar_admin_pass');
+      if(url)  localStorage.setItem('premilitar_worker_url', url);  else localStorage.removeItem('premilitar_worker_url');
+      if(tok)  localStorage.setItem('premilitar_gh_token', tok);    else localStorage.removeItem('premilitar_gh_token');
+      updateTokenBtn(); closeModal(); showToast('🔑 Credenciales guardadas');
     };
+    document.getElementById('btn-save-all').onclick     = saveAll;
+    document.getElementById('btn-download-json').onclick = downloadBackup;
+    document.getElementById('btn-sync-content').onclick  = syncMarkdown;
 
-    document.getElementById('btn-save-all').onclick = saveAllData;
-    document.getElementById('btn-download-json').onclick = downloadJsonBackup;
-    document.getElementById('btn-sync-content').onclick = syncContentFromMarkdown;
-
-    updateTokenButtonState();
+    updateTokenBtn();
+    initBranchSelector();
     loadAreas();
   </script>
 </body>
