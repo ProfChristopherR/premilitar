@@ -1,5 +1,54 @@
 [
   {
+    "id": "visita-del-ejercito-de-chile-al-liceo-bicentenario-de-excele-2026",
+    "type": "own-post",
+    "title": "Visita del Ejército de Chile al Liceo Bicentenario de Excelencia  Polivalente San Nicolás",
+    "date": "2026-11-03",
+    "category": "",
+    "badge": "",
+    "featured": true,
+    "summary": "¡VISITA DEL EJÉRCITO DE CHILE A NUESTRO LICEO!: ESTUDIANTES DEL SENDERO PREMILITAR DE NUESTRO LICEO PRESENTAN PROYECTOS TECNOLÓGICOS ANTE EL CIITEC DEL EJÉRCITO DE CHILE",
+    "author": "Prof. Leonardo Garrido",
+    "coverImage": "data/news-images/whatsapp-image-2026-10-20-at-20.49.43.webp",
+    "body": "<div><span style=\"font-size: 14.4px;\">Nuestra comunidad educativa, en una jornada marcada por el intercambio de conocimientos, el uso de la tecnología aplicada e innovación vivió el importante hito el pasado 20 de Octubre tras recibir la destacada visita del Centro de Investigación e Innovación Tecnológica “CIITEC” del Ejército de Chile.</span></div><div><span style=\"font-size: 14.4px;\"><br></span></div><div><span style=\"font-size: 14.4px;\">Esta oportunidad permitió la colisión y la relación entre el área educacional con el militar, permitiendo el desarrollo de ideas críticas, fomentar el procesamiento de datos y el uso de la tecnología. Asimismo permitiendo demostrar los conocimientos de nuestros alumnos, el alto nivel tecnológico, académico y analítico presente en nuestras aulas.</span></div><div><span style=\"font-size: 14.4px;\"><br></span></div><div><span style=\"font-size: 14.4px;\">El Sendero Premilitar al vanguardismo de la innovación&nbsp;</span></div><div><span style=\"font-size: 14.4px;\">Los estudiantes Mayra Sepúlveda(1°F) Isidora Martínez(1°F) Amaro Cavieres(2°F) José Tomas Fuenzalida(2°F) Valentina Duarte(3°AF) Daffne Correa(3°AF)&nbsp; Ailen Muñoz(3°AF) Kamilo Pinto(3°AF) Félix Chévez(4°AF) y Juan Pablo Soto(4°AF) fueron encargados de exponer el área de tecnología e innovación del sendero, denominado GeoGo: technological Innovation enfocado en el desarrollo de proyectos a partir de problemáticas sociales y territoriales.</span></div><div><span style=\"font-size: 14.4px;\"><br></span></div><div><span style=\"font-size: 14.4px;\">Durante la visita, los delegados tuvieron la oportunidad de conocer diversos proyectos trabajados por los estudiantes durante el periodo escolar, entre ellos:&nbsp;</span></div><div><span style=\"font-size: 14.4px;\">Invernadero Inteligente: Un sistema diseñado para optimizar el cultivo mediante sensores automáticos y monitoreo ambiental.</span></div><div><span style=\"font-size: 14.4px;\">Mini Estación Meteorológica: Dispositivo enfocado en la recolección, lectura e interpretación de variables climáticas locales.</span></div><div><span style=\"font-size: 14.4px;\">Semáforo de Radiación Solar: Herramienta de prevención y concientización comunitaria que alerta sobre los niveles de exposición UV.</span></div><div><span style=\"font-size: 14.4px;\">Tecnología de Drones y Conteo de Árboles: Propuestas de desarrollo geoespacial enfocadas en la captura de datos visuales, procesamiento de información y análisis de recursos naturales.</span></div><div><span style=\"font-size: 14.4px;\">Nemotron:Traductor fomentado por IA que cuenta con la capacidad de traducir y transcribir más de 40 idiomas en tiempo real.</span></div><div><span style=\"font-size: 14.4px;\"><br></span></div><div><span style=\"font-size: 14.4px;\">Más allá de la exhibición esta oportunidad permite la colisión y la relación entre el área educacional con el militar, permitiendo fomentar en los estudiantes el desarrollo del razonamiento crítico, fortalecer las habilidades en el procesamiento de datos y promueve el uso de estos para resolver problemas del entorno real.</span></div>",
+    "gallery": [
+      {
+        "type": "image",
+        "src": "data/news-images/whatsapp-image-2026-10-20-at-20.49.30.webp",
+        "caption": "WhatsApp-Image-2026-10-20-at-20.49.30"
+      },
+      {
+        "type": "image",
+        "src": "data/news-images/whatsapp-image-2026-10-20-at-20.49.32.webp",
+        "caption": "WhatsApp-Image-2026-10-20-at-20.49.32"
+      },
+      {
+        "type": "image",
+        "src": "data/news-images/whatsapp-image-2026-10-20-at-20.49.35.webp",
+        "caption": "WhatsApp-Image-2026-10-20-at-20.49.35"
+      },
+      {
+        "type": "image",
+        "src": "data/news-images/whatsapp-image-2026-10-20-at-20.49.50.webp",
+        "caption": "WhatsApp-Image-2026-10-20-at-20.49.50"
+      },
+      {
+        "type": "image",
+        "src": "data/news-images/whatsapp-image-2026-10-20-at-20.50.00.webp",
+        "caption": "WhatsApp-Image-2026-10-20-at-20.50.00"
+      },
+      {
+        "type": "image",
+        "src": "data/news-images/whatsapp-image-2026-10-20-at-20.50.09.webp",
+        "caption": "WhatsApp-Image-2026-10-20-at-20.50.09"
+      }
+    ],
+    "tags": [],
+    "source": "Sendero Pre-Militar",
+    "sourceUrl": "",
+    "image": ""
+  },
+  {
     "id": "un-dia-de-geomatica-acerco-a-estudiantes-de-ensenanza-media--2026",
     "type": "external-link",
     "title": "“Un día de Geomática” acercó a estudiantes de enseñanza media a las múltiples áreas de la disciplina - Noticias UdeC",
